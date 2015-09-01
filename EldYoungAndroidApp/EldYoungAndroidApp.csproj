@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{98EE2A91-0C0E-494B-9C72-8241A7079B9B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>EldYoungAndroidApp</RootNamespace>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AssemblyName>EldYoungAndroidApp</AssemblyName>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.MonoDroid">
+      <HintPath>C:\Users\Jonny\Desktop\restsharp-105.0.1.0\lib\android\RestSharp.MonoDroid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="PullToRefresh">
+      <HintPath>C:\Users\Jonny\Desktop\Android-Binding-Libs\PullToRefresh.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashActivity.cs" />
+    <Compile Include="Common\CustomProgressDialog.cs" />
+    <Compile Include="Common\EldYoungApplication.cs" />
+    <Compile Include="Common\EldYoungUtil.cs" />
+    <Compile Include="Common\Global.cs" />
+    <Compile Include="Common\HttpWebRequestHelper.cs" />
+    <Compile Include="Common\ProgressDialogUtil.cs" />
+    <Compile Include="Common\UpdateManager.cs" />
+    <Compile Include="Receiver\CustomJPushReceiver.cs" />
+    <Compile Include="GuiderActivity.cs" />
+    <Compile Include="LoginActivity.cs" />
+    <Compile Include="Adapter\ViewPagerAdapter.cs" />
+    <Compile Include="Fragments\MainTab\GuardianInfoFragment.cs" />
+    <Compile Include="Fragments\MainTab\MyInfoFragment.cs" />
+    <Compile Include="Fragments\MainTab\AlarmInfoFragment.cs" />
+    <Compile Include="Fragments\MainTab\HealthInfoFragment.cs" />
+    <Compile Include="Adapter\ViewFragmentPagerAdapter.cs" />
+    <Compile Include="Fragments\MainTab\Alarm\MyAlarmFrag.cs" />
+    <Compile Include="Fragments\MainTab\Alarm\OtherAlarmFrag.cs" />
+    <Compile Include="Fragments\MainTab\Health\MyHealthFrag.cs" />
+    <Compile Include="Fragments\MainTab\Health\OtherHealthFrag.cs" />
+    <Compile Include="Fragments\MainTab\Guardian\MyGuardianFrag.cs" />
+    <Compile Include="Fragments\MainTab\Guardian\OtherGuardianFrag.cs" />
+    <Compile Include="Activitys\Guardian\BindGuardianActivity.cs" />
+    <Compile Include="Model\Guardian\GuardianInfoListItem.cs" />
+    <Compile Include="Adapter\GuardianInfoAdapter.cs" />
+    <Compile Include="RegisterActivity.cs" />
+    <Compile Include="RegisterResultActivity.cs" />
+    <Compile Include="Common\EnDeCryptHelp.cs" />
+    <Compile Include="Common\RestSharpRequestHelp.cs" />
+    <Compile Include="Json\BaseJson.cs" />
+    <Compile Include="Json\SmsJson.cs" />
+    <Compile Include="Param\SmsInfoParam.cs" />
+    <Compile Include="Param\RegisterInfoParam.cs" />
+    <Compile Include="Param\BaseParam.cs" />
+    <Compile Include="Json\RegisterJson.cs" />
+    <Compile Include="Common\JPushUtil.cs" />
+    <Compile Include="Param\LoginInfoParam.cs" />
+    <Compile Include="Json\LoginJson.cs" />
+    <Compile Include="ServiceAgreeActivity.cs" />
+    <Compile Include="SetActivity.cs" />
+    <Compile Include="Activitys\My\PersonActivity.cs" />
+    <Compile Include="Activitys\My\PersonBasicActivity.cs" />
+    <Compile Include="Activitys\Alarm\AlarmDetailInfoActivity.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Common\Sex.cs" />
+    <Compile Include="Activitys\Guardian\GuardianDetailInfoActivity.cs" />
+    <Compile Include="Common\UnbindPopWindow.cs" />
+    <Compile Include="Activitys\Guardian\GuardianApplyActivity.cs" />
+    <Compile Include="ForgetPassWordActivity.cs" />
+    <Compile Include="Common\ApplybindPopWindow.cs" />
+    <Compile Include="Fragments\MainTab\BaseFragment.cs" />
+    <Compile Include="Common\SelectPicPopWindow.cs" />
+    <Compile Include="Common\DatePickDialogUtil.cs" />
+    <Compile Include="Activitys\My\UpdatePasswordActivity.cs" />
+    <Compile Include="Activitys\My\PayPasswordActivity.cs" />
+    <Compile Include="Adapter\AlarmInfoListAdapter.cs" />
+    <Compile Include="Model\Alarm\AlarmInfoListItem.cs" />
+    <Compile Include="Param\AlarmInfoListParam.cs" />
+    <Compile Include="Param\AlarmInfoDetailParam.cs" />
+    <Compile Include="Param\SearchAllMyUserParam.cs" />
+    <Compile Include="Json\SearchAlarmInfoJson.cs" />
+    <Compile Include="Json\SearchAllMyUserJson.cs" />
+    <Compile Include="Model\Alarm\AllMyUserListItem.cs" />
+    <Compile Include="Json\SearchAlarmDeatilInfoJson.cs" />
+    <Compile Include="Model\Alarm\AlarmInfoDetailItem.cs" />
+    <Compile Include="Model\Alarm\AlarmInfoHandDetailItem.cs" />
+    <Compile Include="Adapter\AlarmHandleDetailInfoAdapter.cs" />
+    <Compile Include="Param\MineGuardianInfoListParam.cs" />
+    <Compile Include="Param\GuardianMeInfoListParam.cs" />
+    <Compile Include="Json\GuardianInfoJson.cs" />
+    <Compile Include="Adapter\ApplyGuardianListAdapter.cs" />
+    <Compile Include="Model\Guardian\SearchGuardianListItem.cs" />
+    <Compile Include="Param\SearchGuardianParam.cs" />
+    <Compile Include="Json\SearchGuardianListJson.cs" />
+    <Compile Include="Param\ApplyBindGuardianParam.cs" />
+    <Compile Include="Json\ApplyForGuardianJson.cs" />
+    <Compile Include="Param\UnBindGuardianParam.cs" />
+    <Compile Include="Json\UnBindGuardianJson.cs" />
+    <Compile Include="Param\GuardianDetailInfoParam.cs" />
+    <Compile Include="Model\Guardian\GuardianDetailInfoItem.cs" />
+    <Compile Include="Json\GuardianDetailInfoJson.cs" />
+    <Compile Include="Param\ExamineBundGuardianParam.cs" />
+    <Compile Include="Json\ExamineBundGuardianJson.cs" />
+    <Compile Include="Param\GetApplyInfoParam.cs" />
+    <Compile Include="Json\GetApplyInfoJson.cs" />
+    <Compile Include="Model\Guardian\GetApplyInfoListItem.cs" />
+    <Compile Include="Adapter\GetApplyInfoListAadapter.cs" />
+    <Compile Include="Param\SearchHealthInforParam.cs" />
+    <Compile Include="Model\Health\HealthInfoItem.cs" />
+    <Compile Include="Json\SearchHealthInfoJson.cs" />
+    <Compile Include="Activitys\Health\HealthDetailInfoActivity.cs" />
+    <Compile Include="Adapter\HealthInfoListAdapter.cs" />
+    <Compile Include="Model\Health\HealthStand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\dark_dot.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\guider3.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\guider4.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_discard.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_edit.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_save.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_rating_good.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\input_over.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\login_input.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_3.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_4.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_5.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_6.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_7.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\progress_8.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tab_bg2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\white_dot.png" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\layout\SplashLayout.axml" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_content_discard.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_content_edit.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_content_save.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_rating_good.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_content_discard.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_content_edit.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_content_save.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_rating_good.png" />
+    <AndroidResource Include="Resources\drawable\dot.xml" />
+    <AndroidResource Include="Resources\drawable\login_edit.xml" />
+    <AndroidResource Include="Resources\drawable\whats_new_start_btn.xml" />
+    <AndroidResource Include="Resources\menu\main_menu.xml" />
+    <AndroidResource Include="Resources\layout\bottom_bar.axml" />
+    <AndroidResource Include="Resources\layout\customprogressdialog.axml" />
+    <AndroidResource Include="Resources\layout\GuiderLayout.axml" />
+    <AndroidResource Include="Resources\layout\Guider_Four.axml" />
+    <AndroidResource Include="Resources\layout\Guider_One.axml" />
+    <AndroidResource Include="Resources\layout\Guider_Three.axml" />
+    <AndroidResource Include="Resources\layout\Guider_Two.axml" />
+    <AndroidResource Include="Resources\layout\LoginLayout.axml" />
+    <AndroidResource Include="Resources\anim\progress_round.xml" />
+    <AndroidResource Include="Resources\anim\zoomin.xml" />
+    <AndroidResource Include="Resources\anim\zoomout.xml" />
+    <AndroidResource Include="Resources\layout\progressbar.axml" />
+    <AndroidResource Include="Resources\layout\customer_notitfication_layout.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\button_pressed.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\button_unpress.png" />
+    <AndroidResource Include="Resources\layout\Main_Tab_HealthLayout.axml" />
+    <AndroidResource Include="Resources\layout\Main_Tab_AlarmLayout.axml" />
+    <AndroidResource Include="Resources\layout\Main_Tab_GuardianLayout.axml" />
+    <AndroidResource Include="Resources\layout\Main_Tab_MyLayout.axml" />
+    <AndroidResource Include="Resources\layout\OtherAlarmFragLayout.axml" />
+    <AndroidResource Include="Resources\layout\MyAlarmFragLayout.axml" />
+    <AndroidResource Include="Resources\values\color.xml" />
+    <AndroidResource Include="Resources\layout\MyHealthFragLayout.axml" />
+    <AndroidResource Include="Resources\layout\OtherHealthFragLayout.axml" />
+    <AndroidResource Include="Resources\layout\MyGuardianFragLayout.axml" />
+    <AndroidResource Include="Resources\layout\OtherGuardianFragLayout.axml" />
+    <AndroidResource Include="Resources\layout\BindGuardianLayout.axml" />
+    <AndroidResource Include="Resources\layout\guardianListitemView.axml" />
+    <AndroidResource Include="Resources\drawable-xhdpi\head.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\head.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\head.png" />
+    <AndroidResource Include="Resources\raw\pull_event.mp3" />
+    <AndroidResource Include="Resources\raw\refreshing_sound.mp3" />
+    <AndroidResource Include="Resources\raw\reset_sound.mp3" />
+    <AndroidResource Include="Resources\layout\RegisterLayout.axml" />
+    <AndroidResource Include="Resources\layout\RegisterResultLayout.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher_lelaozu.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher_lelaozu_bgWhite.png" />
+    <AndroidResource Include="Resources\layout\custom_title_bar.axml" />
+    <AndroidResource Include="Resources\layout\ServiceAgreeLayout.axml" />
+    <AndroidResource Include="Resources\drawable\textselector.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\guider1.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launch.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\home_tab_personal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\home_tab_personal_selected.png" />
+    <AndroidResource Include="Resources\drawable\setting_btn.xml" />
+    <AndroidResource Include="Resources\layout\SetLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrow_right_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_camera.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_fav.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_integral.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_service.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_share.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_support.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_vip.png" />
+    <AndroidResource Include="Resources\layout\PersonLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrow_right_gray.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_center_default.png" />
+    <AndroidResource Include="Resources\drawable\relativeLayoutSelector.xml" />
+    <AndroidResource Include="Resources\layout\PersonBasicLayout.axml" />
+    <AndroidResource Include="Resources\layout\custom_titlebar_action.axml" />
+    <AndroidResource Include="Resources\layout\AlarmDetailInfoLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\guider2.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_alarm_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_alarm_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_guardian_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_guardian_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_health_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_health_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_mine_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_mine_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_sex_man.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_sex_woman.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\menu_bg.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_more.png" />
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_applyGuardian.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_back.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_bindingGuardian.png" />
+    <AndroidResource Include="Resources\layout\GuardianDetailInfoLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_basicInformation.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_medicalHistory.png" />
+    <AndroidResource Include="Resources\layout\GuardianPopupWindowLayout.axml" />
+    <AndroidResource Include="Resources\layout\customunbinddialogLayout.axml" />
+    <AndroidResource Include="Resources\anim\fade_out.xml" />
+    <AndroidResource Include="Resources\anim\fade_in.xml" />
+    <AndroidResource Include="Resources\layout\GuardianApplyLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_eye.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_password.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_rememberPassword_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_rememberPassword_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_username.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\login_bg.png" />
+    <AndroidResource Include="Resources\drawable\checkboxselector.xml" />
+    <AndroidResource Include="Resources\layout\ForgetPasswordLayout.axml" />
+    <AndroidResource Include="Resources\layout\customapplybinddialog.axml" />
+    <AndroidResource Include="Resources\drawable\btnlogin.xml" />
+    <AndroidResource Include="Resources\drawable\backselector.xml" />
+    <AndroidResource Include="Resources\drawable\settingselector.xml" />
+    <AndroidResource Include="Resources\drawable\guardian_actionmore_selector.xml" />
+    <AndroidResource Include="Resources\drawable\unbindselector.xml" />
+    <AndroidResource Include="Resources\drawable\tv_querryguardianselector.xml" />
+    <AndroidResource Include="Resources\drawable\tv_guardiandetailselector.xml" />
+    <AndroidResource Include="Resources\layout\customheadselectordialog.axml" />
+    <AndroidResource Include="Resources\anim\bottomin.xml" />
+    <AndroidResource Include="Resources\anim\bottomout.xml" />
+    <AndroidResource Include="Resources\layout\commondatepickerlayout.axml" />
+    <AndroidResource Include="Resources\layout\UpdatePasswordLayout.axml" />
+    <AndroidResource Include="Resources\layout\PayPasswordLayout.axml" />
+    <AndroidResource Include="Resources\layout\alarmListitemView.axml" />
+    <AndroidResource Include="Resources\layout\alarmHandleDetailInfoListitemView.axml" />
+    <AndroidResource Include="Resources\layout\searchguardianListItemView.axml" />
+    <AndroidResource Include="Resources\layout\getApplyInfoListItemView.axml" />
+    <AndroidResource Include="Resources\layout\HealthDetailInfoLayout.axml" />
+    <AndroidResource Include="Resources\layout\healthListItemView.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\uparrow.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\JPushBindingLibrary\JPushBindingLibrary.csproj">
+      <Project>{913E5ECB-C6A0-4617-9F96-930F35E566F5}</Project>
+      <Name>JPushBindingLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Receiver\" />
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\menu\" />
+    <Folder Include="Adapter\" />
+    <Folder Include="Resources\anim\" />
+    <Folder Include="Fragments\" />
+    <Folder Include="Fragments\MainTab\" />
+    <Folder Include="Fragments\MainTab\Health\" />
+    <Folder Include="Fragments\MainTab\Alarm\" />
+    <Folder Include="Fragments\MainTab\Guardian\" />
+    <Folder Include="Activitys\" />
+    <Folder Include="Activitys\Guardian\" />
+    <Folder Include="Activitys\Alarm\" />
+    <Folder Include="Activitys\Health\" />
+    <Folder Include="Model\" />
+    <Folder Include="Model\Guardian\" />
+    <Folder Include="Resources\raw\" />
+    <Folder Include="Param\" />
+    <Folder Include="Json\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Model\Alarm\" />
+    <Folder Include="Model\Health\" />
+    <Folder Include="Activitys\My\" />
+  </ItemGroup>
+</Project>

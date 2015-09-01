@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:layout_width="match_parent"
+        style="@style/action_bar"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TextView
+            style="@style/action_bar_tv"
+            android:text="健康体检"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        style="@style/tab_linerlayout">
+        <Button
+            style="@style/tab_btn_style"
+            android:id="@+id/btn_tab_myHealth"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:text="我的体检信息" />
+        <Button
+            style="@style/tab_btn_style"
+            android:id="@+id/btn_tab_otherHealth"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:text="我监控的人体检信息" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:paddingBottom="1dip">
+        <ImageView
+            android:id="@+id/iv_bottom_line"
+            android:layout_width="150dip"
+            android:layout_height="3dip"
+            android:scaleType="matrix"
+            android:src="@color/blue" />
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/healthViewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

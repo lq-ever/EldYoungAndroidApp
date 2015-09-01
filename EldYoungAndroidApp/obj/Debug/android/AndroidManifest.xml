@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.eldyoung.lelaozuandroidapp">
+  <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="22" />
+  <permission android:name="com.eldyoung.lelaozuandroidapp.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+  <!-- Required  一些系统要求的权限，如访问网络等-->
+  <!--允许读取电话状态SIM的权限-->
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="com.eldyoung.lelaozuandroidapp.permission.JPUSH_MESSAGE" />
+  <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+  <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+  <!-- Optional for location -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+  <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <application android:label="@string/app_name" android:icon="@drawable/ic_launch" android:name="md56b525e94a3ab43f8847ea5c30909c30b.EldYoungApplication" android:debuggable="true">
+    <!-- Required SDK核心功能push activity -->
+    <activity android:name="cn.jpush.android.ui.PushActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="orientation|keyboardHidden">
+      <intent-filter>
+        <action android:name="cn.jpush.android.ui.PushActivity" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="com.eldyoung.lelaozuandroidapp" />
+      </intent-filter>
+    </activity>
+    <!-- Required  SDK核心功能 下载服务-->
+    <service android:name="cn.jpush.android.service.DownloadService" android:enabled="true" android:exported="false"></service>
+    <!-- Required SDK 核心功能  配置JPush推送服务-->
+    <service android:name="cn.jpush.android.service.PushService" android:enabled="true" android:exported="false">
+      <intent-filter>
+        <action android:name="cn.jpush.android.intent.REGISTER" />
+        <action android:name="cn.jpush.android.intent.REPORT" />
+        <action android:name="cn.jpush.android.intent.PushService" />
+        <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+      </intent-filter>
+    </service>
+    <!-- Required SDK核心功能 配置Jpush 广播接收者-->
+    <receiver android:name="cn.jpush.android.service.PushReceiver" android:enabled="true">
+      <intent-filter android:priority="1000">
+        <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+        <!--Required  显示通知栏 -->
+        <category android:name="com.eldyoung.lelaozuandroidapp" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.USER_PRESENT" />
+        <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+      </intent-filter>
+      <!-- Optional -->
+      <intent-filter>
+        <action android:name="android.intent.action.PACKAGE_ADDED" />
+        <action android:name="android.intent.action.PACKAGE_REMOVED" />
+        <data android:scheme="package" />
+      </intent-filter>
+    </receiver>
+    <!-- Required SDK核心功能 时钟相关接收者-->
+    <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+    <!-- User defined.  自定义的极光推送广播接收器-->
+    <receiver android:name="md597e637dd582c42c2f260ba6078b4bd03.CustomJPushReceiver" android:enabled="true">
+      <intent-filter>
+        <action android:name="cn.jpush.android.intent.REGISTRATION" />
+        <!--Required  用户注册SDK的intent-->
+        <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+        <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+        <!--Required  用户接收SDK消息的intent-->
+        <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+        <!--Required  用户接收SDK通知栏信息的intent-->
+        <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+        <!--Required  用户打开自定义通知栏的intent-->
+        <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+        <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+        <action android:name="cn.jpush.android.intent.CONNECTION" />
+        <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+        <category android:name="com.eldyoung.lelaozuandroidapp" />
+      </intent-filter>
+    </receiver>
+    <!-- Required  . Enable it you can get statistics data with channel -->
+    <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default" />
+    <meta-data android:name="JPUSH_APPKEY" android:value="047be80a690556c4aded154e" />
+    <!--  </>值来自开发者平台取得的AppKey-->
+    <activity android:noHistory="true" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.SplashActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:theme="@style/AppTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.GuiderActivity" />
+    <activity android:theme="@style/AppTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.LoginActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md51aa780f84506d460b9867ce9bd14a7f3.BindGuardianActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.RegisterActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.RegisterResultActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.ServiceAgreeActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.SetActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md5e6534f2d08fe0c4f0e27f7e46ee7a3c2.PersonActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PersonBasicActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md5af639da68335e9f7e7349258ba6e7084.AlarmDetailInfoActivity" />
+    <activity android:theme="@style/AppTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.MainFragActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md51aa780f84506d460b9867ce9bd14a7f3.GuardianDetailInfoActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md51aa780f84506d460b9867ce9bd14a7f3.GuardianApplyActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.ForgetPassWordActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.UpdatePasswordActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PayPasswordActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.HealthDetailInfoActivity" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.eldyoung.lelaozuandroidapp.mono.MonoRuntimeProvider.__mono_init__" />
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.com.eldyoung.lelaozuandroidapp" />
+      </intent-filter>
+    </receiver>
+  </application>
+</manifest>

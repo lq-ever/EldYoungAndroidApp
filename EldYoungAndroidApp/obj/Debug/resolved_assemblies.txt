@@ -1,0 +1,13 @@
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\EldYoungAndroidApp.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\JPushBindingLibrary.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\Mono.Android.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\mscorlib.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\Newtonsoft.Json.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\PullToRefresh.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\RestSharp.MonoDroid.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Core.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Xml.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\Xamarin.Android.Support.v4.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Runtime.Serialization.dll
+E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Xml.Linq.dll
