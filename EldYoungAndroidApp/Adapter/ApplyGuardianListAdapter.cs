@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
+using EldYoungAndroidApp.Common.ImageCache;
 
 namespace EldYoungAndroidApp.Adapter
 {
@@ -20,10 +21,16 @@ namespace EldYoungAndroidApp.Adapter
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		private ApplyBindGuardianParam applyBindGuardianParam = new ApplyBindGuardianParam(){UserId = Global.Guid};//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
-
+		private ImageLoader imageLoader;
+		public Action RefreshAction {
+			get;
+			set;
+		}
 		public ApplyGuardianListAdapter (Activity _activity):base(_activity,0)
 		{
 			activity = _activity;
+			//imageLoader = new ImageLoader (_activity.ApplicationContext);
+			imageLoader = ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
 		}
 
 		public override Android.Views.View GetView ( int position, Android.Views.View convertView, Android.Views.ViewGroup parent)
@@ -52,13 +59,14 @@ namespace EldYoungAndroidApp.Adapter
 			//_searchGuardianItemView.tv_Location.Text = item.ContactAddress;//todo:解析获取位置
 			_searchGuardianItemView.tv_GuardianStatus.Text = GetGuardianStatus(item.IsPass);
 
-		   // _searchGuardianItemView.btn_Action.Text = "绑定";
+		  
 			SetbtnAction(_searchGuardianItemView.btn_Action,item.IsPass);//设置操作按钮文字和可用状态
 
 			var imgSexId = (item.Sex == Sex.Male) ? Resource.Drawable.ic_sex_man : Resource.Drawable.ic_sex_woman;
 			_searchGuardianItemView.img_Sex.SetImageResource (imgSexId);
 
-			//todo:设置头像
+			//设置头像采用二级缓存、异步加载
+			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_searchGuardianItemView.guardian_img_head);
 
 
 			//按钮绑定事件 			
@@ -223,6 +231,13 @@ namespace EldYoungAndroidApp.Adapter
 							return;
 						});
 				}
+				activity.RunOnUiThread(()=>
+					{
+						if(RefreshAction!=null)
+							RefreshAction();
+					});
+
+
 			});
 			
 

@@ -110,6 +110,7 @@
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.ForgetPassWordActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.UpdatePasswordActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PayPasswordActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.HealthDetailInfoActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.eldyoung.lelaozuandroidapp.mono.MonoRuntimeProvider.__mono_init__" />
   </application>
 </manifest>

@@ -1,31 +1,16 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="e:\EldYoungAndroidApp\EldYoungAndroidApp\Adapter\ApplyGuardianListAdapter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Common\ImageCache\ImageLoader.cs">
     <Files>
-      <File FileName="e:\EldYoungAndroidApp\EldYoungAndroidApp\Adapter\ApplyGuardianListAdapter.cs" Line="188" Column="8" />
-      <File FileName="EldYoungAndroidApp\Activitys\Guardian\BindGuardianActivity.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Health\OtherHealthFrag.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Common\DatePickDialogUtil.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Activitys\My\PersonActivity.cs" Line="202" Column="64" />
+      <File FileName="EldYoungAndroidApp\Adapter\GuardianInfoAdapter.cs" Line="67" Column="23" />
+      <File FileName="EldYoungAndroidApp\Common\ImageCache\ImageLoader.cs" Line="84" Column="37" />
+      <File FileName="EldYoungAndroidApp\Common\ImageCache\MemoryCache.cs" Line="30" Column="4" />
+      <File FileName="EldYoungAndroidApp\Common\ImageCache\FileCache.cs" Line="24" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Guardian\GuardianDetailInfoActivity.cs" line="101" column="4" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Guardian\GuardianDetailInfoActivity.cs" line="111" column="9" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Adapter\ApplyGuardianListAdapter.cs" line="141" column="3" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Adapter\GetApplyInfoListAadapter.cs" line="126" column="4" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Adapter\GetApplyInfoListAadapter.cs" line="166" column="5" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Adapter\GetApplyInfoListAadapter.cs" line="164" column="4" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Adapter\GetApplyInfoListAadapter.cs" line="172" column="7" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" line="157" column="5" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Receiver\CustomJPushReceiver.cs" line="113" column="3" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Guardian\GuardianApplyActivity.cs" line="96" column="3" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Guardian\GuardianApplyActivity.cs" line="122" column="5" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Guardian\GuardianApplyActivity.cs" line="124" column="5" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\Health\OtherHealthFrag.cs" line="235" column="4" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\Guardian\MyGuardianFrag.cs" line="124" column="3" />
-      <Breakpoint file="E:\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\Guardian\MyGuardianFrag.cs" line="125" column="3" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="EldYoungAndroidApp\Common\HttpWebRequestHelper.cs" line="23" offsetX="837" offsetY="352" expression="postUrl" liveUpdate="False" />

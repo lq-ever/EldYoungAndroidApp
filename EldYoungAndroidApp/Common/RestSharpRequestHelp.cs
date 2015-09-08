@@ -34,6 +34,8 @@ namespace EldYoungAndroidApp.Common
 			restRequest = new RestRequest (Method.POST);
 			restRequest.AddHeader ("Content-Type","application/x-www-form-urlencoded");
 			restRequest.Timeout = 5000;
+
+
 		}
 		public RestSharpRequestHelp(string _url)
 		{

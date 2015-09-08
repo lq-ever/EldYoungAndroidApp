@@ -90,7 +90,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 			edit_my_searchTime = View.FindViewById<EditText>(Resource.Id.edit_my_searchTime);
 			edit_my_searchTime.Click += (sender, e) => 
 			{
-				var datepickdialog = new DatePickDialogUtil(Activity,"");
+				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_searchTime.Text);
 				datepickdialog.DatePickDialogShow(edit_my_searchTime);
 			};
 			my_searchTime_default = DateTime.Now.ToString ("yyyy-MM-dd");

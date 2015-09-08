@@ -33,6 +33,7 @@ namespace EldYoungAndroidApp
 		private Dictionary<string,string> requestSmsParams = new Dictionary<string, string>();
 		private JPushUtil _jpushUtil;
 		private MyCount mc;
+		private ISharedPreferences sp_userinfo;
 
 
 		protected override void OnCreate (Bundle bundle)
@@ -42,7 +43,7 @@ namespace EldYoungAndroidApp
 			// Create your application here
 			SetContentView(Resource.Layout.RegisterResultLayout);
 			Window.SetFeatureInt (WindowFeatures.CustomTitle, Resource.Layout.custom_title_bar);
-
+			sp_userinfo = this.GetSharedPreferences(Global.SHAREDPREFERENCES_USERINFO,FileCreationMode.Private);
 			_jpushUtil = new JPushUtil (this);
 			InitView ();
 
@@ -258,15 +259,23 @@ namespace EldYoungAndroidApp
 
 					if(registerJson.statuscode=="1")
 					{
+						Global.Guid = registerJson.data.ToString();
 						var guidAsAlias = registerJson.data.ToString().Replace("-","_");
 						//注册用户成功，写极光推送别名,进入主界面
 						_jpushUtil.SetAlias(guidAsAlias);
+						sp_userinfo.Edit().PutString(Global.login_UserName,nickName).Commit();
+						sp_userinfo.Edit().PutString(Global.login_Password,passWord).Commit();
+						sp_userinfo.Edit().PutBoolean(Global.login_Password_Check,true).Commit();
 						RunOnUiThread(()=>
 							{
-								StartActivity(typeof(MainFragActivity));
+								//跳转到功能主界面
+								var intent = new Intent(this,typeof(MainFragActivity));
+								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
+								StartActivity(intent);			
+								this.Finish();
 								ProgressDialogUtil.StopProgressDialog();
 								Toast.MakeText(this,"注册成功",ToastLength.Short).Show();
-								this.Finish();
+								OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 							});
 
 					}

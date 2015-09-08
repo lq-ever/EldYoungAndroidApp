@@ -33,7 +33,7 @@ namespace EldYoungAndroidApp.Adapter
 			} else
 				_healthItemView = (HealthItemView)convertView.GetTag (Resource.Id.healthitemview);
 
-			_healthItemView.tv_TestTime.Text = item.TestTime;
+			_healthItemView.tv_TestTime.Text = Convert.ToDateTime(item.TestTime).ToString("yyyy-MM-dd HH:mm:ss");
 			_healthItemView.tv_Weight.Text = item.Weight;
 			_healthItemView.tv_BloodGlucose.Text = item.BloodGlucose;
 

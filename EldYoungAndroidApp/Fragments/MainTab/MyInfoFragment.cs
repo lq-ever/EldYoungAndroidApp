@@ -63,6 +63,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			    Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 			};
 
+			var tv_nickName = View.FindViewById<TextView> (Resource.Id.tv_nickName);
+			var tv_phonenumber = View.FindViewById<TextView> (Resource.Id.tv_phonenumber);
+			//todo:设置用户昵称和手机号
+			tv_nickName.Text ="未设置昵称";
+			var iphoneNumber = "15821526948";
+			var midleStr = iphoneNumber.Substring (3, 4);
+			var resultStr = iphoneNumber.Replace (midleStr, "****");
+			tv_phonenumber.Text = resultStr;
+
 			//分享给好友
 //			var rl_share = View.FindViewById<RelativeLayout>(Resource.Id.rl_share);
 //			rl_share.Click += (sender, e) => 

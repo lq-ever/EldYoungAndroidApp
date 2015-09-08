@@ -134,7 +134,7 @@ namespace EldYoungAndroidApp.Common
 				//创建连接
 				conn = (HttpURLConnection) url.OpenConnection();
 				conn.Connect();
-				conn.ConnectTimeout =10000;
+
 				conn.ConnectTimeout =20000;
 				//获取文件大小
 				var filelength = conn.ContentLength;

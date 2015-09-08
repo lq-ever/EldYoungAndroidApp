@@ -73,16 +73,13 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			};
 
 			applyGuardianListAdapter = new ApplyGuardianListAdapter (this);
+			applyGuardianListAdapter.RefreshAction = () => {
+				QuerryBindGuardian(textView.Text);
+			};
 			listView.Adapter = applyGuardianListAdapter;
 		}
 
-		public override void OnWindowFocusChanged (bool hasFocus)
-		{
-			base.OnWindowFocusChanged (hasFocus);
-			if (hasFocus && HasLoadedOnce) {
-				OnQueryTextSubmit(textView.Text);
-			}
-		}
+
 
 		public bool OnQueryTextSubmit (string query)
 		{

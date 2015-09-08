@@ -14,6 +14,7 @@ using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
 using Android.OS;
+using EldYoungAndroidApp.Common.ImageCache;
 
 namespace EldYoungAndroidApp.Adapter
 {
@@ -23,11 +24,12 @@ namespace EldYoungAndroidApp.Adapter
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		private UnBindGuardianParam unBindGuardianParam = new UnBindGuardianParam();//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
-
+		private ImageLoader imageLoader;
 		public GuardianInfoAdapter (Activity _activity):base(_activity,0)
 		{
 			activity = _activity;
-
+			//imageLoader = new ImageLoader (_activity.ApplicationContext);
+			imageLoader = ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
 		}
 
 		public override Android.Views.View GetView ( int position, Android.Views.View convertView, Android.Views.ViewGroup parent)
@@ -46,24 +48,23 @@ namespace EldYoungAndroidApp.Adapter
 				_guardianItemView.tv_Detail = convertView.FindViewById<TextView> (Resource.Id.tv_detail);
 				_guardianItemView.btn_Action = convertView.FindViewById<Button> (Resource.Id.btn_Action);
 				_guardianItemView.tv_Location = convertView.FindViewById<TextView> (Resource.Id.tv_location);
-				convertView.SetTag (Resource.Id.btn_Action, (Java.Lang.Object)_guardianItemView);
+				convertView.SetTag (Resource.Id.guardianlistitemview, (Java.Lang.Object)_guardianItemView);
+
 
 			} else
-				_guardianItemView = (GuardianItemView)convertView.GetTag (Resource.Id.btn_Action);
+				_guardianItemView = (GuardianItemView)convertView.GetTag (Resource.Id.guardianlistitemview);
 			
 			_guardianItemView.tv_Name.Text = item.TrueName;
 			_guardianItemView.tv_PhoneNum.Text = item.PhoneNumberOne;
 			_guardianItemView.tv_Location.Text = item.Location;
-
-
 		    _guardianItemView.btn_Action.Text = "解绑";
 
-			
+			//设置男女
 			var imgSexId = (item.Sex == Sex.Male) ? Resource.Drawable.ic_sex_man : Resource.Drawable.ic_sex_woman;
 			_guardianItemView.img_Sex.SetImageResource (imgSexId);
 
-			//todo:设置头像
-
+			//设置头像采用二级缓存、异步加载
+			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_guardianItemView.guardian_img_head);
 		
 			//按钮绑定事件 			
 			_guardianItemView.btn_Action.Tag = item;
@@ -74,7 +75,6 @@ namespace EldYoungAndroidApp.Adapter
 			_guardianItemView.tv_Detail.Tag = item;
 			_guardianItemView.tv_Detail.Click -= DetailHandler;
 			_guardianItemView.tv_Detail.Click += DetailHandler;
-
 			return convertView;
 			
 		}

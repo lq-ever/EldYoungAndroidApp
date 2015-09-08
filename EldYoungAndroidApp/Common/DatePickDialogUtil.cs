@@ -51,7 +51,7 @@ namespace EldYoungAndroidApp.Common
 			if (!string.IsNullOrEmpty (initDate)) {
 				var date = initDate.Split (new char[]{'-'}, StringSplitOptions.RemoveEmptyEntries);
 				var year = Integer.ValueOf(date [0]).IntValue();
-				var month = Integer.ValueOf (date [1]).IntValue ();
+				var month = Integer.ValueOf (date [1]).IntValue ()-1;
 				var day = Integer.ValueOf (date [2]).IntValue ();
 				_datepicker.Init (year, month, day, this);
 
@@ -59,7 +59,7 @@ namespace EldYoungAndroidApp.Common
 			else
 			  _datepicker.Init (calendar.Get (CalendarField.Year), calendar.Get (CalendarField.Month), calendar.Get (CalendarField.DayOfMonth), this);
 			
-			
+	
 			  
 		}
 

@@ -33,7 +33,7 @@ namespace EldYoungAndroidApp.Adapter
 				_alarmItemView = (AlarmItemView)convertView.GetTag (Resource.Id.alarmlistitemview);
 
 			_alarmItemView.tv_alarmTrueName.Text = item.TrueName;
-			_alarmItemView.tv_alarmTime.Text = item.AlarmTime;
+			_alarmItemView.tv_alarmTime.Text =  Convert.ToDateTime( item.AlarmTime).ToString("yyyy-MM-dd HH:mm:ss");
 			_alarmItemView.tv_alarmStatus.Text = item.Status;
 			_alarmItemView.tv_alarmContent.Text = item.AlarmContent;
 			return convertView;

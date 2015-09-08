@@ -41,7 +41,7 @@ namespace EldYoungAndroidApp.Model
 		}
 		public Sex  Sex {
 			get {
-				return Gender == "男" ? Sex.Male : Sex.Female;
+				return Gender == "0" ? Sex.Male : Sex.Female;
 			}
 
 

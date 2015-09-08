@@ -107,13 +107,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			edit_other_startTime = View.FindViewById<EditText>(Resource.Id.edit_other_startTime);
 			edit_other_startTime.Click += (sender, e) => 
 			{
-				var datepickdialog = new DatePickDialogUtil(Activity,"");
+				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_startTime.Text);
 				datepickdialog.DatePickDialogShow(edit_other_startTime);
 			};
 			edit_other_endTime = View.FindViewById<EditText> (Resource.Id.edit_other_endTime);
 			edit_other_endTime.Click += (sender, e) => 
 			{
-				var datepickdialog = new DatePickDialogUtil(Activity,"");
+				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_endTime.Text);
 				datepickdialog.DatePickDialogShow(edit_other_endTime);
 			};
 			other_endTime_default = DateTime.Now.ToString ("yyyy-MM-dd");
@@ -203,16 +203,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 								myUserListAdapter = new ArrayAdapter<AllMyUserListItem>(Activity,Android.Resource.Layout.SimpleSpinnerItem,myUserLists);
 								myUserListAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 								sp_other_guardian.Adapter = myUserListAdapter;
+								sp_other_guardian.SetSelection(0,true);
 							});
 
 					}
 
 				}
-				Activity.RunOnUiThread(()=>
-					{
-						//第一次进入设置自动刷新view
-						otherAlarmRefreshListView.Refreshing = true;
-					});
+
 
 			});
 			
@@ -224,6 +221,11 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			var userSelected = myUserListAdapter.GetItem (position);
 			myUserId = userSelected.UId;
 			parent.Visibility = ViewStates.Visible;
+			Activity.RunOnUiThread(()=>
+				{
+					//第一次进入设置自动刷新view
+					otherAlarmRefreshListView.Refreshing = true;
+				});
 
 		}
 		public void OnNothingSelected (AdapterView parent)

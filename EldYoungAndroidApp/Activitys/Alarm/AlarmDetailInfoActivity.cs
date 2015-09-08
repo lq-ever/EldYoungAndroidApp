@@ -88,7 +88,8 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 			tv_detail_cTrueName = FindViewById<TextView> (Resource.Id.tv_detail_cTrueName);
 			tv_detail_cphoneNumberOne = FindViewById<TextView> (Resource.Id.tv_detail_cphoneNumberOne);
 			lv_handleDetail = FindViewById<ListView> (Resource.Id.lv_handleDetail);
-			LoadDetailData ();
+			//LoadDetailData ();
+			new Handler ().PostDelayed (LoadDetailData, 1000);
 		}
 
 		private void LoadDetailData()

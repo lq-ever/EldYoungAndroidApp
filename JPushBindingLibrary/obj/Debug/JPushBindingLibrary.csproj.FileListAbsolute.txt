@@ -2,3 +2,7 @@ E:\EldYoungAndroidApp\JPushBindingLibrary\bin\Debug\JPushBindingLibrary.dll
 E:\EldYoungAndroidApp\JPushBindingLibrary\bin\Debug\JPushBindingLibrary.pdb
 E:\EldYoungAndroidApp\JPushBindingLibrary\obj\Debug\JPushBindingLibrary.dll
 E:\EldYoungAndroidApp\JPushBindingLibrary\obj\Debug\JPushBindingLibrary.pdb
+E:\GitHub\EldYoungAndroidApp\JPushBindingLibrary\bin\Debug\JPushBindingLibrary.dll
+E:\GitHub\EldYoungAndroidApp\JPushBindingLibrary\bin\Debug\JPushBindingLibrary.pdb
+E:\GitHub\EldYoungAndroidApp\JPushBindingLibrary\obj\Debug\JPushBindingLibrary.dll
+E:\GitHub\EldYoungAndroidApp\JPushBindingLibrary\obj\Debug\JPushBindingLibrary.pdb

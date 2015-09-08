@@ -174,16 +174,12 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 								myUserListAdapter = new ArrayAdapter<AllMyUserListItem>(Activity,Android.Resource.Layout.SimpleSpinnerItem,myUserLists);
 								myUserListAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 								sp_other_guardian.Adapter = myUserListAdapter;
+								sp_other_guardian.SetSelection(0,true);
 							});
 
 					}
 
 				}
-				Activity.RunOnUiThread(()=>
-					{
-						//第一次进入设置自动刷新view
-						otherhealthRefreshListView.Refreshing = true;
-					});
 
 			});
 
@@ -195,6 +191,12 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 			var userSelected = myUserListAdapter.GetItem (position);
 			myUserId = userSelected.UId;
 			parent.Visibility = ViewStates.Visible;
+			Activity.RunOnUiThread(()=>
+				{
+					//第一次进入设置自动刷新view
+					otherhealthRefreshListView.Refreshing = true;
+				});
+			
 
 		}
 		public void OnNothingSelected (AdapterView parent)

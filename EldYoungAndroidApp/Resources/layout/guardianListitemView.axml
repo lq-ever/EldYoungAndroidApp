@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/widget20"
+    android:id="@+id/guardianlistitemview"
     android:layout_width="fill_parent"
     android:layout_height="93dp"
     android:orientation="horizontal"
     android:background="@color/lightwhite">
     <ImageView
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/guardian_img_head"
-        android:src="@drawable/head"
         android:layout_margin="13dp"
         android:layout_gravity="center_vertical" />
     <LinearLayout

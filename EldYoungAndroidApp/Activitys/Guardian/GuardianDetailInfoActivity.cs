@@ -64,7 +64,8 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			var bundle = Intent.Extras;
 			//从bundle中获取值赋值显示
 			UId= bundle.GetString("UId");
-			LoadDetailData ();
+			//LoadDetailData ();
+			new Handler ().PostDelayed (LoadDetailData, 1000);
 		}
 
 		private void LoadDetailData ()

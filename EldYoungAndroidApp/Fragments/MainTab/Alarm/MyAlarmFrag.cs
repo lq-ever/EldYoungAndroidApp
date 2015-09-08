@@ -97,14 +97,14 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			edit_my_startTime = View.FindViewById<EditText>(Resource.Id.edit_my_startTime);
 			edit_my_startTime.Click += (sender, e) => 
 			{
-				var datepickdialog = new DatePickDialogUtil(Activity,"");
+				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_startTime.Text);
 				datepickdialog.DatePickDialogShow(edit_my_startTime);
 			};
 
 			edit_my_endTime = View.FindViewById<EditText> (Resource.Id.edit_my_endTime);
 			edit_my_endTime.Click += (sender, e) => 
 			{
-				var datepickdialog = new DatePickDialogUtil(Activity,"");
+				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_endTime.Text);
 				datepickdialog.DatePickDialogShow(edit_my_endTime);
 			};
 			my_endTime_default = DateTime.Now.ToString ("yyyy-MM-dd");

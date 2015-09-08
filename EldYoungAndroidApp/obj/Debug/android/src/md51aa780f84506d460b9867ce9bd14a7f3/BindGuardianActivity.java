@@ -11,7 +11,6 @@ public class BindGuardianActivity
 	static {
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
-			"n_onWindowFocusChanged:(Z)V:GetOnWindowFocusChanged_ZHandler\n" +
 			"n_onQueryTextChange:(Ljava/lang/String;)Z:GetOnQueryTextChange_Ljava_lang_String_Handler:Android.Widget.SearchView/IOnQueryTextListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"n_onQueryTextSubmit:(Ljava/lang/String;)Z:GetOnQueryTextSubmit_Ljava_lang_String_Handler:Android.Widget.SearchView/IOnQueryTextListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"";
@@ -33,14 +32,6 @@ public class BindGuardianActivity
 	}
 
 	private native void n_onCreate (android.os.Bundle p0);
-
-
-	public void onWindowFocusChanged (boolean p0)
-	{
-		n_onWindowFocusChanged (p0);
-	}
-
-	private native void n_onWindowFocusChanged (boolean p0);
 
 
 	public boolean onQueryTextChange (java.lang.String p0)

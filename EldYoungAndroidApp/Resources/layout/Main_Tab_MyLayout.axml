@@ -63,7 +63,7 @@
                         android:textColor="@android:color/background_dark" />
                     <TextView
                         android:id="@+id/tv_phonenumber"
-                        android:text="手机账号：15821526948"
+                        android:text="15821526948"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/darker_gray" />

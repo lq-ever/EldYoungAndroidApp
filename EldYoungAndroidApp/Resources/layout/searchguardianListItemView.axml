@@ -6,10 +6,9 @@
     android:orientation="horizontal"
     android:background="@color/lightwhite">
     <ImageView
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/guardian_img_head"
-        android:src="@drawable/head"
         android:layout_margin="10dp"
         android:layout_gravity="center_vertical" />
     <LinearLayout
@@ -57,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/lightgray"
                 android:textSize="14sp"
-                android:text="江苏南京"
+                android:text=""
                 android:layout_marginLeft="10dp"
                 android:id="@+id/tv_location" />
         </LinearLayout>

@@ -54,6 +54,9 @@
     <Reference Include="PullToRefresh">
       <HintPath>C:\Users\Jonny\Desktop\Android-Binding-Libs\PullToRefresh.dll</HintPath>
     </Reference>
+    <Reference Include="UniversalImageLoader">
+      <HintPath>..\packages\Xamarin.Bindings.UniversalImageLoader.1.0.4\lib\MonoAndroid\UniversalImageLoader.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -152,6 +155,9 @@
     <Compile Include="Activitys\Health\HealthDetailInfoActivity.cs" />
     <Compile Include="Adapter\HealthInfoListAdapter.cs" />
     <Compile Include="Model\Health\HealthStand.cs" />
+    <Compile Include="Common\ImageCache\FileCache.cs" />
+    <Compile Include="Common\ImageCache\MemoryCache.cs" />
+    <Compile Include="Common\ImageCache\ImageLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -346,5 +352,6 @@
     <Folder Include="Model\Alarm\" />
     <Folder Include="Model\Health\" />
     <Folder Include="Activitys\My\" />
+    <Folder Include="Common\ImageCache\" />
   </ItemGroup>
 </Project>

@@ -196,16 +196,16 @@ namespace EldYoungAndroidApp
 			return base.OnKeyDown (keyCode, e);
 		}
 
-		/// <summary>
-		/// 退出应用
-		/// </summary>
-		protected override void OnDestroy ()
-		{
-			Intent intent = new Intent ();
-
-			Android.OS.Process.KillProcess (Android.OS.Process.MyPid());
-			base.OnDestroy ();
-		}
+//		/// <summary>
+//		/// 退出应用
+//		/// </summary>
+//		protected override void OnDestroy ()
+//		{
+//			Intent intent = new Intent ();
+//
+//			Android.OS.Process.KillProcess (Android.OS.Process.MyPid());
+//			base.OnDestroy ();
+//		}
 	}
 }
 

@@ -819,6 +819,9 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080049
 			public const int guardian_img_head = 2131230793;
 			
+			// aapt resource value: 0x7f08005f
+			public const int guardianlistitemview = 2131230815;
+			
 			// aapt resource value: 0x7f080066
 			public const int guiderviewpager = 2131230822;
 			
@@ -1427,9 +1430,6 @@ namespace EldYoungAndroidApp
 			
 			// aapt resource value: 0x7f080001
 			public const int webview = 2131230721;
-			
-			// aapt resource value: 0x7f08005f
-			public const int widget20 = 2131230815;
 			
 			static Id()
 			{

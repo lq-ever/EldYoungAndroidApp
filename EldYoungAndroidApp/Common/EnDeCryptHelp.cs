@@ -30,10 +30,14 @@ namespace EldYoungAndroidApp.Common
 		{
 			DESCryptoServiceProvider des = new DESCryptoServiceProvider();
 			byte[] inputByteArray;
-			inputByteArray = Encoding.Default.GetBytes(Text);
+			//inputByteArray = Encoding.Default.GetBytes(Text);
+			//inputByteArray = Encoding.UTF8.GetBytes(Text);
+			inputByteArray=Encoding.GetEncoding ("gb2312").GetBytes (Text);
 
-			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
-			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+//			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+//			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+			des.Key = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
+			des.IV = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			CryptoStream cs = new CryptoStream(ms, des.CreateEncryptor(), CryptoStreamMode.Write);
 			cs.Write(inputByteArray, 0, inputByteArray.Length);
@@ -79,8 +83,10 @@ namespace EldYoungAndroidApp.Common
 				inputByteArray[x] = (byte)i;
 			}
 
-			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
-			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+//			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+//			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+			des.Key = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
+			des.IV = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			CryptoStream cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
 			cs.Write(inputByteArray, 0, inputByteArray.Length);
