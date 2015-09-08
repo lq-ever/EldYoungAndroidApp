@@ -20,6 +20,7 @@ using Android.Support.V4.App;
 
 
 
+
 namespace EldYoungAndroidApp.Fragments.MainTab
 {
 	public class AlarmInfoFragment : Fragment,ViewPager.IOnPageChangeListener,View.IOnClickListener

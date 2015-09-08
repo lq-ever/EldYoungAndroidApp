@@ -3,6 +3,14 @@ using Android.App;
 using CN.Jpush.Android.Api;
 using Android.Runtime;
 using Java.Lang;
+using Com.Nostra13.Universalimageloader.Core;
+using Com.Nostra13.Universalimageloader.Cache.Memory.Impl;
+using Com.Nostra13.Universalimageloader.Cache.Disc.Naming;
+using Com.Nostra13.Universalimageloader.Cache.Disc.Impl;
+using Com.Nostra13.Universalimageloader.Core.Assist;
+using Com.Nostra13.Universalimageloader.Utils;
+using Com.Nostra13.Universalimageloader.Core.Download;
+using Java.IO;
 
 namespace EldYoungAndroidApp.Common
 {
@@ -28,6 +36,21 @@ namespace EldYoungAndroidApp.Common
 			//设置保留最近5条通知
 			JPushInterface.SetLatestNotificationNumber(ApplicationContext,5);
 			#endregion
+			#region imageloader 使用二级缓存
+			//var configuration = ImageLoaderConfiguration.CreateDefault(ApplicationContext);//创建默认的ImageLoader配置参数 
+			//使用自定义参数/sdcard/eldYoung
+			File  cacheDir = StorageUtils.GetOwnCacheDirectory(ApplicationContext, "/sdcard/eldYoung/Cache/HeadImage/");  
+
+			var configuration = new ImageLoaderConfiguration.Builder(ApplicationContext).MemoryCacheExtraOptions(480,800)
+				.ThreadPoolSize(3).ThreadPriority(Thread.NormPriority -2).DenyCacheImageMultipleSizesInMemory()
+				.MemoryCache(new UsingFreqLimitedMemoryCache(2*1024*1024)).MemoryCacheSize(2 * 1024 * 1024).DiskCacheSize(50 * 1024 * 1024)
+				.DiskCacheFileNameGenerator(new Md5FileNameGenerator()).TasksProcessingOrder(QueueProcessingType.Lifo).DiskCacheFileCount(100)
+				.DiskCache(new UnlimitedDiskCache(CacheDir)).DefaultDisplayImageOptions(DisplayImageOptions.CreateSimple()).ImageDownloader(new BaseImageDownloader(ApplicationContext, 5 * 1000, 30 * 1000))
+				.WriteDebugLogs().Build();
+			ImageLoader.Instance.Init(configuration);
+
+			#endregion
+
 		}
 		/// <summary>
 		/// Sets the notification style basic.

@@ -11,7 +11,11 @@ using System.Collections.Generic;
 using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
-using EldYoungAndroidApp.Common.ImageCache;
+using Com.Nostra13.Universalimageloader.Core;
+using Com.Nostra13.Universalimageloader.Core.Listener;
+using Android.Graphics;
+using Com.Nostra13.Universalimageloader.Core.Display;
+
 
 namespace EldYoungAndroidApp.Adapter
 {
@@ -21,7 +25,10 @@ namespace EldYoungAndroidApp.Adapter
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		private ApplyBindGuardianParam applyBindGuardianParam = new ApplyBindGuardianParam(){UserId = Global.Guid};//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
+		//private ImageLoader imageLoader;
 		private ImageLoader imageLoader;
+		private DisplayImageOptions options;
+		private IImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener(); 
 		public Action RefreshAction {
 			get;
 			set;
@@ -29,8 +36,18 @@ namespace EldYoungAndroidApp.Adapter
 		public ApplyGuardianListAdapter (Activity _activity):base(_activity,0)
 		{
 			activity = _activity;
-			//imageLoader = new ImageLoader (_activity.ApplicationContext);
-			imageLoader = ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
+
+			//imageLoader = ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
+			imageLoader = ImageLoader.Instance;
+			options = new DisplayImageOptions.Builder ().ShowImageOnLoading (Resource.Drawable.head)
+				.ShowImageOnFail (Resource.Drawable.head)
+				.ShowImageForEmptyUri (Resource.Drawable.head)
+				.CacheInMemory (true)
+				.CacheOnDisk (true)
+				.BitmapConfig (Bitmap.Config.Rgb565)
+				.Displayer(new RoundedBitmapDisplayer(15))
+				.Displayer(new FadeInBitmapDisplayer(500))
+				.Build ();
 		}
 
 		public override Android.Views.View GetView ( int position, Android.Views.View convertView, Android.Views.ViewGroup parent)
@@ -66,8 +83,8 @@ namespace EldYoungAndroidApp.Adapter
 			_searchGuardianItemView.img_Sex.SetImageResource (imgSexId);
 
 			//设置头像采用二级缓存、异步加载
-			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_searchGuardianItemView.guardian_img_head);
-
+			//imageLoader.DisplayImage(item.HeadImgReleaseUrl,_searchGuardianItemView.guardian_img_head);
+			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_searchGuardianItemView.guardian_img_head,options);
 
 			//按钮绑定事件 			
 			_searchGuardianItemView.btn_Action.Tag = item;

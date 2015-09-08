@@ -84,6 +84,7 @@ class MonoPackageManager_Resources {
 		"Newtonsoft.Json.dll",
 		"PullToRefresh.dll",
 		"RestSharp.MonoDroid.dll",
+		"UniversalImageLoader.dll",
 		"Xamarin.Android.Support.v4.dll",
 	};
 	public static final String[] Dependencies = new String[]{

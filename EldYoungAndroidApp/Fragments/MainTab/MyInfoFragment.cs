@@ -21,7 +21,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 {
 	public class MyInfoFragment : Android.Support.V4.App.Fragment
 	{
-		private  string path="/sdcard/eldYoung/Head/";//sd卡路径
+		private  string path="/sdcard/eldYoung/Cache/HeadImage/";//sd卡路径
 		private ImageView img_head;
 		public override void OnCreate (Bundle savedInstanceState)
 		{

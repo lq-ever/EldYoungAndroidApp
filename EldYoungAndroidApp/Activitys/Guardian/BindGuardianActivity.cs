@@ -18,6 +18,8 @@ using EldYoungAndroidApp.Model;
 using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
+using Com.Nostra13.Universalimageloader.Core.Listener;
+using Com.Nostra13.Universalimageloader.Core;
 
 namespace EldYoungAndroidApp.Activitys.Guardian
 {
@@ -77,6 +79,8 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 				QuerryBindGuardian(textView.Text);
 			};
 			listView.Adapter = applyGuardianListAdapter;
+			//设置滑动listview停止加载图片
+			listView.SetOnScrollListener (new PauseOnScrollListener(ImageLoader.Instance,false,false));
 		}
 
 

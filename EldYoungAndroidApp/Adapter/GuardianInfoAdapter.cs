@@ -14,7 +14,16 @@ using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
 using Android.OS;
-using EldYoungAndroidApp.Common.ImageCache;
+//using EldYoungAndroidApp.Common.ImageCache;
+
+using Com.Nostra13.Universalimageloader.Core;
+using Android.Graphics;
+using Com.Nostra13.Universalimageloader.Core.Display;
+using Com.Nostra13.Universalimageloader.Core.Listener;
+using Java.Util;
+
+
+
 
 namespace EldYoungAndroidApp.Adapter
 {
@@ -24,12 +33,25 @@ namespace EldYoungAndroidApp.Adapter
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		private UnBindGuardianParam unBindGuardianParam = new UnBindGuardianParam();//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
+		//private EldYoungAndroidApp.Common.ImageCache.ImageLoader imageLoader;
 		private ImageLoader imageLoader;
+		private DisplayImageOptions options;
+		private IImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener(); 
 		public GuardianInfoAdapter (Activity _activity):base(_activity,0)
 		{
 			activity = _activity;
 			//imageLoader = new ImageLoader (_activity.ApplicationContext);
-			imageLoader = ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
+			//imageLoader = EldYoungAndroidApp.Common.ImageCache.ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
+			imageLoader = ImageLoader.Instance;
+			options = new DisplayImageOptions.Builder ().ShowImageOnLoading (Resource.Drawable.head)
+				.ShowImageOnFail (Resource.Drawable.head)
+				.ShowImageForEmptyUri (Resource.Drawable.head)
+				.CacheInMemory (true)
+				.CacheOnDisk (true)
+				.BitmapConfig (Bitmap.Config.Rgb565)
+				.Displayer(new RoundedBitmapDisplayer(15))
+				.Displayer(new FadeInBitmapDisplayer(500))
+				.Build ();
 		}
 
 		public override Android.Views.View GetView ( int position, Android.Views.View convertView, Android.Views.ViewGroup parent)
@@ -64,8 +86,8 @@ namespace EldYoungAndroidApp.Adapter
 			_guardianItemView.img_Sex.SetImageResource (imgSexId);
 
 			//设置头像采用二级缓存、异步加载
-			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_guardianItemView.guardian_img_head);
-		
+			//imageLoader.DisplayImage(item.HeadImgReleaseUrl,_guardianItemView.guardian_img_head);
+			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_guardianItemView.guardian_img_head,options);
 			//按钮绑定事件 			
 			_guardianItemView.btn_Action.Tag = item;
 			_guardianItemView.btn_Action.Click -= ActionHandler;
@@ -78,6 +100,8 @@ namespace EldYoungAndroidApp.Adapter
 			return convertView;
 			
 		}
+
+
 
 		/// <summary>
 		/// 动作按钮事件方法
@@ -208,6 +232,27 @@ namespace EldYoungAndroidApp.Adapter
 		public ImageView guardian_img_head;
 
 	}
+
+	public  class AnimateFirstDisplayListener: SimpleImageLoadingListener
+	{
+		static List<string> displayedImages = new List<string> ();
+		public override void OnLoadingComplete (string p0, View p1, Bitmap p2)
+		{
+			if (p2 != null) {
+				ImageView imageView = (ImageView)p1;
+				//判断是否第一显示
+				var firstdisplay = !displayedImages.Contains(p0);
+				if (firstdisplay) {
+					//图片淡入效果
+					FadeInBitmapDisplayer.Animate (imageView, 500);
+					displayedImages.Add (p0);
+				}
+				
+			}
+			  
+		}
+	}
+
 
 
 }

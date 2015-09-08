@@ -21,6 +21,8 @@ using EldYoungAndroidApp.Common;
 using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
+using Com.Nostra13.Universalimageloader.Core.Listener;
+using Com.Nostra13.Universalimageloader.Core;
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 {
@@ -89,6 +91,9 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 				//	Toast.MakeText(Activity,guardianInfoAdapter.GetItem(e.Position-1).Content,ToastLength.Short).Show();
 
 			};
+
+			//设置滑动listview停止加载图片
+			actualListView.SetOnScrollListener (new PauseOnScrollListener(ImageLoader.Instance,false,false));
 		
 			guardianInfoAdapter = new GuardianInfoAdapter (Activity);
 			actualListView.Adapter = guardianInfoAdapter;

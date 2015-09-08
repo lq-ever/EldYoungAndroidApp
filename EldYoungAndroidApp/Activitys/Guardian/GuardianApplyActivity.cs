@@ -16,6 +16,8 @@ using Com.Handmark.Pulltorefresh.Library;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
+using Com.Nostra13.Universalimageloader.Core.Listener;
+using Com.Nostra13.Universalimageloader.Core;
 
 namespace EldYoungAndroidApp.Activitys.Guardian
 {
@@ -68,6 +70,8 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			//设置adapter		
 			getApplyInfoAdapter = new GetApplyInfoListAadapter (this);
 			actualListView.Adapter = getApplyInfoAdapter;
+			//设置滑动listview停止加载图片
+			actualListView.SetOnScrollListener (new PauseOnScrollListener(ImageLoader.Instance,false,false));
 			getApplyInfoParam = new GetApplyInfoParam (){ Id = Global.Guid };
 			//初始化view完成
 			IsPrepared = true;

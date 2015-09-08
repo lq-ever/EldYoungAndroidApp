@@ -31,7 +31,7 @@ namespace EldYoungAndroidApp.My
 
 		private  string IMAGE_UNSPECTFIED = "image/*"; 
 
-		private  string path="/sdcard/eldYoung/Head/";//sd卡路径
+		private  string path="/sdcard/eldYoung/Cache/HeadImage/";//sd卡路径
 
 		private ImageView img_person_head;
 

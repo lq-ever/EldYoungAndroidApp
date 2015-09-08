@@ -21,6 +21,8 @@ using EldYoungAndroidApp.Common;
 using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
+using Com.Nostra13.Universalimageloader.Core.Listener;
+using Com.Nostra13.Universalimageloader.Core;
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 {
@@ -84,6 +86,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 			//设置上拉下拉监听事件
 			otherGuardianRefreshListView.SetOnRefreshListener (this);
 			//otherGuardianRefreshListView.SetOnLastItemVisibleListener (this);
+			actualListView.SetOnScrollListener (new PauseOnScrollListener(ImageLoader.Instance,false,false));
 
 			actualListView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => 
 			{

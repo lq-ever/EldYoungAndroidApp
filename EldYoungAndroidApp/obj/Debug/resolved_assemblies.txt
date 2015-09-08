@@ -8,6 +8,7 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\RestSharp.M
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Core.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Xml.dll
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\UniversalImageLoader.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\Xamarin.Android.Support.v4.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Runtime.Serialization.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\assemblies\System.Xml.Linq.dll
