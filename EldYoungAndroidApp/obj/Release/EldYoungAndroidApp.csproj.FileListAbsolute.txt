@@ -172,10 +172,10 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\JPushBindingLibrary.
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\Newtonsoft.Json.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\PullToRefresh.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\RestSharp.MonoDroid.dll
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\UniversalImageLoader.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\Xamarin.Android.Support.v4.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\JPushBindingLibrary.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\Newtonsoft.Json.xml
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.csprojResolveAssemblyReference.cache
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\android\bin\com.eldyoung.lelaozuandroidapp.apk
@@ -334,3 +334,4 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\healthlis
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\uparrow.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\R.cs.flag
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\uploadflags.txt
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.csprojResolveAssemblyReference.cache

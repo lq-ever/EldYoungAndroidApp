@@ -181,10 +181,10 @@ namespace EldYoungAndroidApp
 								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
 								StartActivity(intent);						
 								this.Finish();
-
+								ProgressDialogUtil.StopProgressDialog();
 								Toast.MakeText(this,"登录成功",ToastLength.Short).Show();
 								OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
-								ProgressDialogUtil.StopProgressDialog();
+
 							});
 
 					}

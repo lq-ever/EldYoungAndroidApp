@@ -39,14 +39,14 @@ namespace EldYoungAndroidApp.Common
 			#region imageloader 使用二级缓存
 			//var configuration = ImageLoaderConfiguration.CreateDefault(ApplicationContext);//创建默认的ImageLoader配置参数 
 			//使用自定义参数/sdcard/eldYoung
-			File  cacheDir = StorageUtils.GetOwnCacheDirectory(ApplicationContext, "/sdcard/eldYoung/Cache/HeadImage/");  
+			File  cacheDir = StorageUtils.GetOwnCacheDirectory(ApplicationContext, "/sdcard/eldYoung/Cache/HeadImage");  //自定义缓存路径
 
 			var configuration = new ImageLoaderConfiguration.Builder(ApplicationContext).MemoryCacheExtraOptions(480,800)
 				.ThreadPoolSize(3).ThreadPriority(Thread.NormPriority -2).DenyCacheImageMultipleSizesInMemory()
 				.MemoryCache(new UsingFreqLimitedMemoryCache(2*1024*1024)).MemoryCacheSize(2 * 1024 * 1024).DiskCacheSize(50 * 1024 * 1024)
 				.DiskCacheFileNameGenerator(new Md5FileNameGenerator()).TasksProcessingOrder(QueueProcessingType.Lifo).DiskCacheFileCount(100)
 				.DiskCache(new UnlimitedDiskCache(CacheDir)).DefaultDisplayImageOptions(DisplayImageOptions.CreateSimple()).ImageDownloader(new BaseImageDownloader(ApplicationContext, 5 * 1000, 30 * 1000))
-				.WriteDebugLogs().Build();
+				.Build();
 			ImageLoader.Instance.Init(configuration);
 
 			#endregion

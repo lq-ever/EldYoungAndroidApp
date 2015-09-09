@@ -73,10 +73,11 @@ namespace EldYoungAndroidApp.Adapter
 
 			_searchGuardianItemView.tv_Name.Text = item.TrueName;
 			_searchGuardianItemView.tv_PhoneNum.Text = item.PhoneNumberOne;
-			//_searchGuardianItemView.tv_Location.Text = item.ContactAddress;//todo:解析获取位置
-			_searchGuardianItemView.tv_GuardianStatus.Text = GetGuardianStatus(item.IsPass);
 
-		  
+			_searchGuardianItemView.tv_GuardianStatus.Text = GetGuardianStatus(item.IsPass);
+			//解析获取位置
+			_searchGuardianItemView.tv_Location.Text = string.IsNullOrEmpty(item.ContactAddress)?string.Empty:item.ContactAddress.Split(new char[]{'|'})[1];;
+
 			SetbtnAction(_searchGuardianItemView.btn_Action,item.IsPass);//设置操作按钮文字和可用状态
 
 			var imgSexId = (item.Sex == Sex.Male) ? Resource.Drawable.ic_sex_man : Resource.Drawable.ic_sex_woman;

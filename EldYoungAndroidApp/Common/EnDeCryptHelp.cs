@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using Android.Util;
 
 namespace EldYoungAndroidApp.Common
 {
@@ -28,11 +29,19 @@ namespace EldYoungAndroidApp.Common
 		/// <returns></returns> 
 		public static string Encrypt(string Text, string sKey)
 		{
+			
 			DESCryptoServiceProvider des = new DESCryptoServiceProvider();
+
 			byte[] inputByteArray;
 			//inputByteArray = Encoding.Default.GetBytes(Text);
-			//inputByteArray = Encoding.UTF8.GetBytes(Text);
-			inputByteArray=Encoding.GetEncoding ("gb2312").GetBytes (Text);
+			inputByteArray = Encoding.UTF8.GetBytes(Text);
+			#region debug和release模式下中文解决乱码
+			/*
+			 *  使用gb2312在debug模式下，正常，不乱码，但在release下模式直接报空引用
+			 * 使用utf8在debug或release模式下程序正常，但碰到中文环境下会乱码，但解决
+			*/
+			#endregion
+			//inputByteArray=Encoding.GetEncoding("gb2312").GetBytes (Text);
 
 //			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
 //			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
@@ -48,6 +57,7 @@ namespace EldYoungAndroidApp.Common
 				ret.AppendFormat("{0:X2}", b);
 			}
 			return ret.ToString();
+		
 		}
 
 		#endregion

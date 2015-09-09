@@ -501,6 +501,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int gridview=0x7f080000;
         public static int guardianViewpager=0x7f0800c3;
         public static int guardian_img_head=0x7f080049;
+        public static int guardianlistitemview=0x7f08005f;
         public static int guiderviewpager=0x7f080066;
         public static int healthViewpager=0x7f0800c6;
         public static int health_Scroll=0x7f080068;
@@ -704,7 +705,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int txt_ApplyMsgContent=0x7f080037;
         public static int txt_Querry=0x7f080024;
         public static int webview=0x7f080001;
-        public static int widget20=0x7f08005f;
     }
     public static final class layout {
         public static int alarmdetailinfolayout=0x7f030000;

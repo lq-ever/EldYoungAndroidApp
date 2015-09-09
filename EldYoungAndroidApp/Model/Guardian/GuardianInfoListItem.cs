@@ -56,7 +56,8 @@ namespace EldYoungAndroidApp.Model.Guardian
 			get;
 			set;
 		}
-		public string Location {
+
+		public string ContactAddress {
 			get;
 			set;
 		}

@@ -176,6 +176,7 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\JPushBindingLibrary.dl
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\Newtonsoft.Json.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\PullToRefresh.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\RestSharp.MonoDroid.dll
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\UniversalImageLoader.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\Xamarin.Android.Support.v4.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\JPushBindingLibrary.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\Newtonsoft.Json.xml
@@ -338,4 +339,3 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\healthlisti
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\uparrow.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\R.cs.flag
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\uploadflags.txt
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\UniversalImageLoader.dll

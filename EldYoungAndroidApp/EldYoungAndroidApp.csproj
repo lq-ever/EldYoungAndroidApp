@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidSigningKeyStore>F:\AndroidAppKey\androidkey</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>131428</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>eldyoung</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>131428</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
