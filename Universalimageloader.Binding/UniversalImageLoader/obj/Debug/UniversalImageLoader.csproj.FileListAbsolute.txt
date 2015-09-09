@@ -1,8 +1,0 @@
-C:\Users\Jonny\Desktop\listview缓存图片\Xamarin-Bindings-Android-Universal-Image-Loader-master\src\Universalimageloader.Binding\UniversalImageLoader\bin\Debug\UniversalImageLoader.dll
-C:\Users\Jonny\Desktop\listview缓存图片\Xamarin-Bindings-Android-Universal-Image-Loader-master\src\Universalimageloader.Binding\UniversalImageLoader\bin\Debug\UniversalImageLoader.pdb
-C:\Users\Jonny\Desktop\listview缓存图片\Xamarin-Bindings-Android-Universal-Image-Loader-master\src\Universalimageloader.Binding\UniversalImageLoader\obj\Debug\UniversalImageLoader.dll
-C:\Users\Jonny\Desktop\listview缓存图片\Xamarin-Bindings-Android-Universal-Image-Loader-master\src\Universalimageloader.Binding\UniversalImageLoader\obj\Debug\UniversalImageLoader.pdb
-E:\GitHub\EldYoungAndroidApp\Universalimageloader.Binding\UniversalImageLoader\bin\Debug\UniversalImageLoader.dll
-E:\GitHub\EldYoungAndroidApp\Universalimageloader.Binding\UniversalImageLoader\bin\Debug\UniversalImageLoader.pdb
-E:\GitHub\EldYoungAndroidApp\Universalimageloader.Binding\UniversalImageLoader\obj\Debug\UniversalImageLoader.dll
-E:\GitHub\EldYoungAndroidApp\Universalimageloader.Binding\UniversalImageLoader\obj\Debug\UniversalImageLoader.pdb
