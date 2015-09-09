@@ -93,7 +93,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 			};
 
 			//设置滑动listview停止加载图片
-			actualListView.SetOnScrollListener (new PauseOnScrollListener(ImageLoader.Instance,false,false));
+			actualListView.SetOnScrollListener (new PauseOnScrollListener(Global.imageLoader,false,false));
 		
 			guardianInfoAdapter = new GuardianInfoAdapter (Activity);
 			actualListView.Adapter = guardianInfoAdapter;

@@ -23,24 +23,11 @@ namespace EldYoungAndroidApp
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		private ExamineBundGuardianParam examinebundGuardianParam = new ExamineBundGuardianParam();//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
-		//private ImageLoader imageLoader;
-		private ImageLoader imageLoader;
-		private DisplayImageOptions options;
 		private IImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener(); 
 		public GetApplyInfoListAadapter (Activity _activity):base(_activity,0)
 		{
 			activity = _activity;
-			//imageLoader = ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
-			imageLoader = ImageLoader.Instance;
-			options = new DisplayImageOptions.Builder ().ShowImageOnLoading (Resource.Drawable.head)
-				.ShowImageOnFail (Resource.Drawable.head)
-				.ShowImageForEmptyUri (Resource.Drawable.head)
-				.CacheInMemory (true)
-				.CacheOnDisk (true)
-				.BitmapConfig (Bitmap.Config.Rgb565)
-				.Displayer(new RoundedBitmapDisplayer(15))
-				.Displayer(new FadeInBitmapDisplayer(500))
-				.Build ();
+
 		}
 
 		public override Android.Views.View GetView ( int position, Android.Views.View convertView, Android.Views.ViewGroup parent)
@@ -81,8 +68,8 @@ namespace EldYoungAndroidApp
 			var imgSexId = (item.Sex == Sex.Male) ? Resource.Drawable.ic_sex_man : Resource.Drawable.ic_sex_woman;
 			_getApplyInfoItemView.img_Sex.SetImageResource (imgSexId);
 			//设置头像采用二级缓存、异步加载
-			//imageLoader.DisplayImage(item.HeadImgReleaseUrl,_getApplyInfoItemView.guardian_img_head);
-			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_getApplyInfoItemView.guardian_img_head,options);
+
+			Global.imageLoader.DisplayImage(item.HeadImgReleaseUrl,_getApplyInfoItemView.guardian_img_head,Global.Options);
 
 			SetGuardianStatusAndAction (_getApplyInfoItemView, item);
 

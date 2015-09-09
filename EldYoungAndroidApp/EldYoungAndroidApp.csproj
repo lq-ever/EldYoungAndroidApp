@@ -162,6 +162,7 @@
     <Compile Include="Common\ImageCache\FileCache.cs" />
     <Compile Include="Common\ImageCache\MemoryCache.cs" />
     <Compile Include="Common\ImageCache\ImageLoader.cs" />
+    <Compile Include="Model\PersonInfoItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

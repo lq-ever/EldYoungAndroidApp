@@ -255,12 +255,11 @@ namespace EldYoungAndroidApp
 				{
 					var resultJson = response.Content;
 					var registerJson = JsonConvert.DeserializeObject<RegisterJson>(resultJson);
-
-
 					if(registerJson.statuscode=="1")
 					{
-						Global.Guid = registerJson.data.ToString();
-						var guidAsAlias = registerJson.data.ToString().Replace("-","_");
+						Global.MyInfo = registerJson.data.Table[0];
+						Global.Guid = Global.MyInfo.UId;
+						var guidAsAlias = Global.Guid.Replace("-","_");
 						//注册用户成功，写极光推送别名,进入主界面
 						_jpushUtil.SetAlias(guidAsAlias);
 						sp_userinfo.Edit().PutString(Global.login_UserName,nickName).Commit();

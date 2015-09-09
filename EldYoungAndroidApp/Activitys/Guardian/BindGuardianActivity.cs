@@ -80,7 +80,7 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			};
 			listView.Adapter = applyGuardianListAdapter;
 			//设置滑动listview停止加载图片
-			listView.SetOnScrollListener (new PauseOnScrollListener(ImageLoader.Instance,false,false));
+			listView.SetOnScrollListener (new PauseOnScrollListener(Global.imageLoader,false,false));
 		}
 
 

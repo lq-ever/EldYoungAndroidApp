@@ -71,7 +71,7 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			getApplyInfoAdapter = new GetApplyInfoListAadapter (this);
 			actualListView.Adapter = getApplyInfoAdapter;
 			//设置滑动listview停止加载图片
-			actualListView.SetOnScrollListener (new PauseOnScrollListener(ImageLoader.Instance,false,false));
+			actualListView.SetOnScrollListener (new PauseOnScrollListener(Global.imageLoader,false,false));
 			getApplyInfoParam = new GetApplyInfoParam (){ Id = Global.Guid };
 			//初始化view完成
 			IsPrepared = true;

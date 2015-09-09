@@ -17,6 +17,7 @@ using Android.Graphics;
 using Java.IO;
 using System.IO;
 using Android.Graphics.Drawables;
+using Com.Nostra13.Universalimageloader.Core;
 
 namespace EldYoungAndroidApp.My
 {
@@ -41,6 +42,7 @@ namespace EldYoungAndroidApp.My
 			RequestWindowFeature (WindowFeatures.CustomTitle);
 			SetContentView (Resource.Layout.PersonLayout);
 			Window.SetFeatureInt (WindowFeatures.CustomTitle, Resource.Layout.custom_title_bar);
+
 			InitView ();
 			// Create your application here
 		}
@@ -52,9 +54,6 @@ namespace EldYoungAndroidApp.My
 			{
 				this.Finish();
 			};
-
-
-
 			FindViewById<TextView> (Resource.Id.tv_header_title).Text = "个人信息";
 
 
@@ -67,8 +66,6 @@ namespace EldYoungAndroidApp.My
 				if(picPopWindow ==null)
 					picPopWindow = new SelectPicPopWindow(this);
 				picPopWindow.ShowPopWindow(FindViewById<LinearLayout>(Resource.Id.ll_person));
-
-
 			};
 
 			img_person_head = FindViewById<ImageView> (Resource.Id.img_person_head);
@@ -76,19 +73,12 @@ namespace EldYoungAndroidApp.My
 			//从Sd中找头像，转换成Bitmap
 			Bitmap bt = BitmapFactory.DecodeFile(path +Global.Guid+ "head.jpg");
 			if(bt!=null){
-				
-//				Drawable drawable = new BitmapDrawable(bt);//转换成drawable
-//				img_person_head.SetImageDrawable(drawable);
-
-
 				img_person_head.SetImageBitmap (bt);
-
-			
-
 			}
 			else
 			{
-				//todo本地无照片,调用web服务获取
+				//本地无照片,调用web服务获取
+				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_person_head,Global.Options);
 			}
 
 			//基本资料
@@ -98,6 +88,7 @@ namespace EldYoungAndroidApp.My
 				StartActivity(typeof(PersonBasicActivity));
 				OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 			};
+
 			//登录密码
 			var rl_person_loginPwd = FindViewById<RelativeLayout>(Resource.Id.rl_person_loginPwd);
 			rl_person_loginPwd.Click += (sender, e) => 
@@ -113,6 +104,25 @@ namespace EldYoungAndroidApp.My
 				StartActivity(typeof(PayPasswordActivity));
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
+			var tv_payPwd = FindViewById<TextView> (Resource.Id.tv_payPwd);
+			tv_payPwd.Text = string.IsNullOrEmpty (Global.MyInfo.PayPassword) ? "未设置" : "修改";
+
+			//手机绑定
+			var rl_person_phoneBind = FindViewById<RelativeLayout>(Resource.Id.rl_person_phoneBind);
+			rl_person_phoneBind.Click += (sender, e) => 
+			{
+				
+			};
+			var tv_phoneBind = FindViewById<TextView> (Resource.Id.tv_phoneBind);
+			tv_phoneBind.Text = string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? "未绑定" : "已绑定";
+			//身份认证
+			var rl_person_identity = FindViewById<RelativeLayout>(Resource.Id.rl_person_identity);
+			rl_person_identity.Click += (sender, e) => 
+			{
+				
+			};
+			var tv_identity = FindViewById<TextView> (Resource.Id.tv_identity);
+			tv_identity.Text = string.IsNullOrEmpty (Global.MyInfo.IDNumber) ? "未认证" : "已认证";
 		}
 
 		public void OnClick (View v)
@@ -121,13 +131,7 @@ namespace EldYoungAndroidApp.My
 			switch (v.Id) {
 			case Resource.Id.btn_take_photo://调用照相机拍照
 				var intent1 = new Intent (MediaStore.ActionImageCapture);
-
-//				var file = System.IO.Path.Combine (Android.OS.Environment.ExternalStorageDirectory.ToString (), Android.OS.Environment.DirectoryDcim.ToString () + "/head.jpg");
-//				var outputFileUri = Android.Net.Uri.Parse (file); 
 				var file =  new Java.IO.File(Android.OS.Environment.ExternalStorageDirectory.ToString()+"/"+Android.OS.Environment.DirectoryDcim.ToString() ,"head.jpg");
-
-
-				//intent1.PutExtra (MediaStore.ExtraOutput, file);
 				intent1.PutExtra (MediaStore.ExtraOutput,Android.Net.Uri.FromFile(file));
 
 				StartActivityForResult (intent1, PhotoTake);

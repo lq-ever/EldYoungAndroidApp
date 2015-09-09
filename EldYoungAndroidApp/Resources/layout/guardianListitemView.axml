@@ -6,10 +6,10 @@
     android:orientation="horizontal"
     android:background="@color/lightwhite">
     <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/guardian_img_head"
-        android:layout_margin="13dp"
+        android:layout_margin="5dp"
         android:layout_gravity="center_vertical" />
     <LinearLayout
         android:id="@+id/linearText"

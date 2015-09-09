@@ -6,8 +6,9 @@ namespace EldYoungAndroidApp.Json
 	{
 		public RegisterJson ()
 		{
+			data = new LoginJsonData ();
 		}
-		public string data {
+		public LoginJsonData data {
 			get;
 			set;
 		}

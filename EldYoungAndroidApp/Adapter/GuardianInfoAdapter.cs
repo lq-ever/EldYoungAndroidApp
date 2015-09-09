@@ -33,25 +33,11 @@ namespace EldYoungAndroidApp.Adapter
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		private UnBindGuardianParam unBindGuardianParam = new UnBindGuardianParam();//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
-		//private EldYoungAndroidApp.Common.ImageCache.ImageLoader imageLoader;
-		private ImageLoader imageLoader;
-		private DisplayImageOptions options;
 		private IImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener(); 
 		public GuardianInfoAdapter (Activity _activity):base(_activity,0)
 		{
 			activity = _activity;
-			//imageLoader = new ImageLoader (_activity.ApplicationContext);
-			//imageLoader = EldYoungAndroidApp.Common.ImageCache.ImageLoader.CreateImageLoaderInstance(_activity.ApplicationContext);
-			imageLoader = ImageLoader.Instance;
-			options = new DisplayImageOptions.Builder ().ShowImageOnLoading (Resource.Drawable.head)
-				.ShowImageOnFail (Resource.Drawable.head)
-				.ShowImageForEmptyUri (Resource.Drawable.head)
-				.CacheInMemory (true)
-				.CacheOnDisk (true)
-				.BitmapConfig (Bitmap.Config.Rgb565)
-				.Displayer(new RoundedBitmapDisplayer(15))
-				.Displayer(new FadeInBitmapDisplayer(500))
-				.Build ();
+
 		}
 
 		public override Android.Views.View GetView ( int position, Android.Views.View convertView, Android.Views.ViewGroup parent)
@@ -87,8 +73,8 @@ namespace EldYoungAndroidApp.Adapter
 			_guardianItemView.img_Sex.SetImageResource (imgSexId);
 
 			//设置头像采用二级缓存、异步加载
-			//imageLoader.DisplayImage(item.HeadImgReleaseUrl,_guardianItemView.guardian_img_head);
-			imageLoader.DisplayImage(item.HeadImgReleaseUrl,_guardianItemView.guardian_img_head,options);
+
+			Global.imageLoader.DisplayImage(item.HeadImgReleaseUrl,_guardianItemView.guardian_img_head,Global.Options);
 			//按钮绑定事件 			
 			_guardianItemView.btn_Action.Tag = item;
 			_guardianItemView.btn_Action.Click -= ActionHandler;

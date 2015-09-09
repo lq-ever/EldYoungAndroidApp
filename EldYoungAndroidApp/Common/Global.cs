@@ -1,4 +1,9 @@
 ﻿using System;
+using EldYoungAndroidApp.Model;
+using Com.Nostra13.Universalimageloader.Core;
+using Android.Graphics;
+using Com.Nostra13.Universalimageloader.Core.Display;
+
 
 namespace EldYoungAndroidApp.Common
 {
@@ -70,7 +75,35 @@ namespace EldYoungAndroidApp.Common
 		//健康体检信息相关
 		public const string HealthInfoUrl = "HealthInforDataService.aspx"; 
 
+		#endregion
+
 		public static string Guid;//登录guid
+		public static PersonInfoItem MyInfo;
+
+
+		#region 使用imageloader加载网络图像
+		public static ImageLoader imageLoader
+		{
+			get{
+				return ImageLoader.Instance;
+			}
+		}
+
+		public static DisplayImageOptions Options
+		{
+			get {
+				return new DisplayImageOptions.Builder ().ShowImageOnLoading (Resource.Drawable.head)
+					.ShowImageOnFail (Resource.Drawable.head)
+					.ShowImageForEmptyUri (Resource.Drawable.head)
+					.CacheInMemory (true)
+					.CacheOnDisk (true)
+					.BitmapConfig (Bitmap.Config.Rgb565)
+					.Displayer(new RoundedBitmapDisplayer(15))
+					.Displayer(new FadeInBitmapDisplayer(500))
+					.Build ();
+			}
+		}
+
 		#endregion
 	}
 }
