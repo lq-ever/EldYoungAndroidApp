@@ -54,8 +54,6 @@ namespace EldYoungAndroidApp.Common
 
 		#region androidRestApi
 		public const string AndroidKey = "yiyang";
-		//public const string AndroidServiceUrl = "http://192.168.0.117:8089/Android/AndroidDataService.aspx";
-		//public const string AndroidServiceUrl = "http://dataserver.lelaozu.com/Android/AndroidDataService.aspx";
 
 		//测试环境
 		public const string AndroidLocalServerPath ="http://192.168.0.117:8089/Android/";

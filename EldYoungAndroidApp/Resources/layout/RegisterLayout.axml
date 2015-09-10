@@ -4,28 +4,41 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:background="@color/white"
+    android:id="@+id/ll_register">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:gravity="center">
-        <TextView
-            android:text="用户名"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:gravity="center" />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/edit_ReisterNickName"
-            android:layout_marginRight="20dp"
+        <RelativeLayout
+            android:id="@+id/rl_UserName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:hint="请输入用户名"
-            android:textColorHint="@android:color/darker_gray" />
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp">
+            <EditText
+                android:id="@+id/edit_ReisterNickName"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="35dp"
+                android:hint="输入用户名"
+                android:gravity="fill_vertical"
+                android:background="@null"
+                android:textColor="@color/lightgray"
+                android:textColorHint="@color/lightgray" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_register_username"
+                android:layout_alignLeft="@id/edit_ReisterNickName"
+                android:layout_marginLeft="10dp"
+                android:layout_alignBottom="@id/edit_ReisterNickName"
+                android:layout_alignTop="@id/edit_ReisterNickName" />
+        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,22 +46,40 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:gravity="center">
-        <TextView
-            android:text="密码"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:gravity="center" />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/edit_ReisterPwd"
-            android:layout_marginRight="20dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:hint="请输入密码"
-            android:inputType="textPassword"
-            android:textColorHint="@android:color/darker_gray" />
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp">
+            <EditText
+                android:id="@+id/edit_ReisterPwd"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="35dp"
+                android:hint="输入密码"
+                android:gravity="fill_vertical"
+                android:background="@null"
+                android:textColor="@color/lightgray"
+                android:textColorHint="@color/lightgray"
+                android:inputType="textPassword"
+                android:layout_marginRight="20dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_register_password"
+                android:layout_alignLeft="@id/edit_ReisterPwd"
+                android:layout_marginLeft="10dp"
+                android:layout_alignBottom="@id/edit_ReisterPwd"
+                android:layout_alignTop="@id/edit_ReisterPwd" />
+            <ImageView
+                android:id="@+id/img_eye_ReisterPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_register_eye_normal"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,22 +87,40 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:gravity="center">
-        <TextView
-            android:text="确认密码"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:gravity="center" />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/edit_ReisterConfirmPwd"
-            android:layout_marginRight="20dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:hint="请再次输入密码"
-            android:inputType="textPassword"
-            android:textColorHint="@android:color/darker_gray" />
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp">
+            <EditText
+                android:id="@+id/edit_ReisterConfirmPwd"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="35dp"
+                android:hint="请再次输入密码"
+                android:gravity="fill_vertical"
+                android:background="@null"
+                android:textColor="@color/lightgray"
+                android:textColorHint="@color/lightgray"
+                android:inputType="textPassword"
+                android:layout_marginRight="20dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_register_password"
+                android:layout_alignLeft="@id/edit_ReisterConfirmPwd"
+                android:layout_marginLeft="10dp"
+                android:layout_alignBottom="@id/edit_ReisterConfirmPwd"
+                android:layout_alignTop="@id/edit_ReisterConfirmPwd" />
+            <ImageView
+                android:id="@+id/img_eye_ReisterConfirmPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_register_eye_normal"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,30 +128,43 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:gravity="center">
-        <TextView
-            android:text="手机号码"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginLeft="15dp" />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+        <RelativeLayout
+            android:id="@+id/rl_UserName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:id="@+id/edit_Phone"
             android:layout_marginRight="20dp"
-            android:hint="请填写手机号"
-            android:textColorHint="@android:color/darker_gray" />
+            android:layout_marginTop="5dp">
+            <EditText
+                android:id="@+id/edit_Phone"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="35dp"
+                android:hint="请输入手机号"
+                android:gravity="fill_vertical"
+                android:background="@null"
+                android:textColor="@color/lightgray"
+                android:textColorHint="@color/lightgray" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_register_phone"
+                android:layout_alignLeft="@id/edit_Phone"
+                android:layout_marginLeft="10dp"
+                android:layout_alignBottom="@id/edit_Phone"
+                android:layout_alignTop="@id/edit_Phone" />
+        </RelativeLayout>
     </LinearLayout>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:gravity="center"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
         android:text="下一步"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_blue_selector"
         android:id="@+id/btn_RegistNext" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -119,11 +181,13 @@
             android:id="@+id/cb_Agree"
             android:textColor="@android:color/darker_gray"
             android:textSize="15sp"
-            android:checked="true" />
+            android:checked="true"
+            android:button="@drawable/regitercheckboxselector"
+            android:background="@null" />
         <TextView
             android:text="@string/serviceAgree"
             android:textSize="15sp"
-            android:textColor="@drawable/textselector"
+            android:textColor="@drawable/registerAgreeTextSelector"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:id="@+id/tv_linkServiceAgree" />

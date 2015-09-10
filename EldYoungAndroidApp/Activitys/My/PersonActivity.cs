@@ -18,6 +18,7 @@ using Java.IO;
 using System.IO;
 using Android.Graphics.Drawables;
 using Com.Nostra13.Universalimageloader.Core;
+using Android.Util;
 
 namespace EldYoungAndroidApp.My
 {
@@ -161,13 +162,6 @@ namespace EldYoungAndroidApp.My
 //					return;
 				Java.IO.File picture = new Java.IO.File(Android.OS.Environment.ExternalStorageDirectory.ToString()+"/"+Android.OS.Environment.DirectoryDcim.ToString() + "/head.jpg");  
 
-//				Bitmap bitmap = (Bitmap)data.Extras.Get("data");  
-//
-//				FileStream MyFileStream = new FileStream(picture.ToString(), FileMode.Create);  
-//				//保存照片  
-//				bitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, MyFileStream);  
-
-
 				if (System.IO.File.Exists(picture.ToString()))  
 				{  
 					CropPhoto(Android.Net.Uri.FromFile(picture));  
@@ -222,8 +216,8 @@ namespace EldYoungAndroidApp.My
 		{
 
 			var sdStatus = Android.OS.Environment.ExternalStorageState;
+			//检测sd是否可用
 			if (!sdStatus.Equals (Android.OS.Environment.MediaMounted)) {
-				//检测sd是否可用
 				return;
 			}
 			FileStream MyFileStream = null;
@@ -231,8 +225,6 @@ namespace EldYoungAndroidApp.My
 			Java.IO.File file = new Java.IO.File(path);
 			if(!file.Exists())
 				file.Mkdirs();// 创建文件夹
-
-
 			string fileName = path +Global.Guid+ "head.jpg";
 			try{
 				 MyFileStream = new FileStream(fileName, FileMode.Create);  
@@ -245,10 +237,7 @@ namespace EldYoungAndroidApp.My
 			finally {
 				MyFileStream.Flush ();
 				MyFileStream.Close ();
-			}
-
-
-				
+			}	
 
 		}
 

@@ -19,7 +19,7 @@ using EldYoungAndroidApp.Json;
 namespace EldYoungAndroidApp
 {
 	[Activity (Theme = "@style/MyCustomTheme")]			
-	public class RegisterActivity : Activity
+	public class RegisterActivity : Activity,View.IOnClickListener
 	{
 		private EditText edit_Phone;
 		private Button btn_RegisterNext;
@@ -33,7 +33,9 @@ namespace EldYoungAndroidApp
 		private string nickName;
 		private string passWord;
 		private string confirmPassWord;
+		private ConfirmphonePopWindow confirmPopWindow;
 
+		private ImageView img_eye_ReisterPwd, img_eye_ReisterConfirmPwd;
 
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 
@@ -62,7 +64,7 @@ namespace EldYoungAndroidApp
 				this.Finish();
 			};
 				
-			FindViewById<TextView> (Resource.Id.tv_header_title).Text = "用户注册";
+			FindViewById<TextView> (Resource.Id.tv_header_title).Text = "注册";
 
 			edit_Phone = FindViewById<EditText> (Resource.Id.edit_Phone);
 			btn_RegisterNext = FindViewById<Button> (Resource.Id.btn_RegistNext);
@@ -70,6 +72,41 @@ namespace EldYoungAndroidApp
 			edit_RegisterName = FindViewById<EditText> (Resource.Id.edit_ReisterNickName);
 			edit_PassWord = FindViewById<EditText> (Resource.Id.edit_ReisterPwd);
 			edit_ConfirmPassWord = FindViewById<EditText> (Resource.Id.edit_ReisterConfirmPwd);
+			//密码眼睛切换
+			img_eye_ReisterPwd = FindViewById<ImageView>(Resource.Id.img_eye_ReisterPwd);
+			img_eye_ReisterConfirmPwd = FindViewById<ImageView> (Resource.Id.img_eye_ReisterConfirmPwd);
+
+			img_eye_ReisterPwd.Click += (sender, e) => 
+			{
+				if(edit_PassWord.InputType == (Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationPassword))
+				{
+					edit_PassWord.InputType = Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationVisiblePassword;
+					img_eye_ReisterPwd.SetImageResource(Resource.Drawable.ic_register_eye_selected);
+				}
+				else if(edit_PassWord.InputType == (Android.Text.InputTypes.ClassText| Android.Text.InputTypes.TextVariationVisiblePassword))
+				{
+					edit_PassWord.InputType = Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationPassword;
+					img_eye_ReisterPwd.SetImageResource(Resource.Drawable.ic_register_eye_normal);
+				}
+
+			};
+
+			img_eye_ReisterConfirmPwd.Click += (sender, e) => 
+			{
+				if(edit_ConfirmPassWord.InputType == (Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationPassword))
+				{
+					edit_ConfirmPassWord.InputType = Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationVisiblePassword;
+					img_eye_ReisterConfirmPwd.SetImageResource(Resource.Drawable.ic_register_eye_selected);
+				}
+				else if(edit_ConfirmPassWord.InputType == (Android.Text.InputTypes.ClassText| Android.Text.InputTypes.TextVariationVisiblePassword))
+				{
+					edit_ConfirmPassWord.InputType = Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationPassword;
+					img_eye_ReisterConfirmPwd.SetImageResource(Resource.Drawable.ic_register_eye_normal);
+				}
+
+			};
+
+
 
 			//注册协议
 			var tv_linkServiceAgree = FindViewById<TextView> (Resource.Id.tv_linkServiceAgree);
@@ -95,23 +132,32 @@ namespace EldYoungAndroidApp
 				if(ValidInput())
 				{
 					
-					var builder = new AlertDialog.Builder (this).SetTitle("确认手机号码").SetMessage ("我们将发送验证码短信到这个号码：+86 "+phoneNumber);
-
-					builder.SetPositiveButton ("好", (sender1, e1) => {
-						
-						SendSMS(phoneNumber);
-
-					});
-					builder.SetNegativeButton ("取消", (sender1, e1) => {
-						registerDialog.Dismiss();
-						return;
-					});
-					registerDialog= builder.Create();
-					registerDialog.Show();
+//					var builder = new AlertDialog.Builder (this).SetTitle("确认手机号码").SetMessage ("我们将发送验证码短信到这个号码：+86 "+phoneNumber);
+//
+//					builder.SetPositiveButton ("好", (sender1, e1) => {
+//						
+//						SendSMS(phoneNumber);
+//
+//					});
+//					builder.SetNegativeButton ("取消", (sender1, e1) => {
+//						registerDialog.Dismiss();
+//						return;
+//					});
+//					registerDialog= builder.Create();
+//					registerDialog.Show();
+					if(confirmPopWindow==null)
+						confirmPopWindow = new ConfirmphonePopWindow(this,phoneNumber);
+					confirmPopWindow.ShowPopWindow(FindViewById<LinearLayout>(Resource.Id.ll_register));
 				}
 
 			};
 
+		}
+
+		public void OnClick (View v)
+		{
+			confirmPopWindow.Dismiss ();
+			SendSMS (phoneNumber);
 		}
 		/// <summary>
 		/// Valids the input.
@@ -194,8 +240,6 @@ namespace EldYoungAndroidApp
 					if(smsJson.statuscode =="1")
 					{
 						RunOnUiThread(()=>{
-
-
 							Intent intent = new Intent(this,typeof(RegisterResultActivity));
 							var bundle = new Bundle();
 							bundle.PutString("phoneNum",phoneNumber);

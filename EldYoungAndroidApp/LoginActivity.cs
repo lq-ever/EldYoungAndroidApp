@@ -62,9 +62,15 @@ namespace EldYoungAndroidApp
 			img_eye.Click += (sender, e) => 
 			{
 				if(edit_userPassword.InputType == (Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationPassword))
+				{
 					edit_userPassword.InputType = Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationVisiblePassword;
+					img_eye.SetImageResource(Resource.Drawable.ic_login_eye_selected);
+				}
 				else if(edit_userPassword.InputType == (Android.Text.InputTypes.ClassText| Android.Text.InputTypes.TextVariationVisiblePassword))
+				{
 					edit_userPassword.InputType = Android.Text.InputTypes.ClassText|Android.Text.InputTypes.TextVariationPassword;
+					img_eye.SetImageResource(Resource.Drawable.ic_login_eye_normal);
+				}
 
 			};
 

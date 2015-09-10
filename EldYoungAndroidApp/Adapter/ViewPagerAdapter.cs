@@ -67,8 +67,8 @@ namespace EldYoungAndroidApp.Adapter
 			container.AddView(views[position]);
 
 			if (position == views.Count - 1) {
-				ImageView imageView = container.FindViewById<ImageView> (Resource.Id.iv_start_use);
-				imageView.SetOnClickListener(this);
+				var btn_start_use = container.FindViewById<Button> (Resource.Id.iv_start_use);
+				btn_start_use.SetOnClickListener(this);
 			}
 
 			return views[position];

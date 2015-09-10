@@ -163,6 +163,7 @@
     <Compile Include="Common\ImageCache\MemoryCache.cs" />
     <Compile Include="Common\ImageCache\ImageLoader.cs" />
     <Compile Include="Model\PersonInfoItem.cs" />
+    <Compile Include="Common\ConfirmphonePopWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -174,8 +175,6 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\dark_dot.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\guider3.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\guider4.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_discard.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_edit.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_save.png" />
@@ -248,7 +247,6 @@
     <AndroidResource Include="Resources\layout\ServiceAgreeLayout.axml" />
     <AndroidResource Include="Resources\drawable\textselector.xml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\guider1.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launch.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\home_tab_personal.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\home_tab_personal_selected.png" />
@@ -270,7 +268,6 @@
     <AndroidResource Include="Resources\layout\custom_titlebar_action.axml" />
     <AndroidResource Include="Resources\layout\AlarmDetailInfoLayout.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\setting.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\guider2.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_alarm_normal.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_alarm_selected.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_guardian_normal.png" />
@@ -295,7 +292,6 @@
     <AndroidResource Include="Resources\anim\fade_out.xml" />
     <AndroidResource Include="Resources\anim\fade_in.xml" />
     <AndroidResource Include="Resources\layout\GuardianApplyLayout.axml" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_eye.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_password.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_rememberPassword_normal.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_rememberPassword_selected.png" />
@@ -324,6 +320,26 @@
     <AndroidResource Include="Resources\layout\HealthDetailInfoLayout.axml" />
     <AndroidResource Include="Resources\layout\healthListItemView.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\uparrow.png" />
+    <AndroidResource Include="Resources\drawable\btn_blue_selector.xml" />
+    <AndroidResource Include="Resources\drawable\registerAgreeTextSelector.xml" />
+    <AndroidResource Include="Resources\layout\customconfirmphonedialog.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_combox_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_combox_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_eye_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_message.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_password.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_phone.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_username.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_register_eye_selected.png" />
+    <AndroidResource Include="Resources\drawable\regitercheckboxselector.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_eye_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_eye_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\guider3.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\guider4.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\guider2.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\circle_normal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\circle_selected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
