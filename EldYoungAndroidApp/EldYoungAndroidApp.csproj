@@ -340,6 +340,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\circle_normal.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\circle_selected.png" />
+    <AndroidResource Include="Resources\drawable\shape.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

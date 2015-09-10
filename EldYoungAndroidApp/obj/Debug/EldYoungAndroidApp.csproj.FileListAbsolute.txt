@@ -354,3 +354,4 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\gu
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\guider4.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\circle_normal.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\circle_selected.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\shape.xml
