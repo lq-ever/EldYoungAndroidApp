@@ -13,7 +13,8 @@ namespace EldYoungAndroidApp.Common
 		private View contentView;  
 		private Activity activity;
 		private Button btn_take_photo, btn_pick_photo, btn_cancel;  
-		public SelectPicPopWindow (Activity _activity)
+
+		public SelectPicPopWindow (Activity _activity,View.IOnClickListener listener)
 		{
 			activity = _activity;
 			LayoutInflater inflater = (LayoutInflater) activity.GetSystemService (Context.LayoutInflaterService);
@@ -32,8 +33,10 @@ namespace EldYoungAndroidApp.Common
 			AnimationStyle = Resource.Style.Animationbottom;
 
 			//设置按钮绑定
-			btn_take_photo.SetOnClickListener ((Android.Views.View.IOnClickListener)activity);
-			btn_pick_photo.SetOnClickListener ((Android.Views.View.IOnClickListener)activity);
+//			btn_take_photo.SetOnClickListener ((Android.Views.View.IOnClickListener)activity);
+//			btn_pick_photo.SetOnClickListener ((Android.Views.View.IOnClickListener)activity);
+			btn_take_photo.SetOnClickListener (listener);
+			btn_pick_photo.SetOnClickListener (listener);
 
 			//取消
 			btn_cancel.Click += (sender, e) => 

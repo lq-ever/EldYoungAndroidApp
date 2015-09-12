@@ -1,11 +1,12 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Adapter\ViewPagerAdapter.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\RegisterActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\RegisterActivity.cs" Line="104" Column="91" />
-      <File FileName="EldYoungAndroidApp\Resources\drawable\textselector.xml" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Resources\drawable\shape.xml" Line="7" Column="43" />
-      <File FileName="EldYoungAndroidApp\Adapter\ViewPagerAdapter.cs" Line="76" Column="4" />
+      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="91" Column="52" />
+      <File FileName="EldYoungAndroidApp\Activitys\My\PersonActivity.cs" Line="129" Column="31" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" Line="109" Column="68" />
+      <File FileName="EldYoungAndroidApp\SendSecurityCodeActivity.cs" Line="112" Column="86" />
+      <File FileName="EldYoungAndroidApp\RegisterActivity.cs" Line="175" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

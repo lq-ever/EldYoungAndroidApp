@@ -114,13 +114,10 @@
     <Compile Include="Activitys\Guardian\GuardianDetailInfoActivity.cs" />
     <Compile Include="Common\UnbindPopWindow.cs" />
     <Compile Include="Activitys\Guardian\GuardianApplyActivity.cs" />
-    <Compile Include="ForgetPassWordActivity.cs" />
     <Compile Include="Common\ApplybindPopWindow.cs" />
     <Compile Include="Fragments\MainTab\BaseFragment.cs" />
     <Compile Include="Common\SelectPicPopWindow.cs" />
     <Compile Include="Common\DatePickDialogUtil.cs" />
-    <Compile Include="Activitys\My\UpdatePasswordActivity.cs" />
-    <Compile Include="Activitys\My\PayPasswordActivity.cs" />
     <Compile Include="Adapter\AlarmInfoListAdapter.cs" />
     <Compile Include="Model\Alarm\AlarmInfoListItem.cs" />
     <Compile Include="Param\AlarmInfoListParam.cs" />
@@ -164,6 +161,7 @@
     <Compile Include="Common\ImageCache\ImageLoader.cs" />
     <Compile Include="Model\PersonInfoItem.cs" />
     <Compile Include="Common\ConfirmphonePopWindow.cs" />
+    <Compile Include="SendSecurityCodeActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -298,7 +296,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_username.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\login_bg.png" />
     <AndroidResource Include="Resources\drawable\checkboxselector.xml" />
-    <AndroidResource Include="Resources\layout\ForgetPasswordLayout.axml" />
     <AndroidResource Include="Resources\layout\customapplybinddialog.axml" />
     <AndroidResource Include="Resources\drawable\btnlogin.xml" />
     <AndroidResource Include="Resources\drawable\backselector.xml" />
@@ -341,6 +338,8 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\circle_normal.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\circle_selected.png" />
     <AndroidResource Include="Resources\drawable\shape.xml" />
+    <AndroidResource Include="Resources\layout\SendSecurityCodeLayout.axml" />
+    <AndroidResource Include="Resources\layout\SetPasswordLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

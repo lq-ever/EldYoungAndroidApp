@@ -65,7 +65,7 @@ namespace EldYoungAndroidApp.My
 			{
 				//todo :调出弹出框,设置使用图库或新拍照方式
 				if(picPopWindow ==null)
-					picPopWindow = new SelectPicPopWindow(this);
+					picPopWindow = new SelectPicPopWindow(this,this);
 				picPopWindow.ShowPopWindow(FindViewById<LinearLayout>(Resource.Id.ll_person));
 			};
 
@@ -94,7 +94,7 @@ namespace EldYoungAndroidApp.My
 			var rl_person_loginPwd = FindViewById<RelativeLayout>(Resource.Id.rl_person_loginPwd);
 			rl_person_loginPwd.Click += (sender, e) => 
 			{
-				StartActivity(typeof(UpdatePasswordActivity));
+				StartActivity(typeof(SendSecurityCodeActivity));
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 
 			};
@@ -102,7 +102,7 @@ namespace EldYoungAndroidApp.My
 			var rl_person_payPwd = FindViewById<RelativeLayout>(Resource.Id.rl_person_payPwd);
 			rl_person_payPwd.Click += (sender, e) => 
 			{
-				StartActivity(typeof(PayPasswordActivity));
+				StartActivity(typeof(SendSecurityCodeActivity));
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 			var tv_payPwd = FindViewById<TextView> (Resource.Id.tv_payPwd);

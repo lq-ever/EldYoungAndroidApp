@@ -312,7 +312,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\ic
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\ic_login_username.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\login_bg.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\checkboxselector.xml
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\forgetpasswordlayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\customapplybinddialog.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\btnlogin.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\backselector.xml
@@ -355,3 +354,5 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\gu
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\circle_normal.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\circle_selected.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\shape.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\sendsecuritycodelayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\setpasswordlayout.xml

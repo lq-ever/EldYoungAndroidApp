@@ -107,10 +107,8 @@
     <activity android:theme="@style/AppTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.MainFragActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md51aa780f84506d460b9867ce9bd14a7f3.GuardianDetailInfoActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md51aa780f84506d460b9867ce9bd14a7f3.GuardianApplyActivity" />
-    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.ForgetPassWordActivity" />
-    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.UpdatePasswordActivity" />
-    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PayPasswordActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.HealthDetailInfoActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.SendSecurityCodeActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.eldyoung.lelaozuandroidapp.mono.MonoRuntimeProvider.__mono_init__" />
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>

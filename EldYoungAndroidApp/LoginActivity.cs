@@ -85,7 +85,12 @@ namespace EldYoungAndroidApp
 			//找回密码
 			tv_forgetPwd.Click += (sender, e) => 
 			{
-				StartActivity(typeof(ForgetPassWordActivity));
+				var intent = new Intent(this,typeof(SendSecurityCodeActivity));
+				var sendbundle = new Bundle();
+				sendbundle.PutString("SendType","1");
+				sendbundle.PutString("PhoneNumber",string.Empty);
+				intent.PutExtras(sendbundle);
+				StartActivity(intent);
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 

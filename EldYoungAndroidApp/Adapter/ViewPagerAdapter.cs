@@ -65,13 +65,14 @@ namespace EldYoungAndroidApp.Adapter
 		{
 			
 			container.AddView(views[position]);
-			if (position == 0) {
-				var btn_skip = container.FindViewById<Button> (Resource.Id.btn_skip);
-				btn_skip.SetOnClickListener (this);
-			}
+		
+
 			if (position == views.Count - 1) {
 				var btn_start_use = container.FindViewById<Button> (Resource.Id.iv_start_use);
-				btn_start_use.SetOnClickListener(this);
+				btn_start_use.SetOnClickListener (this);
+			} else {
+				var btn_skip = container.FindViewById<Button> (Resource.Id.btn_skip);
+				btn_skip.SetOnClickListener (this);
 			}
 
 			return views[position];

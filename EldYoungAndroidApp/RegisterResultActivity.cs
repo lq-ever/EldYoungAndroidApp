@@ -59,7 +59,7 @@ namespace EldYoungAndroidApp
 
 
 		
-			FindViewById<TextView> (Resource.Id.tv_header_title).Text = "用户注册";
+			FindViewById<TextView> (Resource.Id.tv_header_title).Text = "填写短信验证码";
 
 			btn_Submit = FindViewById<Button> (Resource.Id.btn_Submit);
 			btn_Send = FindViewById<Button> (Resource.Id.btn_Send);
@@ -84,9 +84,13 @@ namespace EldYoungAndroidApp
 				if(edit_SecurityCode.Text.Length>0)
 				{
 					btn_Submit.Enabled = true;
+					btn_Submit.SetBackgroundResource(Resource.Color.blue);
 				}
 				else
+				{
 					btn_Submit.Enabled =false;
+					btn_Submit.SetBackgroundResource(Resource.Color.lightgray);
+				}
 			};
 
 
@@ -114,6 +118,8 @@ namespace EldYoungAndroidApp
 			btn_Send.Click += (sender, e) => 
 			{
 				btn_Send.Clickable = false;
+				btn_Send.SetBackgroundResource(Resource.Color.lightgray);
+				btn_Send.SetTextColor(Resources.GetColor(Resource.Color.ingray));
 				SendSMS(phoneNum);
 			};
 
@@ -359,7 +365,7 @@ namespace EldYoungAndroidApp
 			}
 			public override void OnTick (long millisUntilFinished)
 			{
-				Activity.btn_Send.Clickable = false;
+				//Activity.btn_Send.Clickable = false;
 				Activity.btn_Send.Text = (millisUntilFinished / 1000) + "秒后可重发";
 			}
 			public override void OnFinish ()
@@ -367,6 +373,8 @@ namespace EldYoungAndroidApp
 				Activity.btn_Send.Text = "获取验证码";
 				Activity.btn_Send.Clickable = true;
 				Activity.securityCode = string.Empty;
+				Activity.btn_Send.SetBackgroundResource (Resource.Color.blue);
+				Activity.btn_Send.SetTextColor(Activity.Resources.GetColor(Resource.Color.white));
 			}
 		}
 

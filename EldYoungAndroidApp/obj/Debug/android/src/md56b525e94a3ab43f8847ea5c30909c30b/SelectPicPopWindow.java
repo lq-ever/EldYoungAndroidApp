@@ -85,11 +85,11 @@ public class SelectPicPopWindow
 			mono.android.TypeManager.Activate ("EldYoungAndroidApp.Common.SelectPicPopWindow, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1 });
 	}
 
-	public SelectPicPopWindow (android.app.Activity p0) throws java.lang.Throwable
+	public SelectPicPopWindow (android.app.Activity p0, android.view.View.OnClickListener p1) throws java.lang.Throwable
 	{
 		super ();
 		if (getClass () == SelectPicPopWindow.class)
-			mono.android.TypeManager.Activate ("EldYoungAndroidApp.Common.SelectPicPopWindow, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "Android.App.Activity, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
+			mono.android.TypeManager.Activate ("EldYoungAndroidApp.Common.SelectPicPopWindow, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "Android.App.Activity, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Views.View/IOnClickListener, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0, p1 });
 	}
 
 	java.util.ArrayList refList;
