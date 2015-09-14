@@ -26,16 +26,22 @@ namespace EldYoungAndroidApp.Param
 		public string Euid
 		{
 			get{
-				return EnDeCryptHelp.Encrypt (UId);
+				return EnDeCryptHelp.Encrypt(UId);
 			}
 		}
 		public string ImageStr {
 			get;
 			set;
 		}
+		public string EimageStr
+		{
+			get{
+				return EnDeCryptHelp.Encrypt (ImageStr);
+			}
+		}
 		public override string Md5 {
 			get {
-				return EnDeCryptHelp.MD5Encrypt (Euid + Key, Key);
+				return EnDeCryptHelp.MD5Encrypt (Euid +EimageStr+ Key, Key);
 			}
 		}
 

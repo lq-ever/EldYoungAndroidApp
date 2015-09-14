@@ -222,8 +222,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 					//将图像保存至本地
 					SetPicToLocalAndServer(photo);//保存在SD卡中
 					img_head.SetImageBitmap (photo);
-//					//todo:调用web服务上传头像
-//					HeadImgPost(photo);
+
 				}  
 			}
 
@@ -269,13 +268,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, MyFileStream); 
 
 				byte[] buffer = new byte[MyFileStream.Length];
-				MyFileStream.Read(buffer, 0, buffer.Length);
-
 				// 设置当前流的位置为流的开始
 				MyFileStream.Seek(0, SeekOrigin.Begin);
-				byte[] encode = Base64.Encode(buffer, Base64Flags.Default);
-				//string headimgStr = new string(encode);
-				string headimgStr = encode.ToString();
+				MyFileStream.Read(buffer, 0, buffer.Length);
+
+		
+
+				//byte[] encode = Base64.Encode(buffer, Base64Flags.Default);
+
+
+				//string headimgStr = encode.ToString();
+
+				var  headimgStr = Convert.ToBase64String(buffer);
 				//调用restapi提交头像
 				var headImgPostParam = new HeadImgPostParam () {
 					UId = Global.MyInfo.UId,ImageStr = headimgStr
@@ -316,15 +320,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			else
 				requestParams ["key"] = headImgPostParam.Key;
 
-			if (!requestParams.ContainsKey ("guid"))
-				requestParams.Add ("guid", headImgPostParam.Euid);
+			if (!requestParams.ContainsKey ("eguid"))
+				requestParams.Add ("eguid", headImgPostParam.Euid);
 			else
-				requestParams ["guid"] = headImgPostParam.Euid;
+				requestParams ["eguid"] = headImgPostParam.Euid;
 
-			if (!requestParams.ContainsKey ("imgstr"))
-				requestParams.Add ("imgstr", headImgPostParam.ImageStr);
+			if (!requestParams.ContainsKey ("eimgstr"))
+				requestParams.Add ("eimgstr", headImgPostParam.ImageStr);
 			else
-				requestParams ["imgstr"] = headImgPostParam.ImageStr;
+				requestParams ["eimgstr"] = headImgPostParam.EimageStr;
 
 			if (!requestParams.ContainsKey ("md5"))
 				requestParams.Add ("md5", headImgPostParam.Md5);

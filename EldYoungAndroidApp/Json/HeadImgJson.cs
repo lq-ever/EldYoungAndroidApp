@@ -6,6 +6,18 @@ namespace EldYoungAndroidApp.Json
 	{
 		public HeadImgJson ()
 		{
+			data = new ImgJsonData ();
+		}
+		public ImgJsonData data {
+			get;
+			set;
+		}
+	}
+	public class ImgJsonData
+	{
+		public string HeadImgUrl {
+			get;
+			set;
 		}
 	}
 }

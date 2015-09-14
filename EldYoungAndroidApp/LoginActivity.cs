@@ -171,8 +171,6 @@ namespace EldYoungAndroidApp
 					if(loginJson.statuscode =="1")
 					{
 						Global.MyInfo = loginJson.data.Table[0];
-
-
 						Global.Guid = Global.MyInfo.UId;
 
 						var guidAsAlias = Global.Guid.Replace("-","_");//使用用户guid作为推送别名

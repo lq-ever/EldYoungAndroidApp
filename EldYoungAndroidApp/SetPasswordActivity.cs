@@ -163,7 +163,7 @@ namespace EldYoungAndroidApp
 						{
 							//todo回到登录界面
 							//跳转到功能主界面
-							var intent = new Intent(this,typeof(MainFragActivity));
+							var intent = new Intent(this,typeof(LoginActivity));
 							intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
 							StartActivity(intent);			
 						}
