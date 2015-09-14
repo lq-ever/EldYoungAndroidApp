@@ -325,7 +325,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\anim\bottomin.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\anim\bottomout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\commondatepickerlayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\updatepasswordlayout.xml
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\paypasswordlayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\alarmlistitemview.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\alarmhandledetailinfolistitemview.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\searchguardianlistitemview.xml

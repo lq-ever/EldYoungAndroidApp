@@ -52,10 +52,9 @@
             android:text="获取验证码"
             android:textSize="15sp"
             android:clickable="false"
-            android:background="@color/blue"
+            android:background="@drawable/btn_blue_selector"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textColor="@color/white" />
+            android:layout_centerVertical="true" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -94,6 +93,6 @@
         android:text="下一步"
         android:gravity="center"
         android:enabled="false"
-        android:background="@color/blue"
+        android:background="@drawable/btn_blue_selector"
         android:textColor="@color/white" />
 </LinearLayout>

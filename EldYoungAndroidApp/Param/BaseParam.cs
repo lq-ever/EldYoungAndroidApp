@@ -38,6 +38,7 @@ namespace EldYoungAndroidApp.Param
 		public string Url {
 			get {
 				return Global.AndroidReleaseServerPath+ServiceName;
+				//return Global.AndroidLocalServerPath + ServiceName;
 			}
 
 		}

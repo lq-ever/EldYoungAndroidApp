@@ -27,7 +27,7 @@ namespace EldYoungAndroidApp
 		private EditText edit_RegisterName;
 		private EditText edit_PassWord;
 		private EditText edit_ConfirmPassWord;
-		private Dialog registerDialog;
+	//	private Dialog registerDialog;
 
 		private string phoneNumber;
 		private string nickName;

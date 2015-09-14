@@ -102,6 +102,6 @@
         android:text="@string/Register"
         android:gravity="center"
         android:enabled="false"
-        android:background="@color/blue"
+        android:background="@color/lightgray"
         android:textColor="@color/white" />
 </LinearLayout>

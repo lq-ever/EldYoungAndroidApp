@@ -105,7 +105,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			{
 				var intent = new Intent(Activity,typeof(SendSecurityCodeActivity));
 				var sendbundle = new Bundle();
-				sendbundle.PutString("SendType","1");
+				sendbundle.PutString("SendType","ModifyPwd");//修改密码
 				sendbundle.PutString("PhoneNumber",Global.MyInfo.PhoneNumberOne);
 				intent.PutExtras(sendbundle);
 				Activity.StartActivity(intent);
@@ -118,7 +118,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			{
 				var intent = new Intent(Activity,typeof(SendSecurityCodeActivity));
 				var sendbundle = new Bundle();
-				sendbundle.PutString("SendType","1");
+				sendbundle.PutString("SendType","ModifyPayPwd");//设置支付密码
 				sendbundle.PutString("PhoneNumber",Global.MyInfo.PhoneNumberOne);
 				intent.PutExtras(sendbundle);
 				Activity.StartActivity(intent);

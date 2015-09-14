@@ -87,7 +87,7 @@ namespace EldYoungAndroidApp
 			{
 				var intent = new Intent(this,typeof(SendSecurityCodeActivity));
 				var sendbundle = new Bundle();
-				sendbundle.PutString("SendType","1");
+				sendbundle.PutString("SendType","FindPwd");
 				sendbundle.PutString("PhoneNumber",string.Empty);
 				intent.PutExtras(sendbundle);
 				StartActivity(intent);

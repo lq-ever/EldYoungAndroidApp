@@ -162,6 +162,11 @@
     <Compile Include="Model\PersonInfoItem.cs" />
     <Compile Include="Common\ConfirmphonePopWindow.cs" />
     <Compile Include="SendSecurityCodeActivity.cs" />
+    <Compile Include="Param\SendCodeParam.cs" />
+    <Compile Include="Json\SendCodeJson.cs" />
+    <Compile Include="SetPasswordActivity.cs" />
+    <Compile Include="Param\ModiyPasswordParam.cs" />
+    <Compile Include="Json\SetPasswordJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -309,7 +314,6 @@
     <AndroidResource Include="Resources\anim\bottomout.xml" />
     <AndroidResource Include="Resources\layout\commondatepickerlayout.axml" />
     <AndroidResource Include="Resources\layout\UpdatePasswordLayout.axml" />
-    <AndroidResource Include="Resources\layout\PayPasswordLayout.axml" />
     <AndroidResource Include="Resources\layout\alarmListitemView.axml" />
     <AndroidResource Include="Resources\layout\alarmHandleDetailInfoListitemView.axml" />
     <AndroidResource Include="Resources\layout\searchguardianListItemView.axml" />
