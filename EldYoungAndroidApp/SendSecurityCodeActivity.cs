@@ -267,6 +267,17 @@ namespace EldYoungAndroidApp
 			base.Finish ();
 			mc.Cancel ();
 		}
+
+		protected override void OnStop ()
+		{
+			base.OnStop ();
+			mc.Cancel ();
+		}
+		protected override void OnResume ()
+		{
+			base.OnResume ();
+			btn_Send.Enabled = true;
+		}
 	}
 
 
