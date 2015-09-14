@@ -72,6 +72,8 @@ namespace EldYoungAndroidApp.Common
 
 		//健康体检信息相关
 		public const string HealthInfoUrl = "HealthInforDataService.aspx"; 
+		//头像上传
+		public const string HeadImgUrl ="SaveHeadImg.aspx";
 
 		#endregion
 

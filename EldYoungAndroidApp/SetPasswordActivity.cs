@@ -151,8 +151,8 @@ namespace EldYoungAndroidApp
 			var restSharpRequestHelp = new RestSharpRequestHelp(modipwdParam.Url,requestsubmitParams);
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
 				//获取并解析返回resultJson获取安全码结果值
-				var resultJson = response.Content;
-				var setpwdJson = JsonConvert.DeserializeObject<SetPasswordJson>(resultJson);
+ 				var result = response.Content;
+				var setpwdJson = JsonConvert.DeserializeObject<SetPasswordJson>(result);
 				if(setpwdJson.statuscode =="1")
 				{
 					RunOnUiThread(()=>{

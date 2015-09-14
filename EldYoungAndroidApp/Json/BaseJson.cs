@@ -2,7 +2,7 @@
 
 namespace EldYoungAndroidApp.Json
 {
-	public abstract class BaseJson
+	public class BaseJson
 	{
 		public string statuscode {
 			get;

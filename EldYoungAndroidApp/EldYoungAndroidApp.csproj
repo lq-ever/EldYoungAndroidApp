@@ -167,6 +167,8 @@
     <Compile Include="SetPasswordActivity.cs" />
     <Compile Include="Param\ModiyPasswordParam.cs" />
     <Compile Include="Json\SetPasswordJson.cs" />
+    <Compile Include="Param\HeadImgPostParam.cs" />
+    <Compile Include="Json\HeadImgJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

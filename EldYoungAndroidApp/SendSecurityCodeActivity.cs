@@ -177,8 +177,8 @@ namespace EldYoungAndroidApp
 			var restSharpRequestHelp = new RestSharpRequestHelp(sendCodeParam.Url,requestsendcodeParams);
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
 				//获取并解析返回resultJson获取安全码结果值
-				var resultJson = response.Content;
-				var sendCodeJson = JsonConvert.DeserializeObject<SendCodeJson>(resultJson);
+				var result = response.Content;
+				var sendCodeJson = JsonConvert.DeserializeObject<SendCodeJson>(result);
 				if(sendCodeJson.statuscode =="1")
 				{
 					RunOnUiThread(()=>{

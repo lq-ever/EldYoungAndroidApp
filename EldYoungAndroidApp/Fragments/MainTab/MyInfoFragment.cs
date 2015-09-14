@@ -15,6 +15,11 @@ using EldYoungAndroidApp.My;
 using Android.Graphics;
 using EldYoungAndroidApp.Common;
 using Android.Provider;
+using EldYoungAndroidApp.Param;
+using Java.IO;
+using Newtonsoft.Json;
+using EldYoungAndroidApp.Json;
+using System.IO;
 
 
 
@@ -31,7 +36,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 		private int PhotoResult =3;//处理结果
 
 		private  string IMAGE_UNSPECTFIED = "image/*"; 
-
+		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 	
 
 		public override void OnCreate (Bundle savedInstanceState)
@@ -214,12 +219,11 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				if (extras != null)  
 				{  
 					Bitmap photo = (Bitmap)extras.GetParcelable("data");  
-
-					//todo:调用web服务上传头像
-
 					//将图像保存至本地
-					SetPicToLocal(photo);//保存在SD卡中
+					SetPicToLocalAndServer(photo);//保存在SD卡中
 					img_head.SetImageBitmap (photo);
+//					//todo:调用web服务上传头像
+//					HeadImgPost(photo);
 				}  
 			}
 
@@ -245,7 +249,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 
 		}
 
-		private void SetPicToLocal(Bitmap mBitmap) 
+		private void SetPicToLocalAndServer(Bitmap mBitmap) 
 		{
 
 			var sdStatus = Android.OS.Environment.ExternalStorageState;
@@ -260,9 +264,36 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				file.Mkdirs();// 创建文件夹
 			string fileName = path +Global.Guid+ "head.jpg";
 			try{
-				MyFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Create);  
+				MyFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.OpenOrCreate);  
 				//保存照片  
-				mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, MyFileStream);  
+				mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, MyFileStream); 
+
+				byte[] buffer = new byte[MyFileStream.Length];
+				MyFileStream.Read(buffer, 0, buffer.Length);
+
+				// 设置当前流的位置为流的开始
+				MyFileStream.Seek(0, SeekOrigin.Begin);
+				byte[] encode = Base64.Encode(buffer, Base64Flags.Default);
+				//string headimgStr = new string(encode);
+				string headimgStr = encode.ToString();
+				//调用restapi提交头像
+				var headImgPostParam = new HeadImgPostParam () {
+					UId = Global.MyInfo.UId,ImageStr = headimgStr
+				};
+				SetRestRequestParams (headImgPostParam);
+				var restSharpRequestHelp = new RestSharpRequestHelp(headImgPostParam.Url,requestParams);
+				restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
+					//获取并解析返回resultJson获取安全码结果值
+					var result = response.Content;
+					var headimgJson = JsonConvert.DeserializeObject<HeadImgJson>(result);
+					if(headimgJson.statuscode!="1")
+					{
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"头像上传失败",ToastLength.Short).Show();
+							});
+					}
+				});
 			}
 			catch(Java.IO.FileNotFoundException e) {
 				e.PrintStackTrace ();
@@ -274,6 +305,33 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 
 		}
 
+		/// <summary>
+		/// Sets the rest request parameters.
+		/// </summary>
+		/// <param name="registerInfoParam">Register info parameter.</param>
+		private void SetRestRequestParams(HeadImgPostParam headImgPostParam)
+		{
+			if (!requestParams.ContainsKey ("key"))
+				requestParams.Add ("key", headImgPostParam.Key);
+			else
+				requestParams ["key"] = headImgPostParam.Key;
+
+			if (!requestParams.ContainsKey ("guid"))
+				requestParams.Add ("guid", headImgPostParam.Euid);
+			else
+				requestParams ["guid"] = headImgPostParam.Euid;
+
+			if (!requestParams.ContainsKey ("imgstr"))
+				requestParams.Add ("imgstr", headImgPostParam.ImageStr);
+			else
+				requestParams ["imgstr"] = headImgPostParam.ImageStr;
+
+			if (!requestParams.ContainsKey ("md5"))
+				requestParams.Add ("md5", headImgPostParam.Md5);
+			else
+				requestParams ["md5"] = headImgPostParam.Md5;
+
+		}
 		public override void OnResume ()
 		{
 			SetPersonImg ();
