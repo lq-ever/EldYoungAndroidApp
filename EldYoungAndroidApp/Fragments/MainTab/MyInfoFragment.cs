@@ -64,24 +64,31 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			//设置头像
 			SetPersonImg ();
 			//设置界面
-			var btn_setting = View.FindViewById<Button> (Resource.Id.btn_setting);
-			btn_setting.Click += (sender, e) => 
+			var img_setting = View.FindViewById<ImageView> (Resource.Id.img_setting);
+			img_setting.Click += (sender, e) => 
 			{
 				Activity.StartActivity(typeof(SetActivity));
 				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 			};
 
-			//设置个人账户信息
-			var rl_personal = View.FindViewById<RelativeLayout>(Resource.Id.rl_personal);
-			rl_personal.Click += (sender, e) => 
+			//设置个人头像信息
+//			var rl_personal = View.FindViewById<RelativeLayout>(Resource.Id.rl_personal);
+//			rl_personal.Click += (sender, e) => 
+//			{
+//
+//				if(picPopWindow ==null)
+//					picPopWindow = new SelectPicPopWindow(Activity,this);
+//				picPopWindow.ShowPopWindow(View.FindViewById<LinearLayout>(Resource.Id.ll_person));
+//			};
+
+
+			img_head.Click += (sender, e) => 
 			{
-//				Activity.StartActivity(typeof(PersonActivity));
-//			    Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 				if(picPopWindow ==null)
 					picPopWindow = new SelectPicPopWindow(Activity,this);
 				picPopWindow.ShowPopWindow(View.FindViewById<LinearLayout>(Resource.Id.ll_person));
 			};
-
+				
 			var tv_nickName = View.FindViewById<TextView> (Resource.Id.tv_nickName);
 			var tv_phonenumber = View.FindViewById<TextView> (Resource.Id.tv_phonenumber);
 			//设置用户昵称和手机号
@@ -96,59 +103,36 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				
 
 			
-			//基本资料
+			//个人资料
 			var rl_person_basic = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_basic);
 			rl_person_basic.Click += (sender, e) => 
 			{
 				Activity.StartActivity(typeof(PersonBasicActivity));
 				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 			};
-
-			//登录密码
-			var rl_person_loginPwd =View. FindViewById<RelativeLayout>(Resource.Id.rl_person_loginPwd);
-			rl_person_loginPwd.Click += (sender, e) => 
+			//账户安全
+			var rl_person_accountSecurity = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_accountSecurity);
+			rl_person_accountSecurity.Click += (sender, e) => 
 			{
-				var intent = new Intent(Activity,typeof(SendSecurityCodeActivity));
-				var sendbundle = new Bundle();
-				sendbundle.PutString("SendType","ModifyPwd");//修改密码
-				sendbundle.PutString("PhoneNumber",Global.MyInfo.PhoneNumberOne);
-				intent.PutExtras(sendbundle);
+				Activity.StartActivity(typeof(AccountSecurityActivity));
+				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+			};
+			//投诉建议
+			var rl_person_advice = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_advice);
+			rl_person_advice.Click += (sender, e) => 
+			{
+				Activity.StartActivity(typeof(AdviceActivity));
+				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+			};
+			//拨打电话
+			var tv_customPhone = View.FindViewById<TextView>(Resource.Id.tv_customPhone);
+			var customPhoneNum = tv_customPhone.Text;//客服电话
+			var img_callCustom = View.FindViewById<ImageView> (Resource.Id.img_callCustom);
+			img_callCustom.Click += (sender, e) => 
+			{
+				Intent intent=new Intent(Intent.ActionCall,Android.Net.Uri.Parse ("tel:"+customPhoneNum));
 				Activity.StartActivity(intent);
-				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
-
 			};
-			//修改支付密码
-			var rl_person_payPwd = View.FindViewById<RelativeLayout>(Resource.Id.rl_person_payPwd);
-			rl_person_payPwd.Click += (sender, e) => 
-			{
-				var intent = new Intent(Activity,typeof(SendSecurityCodeActivity));
-				var sendbundle = new Bundle();
-				sendbundle.PutString("SendType","ModifyPayPwd");//设置支付密码
-				sendbundle.PutString("PhoneNumber",Global.MyInfo.PhoneNumberOne);
-				intent.PutExtras(sendbundle);
-				Activity.StartActivity(intent);
-				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
-			};
-			var tv_payPwd = View. FindViewById<TextView> (Resource.Id.tv_payPwd);
-			tv_payPwd.Text = string.IsNullOrEmpty (Global.MyInfo.PayPassword) ? "未设置" : "修改";
-
-			//手机绑定
-			var rl_person_phoneBind = View.FindViewById<RelativeLayout>(Resource.Id.rl_person_phoneBind);
-			rl_person_phoneBind.Click += (sender, e) => 
-			{
-
-			};
-			var tv_phoneBind = View. FindViewById<TextView> (Resource.Id.tv_phoneBind);
-			tv_phoneBind.Text = string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? "未绑定" : "已绑定";
-			//身份认证
-			var rl_person_identity = View. FindViewById<RelativeLayout>(Resource.Id.rl_person_identity);
-			rl_person_identity.Click += (sender, e) => 
-			{
-
-			};
-			var tv_identity = View.FindViewById<TextView> (Resource.Id.tv_identity);
-			tv_identity.Text = string.IsNullOrEmpty (Global.MyInfo.IDNumber) ? "未认证" : "已认证";
-
 
 		}
 		private void SetPersonImg()
@@ -272,12 +256,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				MyFileStream.Seek(0, SeekOrigin.Begin);
 				MyFileStream.Read(buffer, 0, buffer.Length);
 
-		
-
-				//byte[] encode = Base64.Encode(buffer, Base64Flags.Default);
-
-
-				//string headimgStr = encode.ToString();
 
 				var  headimgStr = Convert.ToBase64String(buffer);
 				//调用restapi提交头像
@@ -326,7 +304,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				requestParams ["eguid"] = headImgPostParam.Euid;
 
 			if (!requestParams.ContainsKey ("eimgstr"))
-				requestParams.Add ("eimgstr", headImgPostParam.ImageStr);
+				requestParams.Add ("eimgstr", headImgPostParam.EimageStr);
 			else
 				requestParams ["eimgstr"] = headImgPostParam.EimageStr;
 

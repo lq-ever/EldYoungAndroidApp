@@ -169,6 +169,9 @@
     <Compile Include="Json\SetPasswordJson.cs" />
     <Compile Include="Param\HeadImgPostParam.cs" />
     <Compile Include="Json\HeadImgJson.cs" />
+    <Compile Include="Common\CircleImageView.cs" />
+    <Compile Include="Activitys\My\AccountSecurityActivity.cs" />
+    <Compile Include="Activitys\My\AdviceActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -346,6 +349,22 @@
     <AndroidResource Include="Resources\drawable\shape.xml" />
     <AndroidResource Include="Resources\layout\SendSecurityCodeLayout.axml" />
     <AndroidResource Include="Resources\layout\SetPasswordLayout.axml" />
+    <AndroidResource Include="Resources\values\attrs.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_aboutUs.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_accountSecurity.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_advice.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_cacheRemover.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_call.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_message.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_personalData.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_phone.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_userName.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfomation_versionDetection.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\myInfomation_next_arrow.png" />
+    <AndroidResource Include="Resources\layout\AccountSecurityLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\myInfomation_bgImage.png" />
+    <AndroidResource Include="Resources\layout\AdviceLayout.axml" />
+    <AndroidResource Include="Resources\drawable\callcustomphoneselector.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

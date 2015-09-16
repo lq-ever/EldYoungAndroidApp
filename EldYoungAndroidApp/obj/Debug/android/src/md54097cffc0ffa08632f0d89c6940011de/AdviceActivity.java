@@ -1,7 +1,7 @@
 package md54097cffc0ffa08632f0d89c6940011de;
 
 
-public class PayPasswordActivity
+public class AdviceActivity
 	extends android.app.Activity
 	implements
 		mono.android.IGCUserPeer
@@ -11,15 +11,15 @@ public class PayPasswordActivity
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("EldYoungAndroidApp.PayPasswordActivity, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", PayPasswordActivity.class, __md_methods);
+		mono.android.Runtime.register ("EldYoungAndroidApp.AdviceActivity, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", AdviceActivity.class, __md_methods);
 	}
 
 
-	public PayPasswordActivity () throws java.lang.Throwable
+	public AdviceActivity () throws java.lang.Throwable
 	{
 		super ();
-		if (getClass () == PayPasswordActivity.class)
-			mono.android.TypeManager.Activate ("EldYoungAndroidApp.PayPasswordActivity, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+		if (getClass () == AdviceActivity.class)
+			mono.android.TypeManager.Activate ("EldYoungAndroidApp.AdviceActivity, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

@@ -1,19 +1,18 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\SendSecurityCodeActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\SendSecurityCodeActivity.cs" Line="113" Column="21" />
-      <File FileName="EldYoungAndroidApp\RegisterResultActivity.cs" Line="99" Column="5" />
-      <File FileName="EldYoungAndroidApp\SetPasswordActivity.cs" Line="120" Column="38" />
-      <File FileName="EldYoungAndroidApp\Param\ModiyPasswordParam.cs" Line="43" Column="3" />
-      <File FileName="e:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\CustomProgressDialog.cs" Line="32" Column="1" />
-      <File FileName="EldYoungAndroidApp\Param\BaseParam.cs" Line="41" Column="25" />
-      <File FileName="EldYoungAndroidApp\Common\Global.cs" Line="51" Column="3" />
+      <File FileName="e:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\SendSecurityCodeActivity.cs" Line="1" Column="1" />
+      <File FileName="e:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\CustomProgressDialog.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" Line="74" Column="14" />
+      <File FileName="EldYoungAndroidApp\Resources\drawable\settingselector.xml" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\SetPasswordActivity.cs" line="80" column="3" />
+      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\SetPasswordActivity.cs" line="141" column="4" />
+      <Breakpoint file="e:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\SendSecurityCodeActivity.cs" line="180" column="4" />
+      <Breakpoint file="e:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\SetPasswordActivity.cs" line="154" column="5" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
