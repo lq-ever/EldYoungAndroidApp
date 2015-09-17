@@ -235,8 +235,8 @@ namespace EldYoungAndroidApp
 				//获取并解析返回resultJson获取安全码结果值
 				if(resoponse.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					var resultJson = resoponse.Content;
-					var smsJson = JsonConvert.DeserializeObject<SmsJson>(resultJson);
+					var result= resoponse.Content;
+					var smsJson = JsonConvert.DeserializeObject<SmsJson>(result);
 					if(smsJson.statuscode =="1")
 					{
 						RunOnUiThread(()=>{

@@ -172,6 +172,8 @@
     <Compile Include="Common\CircleImageView.cs" />
     <Compile Include="Activitys\My\AccountSecurityActivity.cs" />
     <Compile Include="Activitys\My\AdviceActivity.cs" />
+    <Compile Include="Param\UpdatePersonInfoParam.cs" />
+    <Compile Include="Json\UpdatePersonInfoJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

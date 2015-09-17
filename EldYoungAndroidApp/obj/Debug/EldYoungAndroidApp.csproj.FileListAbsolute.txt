@@ -354,8 +354,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\shape.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\sendsecuritycodelayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\setpasswordlayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\values\attrs.xml
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\R.cs.flag
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\uploadflags.txt
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\ic_myinfomation_aboutus.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\ic_myinfomation_accountsecurity.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\ic_myinfomation_advice.png
@@ -370,3 +368,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\my
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\accountsecuritylayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\myinfomation_bgimage.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\advicelayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\callcustomphoneselector.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\R.cs.flag
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\uploadflags.txt

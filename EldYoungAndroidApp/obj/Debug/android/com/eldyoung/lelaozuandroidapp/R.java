@@ -30,7 +30,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int border_color=0x7f010026;
+        public static final int civ_border_color=0x7f010026;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_border_overlay=0x7f010027;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -40,15 +48,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int border_width=0x7f010025;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int civ_border_overlay=0x7f010027;
+        public static final int civ_border_width=0x7f010025;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -556,6 +556,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int edit_other_endTime=0x7f0800f0;
         public static final int edit_other_searchTime=0x7f0800f8;
         public static final int edit_other_startTime=0x7f0800ef;
+        public static final int edit_phoneNumberOne=0x7f080101;
         public static final int edit_trueName=0x7f0800fb;
         public static final int fl_inner=0x7f08010e;
         public static final int fl_inner_for_google_style=0x7f08010b;
@@ -786,7 +787,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tv_person_phoneBind=0x7f080014;
         public static final int tv_phoneBind=0x7f080016;
         public static final int tv_phoneNumber=0x7f08004a;
-        public static final int tv_phoneNumberOne=0x7f080101;
         public static final int tv_phonenumber=0x7f0800d9;
         public static final int tv_service_agree=0x7f080124;
         public static final int tv_tab_myAlarm=0x7f0800c9;
@@ -945,21 +945,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CircleImageView_border_color com.eldyoung.lelaozuandroidapp:border_color}</code></td><td></td></tr>
-           <tr><td><code>{@link #CircleImageView_border_width com.eldyoung.lelaozuandroidapp:border_width}</code></td><td></td></tr>
+           <tr><td><code>{@link #CircleImageView_civ_border_color com.eldyoung.lelaozuandroidapp:civ_border_color}</code></td><td></td></tr>
            <tr><td><code>{@link #CircleImageView_civ_border_overlay com.eldyoung.lelaozuandroidapp:civ_border_overlay}</code></td><td></td></tr>
+           <tr><td><code>{@link #CircleImageView_civ_border_width com.eldyoung.lelaozuandroidapp:civ_border_width}</code></td><td></td></tr>
            <tr><td><code>{@link #CircleImageView_civ_fill_color com.eldyoung.lelaozuandroidapp:civ_fill_color}</code></td><td></td></tr>
            </table>
-           @see #CircleImageView_border_color
-           @see #CircleImageView_border_width
+           @see #CircleImageView_civ_border_color
            @see #CircleImageView_civ_border_overlay
+           @see #CircleImageView_civ_border_width
            @see #CircleImageView_civ_fill_color
          */
         public static final int[] CircleImageView = {
             0x7f010025, 0x7f010026, 0x7f010027, 0x7f010028
         };
         /**
-          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#border_color}
+          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_border_color}
           attribute's value can be found in the {@link #CircleImageView} array.
 
 
@@ -970,25 +970,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.eldyoung.lelaozuandroidapp:border_color
+          @attr name com.eldyoung.lelaozuandroidapp:civ_border_color
         */
-        public static final int CircleImageView_border_color = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#border_width}
-          attribute's value can be found in the {@link #CircleImageView} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.eldyoung.lelaozuandroidapp:border_width
-        */
-        public static final int CircleImageView_border_width = 0;
+        public static final int CircleImageView_civ_border_color = 1;
         /**
           <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_border_overlay}
           attribute's value can be found in the {@link #CircleImageView} array.
@@ -1003,6 +987,22 @@ containing a value of this type.
           @attr name com.eldyoung.lelaozuandroidapp:civ_border_overlay
         */
         public static final int CircleImageView_civ_border_overlay = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_border_width}
+          attribute's value can be found in the {@link #CircleImageView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eldyoung.lelaozuandroidapp:civ_border_width
+        */
+        public static final int CircleImageView_civ_border_width = 0;
         /**
           <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_fill_color}
           attribute's value can be found in the {@link #CircleImageView} array.

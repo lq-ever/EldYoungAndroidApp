@@ -83,6 +83,10 @@ namespace EldYoungAndroidApp.Model
 				return Global.AndroidReleaseHeadImgPre + HeadImgUrl;
 			}
 		}
+		/// <summary>
+		/// 详细地址
+		/// </summary>
+		/// <value>The contact address.</value>
 		public string ContactAddress {
 			get;
 			set;

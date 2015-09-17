@@ -115,24 +115,28 @@
 
    <!-- 个人基本信息页面 -->
    <style name ="personbasic_ll_layout">
-     <item name="android:layout_marginTop">3dp</item>
+     <item name="android:gravity">center</item>
      <item name ="android:background">@color/white</item>
-     <item name ="android:layout_height">40dp</item>
+     <item name ="android:layout_height">48dp</item>
+     <item name="android:layout_width">match_parent</item>
+    
    </style>
    <style name ="personbasic_tv_key">
-     <item name="android:textColor">@color/ingray</item>
-     <item name="android:layout_marginLeft">10dp</item>
+     <item name="android:textColor">@color/darkgray</item>
+     <item name="android:layout_marginLeft">13dp</item>
      <item name="android:textSize">14sp</item>
      <item name="android:layout_width">80dp</item>
      <item name="android:gravity">center_vertical</item>
    </style>
    <style name ="personbasic_value">
-     <item name="android:textColor">@color/darkgray</item>
+     <item name="android:textColor">@color/lightgray</item>
      <item name="android:layout_marginLeft">5dp</item>
      <item name="android:layout_marginRight">5dp</item>
      <item name="android:layout_width">0dp</item>
      <item name="android:layout_weight">1</item>
      <item name="android:gravity">center_vertical</item>
+     <item name="android:textSize">12sp</item>
+     <item name="android:textColorHint">@color/lightgray</item>
    </style>
 
 </resources>

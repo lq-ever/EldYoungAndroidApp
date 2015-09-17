@@ -125,13 +125,46 @@ namespace EldYoungAndroidApp.Common
 
 		}
 
-
+		/// <summary>
+		/// 手机安全码
+		/// </summary>
+		/// <returns><c>true</c> if is security code the specified code; otherwise, <c>false</c>.</returns>
+		/// <param name="code">Code.</param>
 		public static bool IsSecurityCode(string code)
 		{
 			var securityCode = "^\\d{6}$";
 			return Regex.IsMatch (code, securityCode);
 		}
-
+		/// <summary>
+		/// 验证固定电话号码
+		/// </summary>
+		/// <returns><c>true</c> if is fixed phone the specified fixedPhone; otherwise, <c>false</c>.</returns>
+		/// <param name="fixedPhone">Fixed phone.</param>
+		public static bool IsFixedPhone(string fixedPhone)
+		{
+			var fixedRegx = "^(\\d{3,4}-)?\\d{6,8}$";
+			return Regex.IsMatch (fixedPhone, fixedRegx);
+		}
+		/// <summary>
+		/// 验证身份证号码
+		/// </summary>
+		/// <returns><c>true</c> if is identifier card no the specified IdCardNo; otherwise, <c>false</c>.</returns>
+		/// <param name="IdCardNo">Identifier card no.</param>
+		public static bool IsIdCardNo(string IdCardNo)
+		{
+			var idCardNoRegx = "(^\\d{18}$)|(^\\d{15}$)";
+			return Regex.IsMatch (IdCardNo, idCardNoRegx);
+		}
+		/// <summary>
+		/// 验证邮箱号码
+		/// </summary>
+		/// <returns><c>true</c> if is email the specified email; otherwise, <c>false</c>.</returns>
+		/// <param name="email">Email.</param>
+		public static bool IsEmail(string email)
+		{
+			var emailRegx = "^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)$";
+			return Regex.IsMatch (email, emailRegx);
+		}
 	
 		public static int px2dip(Context context, float pxValue)
 		{

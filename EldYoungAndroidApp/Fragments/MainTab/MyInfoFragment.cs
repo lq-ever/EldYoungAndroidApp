@@ -60,28 +60,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 		{
 			base.OnActivityCreated (savedInstanceState);
 
-			img_head = View.FindViewById<ImageView> (Resource.Id.img_head);
-			//设置头像
-			SetPersonImg ();
-			//设置界面
+
+			//设置操作
 			var img_setting = View.FindViewById<ImageView> (Resource.Id.img_setting);
 			img_setting.Click += (sender, e) => 
 			{
 				Activity.StartActivity(typeof(SetActivity));
 				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 			};
-
+			img_head = View.FindViewById<ImageView> (Resource.Id.img_head);
+			//设置头像
+			SetPersonImg ();
 			//设置个人头像信息
-//			var rl_personal = View.FindViewById<RelativeLayout>(Resource.Id.rl_personal);
-//			rl_personal.Click += (sender, e) => 
-//			{
-//
-//				if(picPopWindow ==null)
-//					picPopWindow = new SelectPicPopWindow(Activity,this);
-//				picPopWindow.ShowPopWindow(View.FindViewById<LinearLayout>(Resource.Id.ll_person));
-//			};
-
-
 			img_head.Click += (sender, e) => 
 			{
 				if(picPopWindow ==null)
@@ -138,16 +128,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 		private void SetPersonImg()
 		{
 			//从Sd中找头像，转换成Bitmap
-			Bitmap bt = BitmapFactory.DecodeFile(path +Global.Guid+ "head.jpg");
-			if(bt!=null){
-
-				img_head.SetImageBitmap (bt);
-			}
-			else
-			{
-				//本地无照片,调用web服务获取
-				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
-			}
+//			Bitmap bt = BitmapFactory.DecodeFile(path +Global.Guid+ "head.jpg");
+//			if(bt!=null){
+//
+//				img_head.SetImageBitmap (bt);
+//			}
+//			else
+//			{
+//				//本地无照片,调用web服务获取
+//				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
+//			}
+			//调用web服务获取
+			Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
 		}
 
 		public void OnClick (View v)
@@ -203,9 +195,10 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				if (extras != null)  
 				{  
 					Bitmap photo = (Bitmap)extras.GetParcelable("data");  
-					//将图像保存至本地
-					SetPicToLocalAndServer(photo);//保存在SD卡中
 					img_head.SetImageBitmap (photo);
+					//将图像保存至本地和服务器上
+					SetPicToLocalAndServer(photo);//保存在SD卡中
+
 
 				}  
 			}

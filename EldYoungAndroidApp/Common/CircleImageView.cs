@@ -6,6 +6,7 @@ using Android.Util;
 using Android.Content.Res;
 using Java.Lang;
 using Android.Graphics.Drawables;
+using Android.Runtime;
 
 namespace EldYoungAndroidApp.Common
 {
@@ -17,8 +18,13 @@ namespace EldYoungAndroidApp.Common
 		private static readonly int COLORDRAWABLE_DIMENSION = 2;
 
 		private static readonly int DEFAULT_BORDER_WIDTH = 0;
-		private static readonly int DEFAULT_BORDER_COLOR = Color.Black;
-		private static readonly int DEFAULT_FILL_COLOR = Color.Transparent;
+//		private static readonly int DEFAULT_BORDER_COLOR = Color.Black;
+//
+//		private static readonly int DEFAULT_FILL_COLOR = Color.Transparent;
+		private static readonly int DEFAULT_BORDER_COLOR = Resource.Color.white;
+
+		private static readonly int DEFAULT_FILL_COLOR = Resource.Color.transparent;
+
 		private static readonly bool DEFAULT_BORDER_OVERLAY = false;
 
 		private readonly RectF mDrawableRect = new RectF();
@@ -46,6 +52,9 @@ namespace EldYoungAndroidApp.Common
 		private bool mSetupPending;
 		private bool mBorderOverlay;
 
+		protected CircleImageView (IntPtr javaReference, JniHandleOwnership transfer):base(javaReference,transfer)
+		{
+		}
 		public CircleImageView (Context context):base(context)
 		{
 			init();
@@ -61,10 +70,10 @@ namespace EldYoungAndroidApp.Common
 
 			TypedArray a = context.ObtainStyledAttributes(attrs, Resource.Styleable.CircleImageView, defStyle, 0);
 
-			mBorderWidth = a.GetDimensionPixelSize(Resource.Styleable.CircleImageView_border_width,DEFAULT_BORDER_WIDTH);
-			mBorderColor = a.GetColor (Resource.Styleable.CircleImageView_border_color, DEFAULT_BORDER_COLOR);
+			mBorderWidth = a.GetDimensionPixelSize(Resource.Styleable.CircleImageView_civ_border_width,DEFAULT_BORDER_WIDTH);
+			mBorderColor = a.GetColor(Resource.Styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_COLOR);//使用这个不报错
 			mBorderOverlay = a.GetBoolean(Resource.Styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY);
-			mFillColor = a.GetColor(Resource.Styleable.CircleImageView_civ_fill_color, DEFAULT_FILL_COLOR);
+			mFillColor = a.GetColor(Resource.Styleable.CircleImageView_civ_border_overlay, DEFAULT_FILL_COLOR);//使用这个不报错
 			a.Recycle ();
 			init ();
 		}
@@ -132,7 +141,7 @@ namespace EldYoungAndroidApp.Common
 			}
 
 			mBorderColor = borderColor;
-			mBorderPaint.Color=Resources.GetColor(mBorderColor);
+			mBorderPaint.Color= Context.Resources.GetColor(mBorderColor);
 			Invalidate ();
 		}
 
@@ -152,7 +161,7 @@ namespace EldYoungAndroidApp.Common
 			}
 
 			mFillColor = fillColor;
-			mFillPaint.Color = Resources.GetColor(fillColor);
+			mFillPaint.Color =Context.Resources.GetColor(fillColor);
 			Invalidate();
 		}
 
@@ -268,12 +277,16 @@ namespace EldYoungAndroidApp.Common
 
 			mBorderPaint.SetStyle (Paint.Style.Stroke);
 			mBorderPaint.AntiAlias = true;
-			mBorderPaint.Color = Resources.GetColor(mBorderColor);
+			//bug ,报错
+			var packageName = Context.Resources.GetString(Resource.String.app_name);
+			mBorderPaint.Color = Context.Resources.GetColor(mBorderColor); 
+
+
 			mBorderPaint.StrokeWidth = mBorderWidth;
 
 			mFillPaint.SetStyle(Paint.Style.Fill);
 			mFillPaint.AntiAlias=true;
-			mFillPaint.Color = Resources.GetColor(mFillColor);
+		    mFillPaint.Color =  Context.Resources.GetColor(mFillColor);
 
 			mBitmapHeight = mBitmap.Height;
 			mBitmapWidth = mBitmap.Width;
@@ -285,7 +298,7 @@ namespace EldYoungAndroidApp.Common
 			if (!mBorderOverlay) {
 				mDrawableRect.Inset(mBorderWidth, mBorderWidth);
 			}
-		//	mDrawableRect.Set(mBorderWidth, mBorderWidth, mBorderRect.Width() - mBorderWidth, mBorderRect.Height() - mBorderWidth);
+		
 			mDrawableRadius = Java.Lang.Math.Min(mDrawableRect.Height() / 2, mDrawableRect.Width() / 2);
 
 			updateShaderMatrix();

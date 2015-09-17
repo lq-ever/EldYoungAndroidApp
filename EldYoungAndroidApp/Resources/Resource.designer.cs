@@ -78,13 +78,13 @@ namespace EldYoungAndroidApp
 		{
 			
 			// aapt resource value: 0x7f010026
-			public const int border_color = 2130772006;
-			
-			// aapt resource value: 0x7f010025
-			public const int border_width = 2130772005;
+			public const int civ_border_color = 2130772006;
 			
 			// aapt resource value: 0x7f010027
 			public const int civ_border_overlay = 2130772007;
+			
+			// aapt resource value: 0x7f010025
+			public const int civ_border_width = 2130772005;
 			
 			// aapt resource value: 0x7f010028
 			public const int civ_fill_color = 2130772008;
@@ -888,6 +888,9 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800ef
 			public const int edit_other_startTime = 2131230959;
 			
+			// aapt resource value: 0x7f080101
+			public const int edit_phoneNumberOne = 2131230977;
+			
 			// aapt resource value: 0x7f0800fb
 			public const int edit_trueName = 2131230971;
 			
@@ -1578,9 +1581,6 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f08004a
 			public const int tv_phoneNumber = 2131230794;
 			
-			// aapt resource value: 0x7f080101
-			public const int tv_phoneNumberOne = 2131230977;
-			
 			// aapt resource value: 0x7f0800d9
 			public const int tv_phonenumber = 2131230937;
 			
@@ -2021,13 +2021,13 @@ namespace EldYoungAndroidApp
 					2130772008};
 			
 			// aapt resource value: 1
-			public const int CircleImageView_border_color = 1;
-			
-			// aapt resource value: 0
-			public const int CircleImageView_border_width = 0;
+			public const int CircleImageView_civ_border_color = 1;
 			
 			// aapt resource value: 2
 			public const int CircleImageView_civ_border_overlay = 2;
+			
+			// aapt resource value: 0
+			public const int CircleImageView_civ_border_width = 0;
 			
 			// aapt resource value: 3
 			public const int CircleImageView_civ_fill_color = 3;

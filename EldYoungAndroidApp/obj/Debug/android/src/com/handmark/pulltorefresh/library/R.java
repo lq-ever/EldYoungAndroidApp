@@ -30,7 +30,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int border_color=0x7f010026;
+        public static final int civ_border_color=0x7f010026;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int civ_border_overlay=0x7f010027;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -40,15 +48,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int border_width=0x7f010025;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int civ_border_overlay=0x7f010027;
+        public static final int civ_border_width=0x7f010025;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -371,125 +371,126 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int btnlogin=0x7f020004;
         public static final int button_pressed=0x7f020005;
         public static final int button_unpress=0x7f020006;
-        public static final int checkboxselector=0x7f020007;
-        public static final int circle_normal=0x7f020008;
-        public static final int circle_selected=0x7f020009;
-        public static final int dark_dot=0x7f02000a;
-        public static final int default_ptr_flip=0x7f02000b;
-        public static final int default_ptr_rotate=0x7f02000c;
-        public static final int dot=0x7f02000d;
-        public static final int guardian_actionmore_selector=0x7f02000e;
-        public static final int guider1=0x7f02000f;
-        public static final int guider2=0x7f020010;
-        public static final int guider3=0x7f020011;
-        public static final int guider4=0x7f020012;
-        public static final int head=0x7f020013;
-        public static final int home_tab_personal=0x7f020014;
-        public static final int home_tab_personal_selected=0x7f020015;
-        public static final int ic_action_applyguardian=0x7f020016;
-        public static final int ic_action_back=0x7f020017;
-        public static final int ic_action_bindingguardian=0x7f020018;
-        public static final int ic_action_content_discard=0x7f020019;
-        public static final int ic_action_content_edit=0x7f02001a;
-        public static final int ic_action_content_save=0x7f02001b;
-        public static final int ic_action_more=0x7f02001c;
-        public static final int ic_action_rating_good=0x7f02001d;
-        public static final int ic_basicinformation=0x7f02001e;
-        public static final int ic_launch=0x7f02001f;
-        public static final int ic_launcher_lelaozu=0x7f020020;
-        public static final int ic_launcher_lelaozu_bgwhite=0x7f020021;
-        public static final int ic_login_eye_normal=0x7f020022;
-        public static final int ic_login_eye_selected=0x7f020023;
-        public static final int ic_login_password=0x7f020024;
-        public static final int ic_login_rememberpassword_normal=0x7f020025;
-        public static final int ic_login_rememberpassword_selected=0x7f020026;
-        public static final int ic_login_username=0x7f020027;
-        public static final int ic_medicalhistory=0x7f020028;
-        public static final int ic_menu_alarm_normal=0x7f020029;
-        public static final int ic_menu_alarm_selected=0x7f02002a;
-        public static final int ic_menu_guardian_normal=0x7f02002b;
-        public static final int ic_menu_guardian_selected=0x7f02002c;
-        public static final int ic_menu_health_normal=0x7f02002d;
-        public static final int ic_menu_health_selected=0x7f02002e;
-        public static final int ic_menu_mine_normal=0x7f02002f;
-        public static final int ic_menu_mine_selected=0x7f020030;
-        public static final int ic_myinfomation_aboutus=0x7f020031;
-        public static final int ic_myinfomation_accountsecurity=0x7f020032;
-        public static final int ic_myinfomation_advice=0x7f020033;
-        public static final int ic_myinfomation_cacheremover=0x7f020034;
-        public static final int ic_myinfomation_call=0x7f020035;
-        public static final int ic_myinfomation_message=0x7f020036;
-        public static final int ic_myinfomation_personaldata=0x7f020037;
-        public static final int ic_myinfomation_phone=0x7f020038;
-        public static final int ic_myinfomation_username=0x7f020039;
-        public static final int ic_myinfomation_versiondetection=0x7f02003a;
-        public static final int ic_register_combox_normal=0x7f02003b;
-        public static final int ic_register_combox_selected=0x7f02003c;
-        public static final int ic_register_eye_normal=0x7f02003d;
-        public static final int ic_register_eye_selected=0x7f02003e;
-        public static final int ic_register_message=0x7f02003f;
-        public static final int ic_register_password=0x7f020040;
-        public static final int ic_register_phone=0x7f020041;
-        public static final int ic_register_username=0x7f020042;
-        public static final int ic_sex_man=0x7f020043;
-        public static final int ic_sex_woman=0x7f020044;
-        public static final int icon=0x7f020045;
-        public static final int indicator_arrow=0x7f020046;
-        public static final int indicator_bg_bottom=0x7f020047;
-        public static final int indicator_bg_top=0x7f020048;
-        public static final int input_over=0x7f020049;
-        public static final int login_bg=0x7f02004a;
-        public static final int login_edit=0x7f02004b;
-        public static final int login_input=0x7f02004c;
-        public static final int menu_bg=0x7f02004d;
-        public static final int myinfomation_bgimage=0x7f02004e;
-        public static final int myinfomation_next_arrow=0x7f02004f;
-        public static final int progress_1=0x7f020050;
-        public static final int progress_2=0x7f020051;
-        public static final int progress_3=0x7f020052;
-        public static final int progress_4=0x7f020053;
-        public static final int progress_5=0x7f020054;
-        public static final int progress_6=0x7f020055;
-        public static final int progress_7=0x7f020056;
-        public static final int progress_8=0x7f020057;
-        public static final int progress_bg_holo_light=0x7f020058;
-        public static final int progress_horizontal_holo_light=0x7f020059;
-        public static final int progress_horizontal_holo_light_right=0x7f02005a;
-        public static final int progress_indeterminate_horizontal_holo=0x7f02005b;
-        public static final int progress_primary_holo_light=0x7f02005c;
-        public static final int progress_secondary_holo_light=0x7f02005d;
-        public static final int progressbar_indeterminate_holo1=0x7f02005e;
-        public static final int progressbar_indeterminate_holo2=0x7f02005f;
-        public static final int progressbar_indeterminate_holo3=0x7f020060;
-        public static final int progressbar_indeterminate_holo4=0x7f020061;
-        public static final int progressbar_indeterminate_holo5=0x7f020062;
-        public static final int progressbar_indeterminate_holo6=0x7f020063;
-        public static final int progressbar_indeterminate_holo7=0x7f020064;
-        public static final int progressbar_indeterminate_holo8=0x7f020065;
-        public static final int registeragreetextselector=0x7f020066;
-        public static final int regitercheckboxselector=0x7f020067;
-        public static final int relativelayoutselector=0x7f020068;
-        public static final int setting=0x7f020069;
-        public static final int setting_btn=0x7f02006a;
-        public static final int settingselector=0x7f02006b;
-        public static final int shape=0x7f02006c;
-        public static final int splash=0x7f02006d;
-        public static final int tab_bg2=0x7f02006e;
-        public static final int textselector=0x7f02006f;
-        public static final int tv_guardiandetailselector=0x7f020070;
-        public static final int tv_querryguardianselector=0x7f020071;
-        public static final int unbindselector=0x7f020072;
-        public static final int uparrow=0x7f020073;
-        public static final int user_center_camera=0x7f020074;
-        public static final int user_center_default=0x7f020075;
-        public static final int user_center_fav=0x7f020076;
-        public static final int user_center_integral=0x7f020077;
-        public static final int user_center_service=0x7f020078;
-        public static final int user_center_share=0x7f020079;
-        public static final int user_center_support=0x7f02007a;
-        public static final int user_center_vip=0x7f02007b;
-        public static final int whats_new_start_btn=0x7f02007c;
-        public static final int white_dot=0x7f02007d;
+        public static final int callcustomphoneselector=0x7f020007;
+        public static final int checkboxselector=0x7f020008;
+        public static final int circle_normal=0x7f020009;
+        public static final int circle_selected=0x7f02000a;
+        public static final int dark_dot=0x7f02000b;
+        public static final int default_ptr_flip=0x7f02000c;
+        public static final int default_ptr_rotate=0x7f02000d;
+        public static final int dot=0x7f02000e;
+        public static final int guardian_actionmore_selector=0x7f02000f;
+        public static final int guider1=0x7f020010;
+        public static final int guider2=0x7f020011;
+        public static final int guider3=0x7f020012;
+        public static final int guider4=0x7f020013;
+        public static final int head=0x7f020014;
+        public static final int home_tab_personal=0x7f020015;
+        public static final int home_tab_personal_selected=0x7f020016;
+        public static final int ic_action_applyguardian=0x7f020017;
+        public static final int ic_action_back=0x7f020018;
+        public static final int ic_action_bindingguardian=0x7f020019;
+        public static final int ic_action_content_discard=0x7f02001a;
+        public static final int ic_action_content_edit=0x7f02001b;
+        public static final int ic_action_content_save=0x7f02001c;
+        public static final int ic_action_more=0x7f02001d;
+        public static final int ic_action_rating_good=0x7f02001e;
+        public static final int ic_basicinformation=0x7f02001f;
+        public static final int ic_launch=0x7f020020;
+        public static final int ic_launcher_lelaozu=0x7f020021;
+        public static final int ic_launcher_lelaozu_bgwhite=0x7f020022;
+        public static final int ic_login_eye_normal=0x7f020023;
+        public static final int ic_login_eye_selected=0x7f020024;
+        public static final int ic_login_password=0x7f020025;
+        public static final int ic_login_rememberpassword_normal=0x7f020026;
+        public static final int ic_login_rememberpassword_selected=0x7f020027;
+        public static final int ic_login_username=0x7f020028;
+        public static final int ic_medicalhistory=0x7f020029;
+        public static final int ic_menu_alarm_normal=0x7f02002a;
+        public static final int ic_menu_alarm_selected=0x7f02002b;
+        public static final int ic_menu_guardian_normal=0x7f02002c;
+        public static final int ic_menu_guardian_selected=0x7f02002d;
+        public static final int ic_menu_health_normal=0x7f02002e;
+        public static final int ic_menu_health_selected=0x7f02002f;
+        public static final int ic_menu_mine_normal=0x7f020030;
+        public static final int ic_menu_mine_selected=0x7f020031;
+        public static final int ic_myinfomation_aboutus=0x7f020032;
+        public static final int ic_myinfomation_accountsecurity=0x7f020033;
+        public static final int ic_myinfomation_advice=0x7f020034;
+        public static final int ic_myinfomation_cacheremover=0x7f020035;
+        public static final int ic_myinfomation_call=0x7f020036;
+        public static final int ic_myinfomation_message=0x7f020037;
+        public static final int ic_myinfomation_personaldata=0x7f020038;
+        public static final int ic_myinfomation_phone=0x7f020039;
+        public static final int ic_myinfomation_username=0x7f02003a;
+        public static final int ic_myinfomation_versiondetection=0x7f02003b;
+        public static final int ic_register_combox_normal=0x7f02003c;
+        public static final int ic_register_combox_selected=0x7f02003d;
+        public static final int ic_register_eye_normal=0x7f02003e;
+        public static final int ic_register_eye_selected=0x7f02003f;
+        public static final int ic_register_message=0x7f020040;
+        public static final int ic_register_password=0x7f020041;
+        public static final int ic_register_phone=0x7f020042;
+        public static final int ic_register_username=0x7f020043;
+        public static final int ic_sex_man=0x7f020044;
+        public static final int ic_sex_woman=0x7f020045;
+        public static final int icon=0x7f020046;
+        public static final int indicator_arrow=0x7f020047;
+        public static final int indicator_bg_bottom=0x7f020048;
+        public static final int indicator_bg_top=0x7f020049;
+        public static final int input_over=0x7f02004a;
+        public static final int login_bg=0x7f02004b;
+        public static final int login_edit=0x7f02004c;
+        public static final int login_input=0x7f02004d;
+        public static final int menu_bg=0x7f02004e;
+        public static final int myinfomation_bgimage=0x7f02004f;
+        public static final int myinfomation_next_arrow=0x7f020050;
+        public static final int progress_1=0x7f020051;
+        public static final int progress_2=0x7f020052;
+        public static final int progress_3=0x7f020053;
+        public static final int progress_4=0x7f020054;
+        public static final int progress_5=0x7f020055;
+        public static final int progress_6=0x7f020056;
+        public static final int progress_7=0x7f020057;
+        public static final int progress_8=0x7f020058;
+        public static final int progress_bg_holo_light=0x7f020059;
+        public static final int progress_horizontal_holo_light=0x7f02005a;
+        public static final int progress_horizontal_holo_light_right=0x7f02005b;
+        public static final int progress_indeterminate_horizontal_holo=0x7f02005c;
+        public static final int progress_primary_holo_light=0x7f02005d;
+        public static final int progress_secondary_holo_light=0x7f02005e;
+        public static final int progressbar_indeterminate_holo1=0x7f02005f;
+        public static final int progressbar_indeterminate_holo2=0x7f020060;
+        public static final int progressbar_indeterminate_holo3=0x7f020061;
+        public static final int progressbar_indeterminate_holo4=0x7f020062;
+        public static final int progressbar_indeterminate_holo5=0x7f020063;
+        public static final int progressbar_indeterminate_holo6=0x7f020064;
+        public static final int progressbar_indeterminate_holo7=0x7f020065;
+        public static final int progressbar_indeterminate_holo8=0x7f020066;
+        public static final int registeragreetextselector=0x7f020067;
+        public static final int regitercheckboxselector=0x7f020068;
+        public static final int relativelayoutselector=0x7f020069;
+        public static final int setting=0x7f02006a;
+        public static final int setting_btn=0x7f02006b;
+        public static final int settingselector=0x7f02006c;
+        public static final int shape=0x7f02006d;
+        public static final int splash=0x7f02006e;
+        public static final int tab_bg2=0x7f02006f;
+        public static final int textselector=0x7f020070;
+        public static final int tv_guardiandetailselector=0x7f020071;
+        public static final int tv_querryguardianselector=0x7f020072;
+        public static final int unbindselector=0x7f020073;
+        public static final int uparrow=0x7f020074;
+        public static final int user_center_camera=0x7f020075;
+        public static final int user_center_default=0x7f020076;
+        public static final int user_center_fav=0x7f020077;
+        public static final int user_center_integral=0x7f020078;
+        public static final int user_center_service=0x7f020079;
+        public static final int user_center_share=0x7f02007a;
+        public static final int user_center_support=0x7f02007b;
+        public static final int user_center_vip=0x7f02007c;
+        public static final int whats_new_start_btn=0x7f02007d;
+        public static final int white_dot=0x7f02007e;
     }
     public static final class id {
         public static final int action_edit=0x7f08012c;
@@ -555,6 +556,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int edit_other_endTime=0x7f0800f0;
         public static final int edit_other_searchTime=0x7f0800f8;
         public static final int edit_other_startTime=0x7f0800ef;
+        public static final int edit_phoneNumberOne=0x7f080101;
         public static final int edit_trueName=0x7f0800fb;
         public static final int fl_inner=0x7f08010e;
         public static final int fl_inner_for_google_style=0x7f08010b;
@@ -785,7 +787,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tv_person_phoneBind=0x7f080014;
         public static final int tv_phoneBind=0x7f080016;
         public static final int tv_phoneNumber=0x7f08004a;
-        public static final int tv_phoneNumberOne=0x7f080101;
         public static final int tv_phonenumber=0x7f0800d9;
         public static final int tv_service_agree=0x7f080124;
         public static final int tv_tab_myAlarm=0x7f0800c9;
@@ -944,21 +945,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CircleImageView_border_color com.eldyoung.lelaozuandroidapp:border_color}</code></td><td></td></tr>
-           <tr><td><code>{@link #CircleImageView_border_width com.eldyoung.lelaozuandroidapp:border_width}</code></td><td></td></tr>
+           <tr><td><code>{@link #CircleImageView_civ_border_color com.eldyoung.lelaozuandroidapp:civ_border_color}</code></td><td></td></tr>
            <tr><td><code>{@link #CircleImageView_civ_border_overlay com.eldyoung.lelaozuandroidapp:civ_border_overlay}</code></td><td></td></tr>
+           <tr><td><code>{@link #CircleImageView_civ_border_width com.eldyoung.lelaozuandroidapp:civ_border_width}</code></td><td></td></tr>
            <tr><td><code>{@link #CircleImageView_civ_fill_color com.eldyoung.lelaozuandroidapp:civ_fill_color}</code></td><td></td></tr>
            </table>
-           @see #CircleImageView_border_color
-           @see #CircleImageView_border_width
+           @see #CircleImageView_civ_border_color
            @see #CircleImageView_civ_border_overlay
+           @see #CircleImageView_civ_border_width
            @see #CircleImageView_civ_fill_color
          */
         public static final int[] CircleImageView = {
             0x7f010025, 0x7f010026, 0x7f010027, 0x7f010028
         };
         /**
-          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#border_color}
+          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_border_color}
           attribute's value can be found in the {@link #CircleImageView} array.
 
 
@@ -969,25 +970,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.eldyoung.lelaozuandroidapp:border_color
+          @attr name com.eldyoung.lelaozuandroidapp:civ_border_color
         */
-        public static final int CircleImageView_border_color = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#border_width}
-          attribute's value can be found in the {@link #CircleImageView} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.eldyoung.lelaozuandroidapp:border_width
-        */
-        public static final int CircleImageView_border_width = 0;
+        public static final int CircleImageView_civ_border_color = 1;
         /**
           <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_border_overlay}
           attribute's value can be found in the {@link #CircleImageView} array.
@@ -1002,6 +987,22 @@ containing a value of this type.
           @attr name com.eldyoung.lelaozuandroidapp:civ_border_overlay
         */
         public static final int CircleImageView_civ_border_overlay = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_border_width}
+          attribute's value can be found in the {@link #CircleImageView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eldyoung.lelaozuandroidapp:civ_border_width
+        */
+        public static final int CircleImageView_civ_border_width = 0;
         /**
           <p>This symbol is the offset where the {@link com.eldyoung.lelaozuandroidapp.R.attr#civ_fill_color}
           attribute's value can be found in the {@link #CircleImageView} array.
