@@ -141,40 +141,42 @@ namespace EldYoungAndroidApp
 
 			var restSharpRequestHelp = new RestSharpRequestHelp(updatePersonInfoParam.Url,requestParams);
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-
-				//获取并解析返回resultJson获取安全码结果值
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var result= response.Content;
-					var updatepersoninfoJson = JsonConvert.DeserializeObject<UpdatePersonInfoJson>(result);
-					if(updatepersoninfoJson.statuscode =="1")
+					//获取并解析返回resultJson获取安全码结果值
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						RunOnUiThread(()=>{
-							
-							Toast.MakeText(this,"修改个人资料成功",ToastLength.Short).Show();
-							this.Finish();
+						var result= response.Content;
+						var updatepersoninfoJson = JsonConvert.DeserializeObject<UpdatePersonInfoJson>(result);
+						if(updatepersoninfoJson.statuscode =="1")
+						{
+							RunOnUiThread(()=>{
+								
+								Toast.MakeText(this,"修改个人资料成功",ToastLength.Short).Show();
+								this.Finish();
 
-						});
+							});
+						}
+						else
+						{
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,updatepersoninfoJson.message,ToastLength.Short).Show();
+								});
+						}	
 					}
 					else
 					{
 						RunOnUiThread(()=>
 							{
-								Toast.MakeText(this,updatepersoninfoJson.message,ToastLength.Short).Show();
+								Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
 							});
-					}	
-				}
-				else
-				{
+					}
 					RunOnUiThread(()=>
 						{
-							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
 						});
 				}
-				RunOnUiThread(()=>
-					{
-						ProgressDialogUtil.StopProgressDialog();
-					});
 			});
 		}
 		/// <summary>

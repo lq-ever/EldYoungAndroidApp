@@ -256,17 +256,23 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				SetRestRequestParams (headImgPostParam);
 				var restSharpRequestHelp = new RestSharpRequestHelp(headImgPostParam.Url,requestParams);
 				restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-					//获取并解析返回resultJson获取安全码结果值
-					var result = response.Content;
-					var headimgJson = JsonConvert.DeserializeObject<HeadImgJson>(result);
-					if(headimgJson.statuscode == "1")
-						Global.MyInfo.HeadImgUrl = headimgJson.data.HeadImgUrl;
-					else
+					if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 					{
-						Activity.RunOnUiThread(()=>
+						if(response.StatusCode == System.Net.HttpStatusCode.OK)
+						{
+							//获取并解析返回resultJson获取安全码结果值
+							var result = response.Content;
+							var headimgJson = JsonConvert.DeserializeObject<HeadImgJson>(result);
+							if(headimgJson.statuscode == "1")
+								Global.MyInfo.HeadImgUrl = headimgJson.data.HeadImgUrl;
+							else
 							{
-								Toast.MakeText(Activity,"头像上传失败",ToastLength.Short).Show();
-							});
+								Activity.RunOnUiThread(()=>
+									{
+										Toast.MakeText(Activity,"头像上传失败",ToastLength.Short).Show();
+									});
+							}
+						}
 					}
 				});
 			}

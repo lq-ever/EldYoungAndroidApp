@@ -57,7 +57,7 @@ namespace EldYoungAndroidApp.Common
 
 		//测试环境
 		//public const string AndroidLocalServerPath ="http://192.168.0.117:8089/Android/";
-		public const string AndroidLocalServerPath ="http://192.168.0.153:3312/Android/";
+		public const string AndroidLocalServerPath ="http://192.168.0.159:82/Android/";
 		//正式环境
 		public const string AndroidReleaseServerPath ="http://dataserver.lelaozu.com/Android/";
 		public const string AndroidReleaseHeadImgPre ="http://i.lelaozu.com";

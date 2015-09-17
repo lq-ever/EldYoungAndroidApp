@@ -11,12 +11,17 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using EldYoungAndroidApp.Common;
+using Com.Handmark.Pulltorefresh.Library;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace EldYoungAndroidApp
 {
 	[Activity (Theme = "@style/MyCustomTheme")]			
-	public class AccountSecurityActivity : Activity
+	public class AccountSecurityActivity : Activity,PullToRefreshBase.IOnRefreshListener
 	{
+		private PullToRefreshScrollView mPullRefreshScrollView;  
+		private ScrollView mScrollView;  
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -36,6 +41,17 @@ namespace EldYoungAndroidApp
 			};
 			var tv_header_title = FindViewById<TextView> (Resource.Id.tv_header_title);
 			tv_header_title.Text = "账户安全";
+
+
+			mPullRefreshScrollView = FindViewById<PullToRefreshScrollView>(Resource.Id.pull_refresh_scrollview);
+			mScrollView = (ScrollView)mPullRefreshScrollView.RefreshableView;
+			//下拉刷新提示文本
+			mPullRefreshScrollView.GetLoadingLayoutProxy(true,false).SetPullLabel(GetString(Resource.String.pullDownLbl));
+			mPullRefreshScrollView.GetLoadingLayoutProxy (true,false).SetRefreshingLabel(GetString(Resource.String.pullDownRefreshLbl));
+			mPullRefreshScrollView.GetLoadingLayoutProxy (true, false).SetReleaseLabel (GetString(Resource.String.pullDownReleaseLbl));
+			//上拉、下拉设定  
+			mPullRefreshScrollView.Mode = PullToRefreshBase.PullToRefreshMode.Both;  
+
 			//登录密码
 			var rl_person_loginPwd = FindViewById<RelativeLayout>(Resource.Id.rl_person_loginPwd);
 			rl_person_loginPwd.Click += (sender, e) => 
@@ -81,6 +97,22 @@ namespace EldYoungAndroidApp
 			var tv_identity = FindViewById<TextView> (Resource.Id.tv_identity);
 			tv_identity.Text = string.IsNullOrEmpty (Global.MyInfo.IDNumber) ? "未认证" : "已认证";
 
+		}
+
+		public void OnRefresh (PullToRefreshBase p0)
+		{
+			Task.Factory.StartNew (() => {
+				
+				Refresh();
+			});
+		}
+		/// <summary>
+		/// Refresh this instance.
+		/// </summary>
+		private void Refresh()
+		{
+			Thread.Sleep (2000);
+			mPullRefreshScrollView.OnRefreshComplete ();
 		}
 	}
 }

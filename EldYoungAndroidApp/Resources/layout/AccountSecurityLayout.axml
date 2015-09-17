@@ -3,11 +3,13 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <ScrollView
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pull_refresh_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:scrollbars="vertical">
+        android:layout_height="match_parent"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode=""
+        ptr:ptrHeaderTextColor="@color/ingray">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -212,5 +214,5 @@
                     android:layout_centerVertical="true" />
             </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 </LinearLayout>
