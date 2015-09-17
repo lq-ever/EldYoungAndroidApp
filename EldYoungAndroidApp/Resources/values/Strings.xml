@@ -19,5 +19,5 @@
 	<string name="pullUpReleaseLbl">释放加载更多</string>
 	<string name ="Register">注册</string>
 	<string name ="securityCode">请输入收到的短信验证码</string>
-
+	<string name ="customphoneNumber">400-998-8855</string>
 </resources>

@@ -53,10 +53,10 @@
                 android:text="60秒后可重发"
                 android:textSize="15sp"
                 android:clickable="false"
-                android:background="@color/lightgray"
+                android:background="@drawable/btn_orange_selector"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:textColor="@color/ingray" />
+                android:textColor="@color/white" />
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout

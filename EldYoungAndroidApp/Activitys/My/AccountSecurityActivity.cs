@@ -62,7 +62,7 @@ namespace EldYoungAndroidApp
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 			var tv_payPwd = FindViewById<TextView> (Resource.Id.tv_payPwd);
-			tv_payPwd.Text = string.IsNullOrEmpty (Global.MyInfo.PayPassword) ? "未设置" : "修改";
+			tv_payPwd.Text = string.IsNullOrEmpty (Global.MyInfo.PayPassword) ? "设置" : "修改";
 
 			//手机绑定
 			var rl_person_phoneBind = FindViewById<RelativeLayout>(Resource.Id.rl_person_phoneBind);
@@ -71,7 +71,7 @@ namespace EldYoungAndroidApp
 
 			};
 			var tv_phoneBind = FindViewById<TextView> (Resource.Id.tv_phoneBind);
-			tv_phoneBind.Text = string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? "未绑定" : "已绑定";
+			tv_phoneBind.Text = string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? "绑定" : "解绑";
 			//身份认证
 			var rl_person_identity = FindViewById<RelativeLayout>(Resource.Id.rl_person_identity);
 			rl_person_identity.Click += (sender, e) => 

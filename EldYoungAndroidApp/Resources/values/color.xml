@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-    <color name="lightwhite">#fff</color>
+   
     <color name="red">#f00</color>   
     <color name ="color_nomal">@android:color/holo_blue_bright</color>
     <color name ="color_pressed">@android:color/darker_gray</color>
 
     <color name ="white">#ffffff</color>
+
     <color name ="blue">#4fb3fa</color>
     <color name ="black">@android:color/background_dark</color>
 

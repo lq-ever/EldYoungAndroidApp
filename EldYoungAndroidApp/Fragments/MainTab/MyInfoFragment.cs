@@ -90,9 +90,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				tv_phonenumber.Text = resultStr;
 			} else
 				tv_phonenumber.Text = "未绑定手机号";
-				
 
-			
 			//个人资料
 			var rl_person_basic = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_basic);
 			rl_person_basic.Click += (sender, e) => 
@@ -128,7 +126,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 		private void SetPersonImg()
 		{
 			//从Sd中找头像，转换成Bitmap
-//			Bitmap bt = BitmapFactory.DecodeFile(path +Global.Guid+ "head.jpg");
+//			Bitmap bt = BitmapFactory.DecodeFile(path + "myHead.jpg");
 //			if(bt!=null){
 //
 //				img_head.SetImageBitmap (bt);
@@ -138,7 +136,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 //				//本地无照片,调用web服务获取
 //				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
 //			}
-			//调用web服务获取
+			//本地无照片,调用web服务获取
 			Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
 		}
 
@@ -238,7 +236,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			Java.IO.File file = new Java.IO.File(path);
 			if(!file.Exists())
 				file.Mkdirs();// 创建文件夹
-			string fileName = path +Global.Guid+ "head.jpg";
+			string fileName = path + "myHead.jpg";
 			try{
 				MyFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.OpenOrCreate);  
 				//保存照片  
@@ -261,7 +259,9 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 					//获取并解析返回resultJson获取安全码结果值
 					var result = response.Content;
 					var headimgJson = JsonConvert.DeserializeObject<HeadImgJson>(result);
-					if(headimgJson.statuscode!="1")
+					if(headimgJson.statuscode == "1")
+						Global.MyInfo.HeadImgUrl = headimgJson.data.HeadImgUrl;
+					else
 					{
 						Activity.RunOnUiThread(()=>
 							{

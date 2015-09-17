@@ -62,9 +62,11 @@ namespace EldYoungAndroidApp
 			} else if (sendType == "ModifyPwd") {
 				tv_header_title.Text = "修改登录密码";
 				edit_Phone.Enabled = false;
+				SetPhoneNumberShow ();
 			} else if (sendType == "ModifyPayPwd") {
 				tv_header_title.Text = "设置支付密码";
 				edit_Phone.Enabled = false;
+				SetPhoneNumberShow ();
 			}
 			edit_SecurityCode = FindViewById<EditText> (Resource.Id.edit_SecurityCode);
 			btn_Send = FindViewById<Button> (Resource.Id.btn_Send);
@@ -121,8 +123,25 @@ namespace EldYoungAndroidApp
 				ProgressDialogUtil.StopProgressDialog();
 
 			};
+			//拨打客服
+			var tv_customPhone = FindViewById<TextView>(Resource.Id.tv_customPhone);
+			var customPhoneNum = tv_customPhone.Text;
+			tv_customPhone.Click += (sender, e) => 
+			{
+				Intent intent=new Intent(Intent.ActionCall,Android.Net.Uri.Parse ("tel:"+customPhoneNum));
+				StartActivity(intent);
+			};
 
-
+		}
+		private void SetPhoneNumberShow()
+		{
+			
+			if (!string.IsNullOrEmpty (phoneNumber)) {
+				var midleStr = phoneNumber.Substring (3, 4);
+				var resultStr = phoneNumber.Replace (midleStr, "****");
+				edit_Phone.Text = resultStr;
+			}
+			
 		}
 		/// <summary>
 		/// Valids the input.

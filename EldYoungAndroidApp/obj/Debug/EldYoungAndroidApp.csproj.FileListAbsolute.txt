@@ -371,3 +371,8 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\advicelayou
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\callcustomphoneselector.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\R.cs.flag
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\uploadflags.txt
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\btn_red_selector.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\btn_orange_selector.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\myinfomation_headimage.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\aboutuslayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\myinfomation_setup_aboutus_logo.png

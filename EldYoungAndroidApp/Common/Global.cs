@@ -94,9 +94,9 @@ namespace EldYoungAndroidApp.Common
 		public static DisplayImageOptions Options
 		{
 			get {
-				return new DisplayImageOptions.Builder ().ShowImageOnLoading (Resource.Drawable.head)
-					.ShowImageOnFail (Resource.Drawable.head)
-					.ShowImageForEmptyUri (Resource.Drawable.head)
+				return new DisplayImageOptions.Builder ().ShowImageOnLoading (Resource.Drawable.myInfomation_headImage)
+					.ShowImageOnFail (Resource.Drawable.myInfomation_headImage)
+					.ShowImageForEmptyUri (Resource.Drawable.myInfomation_headImage)
 					.CacheInMemory (true)
 					.CacheOnDisk (true)
 					.BitmapConfig (Bitmap.Config.Rgb565)
