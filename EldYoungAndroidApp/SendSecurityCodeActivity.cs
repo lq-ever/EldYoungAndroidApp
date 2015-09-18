@@ -156,17 +156,7 @@ namespace EldYoungAndroidApp
 			}
 			return true;
 		}
-//		public void SetbtnSend(bool flag)
-//		{
-//			btn_Send.Clickable = flag;
-//			if (flag) {
-//				btn_Send.SetBackgroundResource (Resource.Color.blue);
-//				btn_Send.SetTextColor (Resources.GetColor (Resource.Color.white));
-//			} else {
-//				btn_Send.SetBackgroundResource (Resource.Color.lightgray);
-//				btn_Send.SetTextColor (Resources.GetColor (Resource.Color.ingray));
-//			}
-//		}
+
 		/// <summary>
 		/// 发送验证码
 		/// </summary>
@@ -195,29 +185,32 @@ namespace EldYoungAndroidApp
 
 			var restSharpRequestHelp = new RestSharpRequestHelp(sendCodeParam.Url,requestsendcodeParams);
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				//获取并解析返回resultJson获取安全码结果值
-				var result = response.Content;
-				var sendCodeJson = JsonConvert.DeserializeObject<SendCodeJson>(result);
-				if(sendCodeJson.statuscode =="1")
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					RunOnUiThread(()=>{
-						securityCode = sendCodeJson.data.ToString();
-						ProgressDialogUtil.StopProgressDialog();
-						Toast.MakeText(this,"验证码发送成功",ToastLength.Short).Show();
-						mc.Start();
-
-					});
-				}
-				else
-				{
-					RunOnUiThread(()=>
-						{
-							Toast.MakeText(this,sendCodeJson.message,ToastLength.Short).Show();
+					//获取并解析返回resultJson获取安全码结果值
+					var result = response.Content;
+					var sendCodeJson = JsonConvert.DeserializeObject<SendCodeJson>(result);
+					if(sendCodeJson.statuscode =="1")
+					{
+						RunOnUiThread(()=>{
+							securityCode = sendCodeJson.data.ToString();
 							ProgressDialogUtil.StopProgressDialog();
-							btn_Send.Enabled = true;
-							return;
+							Toast.MakeText(this,"验证码发送成功",ToastLength.Short).Show();
+							mc.Start();
+
 						});
-				}	
+					}
+					else
+					{
+						RunOnUiThread(()=>
+							{
+								Toast.MakeText(this,sendCodeJson.message,ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								btn_Send.Enabled = true;
+								return;
+							});
+					}
+				}
 			});
 		}
 

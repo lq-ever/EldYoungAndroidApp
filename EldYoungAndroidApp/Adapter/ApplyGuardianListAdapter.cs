@@ -190,22 +190,34 @@ namespace EldYoungAndroidApp.Adapter
 				restSharpRequestHelp.RequestParams = requestParams;
 
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var result = response.Content;
-					var applyGuardianJson = JsonConvert.DeserializeObject<ApplyForGuardianJson>(result);
-
-					if(applyGuardianJson.statuscode == "1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						if(applyGuardianJson.data == "1")
-						{
-							activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(activity,"申请绑定监护人成功",ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
+						var result = response.Content;
+						var applyGuardianJson = JsonConvert.DeserializeObject<ApplyForGuardianJson>(result);
 
-									return;
-								});
+						if(applyGuardianJson.statuscode == "1")
+						{
+							if(applyGuardianJson.data == "1")
+							{
+								activity.RunOnUiThread(()=>
+									{
+										Toast.MakeText(activity,"申请绑定监护人成功",ToastLength.Short).Show();
+										ProgressDialogUtil.StopProgressDialog();
+
+										return;
+									});
+							}
+							else
+							{
+								activity.RunOnUiThread(()=>
+									{
+										Toast.MakeText(activity,"申请绑定失败,稍后在试...",ToastLength.Short).Show();
+										ProgressDialogUtil.StopProgressDialog();
+										return;
+									});
+							}
 						}
 						else
 						{
@@ -221,20 +233,11 @@ namespace EldYoungAndroidApp.Adapter
 					{
 						activity.RunOnUiThread(()=>
 							{
-								Toast.MakeText(activity,"申请绑定失败,稍后在试...",ToastLength.Short).Show();
+								Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
 								return;
 							});
 					}
-				}
-				else
-				{
-					activity.RunOnUiThread(()=>
-						{
-							Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
 				}
 				activity.RunOnUiThread(()=>
 					{

@@ -169,38 +169,41 @@ namespace EldYoungAndroidApp
 			else
 				restSharpRequestHelp.RequestParams = requestParams;
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var result = response.Content;
-					var examinebundGuardianJson = JsonConvert.DeserializeObject<ExamineBundGuardianJson>(result);
-					if(examinebundGuardianJson.statuscode == "1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(activity,"处理成功...",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								Remove(item);
-								return;
-							});
+						var result = response.Content;
+						var examinebundGuardianJson = JsonConvert.DeserializeObject<ExamineBundGuardianJson>(result);
+						if(examinebundGuardianJson.statuscode == "1")
+						{
+							activity.RunOnUiThread(()=>
+								{
+									Toast.MakeText(activity,"处理成功...",ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									Remove(item);
+									return;
+								});
+						}
+						else
+						{
+							activity.RunOnUiThread(()=>
+								{
+									Toast.MakeText(activity,"处理失败,稍后在试...",ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									return;
+								});
+						}
 					}
 					else
 					{
 						activity.RunOnUiThread(()=>
 							{
-								Toast.MakeText(activity,"处理失败,稍后在试...",ToastLength.Short).Show();
+								Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
 								return;
 							});
 					}
-				}
-				else
-				{
-					activity.RunOnUiThread(()=>
-						{
-							Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
 				}
 			});
 

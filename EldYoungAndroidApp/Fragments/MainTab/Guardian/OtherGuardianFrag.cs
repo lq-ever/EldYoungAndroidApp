@@ -126,41 +126,44 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 			UpdateGuardianInfoListParam ();
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var result = response.Content;
-					var guardianInfoJson =  JsonConvert.DeserializeObject<GuardianInfoJson>(result);
-					if(guardianInfoJson.statuscode =="1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						total = guardianInfoJson.data.total;
-						guardianInfoList = guardianInfoJson.data.items;
-						Activity.RunOnUiThread(()=>
-							{
-								guardianInfoAdapter.Clear();
-								guardianInfoAdapter.AddAll(guardianInfoList);
-								guardianInfoAdapter.NotifyDataSetChanged();
-								otherGuardianRefreshListView.OnRefreshComplete ();
-								HasLoadedOnce = true;//加载第一次成功
-							});
+						var result = response.Content;
+						var guardianInfoJson =  JsonConvert.DeserializeObject<GuardianInfoJson>(result);
+						if(guardianInfoJson.statuscode =="1")
+						{
+							total = guardianInfoJson.data.total;
+							guardianInfoList = guardianInfoJson.data.items;
+							Activity.RunOnUiThread(()=>
+								{
+									guardianInfoAdapter.Clear();
+									guardianInfoAdapter.AddAll(guardianInfoList);
+									guardianInfoAdapter.NotifyDataSetChanged();
+									otherGuardianRefreshListView.OnRefreshComplete ();
+									HasLoadedOnce = true;//加载第一次成功
+								});
+						}
+						else
+						{
+							Activity.RunOnUiThread(()=>
+								{
+									Toast.MakeText(Activity,"获取监护人列表信息失败...",ToastLength.Short).Show();
+									otherGuardianRefreshListView.OnRefreshComplete ();
+									return;
+								});
+						}
 					}
 					else
 					{
 						Activity.RunOnUiThread(()=>
 							{
-								Toast.MakeText(Activity,"获取监护人列表信息失败...",ToastLength.Short).Show();
+								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 								otherGuardianRefreshListView.OnRefreshComplete ();
 								return;
 							});
 					}
-				}
-				else
-				{
-					Activity.RunOnUiThread(()=>
-						{
-							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							otherGuardianRefreshListView.OnRefreshComplete ();
-							return;
-						});
 				}
 			});
 		}
@@ -251,46 +254,49 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 			pageIndex++;
 			UpdateGuardianInfoListParam ();
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var result = response.Content;
-					var guardianInfoJson =  JsonConvert.DeserializeObject<GuardianInfoJson>(result); 
-					if(guardianInfoJson.statuscode == "1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						total = guardianInfoJson.data.total;
-						guardianInfoList.AddRange(guardianInfoJson.data.items);
-						Activity.RunOnUiThread(()=>
-							{
-								guardianInfoAdapter.AddAll(guardianInfoJson.data.items);
-								guardianInfoAdapter.NotifyDataSetChanged();
-								otherGuardianRefreshListView.OnRefreshComplete ();
-								//讲listview滚动到上次加载位置
-								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
-							});
+						var result = response.Content;
+						var guardianInfoJson =  JsonConvert.DeserializeObject<GuardianInfoJson>(result); 
+						if(guardianInfoJson.statuscode == "1")
+						{
+							total = guardianInfoJson.data.total;
+							guardianInfoList.AddRange(guardianInfoJson.data.items);
+							Activity.RunOnUiThread(()=>
+								{
+									guardianInfoAdapter.AddAll(guardianInfoJson.data.items);
+									guardianInfoAdapter.NotifyDataSetChanged();
+									otherGuardianRefreshListView.OnRefreshComplete ();
+									//讲listview滚动到上次加载位置
+									actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
+								});
+						}
+						else
+						{
+							pageIndex --;
+							Activity.RunOnUiThread(()=>
+								{
+									Toast.MakeText(Activity,"获取更多监护人列表信息出错...",ToastLength.Short).Show();
+
+									otherGuardianRefreshListView.OnRefreshComplete ();
+									return;
+								});
+						}
+
 					}
 					else
 					{
 						pageIndex --;
 						Activity.RunOnUiThread(()=>
 							{
-								Toast.MakeText(Activity,"获取更多监护人列表信息出错...",ToastLength.Short).Show();
+								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 
 								otherGuardianRefreshListView.OnRefreshComplete ();
 								return;
 							});
 					}
-
-				}
-				else
-				{
-					pageIndex --;
-					Activity.RunOnUiThread(()=>
-						{
-							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-
-							otherGuardianRefreshListView.OnRefreshComplete ();
-							return;
-						});
 				}
 
 			});

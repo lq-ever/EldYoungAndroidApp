@@ -123,40 +123,43 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 				restSharpRequestHelp.RequestParams = requestParams;
 			
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var result = response.Content;
-					var getApplyInfoJson = JsonConvert.DeserializeObject<GetApplyInfoJson>(result);
-					if(getApplyInfoJson.statuscode =="1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						RunOnUiThread(()=>
-							{
-								getApplyInfoAdapter.Clear();//清空所有数据
-								getApplyInfoAdapter.AddAll(getApplyInfoJson.data);
-								getApplyInfoAdapter.NotifyDataSetChanged();
-								guardianApplyRefreshListView.OnRefreshComplete ();
-								HasLoadedOnce = true;
-								
-							});
+						var result = response.Content;
+						var getApplyInfoJson = JsonConvert.DeserializeObject<GetApplyInfoJson>(result);
+						if(getApplyInfoJson.statuscode =="1")
+						{
+							RunOnUiThread(()=>
+								{
+									getApplyInfoAdapter.Clear();//清空所有数据
+									getApplyInfoAdapter.AddAll(getApplyInfoJson.data);
+									getApplyInfoAdapter.NotifyDataSetChanged();
+									guardianApplyRefreshListView.OnRefreshComplete ();
+									HasLoadedOnce = true;
+									
+								});
+						}
+						else
+						{
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,"获取监护申请信息失败,稍后在试...",ToastLength.Short).Show();
+									guardianApplyRefreshListView.OnRefreshComplete ();
+									return;
+								});
+						}
 					}
 					else
 					{
-						RunOnUiThread(()=>
+					    RunOnUiThread(()=>
 							{
-								Toast.MakeText(this,"获取监护申请信息失败,稍后在试...",ToastLength.Short).Show();
+								Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 								guardianApplyRefreshListView.OnRefreshComplete ();
 								return;
 							});
 					}
-				}
-				else
-				{
-				    RunOnUiThread(()=>
-						{
-							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							guardianApplyRefreshListView.OnRefreshComplete ();
-							return;
-						});
 				}
 			});
 		}

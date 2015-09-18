@@ -159,28 +159,42 @@ namespace EldYoungAndroidApp
 
 			restSharpRequestHelp.ExcuteAsync ((response) => {
 
-
-				//获取并解析返回resultJson获取安全码结果值
-				var resultJson = response.Content;
-				var smsJson = JsonConvert.DeserializeObject<SmsJson>(resultJson);
-				if(smsJson.statuscode =="1")
+				if(response.ResponseStatus == ResponseStatus.Completed)
 				{
-					RunOnUiThread(()=>{
-						securityCode = smsJson.data.ToString();
-						ProgressDialogUtil.StopProgressDialog();
-						mc.Start();
-
-					});
-				}
-				else
-				{
-					RunOnUiThread(()=>
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					{
+						//获取并解析返回resultJson获取安全码结果值
+						var resultJson = response.Content;
+						var smsJson = JsonConvert.DeserializeObject<SmsJson>(resultJson);
+						if(smsJson.statuscode =="1")
 						{
-							Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
-				}	
+							RunOnUiThread(()=>{
+								securityCode = smsJson.data.ToString();
+								ProgressDialogUtil.StopProgressDialog();
+								mc.Start();
+
+							});
+						}
+						else
+						{
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									return;
+								});
+						}
+					}
+					else
+					{
+						RunOnUiThread(()=>
+							{
+								Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+				}
 			});
 		}
 
@@ -255,54 +269,56 @@ namespace EldYoungAndroidApp
 
 			var restSharpRequestHelp = new RestSharpRequestHelp(registerInfoParam.Url,requestParams);
 			restSharpRequestHelp.ExcuteAsync ((response) => {
-
-				//获取并解析返回resultJson获取Guid结果值
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == ResponseStatus.Completed)
 				{
-					var resultJson = response.Content;
-					var registerJson = JsonConvert.DeserializeObject<RegisterJson>(resultJson);
-					if(registerJson.statuscode=="1")
+					//获取并解析返回resultJson获取Guid结果值
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						Global.MyInfo = registerJson.data.Table[0];
-						Global.Guid = Global.MyInfo.UId;
-						var guidAsAlias = Global.Guid.Replace("-","_");
-						//注册用户成功，写极光推送别名,进入主界面
-						_jpushUtil.SetAlias(guidAsAlias);
-						sp_userinfo.Edit().PutString(Global.login_UserName,nickName).Commit();
-						sp_userinfo.Edit().PutString(Global.login_Password,passWord).Commit();
-						sp_userinfo.Edit().PutBoolean(Global.login_Password_Check,true).Commit();
-						RunOnUiThread(()=>
-							{
-								//跳转到功能主界面
-								var intent = new Intent(this,typeof(MainFragActivity));
-								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
-								StartActivity(intent);			
-								this.Finish();
-								ProgressDialogUtil.StopProgressDialog();
-								Toast.MakeText(this,"注册成功",ToastLength.Short).Show();
-								OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
-							});
+						var resultJson = response.Content;
+						var registerJson = JsonConvert.DeserializeObject<RegisterJson>(resultJson);
+						if(registerJson.statuscode=="1")
+						{
+							Global.MyInfo = registerJson.data.Table[0];
+							Global.Guid = Global.MyInfo.UId;
+							var guidAsAlias = Global.Guid.Replace("-","_");
+							//注册用户成功，写极光推送别名,进入主界面
+							_jpushUtil.SetAlias(guidAsAlias);
+							sp_userinfo.Edit().PutString(Global.login_UserName,nickName).Commit();
+							sp_userinfo.Edit().PutString(Global.login_Password,passWord).Commit();
+							sp_userinfo.Edit().PutBoolean(Global.login_Password_Check,true).Commit();
+							RunOnUiThread(()=>
+								{
+									//跳转到功能主界面
+									var intent = new Intent(this,typeof(MainFragActivity));
+									intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
+									StartActivity(intent);			
+									this.Finish();
+									ProgressDialogUtil.StopProgressDialog();
+									Toast.MakeText(this,"注册成功",ToastLength.Short).Show();
+									OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
+								});
 
+						}
+						else
+						{
+							//注册失败
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,registerJson.message,ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									return;
+								});
+						}
 					}
 					else
 					{
-						//注册失败
 						RunOnUiThread(()=>
 							{
-								Toast.MakeText(this,registerJson.message,ToastLength.Short).Show();
+								Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
 								return;
 							});
 					}
-				}
-				else
-				{
-					RunOnUiThread(()=>
-						{
-							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
 				}
 
 

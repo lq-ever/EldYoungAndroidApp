@@ -150,36 +150,51 @@ namespace EldYoungAndroidApp
 			SetRestRequestParams (modipwdParam);
 			var restSharpRequestHelp = new RestSharpRequestHelp(modipwdParam.Url,requestsubmitParams);
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				//获取并解析返回resultJson获取安全码结果值
- 				var result = response.Content;
-				var setpwdJson = JsonConvert.DeserializeObject<SetPasswordJson>(result);
-				if(setpwdJson.statuscode =="1")
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					RunOnUiThread(()=>{
-
-						Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
-						ProgressDialogUtil.StopProgressDialog();
-						if(sendType == "FindPwd")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					{
+						//获取并解析返回resultJson获取安全码结果值
+		 				var result = response.Content;
+						var setpwdJson = JsonConvert.DeserializeObject<SetPasswordJson>(result);
+						if(setpwdJson.statuscode =="1")
 						{
-							//todo回到登录界面
-							//跳转到功能主界面
-							var intent = new Intent(this,typeof(LoginActivity));
-							intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
-							StartActivity(intent);			
+							RunOnUiThread(()=>{
+
+								Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								if(sendType == "FindPwd")
+								{
+									//todo回到登录界面
+									//跳转到功能主界面
+									var intent = new Intent(this,typeof(LoginActivity));
+									intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
+									StartActivity(intent);			
+								}
+								this.Finish();
+
+							});
 						}
-						this.Finish();
-
-					});
-				}
-				else
-				{
-					RunOnUiThread(()=>
+						else
 						{
-							Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
-				}	
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									return;
+								});
+						}
+					}
+					else
+					{
+						RunOnUiThread(()=>
+							{
+								Toast.MakeText(this,"网络连接超时，请重试",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+				}
 			});
 
 		}

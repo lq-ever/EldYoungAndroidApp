@@ -125,72 +125,72 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 				restSharpRequestHelp.RequestParams = requestParams;
 			//调用webservice
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == ResponseStatus.Completed)
 				{
-					var result = response.Content;
-					var alarmdetailInfoJson = JsonConvert.DeserializeObject<SearchAlarmDeatilInfoJson>(result);
-					if(alarmdetailInfoJson.statuscode =="1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						
-
-						if(alarmdetailInfoJson.data.detail.Count>0)
+						var result = response.Content;
+						var alarmdetailInfoJson = JsonConvert.DeserializeObject<SearchAlarmDeatilInfoJson>(result);
+						if(alarmdetailInfoJson.statuscode =="1")
 						{
-							var detail = alarmdetailInfoJson.data.detail[0];
-							RunOnUiThread(()=>
-								{
-									tv_detail_alamTime.Text = detail.AlarmTime;
-									tv_detail_alarmContent.Text = detail.AlarmContent;
-									tv_detail_alarmDeviceId.Text = detail.AlarmDeviceId;
-									tv_detail_alarmPosition.Text = detail.AlarmPosition;
-									tv_detail_alarmWay.Text = detail.AlarmWay;
-									tv_detail_cphoneNumberOne.Text = detail.CPhoneNumberOne;
-									tv_detail_cTrueName.Text = detail.CTrueName;
-									tv_detail_deviceElectricity.Text = detail.DeviceElectricity;
-									tv_detail_handleUserType.Text = detail.HandleUserType;
-									tv_detail_remark.Text = detail.Remark;
-									tv_detail_status.Text = detail.Status;
-									tv_detail_trueName.Text = detail.TrueName;
-								});
-							
-						}
-
-						if(alarmdetailInfoJson.data.handdetail.Count>0)
-						{
-							var handleDetails = alarmdetailInfoJson.data.handdetail;
-							RunOnUiThread(()=>
-								{
-									lv_handleDetail.Adapter = new AlarmHandleDetailInfoAdapter(this,handleDetails);
-								});
-							
-						}
-						RunOnUiThread(()=>
+							if(alarmdetailInfoJson.data.detail.Count>0)
 							{
-								ProgressDialogUtil.StopProgressDialog();
-							});
-						
+								var detail = alarmdetailInfoJson.data.detail[0];
+								RunOnUiThread(()=>
+									{
+										tv_detail_alamTime.Text = detail.AlarmTime;
+										tv_detail_alarmContent.Text = detail.AlarmContent;
+										tv_detail_alarmDeviceId.Text = detail.AlarmDeviceId;
+										tv_detail_alarmPosition.Text = detail.AlarmPosition;
+										tv_detail_alarmWay.Text = detail.AlarmWay;
+										tv_detail_cphoneNumberOne.Text = detail.CPhoneNumberOne;
+										tv_detail_cTrueName.Text = detail.CTrueName;
+										tv_detail_deviceElectricity.Text = detail.DeviceElectricity;
+										tv_detail_handleUserType.Text = detail.HandleUserType;
+										tv_detail_remark.Text = detail.Remark;
+										tv_detail_status.Text = detail.Status;
+										tv_detail_trueName.Text = detail.TrueName;
+									});
+								
+							}
 
+							if(alarmdetailInfoJson.data.handdetail.Count>0)
+							{
+								var handleDetails = alarmdetailInfoJson.data.handdetail;
+								RunOnUiThread(()=>
+									{
+										lv_handleDetail.Adapter = new AlarmHandleDetailInfoAdapter(this,handleDetails);
+									});
+								
+							}
+							RunOnUiThread(()=>
+								{
+									ProgressDialogUtil.StopProgressDialog();
+								});
+							
+
+						}
+						else
+						{
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,"获取报警详情信息错误...",ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+
+									return;
+								});
+						}
 					}
 					else
 					{
 						RunOnUiThread(()=>
 							{
-								Toast.MakeText(this,"获取报警详情信息错误...",ToastLength.Short).Show();
+								Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
 
 								return;
 							});
 					}
-				}
-				else
-				{
-					RunOnUiThread(()=>
-						{
-							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-
-							return;
-						});
 				}
 
 			});

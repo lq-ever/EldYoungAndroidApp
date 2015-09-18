@@ -162,62 +162,64 @@ namespace EldYoungAndroidApp
 
 			var restSharpRequestHelp = new RestSharpRequestHelp(loginInfoParam.Url,requestParams);
 			restSharpRequestHelp.ExcuteAsync ((response) => {
-				
-				//获取并解析返回resultJson获取安全码结果值
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var resultJson = response.Content;
-					var loginJson = JsonConvert.DeserializeObject<LoginJson>(resultJson);
-					if(loginJson.statuscode =="1")
+					//获取并解析返回resultJson获取安全码结果值
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						Global.MyInfo = loginJson.data.Table[0];
-						Global.Guid = Global.MyInfo.UId;
-
-						var guidAsAlias = Global.Guid.Replace("-","_");//使用用户guid作为推送别名
-						_jpushUtil.SetAlias(guidAsAlias);
-						//登录成功，且记住用户密码选中，才记录
-						if(cb_passWord.Checked)
+						var resultJson = response.Content;
+						var loginJson = JsonConvert.DeserializeObject<LoginJson>(resultJson);
+						if(loginJson.statuscode =="1")
 						{
-							sp_userinfo.Edit().PutString(Global.login_UserName,userNameValue).Commit();
-							sp_userinfo.Edit().PutString(Global.login_Password,passwordValue).Commit();
-							sp_userinfo.Edit().PutBoolean(Global.login_Password_Check,true).Commit();
-						}
+							Global.MyInfo = loginJson.data.Table[0];
+							Global.Guid = Global.MyInfo.UId;
 
-
-
-						RunOnUiThread (()=>
+							var guidAsAlias = Global.Guid.Replace("-","_");//使用用户guid作为推送别名
+							_jpushUtil.SetAlias(guidAsAlias);
+							//登录成功，且记住用户密码选中，才记录
+							if(cb_passWord.Checked)
 							{
+								sp_userinfo.Edit().PutString(Global.login_UserName,userNameValue).Commit();
+								sp_userinfo.Edit().PutString(Global.login_Password,passwordValue).Commit();
+								sp_userinfo.Edit().PutBoolean(Global.login_Password_Check,true).Commit();
+							}
 
-								//跳转到功能主界面
-								var intent = new Intent(this,typeof(MainFragActivity));
-								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
-								StartActivity(intent);						
-								this.Finish();
-								ProgressDialogUtil.StopProgressDialog();
-								Toast.MakeText(this,"登录成功",ToastLength.Short).Show();
-								OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 
-							});
 
+							RunOnUiThread (()=>
+								{
+
+									//跳转到功能主界面
+									var intent = new Intent(this,typeof(MainFragActivity));
+									intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
+									StartActivity(intent);						
+									this.Finish();
+									ProgressDialogUtil.StopProgressDialog();
+									Toast.MakeText(this,"登录成功",ToastLength.Short).Show();
+									OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+
+								});
+
+						}
+						else
+						{
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,loginJson.message,ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									return;
+								});
+						}
 					}
 					else
 					{
 						RunOnUiThread(()=>
 							{
-								Toast.MakeText(this,loginJson.message,ToastLength.Short).Show();
+								Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
 								return;
 							});
 					}
-				}
-				else
-				{
-					RunOnUiThread(()=>
-						{
-							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
 				}
 
 

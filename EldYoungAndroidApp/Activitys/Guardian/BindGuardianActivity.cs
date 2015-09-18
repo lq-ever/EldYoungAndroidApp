@@ -138,40 +138,42 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			
 			//调用web服务
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					
-					var result = response.Content;
-					var searchGardianlistInfoJson = JsonConvert.DeserializeObject<SearchGuardianListJson>(result);
-					if(searchGardianlistInfoJson.statuscode == "1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						RunOnUiThread(()=>
+						var result = response.Content;
+						var searchGardianlistInfoJson = JsonConvert.DeserializeObject<SearchGuardianListJson>(result);
+						if(searchGardianlistInfoJson.statuscode == "1")
 						{
-							applyGuardianListAdapter.Clear();//清空所有数据
-							applyGuardianListAdapter.AddAll(searchGardianlistInfoJson.data);
-							applyGuardianListAdapter.NotifyDataSetChanged();
-						    ProgressDialogUtil.StopProgressDialog();
-						    HasLoadedOnce = true;
-						});
+							RunOnUiThread(()=>
+							{
+								applyGuardianListAdapter.Clear();//清空所有数据
+								applyGuardianListAdapter.AddAll(searchGardianlistInfoJson.data);
+								applyGuardianListAdapter.NotifyDataSetChanged();
+							    ProgressDialogUtil.StopProgressDialog();
+							    HasLoadedOnce = true;
+							});
+						}
+						else
+						{
+							RunOnUiThread(()=>
+								{
+									Toast.MakeText(this,"获取会员信息失败",ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									return;
+								});
+						}
 					}
 					else
 					{
 						RunOnUiThread(()=>
-							{
-								Toast.MakeText(this,"获取会员信息失败",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
-							});
+						{
+							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+						    ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
 					}
-				}
-				else
-				{
-					RunOnUiThread(()=>
-					{
-						Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-					    ProgressDialogUtil.StopProgressDialog();
-						return;
-					});
 				}
 			});
 

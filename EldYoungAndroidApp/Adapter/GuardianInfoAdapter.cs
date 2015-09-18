@@ -137,21 +137,33 @@ namespace EldYoungAndroidApp.Adapter
 				restSharpRequestHelp.RequestParams = requestParams;
 			//调用解绑web服务
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.StatusCode == System.Net.HttpStatusCode.OK)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
 				{
-					var result = response.Content;
-					var unBindGuardianJson = JsonConvert.DeserializeObject<UnBindGuardianJson>(result);
-					if(unBindGuardianJson.statuscode == "1")
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						if(unBindGuardianJson.data == "1")
+						var result = response.Content;
+						var unBindGuardianJson = JsonConvert.DeserializeObject<UnBindGuardianJson>(result);
+						if(unBindGuardianJson.statuscode == "1")
 						{
-							activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(activity,"解绑成功",ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									Remove(item);
-									return;
-								});
+							if(unBindGuardianJson.data == "1")
+							{
+								activity.RunOnUiThread(()=>
+									{
+										Toast.MakeText(activity,"解绑成功",ToastLength.Short).Show();
+										ProgressDialogUtil.StopProgressDialog();
+										Remove(item);
+										return;
+									});
+							}
+							else
+							{
+								activity.RunOnUiThread(()=>
+									{
+										Toast.MakeText(activity,"解绑失败,稍后在试...",ToastLength.Short).Show();
+										ProgressDialogUtil.StopProgressDialog();
+										return;
+									});
+							}
 						}
 						else
 						{
@@ -167,20 +179,11 @@ namespace EldYoungAndroidApp.Adapter
 					{
 						activity.RunOnUiThread(()=>
 							{
-								Toast.MakeText(activity,"解绑失败,稍后在试...",ToastLength.Short).Show();
+								Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
 								return;
 							});
 					}
-				}
-				else
-				{
-					activity.RunOnUiThread(()=>
-						{
-							Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
 				}
 			});	
 		}

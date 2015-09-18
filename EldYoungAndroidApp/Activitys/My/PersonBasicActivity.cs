@@ -54,19 +54,6 @@ namespace EldYoungAndroidApp
 			tv_header_save.Text = "保存";
 			tv_header_save.Click += (sender, e) => 
 			{
-				//todo:调用webservice保存个人信息
-			
-//				new  Thread(()=>
-//					{
-//						Thread.Sleep(2000);
-//						RunOnUiThread(()=>
-//							{
-//								Toast.MakeText(this,"保存成功",ToastLength.Short).Show();
-//								ProgressDialogUtil.StopProgressDialog();
-//								this.Finish();
-//								OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
-//							});
-//					}).Start();
 				SubmitPesonInfo();
 			};
 			//用户名
