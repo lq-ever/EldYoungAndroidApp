@@ -27,6 +27,7 @@ namespace EldYoungAndroidApp
 		private string sendType;
 		private string phoneNumber;
 		private Dictionary<string,string> requestsendcodeParams = new Dictionary<string,string> ();
+		public TextView tv_SendCodeStatusShow;
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -52,7 +53,7 @@ namespace EldYoungAndroidApp
 			phoneNumber = bundle.GetString ("PhoneNumber");
 
 			var tv_header_title = FindViewById<TextView> (Resource.Id.tv_header_title);
-
+			tv_SendCodeStatusShow = FindViewById<TextView>(Resource.Id.tv_SendCodeStatusShow);
 			edit_Phone = FindViewById<EditText> (Resource.Id.edit_Phone);
 			edit_Phone.Text = phoneNumber;
 			if (sendType == "FindPwd") {
@@ -77,6 +78,7 @@ namespace EldYoungAndroidApp
 			//发送验证码
 			btn_Send.Click += (sender, e) => 
 			{
+				tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
 				btn_Send.Enabled = false;
 				SendCode();
 			};
@@ -149,7 +151,8 @@ namespace EldYoungAndroidApp
 		/// <returns><c>true</c>, if input was valided, <c>false</c> otherwise.</returns>
 		private bool ValidInput()
 		{
-			phoneNumber = edit_Phone.Text;
+			if(sendType == "FindPwd")
+				phoneNumber = edit_Phone.Text;
 			if (string.IsNullOrEmpty (phoneNumber) || !EldYoungUtil.IsMobileNo (phoneNumber)) {
 				Toast.MakeText(this,"输入正确规范的手机号,且不能为空",ToastLength.Short).Show();
 				return false;
@@ -196,6 +199,7 @@ namespace EldYoungAndroidApp
 							securityCode = sendCodeJson.data.ToString();
 							ProgressDialogUtil.StopProgressDialog();
 							Toast.MakeText(this,"验证码发送成功",ToastLength.Short).Show();
+							tv_SendCodeStatusShow.Visibility = ViewStates.Visible;
 							mc.Start();
 
 						});
@@ -207,6 +211,7 @@ namespace EldYoungAndroidApp
 								Toast.MakeText(this,sendCodeJson.message,ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
 								btn_Send.Enabled = true;
+								tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
 								return;
 							});
 					}
@@ -270,6 +275,7 @@ namespace EldYoungAndroidApp
 //				Activity.btn_Send.SetBackgroundResource (Resource.Color.blue);
 //				Activity.btn_Send.SetTextColor(Activity.Resources.GetColor(Resource.Color.white));
 				Activity.btn_Send.Enabled = true;
+				Activity.tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
 			}
 		}
 

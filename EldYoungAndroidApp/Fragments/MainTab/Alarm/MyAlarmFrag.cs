@@ -365,17 +365,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 								});
 						}
 					}
-					else
-					{
-						pageIndex--;
-						Activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								//ProgressDialogUtil.StopProgressDialog();
-								myAlarmRefreshListView.OnRefreshComplete ();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					pageIndex--;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							//ProgressDialogUtil.StopProgressDialog();
+							myAlarmRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 			});
 

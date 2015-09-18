@@ -34,7 +34,7 @@ namespace EldYoungAndroidApp
 		private JPushUtil _jpushUtil;
 		private MyCount mc;
 		private ISharedPreferences sp_userinfo;
-
+		private TextView tv_SendCodeStatusShow;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -65,6 +65,7 @@ namespace EldYoungAndroidApp
 			btn_Send = FindViewById<Button> (Resource.Id.btn_Send);
 			tv_PhoneShow = FindViewById<TextView> (Resource.Id.tv_PhoneShow);
 			edit_SecurityCode = FindViewById<EditText> (Resource.Id.edit_SecurityCode);
+			tv_SendCodeStatusShow = FindViewById<TextView>(Resource.Id.tv_SendCodeStatusShow);
 			//取得上一页面传递过来的值
 			var bundle = Intent.Extras;
 			//从bundle中获取值赋值显示
@@ -117,6 +118,7 @@ namespace EldYoungAndroidApp
 			//发送验证码
 			btn_Send.Click += (sender, e) => 
 			{
+				tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
 				btn_Send.Clickable = false;
 				btn_Send.SetBackgroundResource(Resource.Color.lightgray);
 				btn_Send.SetTextColor(Resources.GetColor(Resource.Color.ingray));
@@ -172,28 +174,31 @@ namespace EldYoungAndroidApp
 								securityCode = smsJson.data.ToString();
 								ProgressDialogUtil.StopProgressDialog();
 								mc.Start();
-
+								tv_SendCodeStatusShow.Visibility = ViewStates.Visible;
 							});
 						}
 						else
 						{
 							RunOnUiThread(()=>
 								{
+									tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
 									Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
 									ProgressDialogUtil.StopProgressDialog();
 									return;
 								});
 						}
 					}
-					else
-					{
-						RunOnUiThread(()=>
-							{
-								Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
+							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
 				}
 			});
 		}
@@ -250,10 +255,7 @@ namespace EldYoungAndroidApp
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))
 			{
-				RunOnUiThread(()=>
-					{
-						Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
-					});
+				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
 				ProgressDialogUtil.StopProgressDialog();
 				return;
 			}
@@ -310,15 +312,16 @@ namespace EldYoungAndroidApp
 								});
 						}
 					}
-					else
-					{
-						RunOnUiThread(()=>
-							{
-								Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
 				}
 
 

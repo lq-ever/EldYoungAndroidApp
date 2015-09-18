@@ -186,17 +186,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 								});
 						}
 					}
-					else
-					{
-						Activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								if(btnSearchFlag)
-									ProgressDialogUtil.StopProgressDialog();
-								myhealthRefreshListView.OnRefreshComplete ();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							if(btnSearchFlag)
+								ProgressDialogUtil.StopProgressDialog();
+							myhealthRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 			});
 
@@ -333,16 +334,17 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 								});
 						}
 					}
-					else
-					{
-						pageIndex--;
-						Activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								myhealthRefreshListView.OnRefreshComplete ();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					pageIndex--;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							myhealthRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 			});
 

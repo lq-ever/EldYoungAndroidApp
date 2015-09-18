@@ -23,6 +23,7 @@ namespace EldYoungAndroidApp
 		private string sendType;
 		private string phoneNumber;
 		private EditText edit_Pwd, edit_ConfirmPwd;
+
 		private Button btn_Submit;
 
 		private string passWord, confirmPassWord;
@@ -54,6 +55,7 @@ namespace EldYoungAndroidApp
 			edit_Pwd = FindViewById<EditText> (Resource.Id.edit_Pwd);
 			edit_ConfirmPwd = FindViewById<EditText> (Resource.Id.edit_ConfirmPwd);
 			btn_Submit = FindViewById<Button> (Resource.Id.btn_Submit);
+
 			//取得上一页面传递过来的值包括是什么类型（找回密码\修改支付密码\修改密码）
 			sendType = bundle.GetString ("SendType");
 			if (sendType == "FindPwd") {
@@ -130,10 +132,7 @@ namespace EldYoungAndroidApp
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))
 			{
-				RunOnUiThread(()=>
-					{
-						Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
-					});
+				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
 				ProgressDialogUtil.StopProgressDialog();
 				return;
 			}
@@ -163,14 +162,10 @@ namespace EldYoungAndroidApp
 
 								Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
-								if(sendType == "FindPwd")
-								{
-									//todo回到登录界面
-									//跳转到功能主界面
-									var intent = new Intent(this,typeof(LoginActivity));
-									intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
-									StartActivity(intent);			
-								}
+								var intent = new Intent(this,typeof(LoginActivity));
+								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
+								StartActivity(intent);			
+
 								this.Finish();
 
 							});
@@ -185,15 +180,16 @@ namespace EldYoungAndroidApp
 								});
 						}
 					}
-					else
-					{
-						RunOnUiThread(()=>
-							{
-								Toast.MakeText(this,"网络连接超时，请重试",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时，请重试",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
 				}
 			});
 

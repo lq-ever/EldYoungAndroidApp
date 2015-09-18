@@ -195,15 +195,16 @@ namespace EldYoungAndroidApp
 								});
 						}
 					}
-					else
-					{
-						activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
 				}
 			});
 

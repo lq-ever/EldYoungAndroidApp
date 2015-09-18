@@ -151,15 +151,16 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 								});
 						}
 					}
-					else
-					{
-					    RunOnUiThread(()=>
-							{
-								Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								guardianApplyRefreshListView.OnRefreshComplete ();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							guardianApplyRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 			});
 		}

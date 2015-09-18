@@ -155,15 +155,16 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 								});
 						}
 					}
-					else
-					{
-						Activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								otherGuardianRefreshListView.OnRefreshComplete ();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							otherGuardianRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 			});
 		}
@@ -286,17 +287,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 						}
 
 					}
-					else
-					{
-						pageIndex --;
-						Activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
 
-								otherGuardianRefreshListView.OnRefreshComplete ();
-								return;
-							});
-					}
+				}
+				else
+				{
+					pageIndex --;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+
+							otherGuardianRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 
 			});

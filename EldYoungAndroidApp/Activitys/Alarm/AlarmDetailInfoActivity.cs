@@ -99,6 +99,13 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 				ProgressDialogUtil.StopProgressDialog ();
 				return;
 			}
+			//检测网络连接
+			if(!EldYoungUtil.IsConnected(this))
+			{
+				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
+				ProgressDialogUtil.StopProgressDialog();
+				return;
+			}
 			alarmInfoDetailParam = new AlarmInfoDetailParam (){ AId = alarmId };
 
 			if (!requestParams.ContainsKey ("key"))
@@ -181,16 +188,17 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 								});
 						}
 					}
-					else
-					{
-						RunOnUiThread(()=>
-							{
-								Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
 
-								return;
-							});
-					}
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+
+							return;
+						});
 				}
 
 			});

@@ -211,15 +211,16 @@ namespace EldYoungAndroidApp
 								});
 						}
 					}
-					else
-					{
-						RunOnUiThread(()=>
-							{
-								Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
 				}
 
 

@@ -211,6 +211,16 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 					}
 				}
+				else
+				{
+
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+						     ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
 
 
 			});
@@ -299,19 +309,20 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 								});
 						}
 					}
-					else
-					{
 
-						Activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+				}
+				else
+				{
 
-								otherAlarmRefreshListView.OnRefreshComplete ();
-								if(btnSearchFlag)
-									ProgressDialogUtil.StopProgressDialog();
-								return;
-							});
-					}
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+
+							otherAlarmRefreshListView.OnRefreshComplete ();
+							if(btnSearchFlag)
+								ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
 				}
 			});
 
@@ -463,17 +474,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 								});
 						}
 					}
-					else
-					{
-						pageIndex --;
-						Activity.RunOnUiThread(()=>
-							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-								//ProgressDialogUtil.StopProgressDialog();
-								otherAlarmRefreshListView.OnRefreshComplete ();
-								return;
-							});
-					}
+
+				}
+				else
+				{
+					pageIndex --;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							//ProgressDialogUtil.StopProgressDialog();
+							otherAlarmRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 			});
 		}

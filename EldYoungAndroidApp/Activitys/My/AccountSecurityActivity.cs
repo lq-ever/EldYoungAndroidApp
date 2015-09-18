@@ -50,7 +50,7 @@ namespace EldYoungAndroidApp
 			mPullRefreshScrollView.GetLoadingLayoutProxy (true,false).SetRefreshingLabel(GetString(Resource.String.pullDownRefreshLbl));
 			mPullRefreshScrollView.GetLoadingLayoutProxy (true, false).SetReleaseLabel (GetString(Resource.String.pullDownReleaseLbl));
 			//上拉、下拉设定  
-			mPullRefreshScrollView.Mode = PullToRefreshBase.PullToRefreshMode.Both;  
+			mPullRefreshScrollView.Mode = PullToRefreshBase.PullToRefreshMode.GoogleStyle;  
 
 			//登录密码
 			var rl_person_loginPwd = FindViewById<RelativeLayout>(Resource.Id.rl_person_loginPwd);

@@ -274,6 +274,8 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 							}
 						}
 					}
+
+						
 				});
 			}
 			catch(Java.IO.FileNotFoundException e) {

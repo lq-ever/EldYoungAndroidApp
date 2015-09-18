@@ -84,6 +84,21 @@
             android:layout_alignBottom="@id/edit_SecurityCode"
             android:layout_alignTop="@id/edit_SecurityCode" />
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/tv_SendCodeStatusShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="短信验证码发送成功,请注意查收"
+            android:textSize="14sp"
+            android:textColor="@color/light_orange"
+            android:visibility="invisible" />
+    </LinearLayout>
     <Button
         android:id="@+id/btn_Next"
         android:layout_width="match_parent"

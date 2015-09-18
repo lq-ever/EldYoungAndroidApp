@@ -101,6 +101,13 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 		private void QuerryBindGuardian(string condition)
 		{
 			ProgressDialogUtil.StartProgressDialog(this,"正在加载中...");
+			//检测网络连接
+			if(!EldYoungUtil.IsConnected(this))
+			{
+				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
+				ProgressDialogUtil.StopProgressDialog();
+				return;
+			}
 			searchGuardianParam.Condition = condition;
 
 			if (!requestParams.ContainsKey ("econdition"))
@@ -165,15 +172,16 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 								});
 						}
 					}
-					else
-					{
-						RunOnUiThread(()=>
+
+				}
+				else
+				{
+					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-						    ProgressDialogUtil.StopProgressDialog();
+							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});
-					}
 				}
 			});
 
