@@ -127,44 +127,42 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 			UpdateGuardianInfoListParam ();
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var guardianInfoJson =  JsonConvert.DeserializeObject<GuardianInfoJson>(result);
+					if(guardianInfoJson.statuscode =="1")
 					{
-						var result = response.Content;
-						var guardianInfoJson =  JsonConvert.DeserializeObject<GuardianInfoJson>(result);
-						if(guardianInfoJson.statuscode =="1")
-						{
-							total = guardianInfoJson.data.total;
-							guardianInfoList = guardianInfoJson.data.items;
-							Activity.RunOnUiThread(()=>
-								{
-									guardianInfoAdapter.Clear();
-									guardianInfoAdapter.AddAll(guardianInfoList);
-									guardianInfoAdapter.NotifyDataSetChanged();
-									myGuardianRefreshListView.OnRefreshComplete ();
-									HasLoadedOnce = true;//加载第一次成功
-								});
-						}
-						else
-						{
-							Activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(Activity,"获取监护人列表信息失败...",ToastLength.Short).Show();
-									myGuardianRefreshListView.OnRefreshComplete ();
-									return;
-								});
-						}
+						total = guardianInfoJson.data.total;
+						guardianInfoList = guardianInfoJson.data.items;
+						Activity.RunOnUiThread(()=>
+							{
+								guardianInfoAdapter.Clear();
+								guardianInfoAdapter.AddAll(guardianInfoList);
+								guardianInfoAdapter.NotifyDataSetChanged();
+								myGuardianRefreshListView.OnRefreshComplete ();
+								HasLoadedOnce = true;//加载第一次成功
+							});
 					}
 					else
 					{
 						Activity.RunOnUiThread(()=>
 							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+								Toast.MakeText(Activity,"获取监护人列表信息失败...",ToastLength.Short).Show();
 								myGuardianRefreshListView.OnRefreshComplete ();
 								return;
 							});
 					}
+				}
+				else
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							myGuardianRefreshListView.OnRefreshComplete ();
+							return;
+						});
 				}
 			});
 		}

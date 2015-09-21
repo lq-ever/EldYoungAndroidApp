@@ -11,6 +11,11 @@ using Java.Net;
 using Java.IO;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.Generic;
+using EldYoungAndroidApp.Param;
+using Android.Util;
+using Newtonsoft.Json;
+using EldYoungAndroidApp.Json;
 
 
 
@@ -41,6 +46,9 @@ namespace EldYoungAndroidApp.Common
 		private Dialog dowloadDialog;
 		private Dialog noticeDialog;
 
+		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
+		private string localversionCode;
+
 		public UpdateManager (Context _context )
 		{
 			context = _context;
@@ -54,24 +62,83 @@ namespace EldYoungAndroidApp.Common
 //				//显示提示对话框
 //				ShowNoticeDialog();
 //			}
-
 			//update by liuqiang 2015/07/08 for 暂停使用更新
-			//return IsUpdate(); 
-			return false;
+			return IsUpdate(); 
+			//return false;
 		}
 
 		/// <summary>
-		/// 检测是否需要更新
+		/// 检测是否需要更新,调用web服务
 		/// </summary>
 		/// <returns><c>true</c> if this instance is update; otherwise, <c>false</c>.</returns>
 		private bool IsUpdate()
 		{
-			// 获取软件版本号，对应AndroidManifest.xml下android:versionCode
-			//var localversionCode =context.PackageManager.GetPackageInfo (Global.package_name,0).VersionCode;
-			var localversionCode =EldYoungUtil.GetAppVersionCode(context);
-			//todo:获取webservice中android app版本号,两者比较，如果不同，返回true else false
+			var checkFlag = false;
+			var returnFlag = false;
+			// 获取本地软件版本号，
+			localversionCode =EldYoungUtil.GetAppVersionCode(context);
+			//localversionCode =Global.version_code;
+			//获取webservice中android app版本号,两者比较，如果不同，返回true else false
+			//检测网络连接
+			if(!EldYoungUtil.IsConnected(context))
+			{
+				return returnFlag;
+			}
+			var getAppVersionParam = new GetAppVersionParam ();
 
-			return true;
+			if (!requestParams.ContainsKey ("key"))
+				requestParams.Add ("key", getAppVersionParam.Key);
+			else
+				requestParams ["key"] = getAppVersionParam.Key;
+			if (!requestParams.ContainsKey ("eappPlatform"))
+				requestParams.Add ("eappPlatform", getAppVersionParam.EappPlatform);
+			else
+				requestParams ["eappPlatform"] = getAppVersionParam.EappPlatform;
+
+			if (!requestParams.ContainsKey ("epackageName"))
+				requestParams.Add ("epackageName", getAppVersionParam.EpackageName);
+			else
+				requestParams ["epackageName"] = getAppVersionParam.EpackageName;
+			
+			if (!requestParams.ContainsKey ("md5"))
+				requestParams.Add ("md5", getAppVersionParam.Md5);
+			else
+				requestParams ["md5"] = getAppVersionParam.Md5;
+
+			var restSharpRequestHelp = new RestSharpRequestHelp(getAppVersionParam.Url,requestParams);
+			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+					//获取并解析返回resultJson获取安全码结果值
+					var result = response.Content;
+					var appVersionJson = JsonConvert.DeserializeObject<GetAppVersionJson>(result);
+					if(appVersionJson.statuscode =="1")
+					{
+						var serverAppVersionCode = appVersionJson.data.AppServerVersionCode;
+						if(localversionCode!=serverAppVersionCode)
+						{
+							//版本不一致有更新
+							Global.AppPackagePath = appVersionJson.data.AppFilePath;
+							returnFlag = true;
+							checkFlag=true;
+						}
+						else
+							checkFlag=true;
+					}
+				}
+				else
+				{
+					Log.Info("CheckAppServerVersion",response.ErrorMessage);
+					checkFlag=true;
+				}
+			});
+
+			while (true) {
+				//检测完成
+				if (checkFlag) {
+					return returnFlag;
+				}
+			}
 		}
 		/// <summary>
 		/// 显示软件更新对话框
@@ -92,7 +159,6 @@ namespace EldYoungAndroidApp.Common
 			});
 			noticeDialog= builder.Create ();
 			noticeDialog.Show();
-
 		}
 
 		/// <summary>
@@ -130,7 +196,7 @@ namespace EldYoungAndroidApp.Common
 			HttpURLConnection conn = null;  
 			try
 			{
-				url = new URL(Global.AppServerUri);
+				url = new URL(Global.AppPackagePath);
 				//创建连接
 				conn = (HttpURLConnection) url.OpenConnection();
 				conn.Connect();

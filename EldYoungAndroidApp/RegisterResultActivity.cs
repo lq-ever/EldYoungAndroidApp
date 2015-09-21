@@ -141,10 +141,7 @@ namespace EldYoungAndroidApp
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))
 			{
-				RunOnUiThread(()=>
-					{
-						Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
-					});
+				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
 				ProgressDialogUtil.StopProgressDialog();
 				return;
 			}
@@ -161,34 +158,31 @@ namespace EldYoungAndroidApp
 
 			restSharpRequestHelp.ExcuteAsync ((response) => {
 
-				if(response.ResponseStatus == ResponseStatus.Completed)
+				if(response.ResponseStatus == ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					//获取并解析返回resultJson获取安全码结果值
+					var resultJson = response.Content;
+					var smsJson = JsonConvert.DeserializeObject<SmsJson>(resultJson);
+					if(smsJson.statuscode =="1")
 					{
-						//获取并解析返回resultJson获取安全码结果值
-						var resultJson = response.Content;
-						var smsJson = JsonConvert.DeserializeObject<SmsJson>(resultJson);
-						if(smsJson.statuscode =="1")
-						{
-							RunOnUiThread(()=>{
-								securityCode = smsJson.data.ToString();
-								ProgressDialogUtil.StopProgressDialog();
-								mc.Start();
-								tv_SendCodeStatusShow.Visibility = ViewStates.Visible;
-							});
-						}
-						else
-						{
-							RunOnUiThread(()=>
-								{
-									tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
-									Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
+						RunOnUiThread(()=>{
+							securityCode = smsJson.data.ToString();
+							ProgressDialogUtil.StopProgressDialog();
+							mc.Start();
+							tv_SendCodeStatusShow.Visibility = ViewStates.Visible;
+						});
 					}
-
+					else
+					{
+						RunOnUiThread(()=>
+							{
+								tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
+								Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
 				}
 				else
 				{

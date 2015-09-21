@@ -159,26 +159,23 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 			else
 				restSharpGetMyUserRequestHelp.RequestParams = myUserRequestParams;
 			restSharpGetMyUserRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var searchMyUserJson = JsonConvert.DeserializeObject<SearchAllMyUserJson>(result);
+					if(searchMyUserJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var searchMyUserJson = JsonConvert.DeserializeObject<SearchAllMyUserJson>(result);
-						if(searchMyUserJson.statuscode == "1")
-						{
 
-							myUserLists = searchMyUserJson.data;
+						myUserLists = searchMyUserJson.data;
 
-							Activity.RunOnUiThread(()=>
-								{
-									myUserListAdapter = new ArrayAdapter<AllMyUserListItem>(Activity,Android.Resource.Layout.SimpleSpinnerItem,myUserLists);
-									myUserListAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-									sp_other_guardian.Adapter = myUserListAdapter;
-									sp_other_guardian.SetSelection(0,true);
-								});
-
-						}
+						Activity.RunOnUiThread(()=>
+							{
+								myUserListAdapter = new ArrayAdapter<AllMyUserListItem>(Activity,Android.Resource.Layout.SimpleSpinnerItem,myUserLists);
+								myUserListAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+								sp_other_guardian.Adapter = myUserListAdapter;
+								sp_other_guardian.SetSelection(0,true);
+							});
 
 					}
 				}

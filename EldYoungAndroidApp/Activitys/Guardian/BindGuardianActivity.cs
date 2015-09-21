@@ -145,33 +145,32 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			
 			//调用web服务
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var searchGardianlistInfoJson = JsonConvert.DeserializeObject<SearchGuardianListJson>(result);
+					if(searchGardianlistInfoJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var searchGardianlistInfoJson = JsonConvert.DeserializeObject<SearchGuardianListJson>(result);
-						if(searchGardianlistInfoJson.statuscode == "1")
+						RunOnUiThread(()=>
 						{
-							RunOnUiThread(()=>
-							{
-								applyGuardianListAdapter.Clear();//清空所有数据
-								applyGuardianListAdapter.AddAll(searchGardianlistInfoJson.data);
-								applyGuardianListAdapter.NotifyDataSetChanged();
-							    ProgressDialogUtil.StopProgressDialog();
-							    HasLoadedOnce = true;
-							});
-						}
-						else
-						{
-							RunOnUiThread(()=>
-								{
-									Toast.MakeText(this,"获取会员信息失败",ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
+							applyGuardianListAdapter.Clear();//清空所有数据
+							applyGuardianListAdapter.AddAll(searchGardianlistInfoJson.data);
+							applyGuardianListAdapter.NotifyDataSetChanged();
+						    ProgressDialogUtil.StopProgressDialog();
+						    HasLoadedOnce = true;
+						});
 					}
+					else
+					{
+						RunOnUiThread(()=>
+							{
+								Toast.MakeText(this,"获取会员信息失败",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+
 
 				}
 				else

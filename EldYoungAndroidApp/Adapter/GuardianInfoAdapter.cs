@@ -137,33 +137,22 @@ namespace EldYoungAndroidApp.Adapter
 				restSharpRequestHelp.RequestParams = requestParams;
 			//调用解绑web服务
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var unBindGuardianJson = JsonConvert.DeserializeObject<UnBindGuardianJson>(result);
+					if(unBindGuardianJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var unBindGuardianJson = JsonConvert.DeserializeObject<UnBindGuardianJson>(result);
-						if(unBindGuardianJson.statuscode == "1")
+						if(unBindGuardianJson.data == "1")
 						{
-							if(unBindGuardianJson.data == "1")
-							{
-								activity.RunOnUiThread(()=>
-									{
-										Toast.MakeText(activity,"解绑成功",ToastLength.Short).Show();
-										ProgressDialogUtil.StopProgressDialog();
-										Remove(item);
-										return;
-									});
-							}
-							else
-							{
-								activity.RunOnUiThread(()=>
-									{
-										Toast.MakeText(activity,"解绑失败,稍后在试...",ToastLength.Short).Show();
-										ProgressDialogUtil.StopProgressDialog();
-										return;
-									});
-							}
+							activity.RunOnUiThread(()=>
+								{
+									Toast.MakeText(activity,"解绑成功",ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
+									Remove(item);
+									return;
+								});
 						}
 						else
 						{
@@ -175,6 +164,16 @@ namespace EldYoungAndroidApp.Adapter
 								});
 						}
 					}
+					else
+					{
+						activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(activity,"解绑失败,稍后在试...",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+
 
 				}
 				else

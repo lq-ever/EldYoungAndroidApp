@@ -61,9 +61,9 @@ namespace EldYoungAndroidApp.Common
 		/// </summary>
 		/// <returns>The app version.</returns>
 		/// <param name="context">Context.</param>
-		public static int GetAppVersionCode(Context context)
+		public static string GetAppVersionCode(Context context)
 		{
-			return	context.PackageManager.GetPackageInfo (context.PackageName, 0).VersionCode;
+			return	context.PackageManager.GetPackageInfo (context.PackageName, 0).VersionName;
 		}
 
 		/// <summary>

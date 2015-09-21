@@ -36,6 +36,14 @@ namespace EldYoungAndroidApp.Common
 		/// 程序包名称
 		/// </summary>
 		public const string package_name ="com.eldyoung.lelaozuandroidapp";
+		/// <summary>
+		/// 程序本地版本号
+		/// </summary>
+		public const string version_code = "1.0.0";
+		/// <summary>
+		/// 程序平台
+		/// </summary>
+		public const string app_platform = "Android";
 
 		/// <summary>
 		/// 服务器地址
@@ -50,7 +58,7 @@ namespace EldYoungAndroidApp.Common
 		#endregion
 
 		//服务端安装包路径
-		public const string AppServerUri = "http://192.168.0.134/AndroidApp/Release/com.eldyoung.lelaozuandroidapp.apk";
+		public static string AppPackagePath = "http://192.168.0.134/AndroidApp/Release/com.eldyoung.lelaozuandroidapp.apk";
 
 		#region androidRestApi
 		public const string AndroidKey = "yiyang";
@@ -76,6 +84,8 @@ namespace EldYoungAndroidApp.Common
 		public const string HeadImgUrl ="SaveHeadImg.aspx";
 		//更新个人信息
 		public const string UpdatePersonInfoUrl="UpdateBaseInfo.aspx";
+		//获取服务端软件版本
+		public const string GetAppVersionUrl ="GetAppVersionService.aspx";
 
 		#endregion
 

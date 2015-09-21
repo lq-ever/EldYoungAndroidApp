@@ -134,9 +134,6 @@ namespace EldYoungAndroidApp
 			img_UrineRoutinePH_Arraw = FindViewById<ImageView> (Resource.Id.img_UrineRoutinePH_Arraw);
 			img_UrineRoutineSG_Arraw = FindViewById<ImageView> (Resource.Id.img_UrineRoutineSG_Arraw);
 			img_UrineRoutineURO_Arraw = FindViewById<ImageView> (Resource.Id.img_UrineRoutineURO_Arraw);
-//			Task.Factory.StartNew (() => {
-//				LoadData();
-//			});
 
 			new Handler ().PostDelayed (LoadData, 1000);
 

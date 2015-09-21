@@ -149,43 +149,41 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var healthInfoJson = JsonConvert.DeserializeObject<SearchHealthInfoJson>(result);
+					if(healthInfoJson.statuscode == "1")
 					{
 
-						var result = response.Content;
-						var healthInfoJson = JsonConvert.DeserializeObject<SearchHealthInfoJson>(result);
-						if(healthInfoJson.statuscode == "1")
-						{
+						total =  healthInfoJson.data.total;
+						healthInfoLists = healthInfoJson.data.items;
 
-							total =  healthInfoJson.data.total;
-							healthInfoLists = healthInfoJson.data.items;
+						Activity.RunOnUiThread(()=>
+							{
+								healthInfoAdapter.Clear();//清空所有数据
+								healthInfoAdapter.AddAll(healthInfoLists);
+								healthInfoAdapter.NotifyDataSetChanged();
+								myhealthRefreshListView.OnRefreshComplete ();
+								HasLoadedOnce = true;//加载第一次成功
+								if(btnSearchFlag)
+									ProgressDialogUtil.StopProgressDialog();
+							});
 
-							Activity.RunOnUiThread(()=>
-								{
-									healthInfoAdapter.Clear();//清空所有数据
-									healthInfoAdapter.AddAll(healthInfoLists);
-									healthInfoAdapter.NotifyDataSetChanged();
-									myhealthRefreshListView.OnRefreshComplete ();
-									HasLoadedOnce = true;//加载第一次成功
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
-								});
-
-						}
-						else
-						{
-							Activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(Activity,"获取体检列表信息错误",ToastLength.Short).Show();
-									myhealthRefreshListView.OnRefreshComplete ();
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
 					}
+					else
+					{
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"获取体检列表信息错误",ToastLength.Short).Show();
+								myhealthRefreshListView.OnRefreshComplete ();
+								if(btnSearchFlag)
+									ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+
 
 				}
 				else
@@ -301,40 +299,36 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 			UpdateHealthInfoListParam ();
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed &&response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					var result = response.Content;
+					var searchHealthInfoJson = JsonConvert.DeserializeObject<SearchHealthInfoJson>(result);
+					if(searchHealthInfoJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var searchHealthInfoJson = JsonConvert.DeserializeObject<SearchHealthInfoJson>(result);
-						if(searchHealthInfoJson.statuscode == "1")
-						{
-							total =  searchHealthInfoJson.data.total;
-							healthInfoLists.AddRange(searchHealthInfoJson.data.items);
+						total =  searchHealthInfoJson.data.total;
+						healthInfoLists.AddRange(searchHealthInfoJson.data.items);
 
-							Activity.RunOnUiThread(()=>
-								{
+						Activity.RunOnUiThread(()=>
+							{
 
-									healthInfoAdapter.AddAll(searchHealthInfoJson.data.items);
-									healthInfoAdapter.NotifyDataSetChanged();
-									myhealthRefreshListView.OnRefreshComplete ();
-									//讲listview滚动到上次加载位置
-									actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
-								});
+								healthInfoAdapter.AddAll(searchHealthInfoJson.data.items);
+								healthInfoAdapter.NotifyDataSetChanged();
+								myhealthRefreshListView.OnRefreshComplete ();
+								//讲listview滚动到上次加载位置
+								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
+							});
 
-						}
-						else
-						{
-							pageIndex--;
-							Activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(Activity,"获取更多体检信息错误",ToastLength.Short).Show();
-									myhealthRefreshListView.OnRefreshComplete ();
-									return;
-								});
-						}
 					}
-
+					else
+					{
+						pageIndex--;
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"获取更多体检信息错误",ToastLength.Short).Show();
+								myhealthRefreshListView.OnRefreshComplete ();
+								return;
+							});
+					}
 				}
 				else
 				{

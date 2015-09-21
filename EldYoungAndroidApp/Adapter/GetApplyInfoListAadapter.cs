@@ -67,8 +67,8 @@ namespace EldYoungAndroidApp
 
 			var imgSexId = (item.Sex == Sex.Male) ? Resource.Drawable.ic_sex_man : Resource.Drawable.ic_sex_woman;
 			_getApplyInfoItemView.img_Sex.SetImageResource (imgSexId);
-			//设置头像采用二级缓存、异步加载
 
+			//设置头像采用二级缓存、异步加载
 			Global.imageLoader.DisplayImage(item.HeadImgReleaseUrl,_getApplyInfoItemView.guardian_img_head,Global.Options);
 
 			SetGuardianStatusAndAction (_getApplyInfoItemView, item);
@@ -169,32 +169,31 @@ namespace EldYoungAndroidApp
 			else
 				restSharpRequestHelp.RequestParams = requestParams;
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed &&response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var examinebundGuardianJson = JsonConvert.DeserializeObject<ExamineBundGuardianJson>(result);
+					if(examinebundGuardianJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var examinebundGuardianJson = JsonConvert.DeserializeObject<ExamineBundGuardianJson>(result);
-						if(examinebundGuardianJson.statuscode == "1")
-						{
-							activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(activity,"处理成功...",ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									Remove(item);
-									return;
-								});
-						}
-						else
-						{
-							activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(activity,"处理失败,稍后在试...",ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
+						activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(activity,"处理成功...",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								Remove(item);
+								return;
+							});
 					}
+					else
+					{
+						activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(activity,"处理失败,稍后在试...",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+
 
 				}
 				else

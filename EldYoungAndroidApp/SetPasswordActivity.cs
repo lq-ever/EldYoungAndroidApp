@@ -153,37 +153,36 @@ namespace EldYoungAndroidApp
 			SetRestRequestParams (modipwdParam);
 			var restSharpRequestHelp = new RestSharpRequestHelp(modipwdParam.Url,requestsubmitParams);
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					//获取并解析返回resultJson获取安全码结果值
+	 				var result = response.Content;
+					var setpwdJson = JsonConvert.DeserializeObject<SetPasswordJson>(result);
+					if(setpwdJson.statuscode =="1")
 					{
-						//获取并解析返回resultJson获取安全码结果值
-		 				var result = response.Content;
-						var setpwdJson = JsonConvert.DeserializeObject<SetPasswordJson>(result);
-						if(setpwdJson.statuscode =="1")
-						{
-							RunOnUiThread(()=>{
+						RunOnUiThread(()=>{
 
+							Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							var intent = new Intent(this,typeof(LoginActivity));
+							intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
+							StartActivity(intent);			
+
+							this.Finish();
+
+						});
+					}
+					else
+					{
+						RunOnUiThread(()=>
+							{
 								Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
-								var intent = new Intent(this,typeof(LoginActivity));
-								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
-								StartActivity(intent);			
-
-								this.Finish();
-
+								return;
 							});
-						}
-						else
-						{
-							RunOnUiThread(()=>
-								{
-									Toast.MakeText(this,setpwdJson.message,ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
 					}
+
 
 				}
 				else

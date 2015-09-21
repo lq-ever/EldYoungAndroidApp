@@ -219,10 +219,7 @@ namespace EldYoungAndroidApp
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))
 			{
-				RunOnUiThread(()=>
-					{
-						Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
-					});
+				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
 				ProgressDialogUtil.StopProgressDialog();
 				return;
 			}
@@ -239,40 +236,38 @@ namespace EldYoungAndroidApp
 
 			restSharpRequestHelp.ExcuteAsync ((resoponse) => {
 
-				if(resoponse.ResponseStatus == ResponseStatus.Completed)
+				if(resoponse.ResponseStatus == ResponseStatus.Completed && resoponse.StatusCode == System.Net.HttpStatusCode.OK)
 				{
 					//获取并解析返回resultJson获取安全码结果值
-					if(resoponse.StatusCode == System.Net.HttpStatusCode.OK)
+					var result= resoponse.Content;
+					var smsJson = JsonConvert.DeserializeObject<SmsJson>(result);
+					if(smsJson.statuscode =="1")
 					{
-						var result= resoponse.Content;
-						var smsJson = JsonConvert.DeserializeObject<SmsJson>(result);
-						if(smsJson.statuscode =="1")
-						{
-							RunOnUiThread(()=>{
-								Intent intent = new Intent(this,typeof(RegisterResultActivity));
-								var bundle = new Bundle();
-								bundle.PutString("phoneNum",phoneNumber);
-								bundle.PutString("nickName",nickName);
-								bundle.PutString("passWord",passWord);
-								bundle.PutString("securityCode",smsJson.data.ToString());
+						RunOnUiThread(()=>{
+							Intent intent = new Intent(this,typeof(RegisterResultActivity));
+							var bundle = new Bundle();
+							bundle.PutString("phoneNum",phoneNumber);
+							bundle.PutString("nickName",nickName);
+							bundle.PutString("passWord",passWord);
+							bundle.PutString("securityCode",smsJson.data.ToString());
 
-								intent.PutExtras(bundle);
-								StartActivity(intent);
+							intent.PutExtras(bundle);
+							StartActivity(intent);
 
-								ProgressDialogUtil.StopProgressDialog();
+							ProgressDialogUtil.StopProgressDialog();
 
-							});
-						}
-						else
-						{
-							RunOnUiThread(()=>
-								{
-									Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}	
+						});
 					}
+					else
+					{
+						RunOnUiThread(()=>
+							{
+								Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}	
+
 
 				}
 				else

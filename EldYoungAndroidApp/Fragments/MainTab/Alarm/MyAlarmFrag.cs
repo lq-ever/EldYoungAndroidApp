@@ -173,54 +173,53 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
+					if(alarmlistInfoJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
-						if(alarmlistInfoJson.statuscode == "1")
-						{
-							
-							total =  alarmlistInfoJson.data.total;
-							alarmInfoLists = alarmlistInfoJson.data.items;
+						
+						total =  alarmlistInfoJson.data.total;
+						alarmInfoLists = alarmlistInfoJson.data.items;
 
-							Activity.RunOnUiThread(()=>
-								{
-									alarmInfoAdapter.Clear();//清空所有数据
-									alarmInfoAdapter.AddAll(alarmInfoLists);
-									alarmInfoAdapter.NotifyDataSetChanged();
-									myAlarmRefreshListView.OnRefreshComplete ();
-									HasLoadedOnce = true;//加载第一次成功
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
-								});
-							
-						}
-						else
-						{
-							Activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(Activity,"获取报警列表信息错误",ToastLength.Short).Show();
-									myAlarmRefreshListView.OnRefreshComplete ();
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
+						Activity.RunOnUiThread(()=>
+							{
+								alarmInfoAdapter.Clear();//清空所有数据
+								alarmInfoAdapter.AddAll(alarmInfoLists);
+								alarmInfoAdapter.NotifyDataSetChanged();
+								myAlarmRefreshListView.OnRefreshComplete ();
+								HasLoadedOnce = true;//加载第一次成功
+								if(btnSearchFlag)
+									ProgressDialogUtil.StopProgressDialog();
+							});
+						
 					}
 					else
 					{
 						Activity.RunOnUiThread(()=>
 							{
-								Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+								Toast.MakeText(Activity,"获取报警列表信息错误",ToastLength.Short).Show();
+								myAlarmRefreshListView.OnRefreshComplete ();
 								if(btnSearchFlag)
 									ProgressDialogUtil.StopProgressDialog();
-								 myAlarmRefreshListView.OnRefreshComplete ();
 								return;
 							});
 					}
 				}
+				else
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							if(btnSearchFlag)
+								ProgressDialogUtil.StopProgressDialog();
+							myAlarmRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+					
 			});
 
 		}
@@ -332,40 +331,37 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			UpdateAlarmInfoListParam ();
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
+					if(alarmlistInfoJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
-						if(alarmlistInfoJson.statuscode == "1")
-						{
-							total =  alarmlistInfoJson.data.total;
-							alarmInfoLists.AddRange(alarmlistInfoJson.data.items);
+						total =  alarmlistInfoJson.data.total;
+						alarmInfoLists.AddRange(alarmlistInfoJson.data.items);
 
-							Activity.RunOnUiThread(()=>
-								{
+						Activity.RunOnUiThread(()=>
+							{
 
-									alarmInfoAdapter.AddAll(alarmlistInfoJson.data.items);
-									alarmInfoAdapter.NotifyDataSetChanged();
-									myAlarmRefreshListView.OnRefreshComplete ();
-									//讲listview滚动到上次加载位置
-									actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
-								});
+								alarmInfoAdapter.AddAll(alarmlistInfoJson.data.items);
+								alarmInfoAdapter.NotifyDataSetChanged();
+								myAlarmRefreshListView.OnRefreshComplete ();
+								//讲listview滚动到上次加载位置
+								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
+							});
 
-						}
-						else
-						{
-							pageIndex--;
-							Activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(Activity,"获取更多报警列表信息错误",ToastLength.Short).Show();
-									myAlarmRefreshListView.OnRefreshComplete ();
-									return;
-								});
-						}
 					}
-
+					else
+					{
+						pageIndex--;
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"获取更多报警列表信息错误",ToastLength.Short).Show();
+								myAlarmRefreshListView.OnRefreshComplete ();
+								return;
+							});
+					}
 				}
 				else
 				{
@@ -373,7 +369,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							//ProgressDialogUtil.StopProgressDialog();
 							myAlarmRefreshListView.OnRefreshComplete ();
 							return;
 						});

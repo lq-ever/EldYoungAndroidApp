@@ -106,7 +106,6 @@
     <Compile Include="Json\LoginJson.cs" />
     <Compile Include="ServiceAgreeActivity.cs" />
     <Compile Include="SetActivity.cs" />
-    <Compile Include="Activitys\My\PersonActivity.cs" />
     <Compile Include="Activitys\My\PersonBasicActivity.cs" />
     <Compile Include="Activitys\Alarm\AlarmDetailInfoActivity.cs" />
     <Compile Include="MainActivity.cs" />
@@ -177,6 +176,8 @@
     <Compile Include="AboutUsActivity.cs" />
     <Compile Include="Param\GetMyInfoParam.cs" />
     <Compile Include="Json\GetMyInfoJson.cs" />
+    <Compile Include="Param\GetAppVersionParam.cs" />
+    <Compile Include="Json\GetAppVersionJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -273,7 +274,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\user_center_share.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\user_center_support.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\user_center_vip.png" />
-    <AndroidResource Include="Resources\layout\PersonLayout.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\arrow_right_gray.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\user_center_default.png" />
     <AndroidResource Include="Resources\drawable\relativeLayoutSelector.xml" />
@@ -375,6 +375,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\myInfomation_headImage.png" />
     <AndroidResource Include="Resources\layout\AboutUsLayout.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\myInfomation_setup_aboutus_logo.png" />
+    <AndroidResource Include="Resources\drawable\radiobutton_selector.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

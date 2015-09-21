@@ -188,28 +188,24 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			else
 				restSharpGetMyUserRequestHelp.RequestParams = myUserRequestParams;
 			restSharpGetMyUserRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					var result = response.Content;
+					var searchMyUserJson = JsonConvert.DeserializeObject<SearchAllMyUserJson>(result);
+					if(searchMyUserJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var searchMyUserJson = JsonConvert.DeserializeObject<SearchAllMyUserJson>(result);
-						if(searchMyUserJson.statuscode == "1")
-						{
-							
-							myUserLists = searchMyUserJson.data;
-
-							Activity.RunOnUiThread(()=>
-								{
-									myUserListAdapter = new ArrayAdapter<AllMyUserListItem>(Activity,Android.Resource.Layout.SimpleSpinnerItem,myUserLists);
-									myUserListAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-									sp_other_guardian.Adapter = myUserListAdapter;
-									sp_other_guardian.SetSelection(0,true);
-								});
-
-						}
+						
+						myUserLists = searchMyUserJson.data;
+						Activity.RunOnUiThread(()=>
+							{
+								myUserListAdapter = new ArrayAdapter<AllMyUserListItem>(Activity,Android.Resource.Layout.SimpleSpinnerItem,myUserLists);
+								myUserListAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+								sp_other_guardian.Adapter = myUserListAdapter;
+								sp_other_guardian.SetSelection(0,true);
+							});
 
 					}
+
 				}
 
 
@@ -264,41 +260,39 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK )
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					var result = response.Content;
+					var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
+					if(alarmlistInfoJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
-						if(alarmlistInfoJson.statuscode == "1")
-						{
-							total =  alarmlistInfoJson.data.total;
-							alarmInfoLists = alarmlistInfoJson.data.items;
+						total =  alarmlistInfoJson.data.total;
+						alarmInfoLists = alarmlistInfoJson.data.items;
 
-							Activity.RunOnUiThread(()=>
-								{
-									alarmInfoAdapter.Clear();
-									alarmInfoAdapter.AddAll(alarmInfoLists);
-									alarmInfoAdapter.NotifyDataSetChanged();
-									otherAlarmRefreshListView.OnRefreshComplete ();
-									HasLoadedOnce = true;//加载第一次成功
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
-								});
+						Activity.RunOnUiThread(()=>
+							{
+								alarmInfoAdapter.Clear();
+								alarmInfoAdapter.AddAll(alarmInfoLists);
+								alarmInfoAdapter.NotifyDataSetChanged();
+								otherAlarmRefreshListView.OnRefreshComplete ();
+								HasLoadedOnce = true;//加载第一次成功
+								if(btnSearchFlag)
+									ProgressDialogUtil.StopProgressDialog();
+							});
 
-						}
-						else
-						{
-							Activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(Activity,"获取报警列表信息错误",ToastLength.Short).Show();
-									otherAlarmRefreshListView.OnRefreshComplete ();
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
 					}
+					else
+					{
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"获取报警列表信息错误",ToastLength.Short).Show();
+								otherAlarmRefreshListView.OnRefreshComplete ();
+								if(btnSearchFlag)
+									ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+
 
 				}
 				else
@@ -431,38 +425,36 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			UpdateAlarmInfoListParam ();
 			//调用webservice获取数据
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
+					if(alarmlistInfoJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
-						if(alarmlistInfoJson.statuscode == "1")
-						{
-							total =  alarmlistInfoJson.data.total;
-							alarmInfoLists.AddRange(alarmlistInfoJson.data.items);
+						total =  alarmlistInfoJson.data.total;
+						alarmInfoLists.AddRange(alarmlistInfoJson.data.items);
 
-							Activity.RunOnUiThread(()=>
-								{
+						Activity.RunOnUiThread(()=>
+							{
 
-									alarmInfoAdapter.AddAll(alarmlistInfoJson.data.items);
-									alarmInfoAdapter.NotifyDataSetChanged();
-									otherAlarmRefreshListView.OnRefreshComplete ();
-									//讲listview滚动到上次加载位置
-									actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
-								});
+								alarmInfoAdapter.AddAll(alarmlistInfoJson.data.items);
+								alarmInfoAdapter.NotifyDataSetChanged();
+								otherAlarmRefreshListView.OnRefreshComplete ();
+								//讲listview滚动到上次加载位置
+								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
+							});
 
-						}
-						else
-						{
-							pageIndex --;
-							Activity.RunOnUiThread(()=>
-								{
-									Toast.MakeText(Activity,"获取更多报警列表信息错误",ToastLength.Short).Show();
-									otherAlarmRefreshListView.OnRefreshComplete ();
-									return;
-								});
-						}
+					}
+					else
+					{
+						pageIndex --;
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"获取更多报警列表信息错误",ToastLength.Short).Show();
+								otherAlarmRefreshListView.OnRefreshComplete ();
+								return;
+							});
 					}
 
 				}
@@ -472,7 +464,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							//ProgressDialogUtil.StopProgressDialog();
+
 							otherAlarmRefreshListView.OnRefreshComplete ();
 							return;
 						});

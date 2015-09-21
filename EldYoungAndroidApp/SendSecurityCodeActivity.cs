@@ -189,7 +189,7 @@ namespace EldYoungAndroidApp
 
 			var restSharpRequestHelp = new RestSharpRequestHelp(sendCodeParam.Url,requestsendcodeParams);
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
 					//获取并解析返回resultJson获取安全码结果值
 					var result = response.Content;
@@ -271,10 +271,6 @@ namespace EldYoungAndroidApp
 			public override void OnFinish ()
 			{
 				Activity.btn_Send.Text = "获取验证码";
-//				Activity.btn_Send.Clickable = true;
-//				Activity.securityCode = string.Empty;
-//				Activity.btn_Send.SetBackgroundResource (Resource.Color.blue);
-//				Activity.btn_Send.SetTextColor(Activity.Resources.GetColor(Resource.Color.white));
 				Activity.btn_Send.Enabled = true;
 				Activity.tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
 			}

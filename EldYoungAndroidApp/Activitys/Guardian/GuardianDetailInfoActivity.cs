@@ -97,50 +97,49 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 				restSharpRequestHelp.RequestParams = requestParams;
 			//调用监护人详情web服务
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var guardianDetailInfoJson = JsonConvert.DeserializeObject<GuardianDetailInfoJson>(result);
+					if(guardianDetailInfoJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var guardianDetailInfoJson = JsonConvert.DeserializeObject<GuardianDetailInfoJson>(result);
-						if(guardianDetailInfoJson.statuscode == "1")
+						if(guardianDetailInfoJson.data!=null && guardianDetailInfoJson.data.Count >0)
 						{
-							if(guardianDetailInfoJson.data!=null && guardianDetailInfoJson.data.Count >0)
+							var detailItem = guardianDetailInfoJson.data[0];
+							RunOnUiThread(()=>
+								{
+									tv_TrueName.Text = detailItem.TrueName;
+									tv_Gender.Text = detailItem.Gender;
+									tv_Brnl.Text = detailItem.BRNL;
+									tv_PhoneNumberOne.Text = detailItem.PhoneNumberOne;
+									tv_IDNumber.Text = detailItem.IDNumber;
+									tv_ContactAddress.Text = detailItem.ContactAddress;
+									tv_TelePhoneNumber.Text = detailItem.TelePhoneNumber;
+									tv_Email.Text = detailItem.Email;
+									tv_Height.Text = detailItem.Height;
+									tv_Weight.Text = detailItem.Weight;
+									tv_HereditaryDisease.Text = detailItem.HereditaryDisease;
+
+								});
+							
+
+						}
+						RunOnUiThread(()=>
 							{
-								var detailItem = guardianDetailInfoJson.data[0];
-								RunOnUiThread(()=>
-									{
-										tv_TrueName.Text = detailItem.TrueName;
-										tv_Gender.Text = detailItem.Gender;
-										tv_Brnl.Text = detailItem.BRNL;
-										tv_PhoneNumberOne.Text = detailItem.PhoneNumberOne;
-										tv_IDNumber.Text = detailItem.IDNumber;
-										tv_ContactAddress.Text = detailItem.ContactAddress;
-										tv_TelePhoneNumber.Text = detailItem.TelePhoneNumber;
-										tv_Email.Text = detailItem.Email;
-										tv_Height.Text = detailItem.Height;
-										tv_Weight.Text = detailItem.Weight;
-										tv_HereditaryDisease.Text = detailItem.HereditaryDisease;
-
-									});
-								
-
-							}
-							RunOnUiThread(()=>
-								{
-									ProgressDialogUtil.StopProgressDialog();
-								});
-						}
-						else
-						{
-							RunOnUiThread(()=>
-								{
-									Toast.MakeText(this,"获取用户详情信息失败...",ToastLength.Short).Show();
-									ProgressDialogUtil.StopProgressDialog();
-									return;
-								});
-						}
+								ProgressDialogUtil.StopProgressDialog();
+							});
 					}
+					else
+					{
+						RunOnUiThread(()=>
+							{
+								Toast.MakeText(this,"获取用户详情信息失败...",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+
 
 				}
 				else

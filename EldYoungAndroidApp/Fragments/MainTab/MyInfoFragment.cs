@@ -11,7 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.App;
 using Android.App;
-using EldYoungAndroidApp.My;
+
 using Android.Graphics;
 using EldYoungAndroidApp.Common;
 using Android.Provider;
@@ -42,8 +42,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-
-
 			// Create your fragment here
 		}
 

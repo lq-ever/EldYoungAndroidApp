@@ -190,34 +190,23 @@ namespace EldYoungAndroidApp.Adapter
 				restSharpRequestHelp.RequestParams = requestParams;
 
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					
+					var result = response.Content;
+					var applyGuardianJson = JsonConvert.DeserializeObject<ApplyForGuardianJson>(result);
+
+					if(applyGuardianJson.statuscode == "1")
 					{
-						var result = response.Content;
-						var applyGuardianJson = JsonConvert.DeserializeObject<ApplyForGuardianJson>(result);
-
-						if(applyGuardianJson.statuscode == "1")
+						if(applyGuardianJson.data == "1")
 						{
-							if(applyGuardianJson.data == "1")
-							{
-								activity.RunOnUiThread(()=>
-									{
-										Toast.MakeText(activity,"申请绑定监护人成功",ToastLength.Short).Show();
-										ProgressDialogUtil.StopProgressDialog();
+							activity.RunOnUiThread(()=>
+								{
+									Toast.MakeText(activity,"申请绑定监护人成功",ToastLength.Short).Show();
+									ProgressDialogUtil.StopProgressDialog();
 
-										return;
-									});
-							}
-							else
-							{
-								activity.RunOnUiThread(()=>
-									{
-										Toast.MakeText(activity,"申请绑定失败,稍后在试...",ToastLength.Short).Show();
-										ProgressDialogUtil.StopProgressDialog();
-										return;
-									});
-							}
+									return;
+								});
 						}
 						else
 						{
@@ -229,6 +218,16 @@ namespace EldYoungAndroidApp.Adapter
 								});
 						}
 					}
+					else
+					{
+						activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(activity,"申请绑定失败,稍后在试...",ToastLength.Short).Show();
+								ProgressDialogUtil.StopProgressDialog();
+								return;
+							});
+					}
+
 
 				}
 				else
