@@ -38,6 +38,7 @@ namespace EldYoungAndroidApp
 			btn_header_back.Click += (sender, e) => 
 			{
 				this.Finish();
+				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 			var tv_header_title = FindViewById<TextView> (Resource.Id.tv_header_title);
 			tv_header_title.Text = "账户安全";
@@ -50,7 +51,7 @@ namespace EldYoungAndroidApp
 			mPullRefreshScrollView.GetLoadingLayoutProxy (true,false).SetRefreshingLabel(GetString(Resource.String.pullDownRefreshLbl));
 			mPullRefreshScrollView.GetLoadingLayoutProxy (true, false).SetReleaseLabel (GetString(Resource.String.pullDownReleaseLbl));
 			//上拉、下拉设定  
-			mPullRefreshScrollView.Mode = PullToRefreshBase.PullToRefreshMode.GoogleStyle;  
+			mPullRefreshScrollView.Mode = PullToRefreshBase.PullToRefreshMode.PullFromStart;  
 
 			//登录密码
 			var rl_person_loginPwd = FindViewById<RelativeLayout>(Resource.Id.rl_person_loginPwd);
@@ -111,7 +112,7 @@ namespace EldYoungAndroidApp
 		/// </summary>
 		private void Refresh()
 		{
-			Thread.Sleep (2000);
+			Thread.Sleep (5000);
 			mPullRefreshScrollView.OnRefreshComplete ();
 		}
 	}

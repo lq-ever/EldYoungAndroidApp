@@ -45,6 +45,7 @@ namespace EldYoungAndroidApp
 			btn_header_back.Click += (sender, e) => 
 			{
 				this.Finish();
+				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 
 			//取得上一页面传递过来的值包括是什么类型发送验证码（找回密码\修改支付密码\修改密码）

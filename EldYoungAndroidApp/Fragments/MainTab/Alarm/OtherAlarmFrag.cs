@@ -211,16 +211,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 					}
 				}
-				else
-				{
-
-					Activity.RunOnUiThread(()=>
-						{
-							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-						     ProgressDialogUtil.StopProgressDialog();
-							return;
-						});
-				}
 
 
 			});

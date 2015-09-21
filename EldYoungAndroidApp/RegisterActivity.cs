@@ -170,9 +170,17 @@ namespace EldYoungAndroidApp
 				Toast.MakeText(this,"用户名不能为空,请先填写用户名",ToastLength.Short).Show();
 				return false;
 			}
+			if (!EldYoungUtil.IsValidUserName (nickName)) {
+				Toast.MakeText(this,"请输入规范的用户名,建议由中英文、数字、下划线组成",ToastLength.Short).Show();
+				return false;
+			}
 			passWord = edit_PassWord.Text;
 			if (string.IsNullOrEmpty (passWord)) {
 				Toast.MakeText(this,"密码不能为空,请输入密码",ToastLength.Short).Show();
+				return false;
+			}
+			if (!EldYoungUtil.IsPassWord (passWord)) {
+				Toast.MakeText(this,"请输入规范的密码,建议由字母、数字和符号两种以上组成",ToastLength.Short).Show();
 				return false;
 			}
 			confirmPassWord = edit_ConfirmPassWord.Text;
@@ -184,6 +192,7 @@ namespace EldYoungAndroidApp
 				Toast.MakeText(this,"输入两次密码不一致,请检查",ToastLength.Short).Show();
 				return false;
 			}
+
 			phoneNumber = edit_Phone.Text;
 			if (string.IsNullOrEmpty (phoneNumber) || !EldYoungUtil.IsMobileNo (phoneNumber)) {
 				Toast.MakeText(this,"输入正确规范的手机号,且不能为空",ToastLength.Short).Show();
@@ -197,7 +206,6 @@ namespace EldYoungAndroidApp
 			nickName = string.Empty;
 			passWord = string.Empty;
 			confirmPassWord = string.Empty;
-
 		}
 
 		/// <summary>

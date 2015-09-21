@@ -14,7 +14,6 @@ public class MyInfoFragment
 			"n_onCreateView:(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;:GetOnCreateView_Landroid_view_LayoutInflater_Landroid_view_ViewGroup_Landroid_os_Bundle_Handler\n" +
 			"n_onActivityCreated:(Landroid/os/Bundle;)V:GetOnActivityCreated_Landroid_os_Bundle_Handler\n" +
 			"n_onActivityResult:(IILandroid/content/Intent;)V:GetOnActivityResult_IILandroid_content_Intent_Handler\n" +
-			"n_onResume:()V:GetOnResumeHandler\n" +
 			"n_onClick:(Landroid/view/View;)V:GetOnClick_Landroid_view_View_Handler:Android.Views.View/IOnClickListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"";
 		mono.android.Runtime.register ("EldYoungAndroidApp.Fragments.MainTab.MyInfoFragment, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", MyInfoFragment.class, __md_methods);
@@ -59,14 +58,6 @@ public class MyInfoFragment
 	}
 
 	private native void n_onActivityResult (int p0, int p1, android.content.Intent p2);
-
-
-	public void onResume ()
-	{
-		n_onResume ();
-	}
-
-	private native void n_onResume ();
 
 
 	public void onClick (android.view.View p0)

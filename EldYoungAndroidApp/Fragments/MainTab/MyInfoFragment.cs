@@ -315,11 +315,11 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				requestParams ["md5"] = headImgPostParam.Md5;
 
 		}
-		public override void OnResume ()
-		{
-			SetPersonImg ();
-			base.OnResume ();
-		}
+//		public override void OnResume ()
+//		{
+//			SetPersonImg ();
+//			base.OnResume ();
+//		}
 	}
 }
 

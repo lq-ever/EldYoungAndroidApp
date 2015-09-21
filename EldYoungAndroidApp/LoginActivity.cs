@@ -143,6 +143,15 @@ namespace EldYoungAndroidApp
 				return;
 			}
 
+			if (!EldYoungUtil.IsValidUserName (userNameValue)) {
+				Toast.MakeText (this, "请输入正确规范用户名4-20位，由中英文、数字、下划线组成", ToastLength.Short).Show ();
+				return;
+			}
+			if (!EldYoungUtil.IsPassWord (passwordValue)) {
+				Toast.MakeText (this, "请输入正确规范用户名6-20位，建议由字母、数字和符号两种以上组成", ToastLength.Short).Show ();
+				return;
+			}
+
 			ProgressDialogUtil.StartProgressDialog(this,GetString(Resource.String.loginMsg));
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))

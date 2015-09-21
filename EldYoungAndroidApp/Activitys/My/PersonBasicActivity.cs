@@ -28,6 +28,7 @@ namespace EldYoungAndroidApp
 		private string UserName, TrueName, IdCardNo, Gender, Birth, PhoneNumberOne, FixedPhone, EmailAddress, IdCardLocation, LocationThreeLevel, LocationDetail,TrueAddress;
 
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
+		private Dictionary<string,string> requestMyInfoParams = new Dictionary<string,string> ();
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -58,24 +59,24 @@ namespace EldYoungAndroidApp
 			};
 			//用户名
 			tv_userName = FindViewById<TextView>(Resource.Id.tv_userName);
-			tv_userName.Text = Global.MyInfo.UserName;
+			//tv_userName.Text = Global.MyInfo.UserName;
 			//真实姓名
 			edit_trueName = FindViewById<EditText>(Resource.Id.edit_trueName);
-			edit_trueName.Text = string.IsNullOrEmpty (Global.MyInfo.TrueName) ? "" : Global.MyInfo.TrueName;
+			//edit_trueName.Text = string.IsNullOrEmpty (Global.MyInfo.TrueName) ? "" : Global.MyInfo.TrueName;
 			//身份证号码
 			edit_IdCardNo = FindViewById<EditText>(Resource.Id.edit_IdCardNo);
-			edit_IdCardNo.Text = string.IsNullOrEmpty (Global.MyInfo.IDNumber) ? "" : Global.MyInfo.IDNumber;
+			//edit_IdCardNo.Text = string.IsNullOrEmpty (Global.MyInfo.IDNumber) ? "" : Global.MyInfo.IDNumber;
 
 			//性别
 			rbtn_male = FindViewById<RadioButton>(Resource.Id.rbtn_male);
 		    rbtn_female = FindViewById<RadioButton> (Resource.Id.rbtn_female);
-			if (!string.IsNullOrEmpty (Global.MyInfo.Gender) && Global.MyInfo.Gender.Equals ("0"))
-				rbtn_male.Checked = true;
-			else
-				rbtn_female.Checked = true;
+//			if (!string.IsNullOrEmpty (Global.MyInfo.Gender) && Global.MyInfo.Gender.Equals ("0"))
+//				rbtn_male.Checked = true;
+//			else
+//				rbtn_female.Checked = true;
 			//生日
 			edit_birth = FindViewById<EditText> (Resource.Id.edit_birth);
-			edit_birth.Text = !string.IsNullOrEmpty (Global.MyInfo.Age) ?Convert.ToDateTime(Global.MyInfo.Age).ToString("yyyy-MM-dd") :"";
+			//edit_birth.Text = !string.IsNullOrEmpty (Global.MyInfo.Age) ?Convert.ToDateTime(Global.MyInfo.Age).ToString("yyyy-MM-dd") :"";
 			edit_birth.Click += (sender, e) => 
 			{
 				var datepickdialog = new DatePickDialogUtil(this,edit_birth.Text);
@@ -84,21 +85,116 @@ namespace EldYoungAndroidApp
 			};
 			//电话号码
 			edit_phoneNumberOne = FindViewById<EditText>(Resource.Id.edit_phoneNumberOne);
-			edit_phoneNumberOne.Text = !string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? Global.MyInfo.PhoneNumberOne : "";
-			if (!string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne))
-				edit_phoneNumberOne.Enabled = false;
+//			edit_phoneNumberOne.Text = !string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? Global.MyInfo.PhoneNumberOne : "";
+//			if (!string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne))
+//				edit_phoneNumberOne.Enabled = false;
 			//固定电话
 			edit_fixedPhone = FindViewById<EditText>(Resource.Id.edit_fixedPhone);
-			edit_fixedPhone.Text = !string.IsNullOrEmpty (Global.MyInfo.TelePhoneNumber) ? Global.MyInfo.TelePhoneNumber : "";
+			//edit_fixedPhone.Text = !string.IsNullOrEmpty (Global.MyInfo.TelePhoneNumber) ? Global.MyInfo.TelePhoneNumber : "";
 			//电子邮箱
 			edit_email = FindViewById<EditText>(Resource.Id.edit_email);
-			edit_email.Text = !string.IsNullOrEmpty (Global.MyInfo.Email) ? Global.MyInfo.Email : "";
+			//edit_email.Text = !string.IsNullOrEmpty (Global.MyInfo.Email) ? Global.MyInfo.Email : "";
 			//身份证所在地
 			edit_idCardLocation = FindViewById<EditText>(Resource.Id.edit_idCardLocation);
-			edit_idCardLocation.Text = !string.IsNullOrEmpty (Global.MyInfo.IDAddress) ? Global.MyInfo.IDAddress : "";
+			//edit_idCardLocation.Text = !string.IsNullOrEmpty (Global.MyInfo.IDAddress) ? Global.MyInfo.IDAddress : "";
 			//todo:设置详细地址
 			edit_locationthreelevel = FindViewById<EditText>(Resource.Id.edit_locationthreelevel);
 			edit_locationdeatil = FindViewById<EditText> (Resource.Id.edit_locationdeatil);
+			GetPersonInfo ();
+		}
+
+		private void GetPersonInfo()
+		{
+			var getMyInfoParam = new GetMyInfoParam () {
+				Uid = Global.MyInfo.UId
+			};
+			if (!requestMyInfoParams.ContainsKey ("key"))
+				requestMyInfoParams.Add ("key", getMyInfoParam.Key);
+			else
+				requestMyInfoParams ["key"] = getMyInfoParam.Key;
+
+			if (!requestMyInfoParams.ContainsKey ("eUId"))
+				requestMyInfoParams.Add ("eUId", getMyInfoParam.Euid);
+			else
+				requestMyInfoParams ["eUId"] = getMyInfoParam.Euid;
+			
+			if (!requestMyInfoParams.ContainsKey ("eaction"))
+				requestMyInfoParams.Add ("eaction", getMyInfoParam.Eaction);
+			else
+				requestMyInfoParams ["eaction"] = getMyInfoParam.Eaction;
+
+			if (!requestMyInfoParams.ContainsKey ("md5"))
+				requestMyInfoParams.Add ("md5", getMyInfoParam.Md5);
+			else
+				requestMyInfoParams ["md5"] = getMyInfoParam.Md5;
+			var restSharpRequestHelp = new RestSharpRequestHelp(getMyInfoParam.Url,requestMyInfoParams);
+			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
+			
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+				{
+					//获取并解析返回resultJson获取安全码结果值
+					if(response.StatusCode == System.Net.HttpStatusCode.OK)
+					{
+						var result = response.Content;
+						var getmyInfoJson = JsonConvert.DeserializeObject<GetMyInfoJson>(result);
+						if(getmyInfoJson.statuscode =="1")
+						{
+							Global.MyInfo = getmyInfoJson.data[0];
+						}
+
+					}
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				SetPersonInfoShow();
+			});
+		}
+		/// <summary>
+		/// 显示个人基本信息
+		/// </summary>
+		private void SetPersonInfoShow()
+		{
+			RunOnUiThread (() => {
+				//用户名
+				tv_userName.Text = Global.MyInfo.UserName;
+				//真实姓名
+				edit_trueName.Text = string.IsNullOrEmpty (Global.MyInfo.TrueName) ? "" : Global.MyInfo.TrueName;
+				//身份证号码
+				edit_IdCardNo.Text = string.IsNullOrEmpty (Global.MyInfo.IDNumber) ? "" : Global.MyInfo.IDNumber;
+				if(!string.IsNullOrEmpty(Global.MyInfo.IDNumber))
+				{
+					edit_IdCardNo.Enabled = false;
+				}
+					
+				//性别
+				if (!string.IsNullOrEmpty (Global.MyInfo.Gender) && Global.MyInfo.Gender.Equals ("0"))
+					rbtn_male.Checked = true;
+				else
+					rbtn_female.Checked = true;
+				//生日
+				edit_birth.Text = !string.IsNullOrEmpty (Global.MyInfo.Age) ?Convert.ToDateTime(Global.MyInfo.Age).ToString("yyyy-MM-dd") :"";
+				//电话号码
+				edit_phoneNumberOne.Text = !string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? Global.MyInfo.PhoneNumberOne : "";
+				if (!string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne))
+					edit_phoneNumberOne.Enabled = false;
+				//固定电话
+
+				edit_fixedPhone.Text = !string.IsNullOrEmpty (Global.MyInfo.TelePhoneNumber) ? Global.MyInfo.TelePhoneNumber : "";
+				//电子邮箱
+				edit_email.Text = !string.IsNullOrEmpty (Global.MyInfo.Email) ? Global.MyInfo.Email : "";
+				//身份证所在地
+				edit_idCardLocation.Text = !string.IsNullOrEmpty (Global.MyInfo.IDAddress) ? Global.MyInfo.IDAddress : "";
+				//todo:设置详细地址
+
+			});
+
 		}
 
 		private void SubmitPesonInfo()
@@ -110,10 +206,7 @@ namespace EldYoungAndroidApp
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))
 			{
-				RunOnUiThread(()=>
-					{
-						Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
-					});
+				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
 				ProgressDialogUtil.StopProgressDialog();
 				return;
 			}
@@ -186,6 +279,11 @@ namespace EldYoungAndroidApp
 			}
 			Gender = rbtn_male.Checked ? "0" : "1";
 			Birth = edit_birth.Text;
+			if (Convert.ToDateTime(Birth) >= Convert.ToDateTime(DateTime.Now.ToString ("yyyy-MM-dd"))) {
+				Toast.MakeText (this, "生日应小于当前日期", ToastLength.Short).Show ();
+				return false;
+			}
+
 			PhoneNumberOne = edit_phoneNumberOne.Text;
 			if (!string.IsNullOrEmpty (PhoneNumberOne)) {
 				if (!EldYoungUtil.IsMobileNo (PhoneNumberOne)) {

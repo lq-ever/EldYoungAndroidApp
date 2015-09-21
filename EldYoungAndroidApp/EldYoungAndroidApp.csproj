@@ -175,6 +175,8 @@
     <Compile Include="Param\UpdatePersonInfoParam.cs" />
     <Compile Include="Json\UpdatePersonInfoJson.cs" />
     <Compile Include="AboutUsActivity.cs" />
+    <Compile Include="Param\GetMyInfoParam.cs" />
+    <Compile Include="Json\GetMyInfoJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

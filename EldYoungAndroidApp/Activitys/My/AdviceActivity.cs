@@ -33,6 +33,7 @@ namespace EldYoungAndroidApp
 			btn_header_back.Click += (sender, e) => 
 			{
 				this.Finish();
+				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 			var tv_header_title = FindViewById<TextView> (Resource.Id.tv_header_title);
 			tv_header_title.Text = "投诉建议";

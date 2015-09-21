@@ -104,6 +104,26 @@ namespace EldYoungAndroidApp.Common
 			return regex.IsMatch (str);
 		}
 
+		/// <summary>
+		/// 用户名验证 4-20位，由中英文、数字、下划线组成
+		/// </summary>
+		/// <returns><c>true</c> if is valid user name the specified userName; otherwise, <c>false</c>.</returns>
+		/// <param name="userName">User name.</param>
+		public static bool IsValidUserName(string userName)
+		{
+			var userNameRegex = "^[a-zA-Z0-9_u4e00-u9fa5]{4,20}$";
+			return Regex.IsMatch (userName, userNameRegex);
+		}
+		/// <summary>
+		/// 密码验证 6-20位，建议由字母、数字和符号两种以上组成
+		/// </summary>
+		/// <returns><c>true</c> if is pass word the specified passWord; otherwise, <c>false</c>.</returns>
+		/// <param name="passWord">Pass word.</param>
+		public static bool IsPassWord(string passWord)
+		{
+			var pwdRegx = "^[\\x21-\\x7E]{6,20}$";
+			return Regex.IsMatch (passWord, pwdRegx);
+		}
 
 		/// <summary>
 		/// 验证手机号
@@ -112,15 +132,10 @@ namespace EldYoungAndroidApp.Common
 		/// <param name="mobileNo">Mobile no.</param>
 		public static bool IsMobileNo(string mobileNo)
 		{
-			/* 
-				移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188 
-				联通：130、131、132、152、155、156、185、186 
-				电信：133、153、180、189、（1349卫通） 
-				总结起来就是第一位必定为1，第二位必定为3或5或8，其他位置的可以为0-9 
-			*/  
+			
 			if (string.IsNullOrEmpty (mobileNo))
 				return false;
-			var telRegex = "[1][358]\\d{9}";
+			var telRegex = "^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$";
 			return Regex.IsMatch (mobileNo, telRegex);
 
 		}
@@ -142,7 +157,7 @@ namespace EldYoungAndroidApp.Common
 		/// <param name="fixedPhone">Fixed phone.</param>
 		public static bool IsFixedPhone(string fixedPhone)
 		{
-			var fixedRegx = "^(\\d{3,4}-)?\\d{6,8}$";
+			var fixedRegx = "\\d{3}-\\d{8}|\\d{4}-\\{7,8}";
 			return Regex.IsMatch (fixedPhone, fixedRegx);
 		}
 		/// <summary>
@@ -152,7 +167,7 @@ namespace EldYoungAndroidApp.Common
 		/// <param name="IdCardNo">Identifier card no.</param>
 		public static bool IsIdCardNo(string IdCardNo)
 		{
-			var idCardNoRegx = "(^\\d{18}$)|(^\\d{15}$)";
+			var idCardNoRegx = "^(^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$)|(^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])((\\d{4})|\\d{3}[Xx])$)$";
 			return Regex.IsMatch (IdCardNo, idCardNoRegx);
 		}
 		/// <summary>
@@ -162,7 +177,7 @@ namespace EldYoungAndroidApp.Common
 		/// <param name="email">Email.</param>
 		public static bool IsEmail(string email)
 		{
-			var emailRegx = "^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)$";
+			var emailRegx = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?";
 			return Regex.IsMatch (email, emailRegx);
 		}
 	

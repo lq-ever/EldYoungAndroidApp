@@ -128,6 +128,10 @@ namespace EldYoungAndroidApp
 				Toast.MakeText(this,"输入两次密码不一致,请检查",ToastLength.Short).Show();
 				return ;
 			}
+			if (!EldYoungUtil.IsPassWord (passWord)) {
+				Toast.MakeText (this, "请输入正确规范用户名6-20位，建议由字母、数字和符号两种以上组成", ToastLength.Short).Show ();
+				return;
+			}
 			ProgressDialogUtil.StartProgressDialog(this,"正在提交...");
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))

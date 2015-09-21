@@ -35,18 +35,16 @@ namespace EldYoungAndroidApp.Common
 			byte[] inputByteArray;
 			//inputByteArray = Encoding.Default.GetBytes(Text);
 			inputByteArray = Encoding.UTF8.GetBytes(Text);
+			//inputByteArray=Encoding.GetEncoding("gb2312").GetBytes (Text);
 			#region debug和release模式下中文解决乱码
 			/*
 			 *  使用gb2312在debug模式下，正常，不乱码，但在release下模式直接报空引用
 			 * 使用utf8在debug或release模式下程序正常，但碰到中文环境下会乱码，但解决
 			*/
 			#endregion
-			//inputByteArray=Encoding.GetEncoding("gb2312").GetBytes (Text);
 
-//			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
-//			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
-			des.Key = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
-			des.IV = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
+			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			CryptoStream cs = new CryptoStream(ms, des.CreateEncryptor(), CryptoStreamMode.Write);
 			cs.Write(inputByteArray, 0, inputByteArray.Length);
@@ -93,15 +91,17 @@ namespace EldYoungAndroidApp.Common
 				inputByteArray[x] = (byte)i;
 			}
 
-//			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
-//			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
-			des.Key = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
-			des.IV = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
+			des.Key = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+			des.IV = ASCIIEncoding.ASCII.GetBytes(sKey.Substring(0,8));
+//			des.Key = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
+//			des.IV = System.Text.Encoding.UTF8.GetBytes(sKey.Substring(0,8));
 			System.IO.MemoryStream ms = new System.IO.MemoryStream();
 			CryptoStream cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
 			cs.Write(inputByteArray, 0, inputByteArray.Length);
 			cs.FlushFinalBlock();
-			return Encoding.Default.GetString(ms.ToArray());
+			//return Encoding.Default.GetString(ms.ToArray());
+			return Encoding.UTF8.GetString(ms.ToArray());
+			//return Encoding.GetEncoding("gb2312").GetString(ms.ToArray());
 		}
 
 		#endregion
