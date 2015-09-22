@@ -94,22 +94,24 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			var rl_person_basic = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_basic);
 			rl_person_basic.Click += (sender, e) => 
 			{
-				Activity.StartActivity(typeof(PersonBasicActivity));
-				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+//				Activity.StartActivity(typeof(PersonBasicActivity));
+//				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+				Activity.StartActivity(typeof(PersonInfoActivity));
+				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 			//账户安全
 			var rl_person_accountSecurity = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_accountSecurity);
 			rl_person_accountSecurity.Click += (sender, e) => 
 			{
 				Activity.StartActivity(typeof(AccountSecurityActivity));
-				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 			//投诉建议
 			var rl_person_advice = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_advice);
 			rl_person_advice.Click += (sender, e) => 
 			{
 				Activity.StartActivity(typeof(AdviceActivity));
-				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 			//拨打电话
 			var tv_customPhone = View.FindViewById<TextView>(Resource.Id.tv_customPhone);
@@ -195,8 +197,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 					img_head.SetImageBitmap (photo);
 					//将图像保存至本地和服务器上
 					SetPicToLocalAndServer(photo);//保存在SD卡中
-
-
 				}  
 			}
 

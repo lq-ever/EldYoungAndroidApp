@@ -178,6 +178,15 @@
     <Compile Include="Json\GetMyInfoJson.cs" />
     <Compile Include="Param\GetAppVersionParam.cs" />
     <Compile Include="Json\GetAppVersionJson.cs" />
+    <Compile Include="Activitys\My\PersonInfoActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoTrueNameActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoIdCardNoActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoGenderActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoBirthActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoFixedPhoneActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoEmailActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoIdCardNoLocationActivity.cs" />
+    <Compile Include="Activitys\My\PersonInfoTrueLocationActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -376,6 +385,15 @@
     <AndroidResource Include="Resources\layout\AboutUsLayout.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\myInfomation_setup_aboutus_logo.png" />
     <AndroidResource Include="Resources\drawable\radiobutton_selector.xml" />
+    <AndroidResource Include="Resources\layout\PersonInfoLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoTrueNameLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoIdCardNoLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoGenderLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoBirthLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoFixedPhoneLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoEmailLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoIdCardNoLocationLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonInfoTrueLocationLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

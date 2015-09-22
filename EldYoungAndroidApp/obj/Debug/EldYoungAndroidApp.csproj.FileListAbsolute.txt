@@ -168,6 +168,7 @@ E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\getapplyinfolistit
 E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\healthdetailinfolayout.xml
 E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\healthlistitemview.xml
 E:\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\uparrow.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\EldYoungAndroidApp.csprojResolveAssemblyReference.cache
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\EldYoungAndroidApp.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\EldYoungAndroidApp.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\com.eldyoung.lelaozuandroidapp.apk
@@ -180,7 +181,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\UniversalImageLoader.d
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\Xamarin.Android.Support.v4.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\JPushBindingLibrary.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Debug\Newtonsoft.Json.xml
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\EldYoungAndroidApp.csprojResolveAssemblyReference.cache
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\EldYoungAndroidApp.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\EldYoungAndroidApp.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\android\bin\com.eldyoung.lelaozuandroidapp.apk
@@ -373,6 +373,15 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\btn_orang
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\myinfomation_headimage.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\aboutuslayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\myinfomation_setup_aboutus_logo.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\radiobutton_selector.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfolayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\R.cs.flag
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\uploadflags.txt
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\radiobutton_selector.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfotruenamelayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfoidcardnolayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfogenderlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfobirthlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfofixedphonelayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfoemaillayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfoidcardnolocationlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfotruelocationlayout.xml
