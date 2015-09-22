@@ -31,8 +31,9 @@ namespace EldYoungAndroidApp.Common
 		//分隔符
 		private static  String FILE_SEPARATOR = "/";  
 		// 下载安装包存放路径  
-		private static readonly String FILE_PATH =  Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path+FILE_SEPARATOR+"autoupdate"+FILE_SEPARATOR;
-		//private static readonly String FILE_PATH =  "/sdcard/eldYoung/"+"autoupdate"+FILE_SEPARATOR; //使用统一eldyoung+功能
+		//private static readonly String FILE_PATH =  Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path+FILE_SEPARATOR+"autoupdate"+FILE_SEPARATOR;
+		private static readonly String FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.ToString()+FILE_SEPARATOR+"eldyoung/Cache/autoupdate/";
+
 		// 文件存放全路径
 		private string saveFileName = FILE_PATH +Global.package_name+".apk";
 		private int progress;//记录下载进度

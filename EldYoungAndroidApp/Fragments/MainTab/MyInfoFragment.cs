@@ -27,7 +27,8 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 {
 	public class MyInfoFragment : Android.Support.V4.App.Fragment,View.IOnClickListener
 	{
-		private  string path="/sdcard/eldYoung/Cache/HeadImage/";//sd卡路径
+		//private  string path="/sdcard/eldYoung/Cache/HeadImage/";//sd卡路径
+		private string path = Android.OS.Environment.ExternalStorageDirectory.ToString()+"/"+"eldyoung/Cache/HeadImage/";
 		private ImageView img_head;
 		private SelectPicPopWindow picPopWindow;
 		private int None =0;
