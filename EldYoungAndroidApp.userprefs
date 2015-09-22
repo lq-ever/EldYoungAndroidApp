@@ -1,26 +1,15 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Common\UpdateManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Activitys\My\PersonInfoEmailActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\Common\UpdateManager.cs" Line="109" Column="14" />
-      <File FileName="EldYoungAndroidApp\Json\GetAppVersionJson.cs" Line="23" Column="37" />
-      <File FileName="EldYoungAndroidApp\SendSecurityCodeActivity.cs" Line="202" Column="52" />
-      <File FileName="e:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\RestSharpRequestHelp.cs" Line="80" Column="4" />
-      <File FileName="EldYoungAndroidApp\SplashActivity.cs" Line="32" Column="1" />
+      <File FileName="EldYoungAndroidApp\Activitys\My\PersonInfoIdCardNoActivity.cs" Line="147" Column="4" />
+      <File FileName="EldYoungAndroidApp\Activitys\My\PersonInfoBirthActivity.cs" Line="151" Column="4" />
+      <File FileName="EldYoungAndroidApp\Activitys\My\PersonBasicActivity.cs" Line="191" Column="94" />
+      <File FileName="EldYoungAndroidApp\Activitys\My\PersonInfoEmailActivity.cs" Line="59" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\My\PersonBasicActivity.cs" line="214" column="3" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="254" column="5" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="257" column="6" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\RegisterResultActivity.cs" line="268" column="5" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="138" column="3" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\SplashActivity.cs" line="32" column="5" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\SplashActivity.cs" line="30" column="4" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\UpdateManager.cs" line="76" column="3" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\UpdateManager.cs" line="110" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="EldYoungAndroidApp\Common\HttpWebRequestHelper.cs" line="23" offsetX="837" offsetY="352" expression="postUrl" liveUpdate="False" />

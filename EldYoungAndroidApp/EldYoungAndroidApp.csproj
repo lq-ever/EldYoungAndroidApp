@@ -187,6 +187,8 @@
     <Compile Include="Activitys\My\PersonInfoEmailActivity.cs" />
     <Compile Include="Activitys\My\PersonInfoIdCardNoLocationActivity.cs" />
     <Compile Include="Activitys\My\PersonInfoTrueLocationActivity.cs" />
+    <Compile Include="Param\UpdateMyInfoParam.cs" />
+    <Compile Include="Json\UpdateMyInfoJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
