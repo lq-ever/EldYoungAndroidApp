@@ -6,6 +6,65 @@
     android:minWidth="25px"
     android:minHeight="25px"
     android:id="@+id/ll_person">
+<!-- 个人头像相关-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="224dp"
+        android:background="@drawable/myInfomation_bgImage"
+        android:clickable="true">
+        <eldyoungandroidapp.common.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="51dp"
+            android:src="@drawable/user_center_default"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/white"
+            android:id="@+id/img_head" />
+        <ImageView
+            android:id="@+id/img_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settingselector"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_head"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="58dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_myInfomation_userName" />
+            <TextView
+                android:id="@+id/tv_nickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="lq_ever小样儿" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_myInfomation_phone"
+                android:layout_marginLeft="30dp" />
+            <TextView
+                android:id="@+id/tv_phonenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="15821526948" />
+        </LinearLayout>
+    </RelativeLayout>
     <eldyoungandroidapp.common.CustomScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,65 +73,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <!-- 个人头像相关-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="224dp"
-                android:background="@drawable/myInfomation_bgImage"
-                android:clickable="true">
-                <eldyoungandroidapp.common.CircleImageView
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="51dp"
-                    android:src="@drawable/user_center_default"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="@color/white"
-                    android:id="@+id/img_head" />
-                <ImageView
-                    android:id="@+id/img_setting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/settingselector"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/img_head"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="58dp">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_myInfomation_userName" />
-                    <TextView
-                        android:id="@+id/tv_nickName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="11dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:text="lq_ever小样儿" />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_myInfomation_phone"
-                        android:layout_marginLeft="30dp" />
-                    <TextView
-                        android:id="@+id/tv_phonenumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="11dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:text="15821526948" />
-                </LinearLayout>
-            </RelativeLayout>
         <!--个人资料 -->
             <RelativeLayout
                 android:layout_height="48dp"

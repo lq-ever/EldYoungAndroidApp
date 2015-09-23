@@ -384,3 +384,4 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfof
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfoemaillayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfoidcardnolocationlayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfotruelocationlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\headimagedefault.png
