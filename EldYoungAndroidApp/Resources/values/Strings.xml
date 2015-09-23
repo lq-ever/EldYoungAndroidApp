@@ -13,7 +13,7 @@
 
 	<string name="pullDownLbl">下拉刷新</string>
 	<string name = "pullDownRefreshLbl">正在刷新...</string>
-	<string name ="pullDownReleaseLbl">释放以刷新</string>
+	<string name ="pullDownReleaseLbl">释放即可刷新</string>
 	<string name ="pullUpLbl">上拉加载</string>
 	<string name ="pullUpRefreshLbl">正在加载...</string>
 	<string name="pullUpReleaseLbl">释放加载更多</string>

@@ -226,8 +226,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
 
-			p0.GetLoadingLayoutProxy(true,false).SetLastUpdatedLabel(string.Format("上次刷新:{0:t}",DateTime.Now));
-
+		
 			Task.Factory.StartNew (() => {
 
 				loadData();
@@ -243,8 +242,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
 			lastY = guardianInfoList.Count;
-			p0.GetLoadingLayoutProxy(false,true).SetLastUpdatedLabel(string.Format("上次加载:{0:t}",DateTime.Now));
-
 			Task.Factory.StartNew (() => {
 				//获取更多监护人数据
 				LoadMoreData();

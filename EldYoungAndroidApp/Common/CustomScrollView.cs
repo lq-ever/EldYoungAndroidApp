@@ -99,7 +99,7 @@ namespace EldYoungAndroidApp.Common
 		private void upDownMoveAnimation() {
 			TranslateAnimation animation = new TranslateAnimation(0.0f, 0.0f,
 				childView.Top, topRect.Top);
-			animation.Duration=500;
+			animation.Duration=300;
 			animation.Interpolator = new AccelerateInterpolator ();
 			childView.Animation =animation;
 		}

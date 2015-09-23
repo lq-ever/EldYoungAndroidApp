@@ -64,6 +64,10 @@ namespace EldYoungAndroidApp
 				Toast.MakeText(this,"真实姓名不能为空,请输入真实姓名",ToastLength.Short).Show();
 				return ;
 			}
+			if (!EldYoungUtil.IsTrueName (trueName)) {
+				Toast.MakeText(this,"真实姓名不可包含字母、数字、特殊符号和非法词汇[2~8个汉字]\n",ToastLength.Short).Show();
+				return ;
+			}
 			ProgressDialogUtil.StartProgressDialog(this,"正在保存...");
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))

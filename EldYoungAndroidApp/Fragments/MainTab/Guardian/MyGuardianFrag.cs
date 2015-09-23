@@ -219,8 +219,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		/// <param name="p0">P0.</param>
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
-			
-			p0.GetLoadingLayoutProxy(true,false).SetLastUpdatedLabel(string.Format("上次刷新:{0:t}",DateTime.Now));
 
 			Task.Factory.StartNew (() => {
 
@@ -237,10 +235,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		/// <param name="p0">P0.</param>
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
-			
-			
-
-			p0.GetLoadingLayoutProxy(false,true).SetLastUpdatedLabel(string.Format("上次加载:{0:t}",DateTime.Now));
 
 			Task.Factory.StartNew (() => {
 				LoadMoreData();

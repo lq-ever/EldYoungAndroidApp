@@ -64,25 +64,30 @@
                 android:layout_width="0dp"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_weight="1"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:gravity="center">
                 <RadioButton
                     android:id="@+id/rbtn_other_paul"
                     android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="PAUL"
-                    android:layout_weight="1"
-                    android:textColor="@color/lightgray" />
+                    android:textColor="@color/lightgray"
+                    android:button="@drawable/radiobutton_selector"
+                    android:drawablePadding="20dp" />
                 <RadioButton
                     android:id="@+id/rbtn_other_trip"
                     android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="摔倒"
                     android:checked="true"
-                    android:layout_weight="1"
-                    android:textColor="@color/lightgray" />
+                    android:textColor="@color/lightgray"
+                    android:button="@drawable/radiobutton_selector"
+                    android:drawablePadding="20dp" />
             </RadioGroup>
         </LinearLayout>
         <LinearLayout

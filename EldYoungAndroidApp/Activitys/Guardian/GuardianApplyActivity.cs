@@ -181,8 +181,6 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 
 		public void OnRefresh (PullToRefreshBase p0)
 		{
-			p0.GetLoadingLayoutProxy(true,false).SetLastUpdatedLabel(string.Format("上次刷新:{0:t}",DateTime.Now));
-
 			Task.Factory.StartNew (() => {
 				loadData();
 			});

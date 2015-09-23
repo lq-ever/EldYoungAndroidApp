@@ -279,7 +279,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
 			btnSearchFlag = false;
-			p0.GetLoadingLayoutProxy(true,false).SetLastUpdatedLabel(string.Format("上次刷新:{0:t}",DateTime.Now));
+			//p0.GetLoadingLayoutProxy(true,false).SetLastUpdatedLabel(string.Format("上次刷新:{0:t}",DateTime.Now));
 
 			Task.Factory.StartNew (() => {
 				loadData();
@@ -294,7 +294,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
 			btnSearchFlag = false;
-			p0.GetLoadingLayoutProxy(false,true).SetLastUpdatedLabel(string.Format("上次加载:{0:t}",DateTime.Now));
+			//p0.GetLoadingLayoutProxy(false,true).SetLastUpdatedLabel(string.Format("上次加载:{0:t}",DateTime.Now));
 
 			Task.Factory.StartNew (() => {
 				//加载更多数据

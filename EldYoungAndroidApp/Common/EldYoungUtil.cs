@@ -180,6 +180,16 @@ namespace EldYoungAndroidApp.Common
 			var emailRegx = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?";
 			return Regex.IsMatch (email, emailRegx);
 		}
+		/// <summary>
+		/// 验证是否真实姓名 不可包含字母、数字、特殊符号和非法词汇[2~8个汉字]
+		/// </summary>
+		/// <returns><c>true</c> if is true name the specified trueName; otherwise, <c>false</c>.</returns>
+		/// <param name="trueName">True name.</param>
+		public static bool IsTrueName(string trueName)
+		{
+			var trueNameRegx = "[\\u4e00-\\u9fa5]{2,8}";
+			return Regex.IsMatch (trueName,trueNameRegx);
+		}
 	
 		public static int px2dip(Context context, float pxValue)
 		{

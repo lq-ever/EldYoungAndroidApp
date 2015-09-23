@@ -396,6 +396,12 @@
     <AndroidResource Include="Resources\layout\PersonInfoIdCardNoLocationLayout.axml" />
     <AndroidResource Include="Resources\layout\PersonInfoTrueLocationLayout.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\headImagedefault.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfo_advision_jianyi.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfo_advision_qita.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfo_advision_tousu.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfo_advision_zixun.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\radiobutton_noneSelected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\radiobutton_selected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
