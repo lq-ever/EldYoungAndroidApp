@@ -157,7 +157,7 @@ namespace EldYoungAndroidApp.Common
 		/// <param name="fixedPhone">Fixed phone.</param>
 		public static bool IsFixedPhone(string fixedPhone)
 		{
-			var fixedRegx = "\\d{3}-\\d{8}|\\d{4}-\\{7,8}";
+			var fixedRegx = "\\d{3}-\\d{8}|\\d{4}-\\d{7,8}";
 			return Regex.IsMatch (fixedPhone, fixedRegx);
 		}
 		/// <summary>

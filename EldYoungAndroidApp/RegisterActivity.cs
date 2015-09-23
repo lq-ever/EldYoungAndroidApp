@@ -131,20 +131,6 @@ namespace EldYoungAndroidApp
 				initInput();
 				if(ValidInput())
 				{
-					
-//					var builder = new AlertDialog.Builder (this).SetTitle("确认手机号码").SetMessage ("我们将发送验证码短信到这个号码：+86 "+phoneNumber);
-//
-//					builder.SetPositiveButton ("好", (sender1, e1) => {
-//						
-//						SendSMS(phoneNumber);
-//
-//					});
-//					builder.SetNegativeButton ("取消", (sender1, e1) => {
-//						registerDialog.Dismiss();
-//						return;
-//					});
-//					registerDialog= builder.Create();
-//					registerDialog.Show();
 					if(confirmPopWindow==null)
 						confirmPopWindow = new ConfirmphonePopWindow(this,phoneNumber);
 					confirmPopWindow.ShowPopWindow(FindViewById<LinearLayout>(Resource.Id.ll_register));
@@ -270,11 +256,20 @@ namespace EldYoungAndroidApp
 
 
 				}
-				else
+				else if(resoponse.ResponseStatus == ResponseStatus.TimedOut)
 				{
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,resoponse.StatusDescription,ToastLength.Short).Show();
 							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});

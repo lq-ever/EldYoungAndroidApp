@@ -308,11 +308,20 @@ namespace EldYoungAndroidApp
 					}
 
 				}
-				else
+				else if(response.ResponseStatus == ResponseStatus.TimedOut)
 				{
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
 							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});

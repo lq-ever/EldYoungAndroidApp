@@ -217,6 +217,29 @@ namespace EldYoungAndroidApp
 							});
 					}
 				}
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							btn_Send.Enabled = true;
+							tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
+							return;
+						});
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							btn_Send.Enabled = true;
+							tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
+							return;
+						});
+					
+				}
 			});
 		}
 

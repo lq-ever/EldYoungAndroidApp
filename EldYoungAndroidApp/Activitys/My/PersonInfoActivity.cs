@@ -113,7 +113,7 @@ namespace EldYoungAndroidApp
 				StartActivity(typeof(PersonInfoTrueLocationActivity));
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
-			SetPersonInfoShow ();
+
 		}
 		private void SetPersonInfoShow()
 		{
@@ -134,8 +134,14 @@ namespace EldYoungAndroidApp
 			//生日
 			tv_Birth.Text = !string.IsNullOrEmpty (Global.MyInfo.Age) ?Convert.ToDateTime(Global.MyInfo.Age).ToString("yyyy-MM-dd") :"";
 			//电话号码
-			tv_phoneNumber.Text = !string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? Global.MyInfo.PhoneNumberOne : "";
 
+			var iphoneNumber = Global.MyInfo.PhoneNumberOne;
+			if (!string.IsNullOrEmpty (iphoneNumber)) {
+				var midleStr = iphoneNumber.Substring (3, 4);
+				var resultStr = iphoneNumber.Replace (midleStr, "****");
+				tv_phoneNumber.Text = resultStr;
+			} else
+				tv_phoneNumber.Text = string.Empty;
 			//固定电话
 
 			tv_fixedPhone.Text = !string.IsNullOrEmpty (Global.MyInfo.TelePhoneNumber) ? Global.MyInfo.TelePhoneNumber : "";
@@ -145,6 +151,11 @@ namespace EldYoungAndroidApp
 			tv_IdCardLocation.Text = !string.IsNullOrEmpty (Global.MyInfo.IDAddress) ? Global.MyInfo.IDAddress : "";
 			//todo:设置详细地址
 			tv_TrueLocation.Text = string.Empty;
+		}
+		protected override void OnResume ()
+		{
+			SetPersonInfoShow ();
+			base.OnResume ();
 		}
 	}
 }

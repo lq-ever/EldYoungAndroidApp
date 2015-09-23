@@ -76,7 +76,7 @@ namespace EldYoungAndroidApp
 				Toast.MakeText (this, "固定电话不能为空，请输入", ToastLength.Short).Show ();
 				return;
 			} else {
-				fixedPhone = fixedPhonePre + fixedPhoneLast;
+				fixedPhone = fixedPhonePre +"-"+ fixedPhoneLast;
 				if (!EldYoungUtil.IsFixedPhone (fixedPhone)) {
 					Toast.MakeText(this,"请输入规范的固定电话号码",ToastLength.Short).Show();
 					return ;

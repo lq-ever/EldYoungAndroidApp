@@ -268,7 +268,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\user_center_share.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\user_center_support.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\user_center_vip.png
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personlayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\arrow_right_gray.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\user_center_default.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\relativelayoutselector.xml
@@ -372,3 +371,13 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\btn_ora
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\myinfomation_headimage.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\aboutuslayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\myinfomation_setup_aboutus_logo.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\radiobutton_selector.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfolayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfotruenamelayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfoidcardnolayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfogenderlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfobirthlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfofixedphonelayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfoemaillayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfoidcardnolocationlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\personinfotruelocationlayout.xml

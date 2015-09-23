@@ -113,8 +113,11 @@ namespace EldYoungAndroidApp
 		/// </summary>
 		private void Refresh()
 		{
-			Thread.Sleep (5000);
-			mPullRefreshScrollView.OnRefreshComplete ();
+			Thread.Sleep (2000);
+			RunOnUiThread (() => {
+				mPullRefreshScrollView.OnRefreshComplete ();
+			});
+
 		}
 	}
 }

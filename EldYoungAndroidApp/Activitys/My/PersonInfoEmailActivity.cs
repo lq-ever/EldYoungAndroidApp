@@ -29,7 +29,7 @@ namespace EldYoungAndroidApp
 
 			RequestWindowFeature (WindowFeatures.CustomTitle);
 			// Create your application here
-			SetContentView(Resource.Layout.PersonInfoFixedPhoneLayout);
+			SetContentView(Resource.Layout.PersonInfoEmailLayout);
 			Window.SetFeatureInt (WindowFeatures.CustomTitle, Resource.Layout.custom_title_bar);
 			InitView ();
 		}
