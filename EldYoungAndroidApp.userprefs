@@ -1,12 +1,10 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Activitys\My\PersonInfoTrueLocationActivity.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="EldYoungAndroidApp\Activitys\My\PersonBasicActivity.cs" Line="195" Column="5" />
-      <File FileName="EldYoungAndroidApp\Activitys\My\PersonInfoIdCardNoLocationActivity.cs" Line="143" Column="4" />
-      <File FileName="EldYoungAndroidApp\Activitys\My\PersonInfoTrueLocationActivity.cs" Line="34" Column="4" />
-      <File FileName="EldYoungAndroidApp\Activitys\My\PersonInfoFixedPhoneActivity.cs" Line="77" Column="12" />
-      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="197" Column="52" />
+      <File FileName="EldYoungAndroidApp\Common\CustomScrollView.cs" Line="85" Column="8" />
+      <File FileName="EldYoungAndroidApp\Resources\values\styles.xml" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Health\OtherHealthFrag.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
