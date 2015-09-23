@@ -186,11 +186,22 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							if(btnSearchFlag)
+								ProgressDialogUtil.StopProgressDialog();
+							myhealthRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+				else
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
 							if(btnSearchFlag)
 								ProgressDialogUtil.StopProgressDialog();
 							myhealthRefreshListView.OnRefreshComplete ();

@@ -97,6 +97,12 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 		/// </summary>
 		private void loadData()
 		{
+			//检测网络连接
+			if(!EldYoungUtil.IsConnected(this))
+			{
+				Toast.MakeText(this,"网络连接超时,请检测网络",ToastLength.Short).Show();
+				return;
+			}
 			if (!requestParams.ContainsKey ("key"))
 				requestParams.Add ("key", getApplyInfoParam.Key);
 			else
@@ -152,11 +158,20 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							guardianApplyRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
 							guardianApplyRefreshListView.OnRefreshComplete ();
 							return;
 						});

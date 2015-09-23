@@ -289,12 +289,23 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 					}
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					pageIndex --;
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+
+							myGuardianRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+				else
+				{
+					pageIndex --;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
 
 							myGuardianRefreshListView.OnRefreshComplete ();
 							return;

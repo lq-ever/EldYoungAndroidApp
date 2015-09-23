@@ -46,6 +46,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			// Create your fragment here
 		}
 
+
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			// Use this to return your custom view for this Fragment
@@ -69,7 +70,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			};
 			img_head = View.FindViewById<ImageView> (Resource.Id.img_head);
 			//设置头像
-			SetPersonImg ();
+			//SetPersonImg ();
 			//设置个人头像信息
 			img_head.Click += (sender, e) => 
 			{
@@ -77,7 +78,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 					picPopWindow = new SelectPicPopWindow(Activity,this);
 				picPopWindow.ShowPopWindow(View.FindViewById<LinearLayout>(Resource.Id.ll_person));
 			};
-				
+
 			var tv_nickName = View.FindViewById<TextView> (Resource.Id.tv_nickName);
 			var tv_phonenumber = View.FindViewById<TextView> (Resource.Id.tv_phonenumber);
 			//设置用户昵称和手机号
@@ -94,8 +95,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			var rl_person_basic = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_basic);
 			rl_person_basic.Click += (sender, e) => 
 			{
-//				Activity.StartActivity(typeof(PersonBasicActivity));
-//				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+				
 				Activity.StartActivity(typeof(PersonInfoActivity));
 				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
@@ -124,6 +124,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 			};
 
 		}
+
 		private void SetPersonImg()
 		{
 			//从Sd中找头像，转换成Bitmap
@@ -314,11 +315,11 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				requestParams ["md5"] = headImgPostParam.Md5;
 
 		}
-//		public override void OnResume ()
-//		{
-//			SetPersonImg ();
-//			base.OnResume ();
-//		}
+		public override void OnResume ()
+		{
+			SetPersonImg ();
+			base.OnResume ();
+		}
 	}
 }
 

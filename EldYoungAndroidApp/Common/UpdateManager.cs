@@ -126,10 +126,12 @@ namespace EldYoungAndroidApp.Common
 						else
 							checkFlag=true;
 					}
+					else
+						checkFlag = true;
 				}
 				else
 				{
-					Log.Info("CheckAppServerVersion",response.ErrorMessage);
+					Log.Info("CheckAppServerVersion",response.StatusDescription);
 					checkFlag=true;
 				}
 			});

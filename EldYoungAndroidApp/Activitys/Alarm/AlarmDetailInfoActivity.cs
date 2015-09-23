@@ -158,7 +158,7 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 									tv_detail_trueName.Text = detail.TrueName;
 								});
 							
-						}
+						} 
 
 						if(alarmdetailInfoJson.data.handdetail.Count>0)
 						{
@@ -173,8 +173,6 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 							{
 								ProgressDialogUtil.StopProgressDialog();
 							});
-						
-
 					}
 					else
 					{
@@ -182,14 +180,13 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 							{
 								Toast.MakeText(this,"获取报警详情信息错误...",ToastLength.Short).Show();
 								ProgressDialogUtil.StopProgressDialog();
-
 								return;
 							});
 					}
 
 
 				}
-				else
+				else if(response.ResponseStatus == ResponseStatus.TimedOut)
 				{
 					RunOnUiThread(()=>
 						{
@@ -199,6 +196,17 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 							return;
 						});
 				}
+				else
+				{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+
+							return;
+						});
+				}
+
 
 			});
 

@@ -112,6 +112,14 @@ namespace EldYoungAndroidApp.Adapter
 		{
 			//调用webservice
 			ProgressDialogUtil.StartProgressDialog(activity,"正在解绑中...");
+			//检测网络连接
+			if(!EldYoungUtil.IsConnected(activity))
+			{
+				Toast.MakeText(activity,"网络连接超时,请检测网路",ToastLength.Short).Show();
+				ProgressDialogUtil.StopProgressDialog();
+				return;
+			}
+
 			unBindGuardianParam.Id = item.Id;
 			if (!requestParams.ContainsKey ("key"))
 				requestParams.Add ("key", unBindGuardianParam.Key);
@@ -176,11 +184,20 @@ namespace EldYoungAndroidApp.Adapter
 
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else
+				{
+					activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(activity,response.StatusDescription,ToastLength.Short).Show();
 							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});

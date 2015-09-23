@@ -151,7 +151,16 @@ namespace EldYoungAndroidApp.Adapter
 		/// <param name="applyMsgContent">Apply message content.</param>
 		private void ApplyBindGuardian(SearchGuardianListItem item,string applyMsgContent)
 		{
+			
 			ProgressDialogUtil.StartProgressDialog(activity,"正在申请中...");
+			//检测网络连接
+			if(!EldYoungUtil.IsConnected(activity))
+			{
+				Toast.MakeText(activity,"网络连接超时,请检测网路",ToastLength.Short).Show();
+				ProgressDialogUtil.StopProgressDialog();
+				return;
+			}
+
 			applyBindGuardianParam.GId = item.UId;
 			applyBindGuardianParam.ApplyContent = applyMsgContent;
 			if (!requestParams.ContainsKey ("key"))
@@ -230,11 +239,20 @@ namespace EldYoungAndroidApp.Adapter
 
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else
+				{
+					activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(activity,response.StatusDescription,ToastLength.Short).Show();
 							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});
@@ -244,8 +262,6 @@ namespace EldYoungAndroidApp.Adapter
 						if(RefreshAction!=null)
 							RefreshAction();
 					});
-
-
 			});
 			
 

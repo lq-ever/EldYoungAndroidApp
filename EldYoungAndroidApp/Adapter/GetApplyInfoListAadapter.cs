@@ -135,6 +135,14 @@ namespace EldYoungAndroidApp
 			var item = (GetApplyInfoListItem)btnAction.Tag;
 			var actionflag = btnAction.GetTag (Resource.Id.ll_action);
 			ProgressDialogUtil.StartProgressDialog(activity,"正在处理中...");
+			//检测网络连接
+			if(!EldYoungUtil.IsConnected(activity))
+			{
+				Toast.MakeText(activity,"网络连接超时,请检测网路",ToastLength.Short).Show();
+				ProgressDialogUtil.StopProgressDialog();
+				return;
+			}
+
 			examinebundGuardianParam.Ifagreen = actionflag.ToString();
 			examinebundGuardianParam.Id = item.Id;
 
@@ -196,11 +204,20 @@ namespace EldYoungAndroidApp
 
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else
+				{
+					activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(activity,response.StatusDescription,ToastLength.Short).Show();
 							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});

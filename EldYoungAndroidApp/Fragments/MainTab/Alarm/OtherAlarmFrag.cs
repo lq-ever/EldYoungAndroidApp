@@ -295,12 +295,24 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+
+							otherAlarmRefreshListView.OnRefreshComplete ();
+							if(btnSearchFlag)
+								ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
 
 							otherAlarmRefreshListView.OnRefreshComplete ();
 							if(btnSearchFlag)
@@ -458,12 +470,23 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					}
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					pageIndex --;
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+
+							otherAlarmRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+				else
+				{
+					pageIndex --;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
 
 							otherAlarmRefreshListView.OnRefreshComplete ();
 							return;

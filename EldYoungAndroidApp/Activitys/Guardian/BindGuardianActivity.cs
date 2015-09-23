@@ -104,7 +104,7 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))
 			{
-				Toast.MakeText(this,"网络连接超时,请检测网路",ToastLength.Short).Show();
+				Toast.MakeText(this,"网络连接超时,请检测网络",ToastLength.Short).Show();
 				ProgressDialogUtil.StopProgressDialog();
 				return;
 			}
@@ -173,11 +173,19 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 
 
 				}
-				else
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
 							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});

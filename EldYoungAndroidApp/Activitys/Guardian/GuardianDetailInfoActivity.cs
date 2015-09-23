@@ -141,12 +141,20 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 					}
 
 
-				}
-				else
+				} 
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
 				{
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							ProgressDialogUtil.StopProgressDialog();
+							return;
+						});
+				}
+				else{
+					RunOnUiThread(()=>
+						{
+							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
 							ProgressDialogUtil.StopProgressDialog();
 							return;
 						});
