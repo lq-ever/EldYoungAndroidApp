@@ -189,6 +189,7 @@
     <Compile Include="Activitys\My\PersonInfoTrueLocationActivity.cs" />
     <Compile Include="Param\UpdateMyInfoParam.cs" />
     <Compile Include="Json\UpdateMyInfoJson.cs" />
+    <Compile Include="Common\CustomScrollView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

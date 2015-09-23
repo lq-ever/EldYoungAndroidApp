@@ -18,10 +18,10 @@ using System.Threading;
 namespace EldYoungAndroidApp
 {
 	[Activity (Theme = "@style/MyCustomTheme")]			
-	public class AccountSecurityActivity : Activity,PullToRefreshBase.IOnRefreshListener
+	public class AccountSecurityActivity : Activity
 	{
-		private PullToRefreshScrollView mPullRefreshScrollView;  
-		private ScrollView mScrollView;  
+		
+		private TextView tv_payPwd,tv_phoneBind,tv_identity;
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -44,16 +44,7 @@ namespace EldYoungAndroidApp
 			tv_header_title.Text = "账户安全";
 
 
-			mPullRefreshScrollView = FindViewById<PullToRefreshScrollView>(Resource.Id.pull_refresh_scrollview);
-			mScrollView = (ScrollView)mPullRefreshScrollView.RefreshableView;
-			//下拉刷新提示文本
-			mPullRefreshScrollView.GetLoadingLayoutProxy(true,false).SetPullLabel(GetString(Resource.String.pullDownLbl));
-			mPullRefreshScrollView.GetLoadingLayoutProxy (true,false).SetRefreshingLabel(GetString(Resource.String.pullDownRefreshLbl));
-			mPullRefreshScrollView.GetLoadingLayoutProxy (true, false).SetReleaseLabel (GetString(Resource.String.pullDownReleaseLbl));
-			//上拉、下拉设定  
-			mPullRefreshScrollView.Mode = PullToRefreshBase.PullToRefreshMode.PullFromStart;  
-			//绑定监听事件
-			mPullRefreshScrollView.SetOnRefreshListener (this);
+
 			//登录密码
 			var rl_person_loginPwd = FindViewById<RelativeLayout>(Resource.Id.rl_person_loginPwd);
 			rl_person_loginPwd.Click += (sender, e) => 
@@ -79,8 +70,7 @@ namespace EldYoungAndroidApp
 				StartActivity(intent);
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
-			var tv_payPwd = FindViewById<TextView> (Resource.Id.tv_payPwd);
-			tv_payPwd.Text = string.IsNullOrEmpty (Global.MyInfo.PayPassword) ? "设置" : "修改";
+			tv_payPwd = FindViewById<TextView> (Resource.Id.tv_payPwd);
 
 			//手机绑定
 			var rl_person_phoneBind = FindViewById<RelativeLayout>(Resource.Id.rl_person_phoneBind);
@@ -88,36 +78,31 @@ namespace EldYoungAndroidApp
 			{
 
 			};
-			var tv_phoneBind = FindViewById<TextView> (Resource.Id.tv_phoneBind);
-			tv_phoneBind.Text = string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? "绑定" : "解绑";
+			tv_phoneBind = FindViewById<TextView> (Resource.Id.tv_phoneBind);
+
 			//身份认证
 			var rl_person_identity = FindViewById<RelativeLayout>(Resource.Id.rl_person_identity);
 			rl_person_identity.Click += (sender, e) => 
 			{
 
 			};
-			var tv_identity = FindViewById<TextView> (Resource.Id.tv_identity);
+			tv_identity = FindViewById<TextView> (Resource.Id.tv_identity);
+
+
+		}
+
+		private void SetDesShow()
+		{
+			tv_payPwd.Text = string.IsNullOrEmpty (Global.MyInfo.PayPassword) ? "设置" : "修改";
+			tv_phoneBind.Text = string.IsNullOrEmpty (Global.MyInfo.PhoneNumberOne) ? "绑定" : "解绑";
 			tv_identity.Text = string.IsNullOrEmpty (Global.MyInfo.IDNumber) ? "未认证" : "已认证";
 
 		}
 
-		public void OnRefresh (PullToRefreshBase p0)
+		protected override void OnResume ()
 		{
-			Task.Factory.StartNew (() => {
-				
-				Refresh();
-			});
-		}
-		/// <summary>
-		/// Refresh this instance.
-		/// </summary>
-		private void Refresh()
-		{
-			Thread.Sleep (2000);
-			RunOnUiThread (() => {
-				mPullRefreshScrollView.OnRefreshComplete ();
-			});
-
+			SetDesShow ();
+			base.OnResume ();
 		}
 	}
 }
