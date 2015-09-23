@@ -106,7 +106,6 @@
     <Compile Include="Json\LoginJson.cs" />
     <Compile Include="ServiceAgreeActivity.cs" />
     <Compile Include="SetActivity.cs" />
-    <Compile Include="Activitys\My\PersonBasicActivity.cs" />
     <Compile Include="Activitys\Alarm\AlarmDetailInfoActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Common\Sex.cs" />
@@ -289,7 +288,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\arrow_right_gray.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\user_center_default.png" />
     <AndroidResource Include="Resources\drawable\relativeLayoutSelector.xml" />
-    <AndroidResource Include="Resources\layout\PersonBasicLayout.axml" />
     <AndroidResource Include="Resources\layout\custom_titlebar_action.axml" />
     <AndroidResource Include="Resources\layout\AlarmDetailInfoLayout.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\setting.png" />
@@ -397,6 +395,7 @@
     <AndroidResource Include="Resources\layout\PersonInfoEmailLayout.axml" />
     <AndroidResource Include="Resources\layout\PersonInfoIdCardNoLocationLayout.axml" />
     <AndroidResource Include="Resources\layout\PersonInfoTrueLocationLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\headImagedefault.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

@@ -102,7 +102,6 @@
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.RegisterResultActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.ServiceAgreeActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.SetActivity" />
-    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PersonBasicActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md5af639da68335e9f7e7349258ba6e7084.AlarmDetailInfoActivity" />
     <activity android:theme="@style/AppTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.MainFragActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md51aa780f84506d460b9867ce9bd14a7f3.GuardianDetailInfoActivity" />

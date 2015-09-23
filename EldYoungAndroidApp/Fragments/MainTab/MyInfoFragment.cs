@@ -27,6 +27,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 {
 	public class MyInfoFragment : Android.Support.V4.App.Fragment,View.IOnClickListener
 	{
+		private TextView tv_nickName, tv_phonenumber;
 		//private  string path="/sdcard/eldYoung/Cache/HeadImage/";//sd卡路径
 		private string path = Android.OS.Environment.ExternalStorageDirectory.ToString()+"/"+"eldyoung/Cache/HeadImage/";
 		private ImageView img_head;
@@ -79,17 +80,8 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				picPopWindow.ShowPopWindow(View.FindViewById<LinearLayout>(Resource.Id.ll_person));
 			};
 
-			var tv_nickName = View.FindViewById<TextView> (Resource.Id.tv_nickName);
-			var tv_phonenumber = View.FindViewById<TextView> (Resource.Id.tv_phonenumber);
-			//设置用户昵称和手机号
-			tv_nickName.Text = string.IsNullOrEmpty(Global.MyInfo.UserName)?"未设置昵称":Global.MyInfo.UserName;
-			var iphoneNumber = Global.MyInfo.PhoneNumberOne;
-			if (!string.IsNullOrEmpty (iphoneNumber)) {
-				var midleStr = iphoneNumber.Substring (3, 4);
-				var resultStr = iphoneNumber.Replace (midleStr, "****");
-				tv_phonenumber.Text = resultStr;
-			} else
-				tv_phonenumber.Text = "未绑定手机号";
+			tv_nickName = View.FindViewById<TextView> (Resource.Id.tv_nickName);
+			tv_phonenumber = View.FindViewById<TextView> (Resource.Id.tv_phonenumber);
 
 			//个人资料
 			var rl_person_basic = View.FindViewById<RelativeLayout> (Resource.Id.rl_person_basic);
@@ -125,8 +117,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 
 		}
 
-		private void SetPersonImg()
+		private void SetShowInfo()
 		{
+			//设置用户昵称和手机号
+			tv_nickName.Text = string.IsNullOrEmpty(Global.MyInfo.UserName)?"未设置昵称":Global.MyInfo.UserName;
+			var iphoneNumber = Global.MyInfo.PhoneNumberOne;
+			if (!string.IsNullOrEmpty (iphoneNumber)) {
+				var midleStr = iphoneNumber.Substring (3, 4);
+				var resultStr = iphoneNumber.Replace (midleStr, "****");
+				tv_phonenumber.Text = resultStr;
+			} else
+				tv_phonenumber.Text = "未绑定手机号";
+			
 			//从Sd中找头像，转换成Bitmap
 //			Bitmap bt = BitmapFactory.DecodeFile(path + "myHead.jpg");
 //			if(bt!=null){
@@ -317,7 +319,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 		}
 		public override void OnResume ()
 		{
-			SetPersonImg ();
+			SetShowInfo ();
 			base.OnResume ();
 		}
 	}

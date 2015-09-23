@@ -31,6 +31,7 @@ namespace EldYoungAndroidApp
 		}
 		private void InitView()
 		{
+			
 			//设置标题栏
 			var btn_header_back = FindViewById<Button> (Resource.Id.btn_header_back);
 			btn_header_back.Click += (sender, e) => 
@@ -58,6 +59,7 @@ namespace EldYoungAndroidApp
 				StartActivity(typeof(PersonInfoIdCardNoActivity));
 				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
+
 			//性别
 			rl_person_Gender = FindViewById<RelativeLayout>(Resource.Id.rl_person_Gender);
 			tv_Gender = FindViewById<TextView> (Resource.Id.tv_Gender);
