@@ -112,22 +112,29 @@ namespace EldYoungAndroidApp.Common
 				{
 					//获取并解析返回resultJson获取安全码结果值
 					var result = response.Content;
-					var appVersionJson = JsonConvert.DeserializeObject<GetAppVersionJson>(result);
-					if(appVersionJson.statuscode =="1")
+					if(string.IsNullOrEmpty(result))
 					{
-						var serverAppVersionCode = appVersionJson.data.AppServerVersionCode;
-						if(localversionCode!=serverAppVersionCode)
-						{
-							//版本不一致有更新
-							Global.AppPackagePath = appVersionJson.data.AppFilePath;
-							returnFlag = true;
-							checkFlag=true;
-						}
-						else
-							checkFlag=true;
+						checkFlag = true;
 					}
 					else
-						checkFlag = true;
+					{
+						var appVersionJson = JsonConvert.DeserializeObject<GetAppVersionJson>(result);
+						if(appVersionJson.statuscode =="1")
+						{
+							var serverAppVersionCode = appVersionJson.data.AppServerVersionCode;
+							if(localversionCode!=serverAppVersionCode)
+							{
+								//版本不一致有更新
+								Global.AppPackagePath = appVersionJson.data.AppFilePath;
+								returnFlag = true;
+								checkFlag=true;
+							}
+							else
+								checkFlag=true;
+						}
+						else
+							checkFlag = true;
+					}
 				}
 				else
 				{

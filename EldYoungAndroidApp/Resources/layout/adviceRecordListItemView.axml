@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:background="@color/white"
+    android:id="@+id/advicelistitemview">
+    <ImageView
+        android:id="@+id/img_adviceType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_myInfo_advision_zixun"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="5dp" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:id="@+id/tv_adviceTitle"
+                android:layout_alignParentLeft="true"
+                android:layout_height="match_parent"
+                android:layout_width="250dp"
+                android:text=""
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="@color/darkgray"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/tv_adviceTime"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:text="2015-01-03"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/lightgray"
+                android:gravity="center" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_adviceContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/ingray"
+            android:text=""
+            android:lines="2"
+            android:ellipsize="end"
+            android:gravity="center" />
+    </LinearLayout>
+</LinearLayout>

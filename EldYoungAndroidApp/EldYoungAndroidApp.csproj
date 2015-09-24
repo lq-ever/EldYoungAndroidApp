@@ -189,6 +189,11 @@
     <Compile Include="Param\UpdateMyInfoParam.cs" />
     <Compile Include="Json\UpdateMyInfoJson.cs" />
     <Compile Include="Common\CustomScrollView.cs" />
+    <Compile Include="Fragments\Advice\WriteAdviceFragment.cs" />
+    <Compile Include="Fragments\Advice\RecordAdviceFragment.cs" />
+    <Compile Include="Adapter\AdviceRecordListAdapter.cs" />
+    <Compile Include="Model\AdviceRecordInfoItem.cs" />
+    <Compile Include="Param\AdviceRecordInfoListParam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -402,6 +407,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_myInfo_advision_zixun.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\radiobutton_noneSelected.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\radiobutton_selected.png" />
+    <AndroidResource Include="Resources\layout\WriteAdviceLayout.axml" />
+    <AndroidResource Include="Resources\layout\RecordAdviceLayout.axml" />
+    <AndroidResource Include="Resources\layout\adviceRecordListItemView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -436,5 +444,6 @@
     <Folder Include="Model\Health\" />
     <Folder Include="Activitys\My\" />
     <Folder Include="Common\ImageCache\" />
+    <Folder Include="Fragments\Advice\" />
   </ItemGroup>
 </Project>
