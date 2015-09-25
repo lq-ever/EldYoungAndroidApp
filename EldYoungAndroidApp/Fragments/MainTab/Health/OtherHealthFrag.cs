@@ -46,7 +46,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 		private List<HealthInfoItem> healthInfoLists = new List<HealthInfoItem>();
 
 		private List<AllMyUserListItem> myUserLists;//我的监护人列表
-		private SearchAllMyUserParam myUserParam = new SearchAllMyUserParam(){UserId = Global.Guid};//我的监护人请求参数对象
+		private SearchAllMyUserParam myUserParam = new SearchAllMyUserParam(){UserId = Global.MyInfo.UId};//我的监护人请求参数对象
 		private Dictionary<string,string> myUserRequestParams = new Dictionary<string, string>();//监护人web请求
 		private ArrayAdapter<AllMyUserListItem> myUserListAdapter;
 		private string myUserId;

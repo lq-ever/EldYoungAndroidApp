@@ -374,8 +374,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\aboutuslayo
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\myinfomation_setup_aboutus_logo.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable\radiobutton_selector.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfolayout.xml
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\R.cs.flag
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\uploadflags.txt
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfotruenamelayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfoidcardnolayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\personinfogenderlayout.xml
@@ -394,3 +392,5 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\drawable-xxhdpi\ra
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\writeadvicelayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\recordadvicelayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\res\layout\advicerecordlistitemview.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\R.cs.flag
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Debug\uploadflags.txt

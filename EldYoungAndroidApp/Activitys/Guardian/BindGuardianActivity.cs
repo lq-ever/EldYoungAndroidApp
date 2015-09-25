@@ -33,7 +33,7 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 		private ApplyGuardianListAdapter applyGuardianListAdapter ;
 
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
-		private SearchGuardianParam searchGuardianParam = new SearchGuardianParam(){Guid = Global.Guid};//请求参数对象
+		private SearchGuardianParam searchGuardianParam = new SearchGuardianParam(){Guid = Global.MyInfo.UId};//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
 		protected bool HasLoadedOnce;
 		protected override void OnCreate (Bundle bundle)

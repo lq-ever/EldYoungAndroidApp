@@ -80,9 +80,9 @@ namespace EldYoungAndroidApp.Model
 		public int BindDeriction
 		{
 			get {
-				if (UId == Global.Guid && GId == Global.Guid)//特殊情况，自己申请自己为监护人
+				if (UId == Global.MyInfo.UId && GId == Global.MyInfo.UId)//特殊情况，自己申请自己为监护人
 					return 1;
-				return UId == Global.Guid ? 0 : 1;
+				return UId == Global.MyInfo.UId ? 0 : 1;
 			}
 		}
 	}

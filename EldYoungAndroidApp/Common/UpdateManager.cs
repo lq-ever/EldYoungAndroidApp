@@ -111,7 +111,7 @@ namespace EldYoungAndroidApp.Common
 				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
 					//获取并解析返回resultJson获取安全码结果值
-					var result = response.Content;
+					var result =response.Content;
 					if(string.IsNullOrEmpty(result))
 					{
 						checkFlag = true;
@@ -138,8 +138,9 @@ namespace EldYoungAndroidApp.Common
 				}
 				else
 				{
-					Log.Info("CheckAppServerVersion",response.StatusDescription);
 					checkFlag=true;
+					Log.Info("CheckAppServerVersion",string.IsNullOrEmpty(response.StatusDescription)?"":response.StatusDescription);
+
 				}
 			});
 

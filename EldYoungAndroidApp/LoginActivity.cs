@@ -179,9 +179,9 @@ namespace EldYoungAndroidApp
 					if(loginJson.statuscode =="1")
 					{
 						Global.MyInfo = loginJson.data.Table[0];
-						Global.Guid = Global.MyInfo.UId;
+						var Uid = Global.MyInfo.UId;
 
-						var guidAsAlias = Global.Guid.Replace("-","_");//使用用户guid作为推送别名
+						var guidAsAlias = Uid.Replace("-","_");//使用用户guid作为推送别名
 						_jpushUtil.SetAlias(guidAsAlias);
 						//登录成功，且记住用户密码选中，才记录
 						if(cb_passWord.Checked)

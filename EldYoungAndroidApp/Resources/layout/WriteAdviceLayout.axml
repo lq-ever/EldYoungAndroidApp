@@ -123,7 +123,8 @@
             android:hint="在此输入内容..."
             android:textColorHint="@color/lightgray"
             android:padding="2dp"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:maxLength="200" />
     </LinearLayout>
     <Button
         android:id="@+id/btn_Publish"

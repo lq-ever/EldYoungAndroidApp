@@ -122,7 +122,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 
 			};
 
-			healthInfoParam =  new SearchHealthInforParam(){Id = Global.Guid};
+			healthInfoParam =  new SearchHealthInforParam(){Id = Global.MyInfo.UId};
 
 			//初始化view完成
 			IsPrepared = true;

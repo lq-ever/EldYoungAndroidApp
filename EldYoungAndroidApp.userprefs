@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Adapter\AdviceRecordListAdapter.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\Common\CustomScrollView.cs" Line="85" Column="8" />
-      <File FileName="EldYoungAndroidApp\Resources\values\styles.xml" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Health\OtherHealthFrag.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Alarm\MyAlarmFrag.cs" Line="307" Column="1" />
+      <File FileName="EldYoungAndroidApp\Adapter\AdviceRecordListAdapter.cs" Line="60" Column="14" />
+      <File FileName="EldYoungAndroidApp\Fragments\Advice\WriteAdviceFragment.cs" Line="82" Column="4" />
+      <File FileName="EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" Line="102" Column="22" />
+      <File FileName="EldYoungAndroidApp\Param\AdviceRecordInfoListParam.cs" Line="8" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

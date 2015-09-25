@@ -23,7 +23,7 @@ namespace EldYoungAndroidApp.Adapter
 	{
 		private Activity activity;
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
-		private ApplyBindGuardianParam applyBindGuardianParam = new ApplyBindGuardianParam(){UserId = Global.Guid};//请求参数对象
+		private ApplyBindGuardianParam applyBindGuardianParam = new ApplyBindGuardianParam(){UserId = Global.MyInfo.UId};//请求参数对象
 		private RestSharpRequestHelp restSharpRequestHelp;
 		private IImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener(); 
 		public Action RefreshAction {

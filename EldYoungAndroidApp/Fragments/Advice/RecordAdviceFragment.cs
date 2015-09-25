@@ -17,6 +17,8 @@ using Com.Handmark.Pulltorefresh.Library;
 using EldYoungAndroidApp.Model;
 using EldYoungAndroidApp.Param;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using EldYoungAndroidApp.Json;
 
 namespace EldYoungAndroidApp.Fragments.Advice
 {
@@ -98,6 +100,11 @@ namespace EldYoungAndroidApp.Fragments.Advice
 			//设置adapter		
 			adviceRecordListAdapter = new AdviceRecordListAdapter (Activity);
 			actualListView.Adapter = adviceRecordListAdapter;
+			//初始化请求参数信息
+			adviceRecordInfoListParam = new AdviceRecordInfoListParam () {
+				UId = Global.MyInfo.UId,
+				AdviceType = _adviceType
+			};
 			//初始化view完成
 			IsPrepared = true;
 			LasyloadData ();
@@ -110,6 +117,8 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		public void OnCheckedChanged (RadioGroup group, int checkedId)
 		{
 			_adviceType = View.FindViewById<RadioButton> (checkedId).Tag.ToString();
+			//留言类型切换设置自动刷新view
+			lv_recordAdviceRefreshListView.Refreshing = true;
 		}
 
 		public override void LasyloadData ()
@@ -137,7 +146,120 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		/// </summary>
 		private void LoadData()
 		{
-			
+			pageIndex =1;
+			UpdateAdviceInfoListParam ();
+			//调用webservice获取数据
+			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
+
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+					var result = response.Content;
+					var adviceRecordInfoJson = JsonConvert.DeserializeObject<AdviceRecordInfoJson>(result);
+					if(adviceRecordInfoJson.statuscode == "1")
+					{
+
+						total =  adviceRecordInfoJson.data.total;
+						adviceRecordLists = adviceRecordInfoJson.data.items;
+
+						Activity.RunOnUiThread(()=>
+							{
+								tv_recordNum.Text = total.ToString();
+								adviceRecordListAdapter.Clear();//清空所有数据
+								adviceRecordListAdapter.AddAll(adviceRecordLists);
+								adviceRecordListAdapter.NotifyDataSetChanged();
+								lv_recordAdviceRefreshListView.OnRefreshComplete ();
+								HasLoadedOnce = true;//加载第一次成功
+
+							});
+
+					}
+					else
+					{
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"获取报警留言信息错误",ToastLength.Short).Show();
+								lv_recordAdviceRefreshListView.OnRefreshComplete ();
+								return;
+							});
+					}
+					
+				}
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							lv_recordAdviceRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+				else
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
+							lv_recordAdviceRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+			});
+
+		}
+		/// <summary>
+		/// 更新参数请求对象
+		/// </summary>
+		private void UpdateAdviceInfoListParam()
+		{
+			adviceRecordInfoListParam.PageIndex = pageIndex.ToString();
+			adviceRecordInfoListParam.AdviceType = _adviceType;
+			SetRestRequestParams ();
+		}
+
+		/// <summary>
+		/// 设置参数值
+		/// </summary>
+		/// <param name="msgInfoParam">Message info parameter.</param>
+		private void SetRestRequestParams()
+		{
+			if (!requestParams.ContainsKey ("key"))
+				requestParams.Add ("key", adviceRecordInfoListParam.Key);
+			else
+				requestParams ["key"] = adviceRecordInfoListParam.Key;
+
+			if (!requestParams.ContainsKey ("eAdviceType"))
+				requestParams.Add ("eAdviceType", adviceRecordInfoListParam.EadviceType);
+			else
+				requestParams ["eAdviceType"] = adviceRecordInfoListParam.EadviceType;
+
+			if (!requestParams.ContainsKey ("eUserId"))
+				requestParams.Add ("eUserId", adviceRecordInfoListParam.Euid);
+			else
+				requestParams ["eUserId"] = adviceRecordInfoListParam.Euid;
+			if (!requestParams.ContainsKey ("ePageIndex"))
+				requestParams.Add ("ePageIndex", adviceRecordInfoListParam.EpageIndex);
+			else
+				requestParams ["ePageIndex"] = adviceRecordInfoListParam.EpageIndex;
+
+			if (!requestParams.ContainsKey ("ePageSize"))
+				requestParams.Add ("ePageSize", adviceRecordInfoListParam.EpageSize);
+			else
+				requestParams ["ePageSize"] = adviceRecordInfoListParam.EpageSize;
+
+			if (!requestParams.ContainsKey ("eaction"))
+				requestParams.Add ("eaction", adviceRecordInfoListParam.Eaction);
+			else
+				requestParams ["eaction"] = adviceRecordInfoListParam.Eaction;
+
+			if (!requestParams.ContainsKey ("md5"))
+				requestParams.Add ("md5", adviceRecordInfoListParam.Md5);
+			else
+				requestParams ["md5"] = adviceRecordInfoListParam.Md5;
+			//设置restsharprequest
+			if (restSharpRequestHelp == null)
+				restSharpRequestHelp = new RestSharpRequestHelp (adviceRecordInfoListParam.Url,requestParams);
+			else
+				restSharpRequestHelp.RequestParams = requestParams;
+					
 		}
 		/// <summary>
 		/// 监听上拉加载更多事件
@@ -157,7 +279,64 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		/// </summary>
 		private void LoadMoreData()
 		{
-			
+			lastY = adviceRecordLists.Count;
+			pageIndex++;
+			UpdateAdviceInfoListParam ();
+			//调用webservice获取数据
+			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
+				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+
+					var result = response.Content;
+					var adviceRecordInfoJson = JsonConvert.DeserializeObject<AdviceRecordInfoJson>(result);
+					if(adviceRecordInfoJson.statuscode == "1")
+					{
+						total =  adviceRecordInfoJson.data.total;
+						adviceRecordLists.AddRange(adviceRecordInfoJson.data.items);
+
+						Activity.RunOnUiThread(()=>
+							{
+								tv_recordNum.Text = total.ToString();
+								adviceRecordListAdapter.AddAll(adviceRecordInfoJson.data.items);
+								adviceRecordListAdapter.NotifyDataSetChanged();
+								lv_recordAdviceRefreshListView.OnRefreshComplete ();
+								//讲listview滚动到上次加载位置
+								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
+							});
+
+					}
+					else
+					{
+						pageIndex--;
+						Activity.RunOnUiThread(()=>
+							{
+								Toast.MakeText(Activity,"获取更多留言信息错误",ToastLength.Short).Show();
+								lv_recordAdviceRefreshListView.OnRefreshComplete ();
+								return;
+							});
+					}
+				}
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
+				{
+					pageIndex--;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+							lv_recordAdviceRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+				else
+				{
+					pageIndex--;
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
+							lv_recordAdviceRefreshListView.OnRefreshComplete ();
+							return;
+						});
+				}
+			});
 		}
 	}
 }

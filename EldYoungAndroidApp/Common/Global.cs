@@ -86,11 +86,13 @@ namespace EldYoungAndroidApp.Common
 		public const string UpdatePersonInfoUrl="UpdateBaseInfo.aspx";
 		//获取服务端软件版本
 		public const string GetAppVersionUrl ="GetAppVersionService.aspx";
+		//投诉建议信息服务
+		public const string AdviceInfoUrl = "";
 
 		#endregion
 
-		public static string Guid;//登录guid
-		public static PersonInfoItem MyInfo;
+
+		public static PersonInfoItem MyInfo;//个人信息
 
 
 		#region 使用imageloader加载网络图像

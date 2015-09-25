@@ -156,11 +156,11 @@ namespace EldYoungAndroidApp
 		{
 			int position = 0;
 			switch (v.Id) {
-			case Resource.Id.tv_tab_myAlarm:
+			case Resource.Id.tab_btn_writeAdvice:
 				position = 0;
 				SetCurView (position);
 				break;
-			case Resource.Id.tv_tab_otherAlarm:
+			case Resource.Id.tab_btn_recordAdvice:
 				position = 1;
 				SetCurView (position);
 				break;

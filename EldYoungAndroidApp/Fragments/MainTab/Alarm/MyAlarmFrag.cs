@@ -141,7 +141,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 			};
 
-			alarmInfoListParam =  new AlarmInfoListParam(){UserId = Global.Guid};
+			alarmInfoListParam =  new AlarmInfoListParam(){UserId = Global.MyInfo.UId};
 
 			//初始化view完成
 			IsPrepared = true;

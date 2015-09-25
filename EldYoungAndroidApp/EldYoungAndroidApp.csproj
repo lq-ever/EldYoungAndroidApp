@@ -194,6 +194,9 @@
     <Compile Include="Adapter\AdviceRecordListAdapter.cs" />
     <Compile Include="Model\AdviceRecordInfoItem.cs" />
     <Compile Include="Param\AdviceRecordInfoListParam.cs" />
+    <Compile Include="Param\AdviceWriteParam.cs" />
+    <Compile Include="Json\AdviceRecordInfoJson.cs" />
+    <Compile Include="Json\AdviceWriteJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

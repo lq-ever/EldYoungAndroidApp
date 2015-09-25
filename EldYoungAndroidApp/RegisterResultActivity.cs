@@ -275,8 +275,8 @@ namespace EldYoungAndroidApp
 						if(registerJson.statuscode=="1")
 						{
 							Global.MyInfo = registerJson.data.Table[0];
-							Global.Guid = Global.MyInfo.UId;
-							var guidAsAlias = Global.Guid.Replace("-","_");
+							var Uid = Global.MyInfo.UId;
+							var guidAsAlias = Uid.Replace("-","_");
 							//注册用户成功，写极光推送别名,进入主界面
 							_jpushUtil.SetAlias(guidAsAlias);
 							sp_userinfo.Edit().PutString(Global.login_UserName,nickName).Commit();

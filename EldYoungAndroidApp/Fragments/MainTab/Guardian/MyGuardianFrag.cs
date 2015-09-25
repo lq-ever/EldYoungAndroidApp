@@ -99,7 +99,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 			actualListView.Adapter = guardianInfoAdapter;
 
 			//初始化请求参数对象
-			myGuardianInfoListParam = new MineGuardianInfoListParam (){ UserId = Global.Guid };
+			myGuardianInfoListParam = new MineGuardianInfoListParam (){ UserId = Global.MyInfo.UId };
 	
 			IsPrepared = true;
 			LasyloadData ();
