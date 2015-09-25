@@ -259,6 +259,8 @@ namespace EldYoungAndroidApp.Fragments.Advice
 				restSharpRequestHelp = new RestSharpRequestHelp (adviceRecordInfoListParam.Url,requestParams);
 			else
 				restSharpRequestHelp.RequestParams = requestParams;
+
+
 					
 		}
 		/// <summary>

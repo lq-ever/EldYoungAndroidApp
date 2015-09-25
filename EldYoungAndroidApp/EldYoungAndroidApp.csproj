@@ -266,9 +266,6 @@
     <AndroidResource Include="Resources\layout\OtherGuardianFragLayout.axml" />
     <AndroidResource Include="Resources\layout\BindGuardianLayout.axml" />
     <AndroidResource Include="Resources\layout\guardianListitemView.axml" />
-    <AndroidResource Include="Resources\drawable-xhdpi\head.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\head.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\head.png" />
     <AndroidResource Include="Resources\raw\pull_event.mp3" />
     <AndroidResource Include="Resources\raw\refreshing_sound.mp3" />
     <AndroidResource Include="Resources\raw\reset_sound.mp3" />
@@ -413,6 +410,9 @@
     <AndroidResource Include="Resources\layout\WriteAdviceLayout.axml" />
     <AndroidResource Include="Resources\layout\RecordAdviceLayout.axml" />
     <AndroidResource Include="Resources\layout\adviceRecordListItemView.axml" />
+    <AndroidResource Include="Resources\drawable\edit_advice_nomal.xml" />
+    <AndroidResource Include="Resources\drawable\edit_advice_focused.xml" />
+    <AndroidResource Include="Resources\drawable\edit_advice_selector.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

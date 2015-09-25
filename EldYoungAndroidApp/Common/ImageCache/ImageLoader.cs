@@ -19,7 +19,7 @@ namespace EldYoungAndroidApp.Common.ImageCache
 	public class ImageLoader
 	{
 		// 当进入listview时默认的图片，可换成你自己的默认图片
-		public const int stub_id=Resource.Drawable.head;
+		public const int stub_id=Resource.Drawable.headImagedefault;
 		public MemoryCache memoryCache=new MemoryCache();
 		FileCache fileCache;
 		//private Map<ImageView, String> imageViews=Collections.synchronizedMap(new WeakHashMap<ImageView, String>());

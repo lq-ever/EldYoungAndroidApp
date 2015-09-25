@@ -90,7 +90,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
-            android:background="@null"
+            android:background="@drawable/edit_advice_selector"
             android:hint="请输入标题..."
             android:textColorHint="@color/lightgray"
             android:padding="2dp"
@@ -119,12 +119,13 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="13dp"
             android:layout_marginBottom="25dp"
-            android:background="@null"
+            android:background="@drawable/edit_advice_selector"
             android:hint="在此输入内容..."
             android:textColorHint="@color/lightgray"
-            android:padding="2dp"
+            android:padding="5dp"
             android:textSize="12sp"
-            android:maxLength="200" />
+            android:maxLength="200"
+            android:gravity="left" />
     </LinearLayout>
     <Button
         android:id="@+id/btn_Publish"

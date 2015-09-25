@@ -20,5 +20,6 @@
     <color name="halftransparent">#e0000000</color>
     <color name ="transparent">#00000000</color>
     <color name ="pink">#e54c9b</color>
+    <color name="editgray">#999999</color>
 
 </resources>

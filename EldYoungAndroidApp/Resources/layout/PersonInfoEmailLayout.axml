@@ -14,7 +14,7 @@
             android:padding="2dp"
             android:hint="请输入电子邮箱"
             android:inputType="textEmailAddress"
-            android:background="@null" />
+            android:background="@drawable/edit_advice_selector" />
     </LinearLayout>
     <Button
         android:id="@+id/btn_Save"

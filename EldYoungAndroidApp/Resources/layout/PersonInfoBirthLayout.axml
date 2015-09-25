@@ -14,7 +14,7 @@
             android:padding="2dp"
             android:hint="点击选择出生日期"
             android:inputType="textPersonName"
-            android:background="@null" />
+            android:background="@drawable/edit_advice_selector" />
     </LinearLayout>
     <Button
         android:id="@+id/btn_Save"
