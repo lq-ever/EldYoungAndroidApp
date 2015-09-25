@@ -207,13 +207,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\dark_dot.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_discard.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_edit.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_content_save.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_rating_good.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\input_over.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\login_input.9.png" />
     <AndroidResource Include="Resources\drawable-hdpi\progress_1.png" />
     <AndroidResource Include="Resources\drawable-hdpi\progress_2.png" />
     <AndroidResource Include="Resources\drawable-hdpi\progress_3.png" />
@@ -222,22 +215,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\progress_6.png" />
     <AndroidResource Include="Resources\drawable-hdpi\progress_7.png" />
     <AndroidResource Include="Resources\drawable-hdpi\progress_8.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\tab_bg2.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\white_dot.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\layout\SplashLayout.axml" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_content_discard.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_content_edit.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_content_save.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_rating_good.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_content_discard.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_content_edit.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_content_save.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_rating_good.png" />
     <AndroidResource Include="Resources\drawable\dot.xml" />
-    <AndroidResource Include="Resources\drawable\login_edit.xml" />
     <AndroidResource Include="Resources\drawable\whats_new_start_btn.xml" />
-    <AndroidResource Include="Resources\menu\main_menu.xml" />
     <AndroidResource Include="Resources\layout\bottom_bar.axml" />
     <AndroidResource Include="Resources\layout\customprogressdialog.axml" />
     <AndroidResource Include="Resources\layout\GuiderLayout.axml" />
@@ -251,8 +232,6 @@
     <AndroidResource Include="Resources\anim\zoomout.xml" />
     <AndroidResource Include="Resources\layout\progressbar.axml" />
     <AndroidResource Include="Resources\layout\customer_notitfication_layout.axml" />
-    <AndroidResource Include="Resources\drawable-hdpi\button_pressed.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\button_unpress.png" />
     <AndroidResource Include="Resources\layout\Main_Tab_HealthLayout.axml" />
     <AndroidResource Include="Resources\layout\Main_Tab_AlarmLayout.axml" />
     <AndroidResource Include="Resources\layout\Main_Tab_GuardianLayout.axml" />
@@ -271,8 +250,6 @@
     <AndroidResource Include="Resources\raw\reset_sound.mp3" />
     <AndroidResource Include="Resources\layout\RegisterLayout.axml" />
     <AndroidResource Include="Resources\layout\RegisterResultLayout.axml" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher_lelaozu.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher_lelaozu_bgWhite.png" />
     <AndroidResource Include="Resources\layout\custom_title_bar.axml" />
     <AndroidResource Include="Resources\layout\ServiceAgreeLayout.axml" />
     <AndroidResource Include="Resources\drawable\textselector.xml" />
@@ -448,5 +425,6 @@
     <Folder Include="Activitys\My\" />
     <Folder Include="Common\ImageCache\" />
     <Folder Include="Fragments\Advice\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
   </ItemGroup>
 </Project>
