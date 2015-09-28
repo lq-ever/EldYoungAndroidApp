@@ -40,7 +40,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		private RestSharpRequestHelp restSharpRequestHelp;
 		private int total;//总记录数
 
-
+		private bool IsRefreshing = false;//是否正在获取数据
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -225,12 +225,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		/// <param name="p0">P0.</param>
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
-
-		
-			Task.Factory.StartNew (() => {
-
-				loadData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				Task.Factory.StartNew (() => {
+					loadData ();
+				});
+			} else {
+				otherGuardianRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 
 		}
@@ -241,11 +244,16 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		/// <param name="p0">P0.</param>
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
-			lastY = guardianInfoList.Count;
-			Task.Factory.StartNew (() => {
-				//获取更多监护人数据
-				LoadMoreData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				Task.Factory.StartNew (() => {
+					//获取更多监护人数据
+					LoadMoreData ();
+				});
+			} else {
+				otherGuardianRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 
 		}
@@ -270,7 +278,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 							{
 								guardianInfoAdapter.AddAll(guardianInfoJson.data.items);
 								guardianInfoAdapter.NotifyDataSetChanged();
-								otherGuardianRefreshListView.OnRefreshComplete ();
 								//讲listview滚动到上次加载位置
 								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
 							});
@@ -281,9 +288,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取更多监护人列表信息出错...",ToastLength.Short).Show();
-
-								otherGuardianRefreshListView.OnRefreshComplete ();
-								return;
 							});
 					}
 				}
@@ -293,9 +297,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-
-							otherGuardianRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -304,11 +305,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-
-							otherGuardianRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						otherGuardianRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 
 			});
 

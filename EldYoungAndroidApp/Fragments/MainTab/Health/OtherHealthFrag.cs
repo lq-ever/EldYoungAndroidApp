@@ -51,6 +51,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 		private ArrayAdapter<AllMyUserListItem> myUserListAdapter;
 		private string myUserId;
 		private bool btnSearchFlag = false;//监听是否点击查询
+		private bool IsRefreshing = false;//是否正在获取数据
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -258,10 +259,8 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 									healthInfoAdapter.Clear();
 									healthInfoAdapter.AddAll(healthInfoLists);
 									healthInfoAdapter.NotifyDataSetChanged();
-									otherhealthRefreshListView.OnRefreshComplete ();
 									HasLoadedOnce = true;//加载第一次成功
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
+
 								});
 
 						}
@@ -270,10 +269,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 							Activity.RunOnUiThread(()=>
 								{
 									Toast.MakeText(Activity,"查询健康体检信息错误",ToastLength.Short).Show();
-									otherhealthRefreshListView.OnRefreshComplete ();
-									if(btnSearchFlag)
-										ProgressDialogUtil.StopProgressDialog();
-									return;
+
 								});
 						}
 					}
@@ -285,11 +281,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-
-							otherhealthRefreshListView.OnRefreshComplete ();
-							if(btnSearchFlag)
-								ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
 				else
@@ -297,13 +288,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-
-							otherhealthRefreshListView.OnRefreshComplete ();
-							if(btnSearchFlag)
-								ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						otherhealthRefreshListView.OnRefreshComplete ();
+						if(btnSearchFlag)
+							ProgressDialogUtil.StopProgressDialog();
+						IsRefreshing = false;
+					});
 			});
 
 		}
@@ -376,11 +369,16 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 		/// <param name="p0">P0.</param>
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
-			btnSearchFlag = false;
-			//p0.GetLoadingLayoutProxy(true,false).SetLastUpdatedLabel(string.Format("上次刷新:{0:t}",DateTime.Now));
-			Task.Factory.StartNew (() => {
-				loadData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				btnSearchFlag = false;
+				Task.Factory.StartNew (() => {
+					loadData ();
+				});
+			} else {
+				otherhealthRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 		}
 
 		/// <summary>
@@ -389,15 +387,16 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 		/// <param name="p0">P0.</param>
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
-			btnSearchFlag = false;
-			//p0.GetLoadingLayoutProxy(false,true).SetLastUpdatedLabel(string.Format("上次加载:{0:t}",DateTime.Now));
-
-			Task.Factory.StartNew (() => {
-
-				//加载更多数据
-				LoadMoreData();
-
-			});
+			if (!IsRefreshing) {
+				btnSearchFlag = false;
+				Task.Factory.StartNew (() => {
+					//加载更多数据
+					LoadMoreData ();
+				});
+			} else {
+				otherhealthRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 		}
 
@@ -424,14 +423,11 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 
 							Activity.RunOnUiThread(()=>
 								{
-
 									healthInfoAdapter.AddAll(searchHealthInfoJson.data.items);
 									healthInfoAdapter.NotifyDataSetChanged();
-									otherhealthRefreshListView.OnRefreshComplete ();
 									//讲listview滚动到上次加载位置
 									actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
 								});
-
 						}
 						else
 						{
@@ -439,8 +435,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 							Activity.RunOnUiThread(()=>
 								{
 									Toast.MakeText(Activity,"获取更多体检信息错误",ToastLength.Short).Show();
-									otherhealthRefreshListView.OnRefreshComplete ();
-									return;
 								});
 						}
 					}
@@ -452,9 +446,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							//ProgressDialogUtil.StopProgressDialog();
-							otherhealthRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -463,11 +454,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-							//ProgressDialogUtil.StopProgressDialog();
-							otherhealthRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						otherhealthRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 			});
 		}
 

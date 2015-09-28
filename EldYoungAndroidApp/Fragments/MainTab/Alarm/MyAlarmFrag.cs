@@ -51,6 +51,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 		private bool btnSearchFlag = false;//监听是否点击查询
 
+		private bool IsRefreshing = false;//是否正在获取数据
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -189,10 +190,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 								alarmInfoAdapter.Clear();//清空所有数据
 								alarmInfoAdapter.AddAll(alarmInfoLists);
 								alarmInfoAdapter.NotifyDataSetChanged();
-								myAlarmRefreshListView.OnRefreshComplete ();
 								HasLoadedOnce = true;//加载第一次成功
-								if(btnSearchFlag)
-									ProgressDialogUtil.StopProgressDialog();
 							});
 						
 					}
@@ -201,10 +199,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取报警列表信息错误",ToastLength.Short).Show();
-								myAlarmRefreshListView.OnRefreshComplete ();
-								if(btnSearchFlag)
-									ProgressDialogUtil.StopProgressDialog();
-								return;
 							});
 					}
 				}
@@ -213,10 +207,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							if(btnSearchFlag)
-								ProgressDialogUtil.StopProgressDialog();
-							myAlarmRefreshListView.OnRefreshComplete ();
-							return;
+
 						});
 				}
 				else
@@ -224,12 +215,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-							if(btnSearchFlag)
-								ProgressDialogUtil.StopProgressDialog();
-							myAlarmRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+
+				Activity.RunOnUiThread(()=>
+					{
+						if(btnSearchFlag)
+							ProgressDialogUtil.StopProgressDialog();
+						myAlarmRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
+			
+
 					
 			});
 
@@ -310,10 +307,16 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 		/// <param name="p0">P0.</param>
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
-			btnSearchFlag = false;
-			Task.Factory.StartNew (() => {
-				loadData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				btnSearchFlag = false;
+				Task.Factory.StartNew (() => {
+					loadData ();
+				});
+			} else {
+				myAlarmRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 		}
 
@@ -323,11 +326,17 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 		/// <param name="p0">P0.</param>
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
-			btnSearchFlag = false;
-			Task.Factory.StartNew (() => {
-				//加载更多数据
-				LoadMoreData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				btnSearchFlag = false;
+				Task.Factory.StartNew (() => {
+					//加载更多数据
+					LoadMoreData ();
+				});
+			} else {
+				myAlarmRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 				
 		}
 
@@ -349,10 +358,8 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 						Activity.RunOnUiThread(()=>
 							{
-
 								alarmInfoAdapter.AddAll(alarmlistInfoJson.data.items);
 								alarmInfoAdapter.NotifyDataSetChanged();
-								myAlarmRefreshListView.OnRefreshComplete ();
 								//讲listview滚动到上次加载位置
 								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
 							});
@@ -364,8 +371,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取更多报警列表信息错误",ToastLength.Short).Show();
-								myAlarmRefreshListView.OnRefreshComplete ();
-								return;
 							});
 					}
 				}
@@ -375,8 +380,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							myAlarmRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -385,10 +388,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-							myAlarmRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						myAlarmRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 			});
 
 		}

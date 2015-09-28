@@ -53,7 +53,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 		private ArrayAdapter<AllMyUserListItem> myUserListAdapter;
 		private string myUserId;
 		private bool btnSearchFlag = false;//监听是否点击查询
-
+		private bool IsRefreshing = false;//是否正在获取数据
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -275,10 +275,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 								alarmInfoAdapter.Clear();
 								alarmInfoAdapter.AddAll(alarmInfoLists);
 								alarmInfoAdapter.NotifyDataSetChanged();
-								otherAlarmRefreshListView.OnRefreshComplete ();
 								HasLoadedOnce = true;//加载第一次成功
-								if(btnSearchFlag)
-									ProgressDialogUtil.StopProgressDialog();
 							});
 
 					}
@@ -287,10 +284,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取报警列表信息错误",ToastLength.Short).Show();
-								otherAlarmRefreshListView.OnRefreshComplete ();
-								if(btnSearchFlag)
-									ProgressDialogUtil.StopProgressDialog();
-								return;
 							});
 					}
 
@@ -302,11 +295,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-
-							otherAlarmRefreshListView.OnRefreshComplete ();
-							if(btnSearchFlag)
-								ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
 				else
@@ -314,13 +302,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-
-							otherAlarmRefreshListView.OnRefreshComplete ();
-							if(btnSearchFlag)
-								ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						otherAlarmRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+						if(btnSearchFlag)
+							ProgressDialogUtil.StopProgressDialog();
+					});
 			});
 
 		}
@@ -403,11 +393,16 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 		/// <param name="p0">P0.</param>
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
-			btnSearchFlag = false;
-
-			Task.Factory.StartNew (() => {
-				loadData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				btnSearchFlag = false;
+				Task.Factory.StartNew (() => {
+					loadData ();
+				});
+			} else {
+				otherAlarmRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 		}
 
 		/// <summary>
@@ -416,14 +411,17 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 		/// <param name="p0">P0.</param>
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
-			btnSearchFlag = false;
-
-			Task.Factory.StartNew (() => {
-
-				//加载更多数据
-				LoadMoreData();
-			
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				btnSearchFlag = false;
+				Task.Factory.StartNew (() => {
+					//加载更多数据
+					LoadMoreData ();
+				});
+			} else {
+				otherAlarmRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 		}
 
@@ -439,24 +437,19 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
 				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					
 					var result = response.Content;
 					var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
 					if(alarmlistInfoJson.statuscode == "1")
 					{
 						total =  alarmlistInfoJson.data.total;
 						alarmInfoLists.AddRange(alarmlistInfoJson.data.items);
-
 						Activity.RunOnUiThread(()=>
 							{
-
 								alarmInfoAdapter.AddAll(alarmlistInfoJson.data.items);
 								alarmInfoAdapter.NotifyDataSetChanged();
-								otherAlarmRefreshListView.OnRefreshComplete ();
 								//讲listview滚动到上次加载位置
 								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
 							});
-
 					}
 					else
 					{
@@ -464,8 +457,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取更多报警列表信息错误",ToastLength.Short).Show();
-								otherAlarmRefreshListView.OnRefreshComplete ();
-								return;
 							});
 					}
 
@@ -476,9 +467,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-
-							otherAlarmRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -487,11 +475,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-
-							otherAlarmRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						otherAlarmRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 			});
 		}
 			

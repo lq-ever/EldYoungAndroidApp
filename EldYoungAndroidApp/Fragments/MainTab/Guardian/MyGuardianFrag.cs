@@ -40,6 +40,8 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		private int pageIndex =1;//当前页码
 		private RestSharpRequestHelp restSharpRequestHelp;
 		private int total;//总记录数
+
+		private bool IsRefreshing = false;//是否正在获取数据
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -141,7 +143,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 								guardianInfoAdapter.Clear();
 								guardianInfoAdapter.AddAll(guardianInfoList);
 								guardianInfoAdapter.NotifyDataSetChanged();
-								myGuardianRefreshListView.OnRefreshComplete ();
 								HasLoadedOnce = true;//加载第一次成功
 							});
 					}
@@ -150,20 +151,28 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取监护人列表信息失败...",ToastLength.Short).Show();
-								myGuardianRefreshListView.OnRefreshComplete ();
-								return;
 							});
 					}
+				}
+				else if(response.ResponseStatus == RestSharp.ResponseStatus.TimedOut)
+				{
+					Activity.RunOnUiThread(()=>
+						{
+							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
+						});
 				}
 				else
 				{
 					Activity.RunOnUiThread(()=>
 						{
-							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							myGuardianRefreshListView.OnRefreshComplete ();
-							return;
+							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						myGuardianRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 			});
 		}
 
@@ -219,12 +228,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		/// <param name="p0">P0.</param>
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
-
-			Task.Factory.StartNew (() => {
-
-				loadData();
-
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				Task.Factory.StartNew (() => {
+					loadData ();
+				});
+			} else {
+				myGuardianRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 
 		}
@@ -235,10 +247,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 		/// <param name="p0">P0.</param>
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
-
-			Task.Factory.StartNew (() => {
-				LoadMoreData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				Task.Factory.StartNew (() => {
+					LoadMoreData ();
+				});
+			} else {
+				myGuardianRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 
 		}
@@ -263,7 +280,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 								{
 									guardianInfoAdapter.AddAll(guardianInfoJson.data.items);
 									guardianInfoAdapter.NotifyDataSetChanged();
-									myGuardianRefreshListView.OnRefreshComplete ();
 									//讲listview滚动到上次加载位置
 									actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
 								});
@@ -274,9 +290,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 							Activity.RunOnUiThread(()=>
 								{
 									Toast.MakeText(Activity,"获取更多监护人列表信息出错...",ToastLength.Short).Show();
-
-									myGuardianRefreshListView.OnRefreshComplete ();
-									return;
 								});
 						}
 
@@ -289,9 +302,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-
-							myGuardianRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -300,11 +310,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-
-							myGuardianRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						myGuardianRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 
 			});
 
