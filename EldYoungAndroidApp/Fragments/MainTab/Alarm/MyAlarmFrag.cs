@@ -1,4 +1,4 @@
-﻿
+﻿ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -340,7 +340,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
 				if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
-					
 					var result = response.Content;
 					var alarmlistInfoJson = JsonConvert.DeserializeObject<SearchAlarmInfoJson>(result);
 					if(alarmlistInfoJson.statuscode == "1")

@@ -123,6 +123,11 @@ namespace EldYoungAndroidApp.Fragments.Advice
 			else
 				requestParams ["key"] = adviceWriteParam.Key;
 
+			if (!requestParams.ContainsKey ("eaction"))
+				requestParams.Add ("eaction", adviceWriteParam.Eaction);
+			else
+				requestParams ["eaction"] = adviceWriteParam.Eaction;
+
 			if (!requestParams.ContainsKey ("eUId"))
 				requestParams.Add ("eUId", adviceWriteParam.Euid);
 			else
