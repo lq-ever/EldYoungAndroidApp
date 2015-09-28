@@ -355,7 +355,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 					{
 						total =  alarmlistInfoJson.data.total;
 						alarmInfoLists.AddRange(alarmlistInfoJson.data.items);
-
 						Activity.RunOnUiThread(()=>
 							{
 								alarmInfoAdapter.AddAll(alarmlistInfoJson.data.items);
@@ -363,7 +362,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 								//讲listview滚动到上次加载位置
 								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
 							});
-
 					}
 					else
 					{

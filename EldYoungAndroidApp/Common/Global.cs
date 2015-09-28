@@ -87,7 +87,7 @@ namespace EldYoungAndroidApp.Common
 		//获取服务端软件版本
 		public const string GetAppVersionUrl ="GetAppVersionService.aspx";
 		//投诉建议信息服务
-		public const string AdviceInfoUrl = "AdviceService.aspx";
+		public const string AdviceInfoUrl = "DoMessageInfor.aspx";
 
 		#endregion
 

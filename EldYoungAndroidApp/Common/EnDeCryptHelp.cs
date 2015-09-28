@@ -35,7 +35,6 @@ namespace EldYoungAndroidApp.Common
 			byte[] inputByteArray;
 			//inputByteArray = Encoding.Default.GetBytes(Text);
 			inputByteArray = Encoding.UTF8.GetBytes(Text);
-			//inputByteArray=Encoding.GetEncoding("gb2312").GetBytes (Text);
 			#region debug和release模式下中文解决乱码
 			/*
 			 *  使用gb2312在debug模式下，正常，不乱码，但在release下模式直接报空引用

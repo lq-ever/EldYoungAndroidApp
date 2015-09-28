@@ -197,7 +197,6 @@ namespace EldYoungAndroidApp
 								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
 								StartActivity(intent);						
 								this.Finish();
-								ProgressDialogUtil.StopProgressDialog();
 								Toast.MakeText(this,"登录成功",ToastLength.Short).Show();
 								OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 
@@ -209,8 +208,6 @@ namespace EldYoungAndroidApp
 						RunOnUiThread(()=>
 							{
 								Toast.MakeText(this,loginJson.message,ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
 							});
 					}
 				}
@@ -219,8 +216,6 @@ namespace EldYoungAndroidApp
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
 				else
@@ -228,10 +223,14 @@ namespace EldYoungAndroidApp
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
+				RunOnUiThread(()=>
+					{
+						ProgressDialogUtil.StopProgressDialog();
+						return;
+					});
+
 
 			});
 

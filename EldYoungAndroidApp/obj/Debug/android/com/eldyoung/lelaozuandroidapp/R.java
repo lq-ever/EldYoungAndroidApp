@@ -984,6 +984,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int personbasic_ll_layout=0x7f0b0010;
         public static final int personbasic_tv_key=0x7f0b0011;
         public static final int personbasic_value=0x7f0b0012;
+        /**       <item name ="android:fadingEdge">none</item>
+      <item name ="android:fastScrollEnabled">false</item>
+      <item name="android:footerDividersEnabled">false</item>
+      <item name="android:headerDividersEnabled">false</item>
+      <item name="android:smoothScrollbar">false</item>
+         */
         public static final int pulltorefresh_lv=0x7f0b000c;
         public static final int tab_btn_style=0x7f0b000b;
         /**  中间tab栏样式

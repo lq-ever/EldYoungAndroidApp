@@ -83,7 +83,11 @@
     <style name="pulltorefresh_lv">
       <item name ="android:dividerHeight">7dp</item>
       <item name="android:divider">@color/bg_gray</item>
-
+<!--      <item name ="android:fadingEdge">none</item>
+      <item name ="android:fastScrollEnabled">false</item>
+      <item name="android:footerDividersEnabled">false</item>
+      <item name="android:headerDividersEnabled">false</item>
+      <item name="android:smoothScrollbar">false</item>-->
     </style>
 
 

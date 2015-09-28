@@ -12,7 +12,7 @@ namespace EldYoungAndroidApp
 		private Activity activity;
 		public AdviceRecordListAdapter (Activity _activity):base(_activity,0)
 		{
-			activity = activity;
+			activity = _activity;
 		}
 		public override Android.Views.View GetView ( int position, Android.Views.View convertView, Android.Views.ViewGroup parent)
 		{
@@ -32,10 +32,10 @@ namespace EldYoungAndroidApp
 			} else
 				_adviceRecordItemView = (AdviceRecordItemView)convertView.GetTag (Resource.Id.advicelistitemview);
 
-			_adviceRecordItemView.img_adviceType.SetImageResource(GetAdviceTypeId(item.AdviceType));
-			_adviceRecordItemView.tv_adviceTime.Text =  Convert.ToDateTime( item.AdviceTime).ToString("yyyy-MM-dd HH:mm:ss");
-			_adviceRecordItemView.tv_adviceTitle.Text = item.AdviceTitle;
-			_adviceRecordItemView.tv_adviceContent.Text = item.AdviceContent;
+			_adviceRecordItemView.img_adviceType.SetImageResource(GetAdviceTypeId(item.MessageType));
+			_adviceRecordItemView.tv_adviceTime.Text =  Convert.ToDateTime( item.MessageTime).ToString("yyyy-MM-dd HH:mm:ss");
+			_adviceRecordItemView.tv_adviceTitle.Text = item.MessageTitle;
+			_adviceRecordItemView.tv_adviceContent.Text = item.MessageContent;
 			return convertView;
 		}
 		/// <summary>

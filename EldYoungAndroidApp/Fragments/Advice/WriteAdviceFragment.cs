@@ -138,6 +138,11 @@ namespace EldYoungAndroidApp.Fragments.Advice
 			else
 				requestParams ["eAdviceType"] = adviceWriteParam.EadviceType;
 
+			if (!requestParams.ContainsKey ("ePlatformType"))
+				requestParams.Add ("ePlatformType", adviceWriteParam.EplatformType);
+			else
+				requestParams ["ePlatformType"] = adviceWriteParam.EplatformType;
+
 			if (!requestParams.ContainsKey ("eAdviceTitle"))
 				requestParams.Add ("eAdviceTitle", adviceWriteParam.EadviceTitle);
 			else

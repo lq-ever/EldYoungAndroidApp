@@ -236,12 +236,8 @@ namespace EldYoungAndroidApp
 							bundle.PutString("nickName",nickName);
 							bundle.PutString("passWord",passWord);
 							bundle.PutString("securityCode",smsJson.data.ToString());
-
 							intent.PutExtras(bundle);
 							StartActivity(intent);
-
-							ProgressDialogUtil.StopProgressDialog();
-
 						});
 					}
 					else
@@ -249,20 +245,14 @@ namespace EldYoungAndroidApp
 						RunOnUiThread(()=>
 							{
 								Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
 							});
 					}	
-
-
 				}
 				else if(resoponse.ResponseStatus == ResponseStatus.TimedOut)
 				{
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
 				else
@@ -270,10 +260,13 @@ namespace EldYoungAndroidApp
 					RunOnUiThread(()=>
 						{
 							Toast.MakeText(this,resoponse.StatusDescription,ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
 						});
 				}
+				RunOnUiThread(()=>
+					{
+						ProgressDialogUtil.StopProgressDialog();
+						return;
+					});
 
 			});
 		}

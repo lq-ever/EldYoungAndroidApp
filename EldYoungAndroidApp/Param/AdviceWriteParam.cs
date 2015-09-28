@@ -37,7 +37,18 @@ namespace EldYoungAndroidApp.Param
 				return EnDeCryptHelp.Encrypt (AdviceType);
 			}
 		}
-
+		public string PlatformType
+		{
+			get{
+				return "0";//个人中心
+			}
+		}
+		public string EplatformType
+		{
+			get{
+				return EnDeCryptHelp.Encrypt (PlatformType);
+			}
+		}
 		public string AdviceTitle {
 			get;
 			set;
@@ -60,7 +71,7 @@ namespace EldYoungAndroidApp.Param
 		}
 		public override string Md5 {
 			get {
-				return EnDeCryptHelp.MD5Encrypt (Eaction + EadviceType+EadviceTitle+EadviceContent + Euid + Key, Key);
+				return EnDeCryptHelp.MD5Encrypt (Eaction + EadviceType+EadviceTitle+EadviceContent + Euid + EplatformType+Key, Key);
 			}
 		}
 

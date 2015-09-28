@@ -42,6 +42,8 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		private int total;//总记录数
 		private List<AdviceRecordInfoItem> adviceRecordLists = new List<AdviceRecordInfoItem>();
 
+
+		private bool IsRefreshing = false;//是否正在获取数据
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -78,7 +80,7 @@ namespace EldYoungAndroidApp.Fragments.Advice
 			rbtn_tousu.Tag = AdviceType.Complain.ToString ();
 			rbtn_other = View.FindViewById<RadioButton> (Resource.Id.rbtn_other);
 			rbtn_other.Tag = AdviceType.Other.ToString();
-
+			tv_recordNum = View.FindViewById<TextView> (Resource.Id.tv_recordNum);
 			//pulltolistview
 			lv_recordAdviceRefreshListView = View.FindViewById<PullToRefreshListView> (Resource.Id.lv_recordAdvice);
 			actualListView = (ListView)lv_recordAdviceRefreshListView.RefreshableView;
@@ -135,10 +137,15 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		/// <param name="p0">P0.</param>
 		public void OnPullDownToRefresh (PullToRefreshBase p0)
 		{
-			
-			Task.Factory.StartNew (() => {
-				LoadData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				Task.Factory.StartNew (() => {
+					LoadData ();
+				});
+			} else {
+				lv_recordAdviceRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 		}
 		/// <summary>
@@ -167,7 +174,6 @@ namespace EldYoungAndroidApp.Fragments.Advice
 								adviceRecordListAdapter.Clear();//清空所有数据
 								adviceRecordListAdapter.AddAll(adviceRecordLists);
 								adviceRecordListAdapter.NotifyDataSetChanged();
-								lv_recordAdviceRefreshListView.OnRefreshComplete ();
 								HasLoadedOnce = true;//加载第一次成功
 
 							});
@@ -178,8 +184,6 @@ namespace EldYoungAndroidApp.Fragments.Advice
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取报警留言信息错误",ToastLength.Short).Show();
-								lv_recordAdviceRefreshListView.OnRefreshComplete ();
-								return;
 							});
 					}
 					
@@ -189,8 +193,6 @@ namespace EldYoungAndroidApp.Fragments.Advice
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							lv_recordAdviceRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -198,10 +200,13 @@ namespace EldYoungAndroidApp.Fragments.Advice
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-							lv_recordAdviceRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						lv_recordAdviceRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 			});
 
 		}
@@ -230,6 +235,11 @@ namespace EldYoungAndroidApp.Fragments.Advice
 				requestParams.Add ("eAdviceType", adviceRecordInfoListParam.EadviceType);
 			else
 				requestParams ["eAdviceType"] = adviceRecordInfoListParam.EadviceType;
+			
+			if (!requestParams.ContainsKey ("ePlatformType"))
+				requestParams.Add ("ePlatformType", adviceRecordInfoListParam.EplatformType);
+			else
+				requestParams ["ePlatformType"] = adviceRecordInfoListParam.EplatformType;
 
 			if (!requestParams.ContainsKey ("eUserId"))
 				requestParams.Add ("eUserId", adviceRecordInfoListParam.Euid);
@@ -269,11 +279,16 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		/// <param name="p0">P0.</param>
 		public void OnPullUpToRefresh (PullToRefreshBase p0)
 		{
-			
-			Task.Factory.StartNew (() => {
-				//加载更多数据
-				LoadMoreData();
-			});
+			if (!IsRefreshing) {
+				IsRefreshing = true;
+				Task.Factory.StartNew (() => {
+					//加载更多数据
+					LoadMoreData ();
+				});
+			} else {
+				lv_recordAdviceRefreshListView.OnRefreshComplete ();
+				IsRefreshing = false;
+			}
 
 		}
 		/// <summary>
@@ -301,11 +316,10 @@ namespace EldYoungAndroidApp.Fragments.Advice
 								tv_recordNum.Text = total.ToString();
 								adviceRecordListAdapter.AddAll(adviceRecordInfoJson.data.items);
 								adviceRecordListAdapter.NotifyDataSetChanged();
-								lv_recordAdviceRefreshListView.OnRefreshComplete ();
 								//讲listview滚动到上次加载位置
 								actualListView.SetSelectionFromTop(lastY,(int)TrimMemory.Background);
 							});
-
+						
 					}
 					else
 					{
@@ -313,8 +327,6 @@ namespace EldYoungAndroidApp.Fragments.Advice
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取更多留言信息错误",ToastLength.Short).Show();
-								lv_recordAdviceRefreshListView.OnRefreshComplete ();
-								return;
 							});
 					}
 				}
@@ -324,8 +336,6 @@ namespace EldYoungAndroidApp.Fragments.Advice
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							lv_recordAdviceRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -334,10 +344,14 @@ namespace EldYoungAndroidApp.Fragments.Advice
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-							lv_recordAdviceRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+
+						lv_recordAdviceRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 			});
 		}
 	}

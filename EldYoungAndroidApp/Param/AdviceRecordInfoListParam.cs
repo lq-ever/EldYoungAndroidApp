@@ -41,7 +41,18 @@ namespace EldYoungAndroidApp.Param
 				return EnDeCryptHelp.Encrypt (AdviceType);
 			}
 		}
-
+		public string PlatformType
+		{
+			get{
+				return "0";//个人中心
+			}
+		}
+		public string EplatformType
+		{
+			get{
+				return EnDeCryptHelp.Encrypt (PlatformType);
+			}
+		}
 		/// <summary>
 		/// 当前页码
 		/// </summary>
@@ -76,7 +87,7 @@ namespace EldYoungAndroidApp.Param
 
 		public override string Md5 {
 			get {
-				return EnDeCryptHelp.MD5Encrypt(Eaction + EadviceType + Euid  + EpageIndex + EpageSize + Key, Key);
+				return EnDeCryptHelp.MD5Encrypt(Eaction + EadviceType + Euid  + EpageIndex + EpageSize +EplatformType+ Key, Key);
 			}
 		}
 

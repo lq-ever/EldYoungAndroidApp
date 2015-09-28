@@ -116,9 +116,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 				var intent  = new Intent(Activity,typeof(HealthDetailInfoActivity));
 				var _healthInfoItem = healthInfoAdapter.GetItem(e.Position -1);
 				var _healthInfoJson = JsonConvert.SerializeObject(_healthInfoItem);
-
 				intent.PutExtra("healthInfo",_healthInfoJson);
-
 				Activity.StartActivity(intent);
 
 			};
@@ -139,6 +137,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 				return;
 			//第一次进入设置自动刷新view
 			myhealthRefreshListView.Refreshing = true;
+
 		}
 
 		private void loadData()

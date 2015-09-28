@@ -168,7 +168,7 @@ namespace EldYoungAndroidApp
 					{
 						RunOnUiThread(()=>{
 							securityCode = smsJson.data.ToString();
-							ProgressDialogUtil.StopProgressDialog();
+
 							mc.Start();
 							tv_SendCodeStatusShow.Visibility = ViewStates.Visible;
 						});
@@ -179,21 +179,31 @@ namespace EldYoungAndroidApp
 							{
 								tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
 								Toast.MakeText(this,smsJson.message,ToastLength.Short).Show();
-								ProgressDialogUtil.StopProgressDialog();
-								return;
+
 							});
 					}
+				}
+				else if(response.ResponseStatus == ResponseStatus.TimedOut)
+				{
+					RunOnUiThread(()=>
+						{
+							tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
+							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
+						});
 				}
 				else
 				{
 					RunOnUiThread(()=>
 						{
 							tv_SendCodeStatusShow.Visibility = ViewStates.Invisible;
-							Toast.MakeText(this,"网络连接超时",ToastLength.Short).Show();
-							ProgressDialogUtil.StopProgressDialog();
-							return;
+							Toast.MakeText(this,response.StatusDescription,ToastLength.Short).Show();
 						});
 				}
+				RunOnUiThread(()=>
+					{
+						ProgressDialogUtil.StopProgressDialog();
+						return;
+					});
 			});
 		}
 
