@@ -151,6 +151,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 				bundle.PutString("alarmId",alarmInfoAdapter.GetItem(e.Position-1).AId);
 				intent.PutExtras(bundle);
 				Activity.StartActivity(intent);
+				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 
 			alarmInfoListParam =  new AlarmInfoListParam();

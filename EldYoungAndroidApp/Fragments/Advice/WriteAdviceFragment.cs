@@ -26,7 +26,7 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		private RadioButton rbtn_zixun, rbtn_jianyi, rbtn_tousu, rbtn_other;
 		private EditText edit_advice_title, edit_advice_content;
 		private Button btn_Publish;
-		private string _adviceType = AdviceType.Consult.ToString();
+		private string _adviceType = ((int)AdviceType.Consult).ToString();
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -53,15 +53,15 @@ namespace EldYoungAndroidApp.Fragments.Advice
 			radio_advice_Group.SetOnCheckedChangeListener (this);
 			//radiobutton
 			rbtn_zixun = View.FindViewById<RadioButton> (Resource.Id.rbtn_zixun);
-			rbtn_zixun.Tag = AdviceType.Consult.ToString();
+			rbtn_zixun.Tag = ((int)AdviceType.Consult).ToString();
 			//默认咨询选中
 			rbtn_zixun.Checked = true;
 			rbtn_jianyi = View.FindViewById<RadioButton> (Resource.Id.rbtn_jianyi);
-			rbtn_jianyi.Tag = AdviceType.Suggest.ToString ();
+			rbtn_jianyi.Tag =((int)AdviceType.Suggest).ToString ();
 			rbtn_tousu = View.FindViewById<RadioButton> (Resource.Id.rbtn_tousu);
-			rbtn_tousu.Tag = AdviceType.Complain.ToString ();
+			rbtn_tousu.Tag = ((int)AdviceType.Complain).ToString ();
 			rbtn_other = View.FindViewById<RadioButton> (Resource.Id.rbtn_other);
-			rbtn_other.Tag = AdviceType.Other.ToString();
+			rbtn_other.Tag = ((int)AdviceType.Other).ToString();
 
 			edit_advice_title = View.FindViewById<EditText> (Resource.Id.edit_advice_title);
 			edit_advice_content = View.FindViewById<EditText> (Resource.Id.edit_advice_content);

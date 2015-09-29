@@ -19,6 +19,7 @@ using EldYoungAndroidApp.Param;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
+using System.Threading;
 
 namespace EldYoungAndroidApp.Fragments.Advice
 {
@@ -27,7 +28,7 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		private RadioGroup radio_advice_Group;
 		private RadioButton rbtn_all, rbtn_zixun, rbtn_jianyi, rbtn_tousu, rbtn_other;
 		private TextView tv_recordNum;
-		private string _adviceType = AdviceType.All.ToString();//默认咨询建议类型
+		private string _adviceType = ((int)AdviceType.All).ToString();//默认咨询建议类型
 
 		private AdviceRecordListAdapter adviceRecordListAdapter;
 		private PullToRefreshListView lv_recordAdviceRefreshListView;
@@ -69,17 +70,17 @@ namespace EldYoungAndroidApp.Fragments.Advice
 			radio_advice_Group.SetOnCheckedChangeListener (this);
 			//radiobutton
 			rbtn_all  = View.FindViewById<RadioButton>(Resource.Id.rbtn_all);
-			rbtn_all.Tag = AdviceType.All.ToString ();
+			rbtn_all.Tag = ((int)AdviceType.All).ToString();
 			//默认咨询选中
 			rbtn_all.Checked = true;
 			rbtn_zixun = View.FindViewById<RadioButton> (Resource.Id.rbtn_zixun);
-			rbtn_zixun.Tag = AdviceType.Consult.ToString();
+			rbtn_zixun.Tag = ((int)AdviceType.Consult).ToString();
 			rbtn_jianyi = View.FindViewById<RadioButton> (Resource.Id.rbtn_jianyi);
-			rbtn_jianyi.Tag = AdviceType.Suggest.ToString ();
+			rbtn_jianyi.Tag = ((int)AdviceType.Suggest).ToString();
 			rbtn_tousu = View.FindViewById<RadioButton> (Resource.Id.rbtn_tousu);
-			rbtn_tousu.Tag = AdviceType.Complain.ToString ();
+			rbtn_tousu.Tag = ((int)AdviceType.Complain).ToString();
 			rbtn_other = View.FindViewById<RadioButton> (Resource.Id.rbtn_other);
-			rbtn_other.Tag = AdviceType.Other.ToString();
+			rbtn_other.Tag = ((int)AdviceType.Other).ToString();
 			tv_recordNum = View.FindViewById<TextView> (Resource.Id.tv_recordNum);
 			//pulltolistview
 			lv_recordAdviceRefreshListView = View.FindViewById<PullToRefreshListView> (Resource.Id.lv_recordAdvice);
@@ -95,6 +96,7 @@ namespace EldYoungAndroidApp.Fragments.Advice
 			lv_recordAdviceRefreshListView.GetLoadingLayoutProxy(false,true).SetPullLabel(GetString(Resource.String.pullUpLbl));
 			lv_recordAdviceRefreshListView.GetLoadingLayoutProxy (false, true).SetRefreshingLabel (GetString(Resource.String.pullUpRefreshLbl));
 			lv_recordAdviceRefreshListView.GetLoadingLayoutProxy (false, true).SetReleaseLabel (GetString(Resource.String.pullUpReleaseLbl));
+	
 
 			//绑定监听事件
 			lv_recordAdviceRefreshListView.SetOnRefreshListener (this);
@@ -139,9 +141,10 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		{
 			if (!IsRefreshing) {
 				IsRefreshing = true;
-				Task.Factory.StartNew (() => {
-					LoadData ();
-				});
+//				Task.Factory.StartNew (() => {
+//					LoadData ();
+//				});
+				LoadData ();
 			} else {
 				lv_recordAdviceRefreshListView.OnRefreshComplete ();
 				IsRefreshing = false;
@@ -281,16 +284,18 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		{
 			if (!IsRefreshing) {
 				IsRefreshing = true;
-				Task.Factory.StartNew (() => {
-					//加载更多数据
-					LoadMoreData ();
-				});
+//				Task.Factory.StartNew (() => {
+//					//加载更多数据
+//
+//				});
+				LoadMoreData ();
 			} else {
 				lv_recordAdviceRefreshListView.OnRefreshComplete ();
 				IsRefreshing = false;
 			}
 
 		}
+
 		/// <summary>
 		/// 获取更多数据
 		/// </summary>

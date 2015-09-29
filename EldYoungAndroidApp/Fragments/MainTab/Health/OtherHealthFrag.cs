@@ -123,6 +123,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 				intent.PutExtra("healthInfo",_healthInfoJson);
 
 				Activity.StartActivity(intent);
+				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 
 			healthInfoParam =  new SearchHealthInforParam();

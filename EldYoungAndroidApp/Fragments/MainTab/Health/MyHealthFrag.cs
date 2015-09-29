@@ -118,7 +118,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 				var _healthInfoJson = JsonConvert.SerializeObject(_healthInfoItem);
 				intent.PutExtra("healthInfo",_healthInfoJson);
 				Activity.StartActivity(intent);
-
+				Activity.OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 
 			healthInfoParam =  new SearchHealthInforParam(){Id = Global.MyInfo.UId};

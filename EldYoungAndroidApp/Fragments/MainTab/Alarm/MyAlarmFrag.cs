@@ -22,6 +22,7 @@ using EldYoungAndroidApp.Param;
 using Newtonsoft.Json;
 using EldYoungAndroidApp.Json;
 using EldYoungAndroidApp.Model.Alarm;
+using System.Threading;
 
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
@@ -317,8 +318,10 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 				myAlarmRefreshListView.OnRefreshComplete ();
 				IsRefreshing = false;
 			}
-
+		
 		}
+
+
 
 		/// <summary>
 		/// 监听上拉加载更多事件
@@ -337,8 +340,10 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 				myAlarmRefreshListView.OnRefreshComplete ();
 				IsRefreshing = false;
 			}
-				
+
 		}
+
+
 
 		private void LoadMoreData()
 		{

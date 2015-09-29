@@ -220,6 +220,7 @@ namespace EldYoungAndroidApp.Adapter
 			bundle.PutString("UId",item.UId);
 			intent.PutExtras(bundle);
 			Context.StartActivity (intent);
+			activity.OverridePendingTransition (Android.Resource.Animation.SlideInLeft, Android.Resource.Animation.SlideOutRight);
 		}
 	}
 

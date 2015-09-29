@@ -46,6 +46,7 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 			btn_header_back.Click += (sender, e) => 
 			{
 				this.Finish();
+				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
 			};
 
 			FindViewById<TextView> (Resource.Id.tv_header_title).Text = "详情";

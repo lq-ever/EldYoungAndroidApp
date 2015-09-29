@@ -26,7 +26,6 @@ namespace EldYoungAndroidApp
 				_adviceRecordItemView.tv_adviceTitle = convertView.FindViewById<TextView> (Resource.Id.tv_adviceTitle);
 				_adviceRecordItemView.tv_adviceTime = convertView.FindViewById<TextView> (Resource.Id.tv_adviceTime);
 				_adviceRecordItemView.tv_adviceContent = convertView.FindViewById<TextView> (Resource.Id.tv_adviceContent);
-
 				convertView.SetTag (Resource.Id.advicelistitemview, _adviceRecordItemView);
 
 			} else
