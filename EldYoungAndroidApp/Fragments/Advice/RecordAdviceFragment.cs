@@ -141,9 +141,7 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		{
 			if (!IsRefreshing) {
 				IsRefreshing = true;
-//				Task.Factory.StartNew (() => {
-//					LoadData ();
-//				});
+
 				LoadData ();
 			} else {
 				lv_recordAdviceRefreshListView.OnRefreshComplete ();
@@ -175,6 +173,7 @@ namespace EldYoungAndroidApp.Fragments.Advice
 							{
 								tv_recordNum.Text = total.ToString();
 								adviceRecordListAdapter.Clear();//清空所有数据
+
 								adviceRecordListAdapter.AddAll(adviceRecordLists);
 								adviceRecordListAdapter.NotifyDataSetChanged();
 								HasLoadedOnce = true;//加载第一次成功
@@ -284,10 +283,6 @@ namespace EldYoungAndroidApp.Fragments.Advice
 		{
 			if (!IsRefreshing) {
 				IsRefreshing = true;
-//				Task.Factory.StartNew (() => {
-//					//加载更多数据
-//
-//				});
 				LoadMoreData ();
 			} else {
 				lv_recordAdviceRefreshListView.OnRefreshComplete ();
