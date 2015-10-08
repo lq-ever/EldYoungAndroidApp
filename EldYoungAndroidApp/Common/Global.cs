@@ -112,8 +112,8 @@ namespace EldYoungAndroidApp.Common
 					.CacheInMemory (true)
 					.CacheOnDisk (true)
 					.BitmapConfig (Bitmap.Config.Rgb565)
-					.Displayer(new RoundedBitmapDisplayer(15))
-					.Displayer(new FadeInBitmapDisplayer(500))
+					.Displayer(new RoundedBitmapDisplayer(20))
+					.Displayer(new FadeInBitmapDisplayer(100))
 					.Build ();
 			}
 		}

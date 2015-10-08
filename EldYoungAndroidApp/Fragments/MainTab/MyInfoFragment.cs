@@ -70,8 +70,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				Activity.OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 			};
 			img_head = View.FindViewById<ImageView> (Resource.Id.img_head);
-			//设置头像
-			//SetPersonImg ();
+
 			//设置个人头像信息
 			img_head.Click += (sender, e) => 
 			{
@@ -115,6 +114,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				Activity.StartActivity(intent);
 			};
 
+			SetShowInfo ();
 		}
 
 		private void SetShowInfo()
@@ -130,18 +130,18 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				tv_phonenumber.Text = "未绑定手机号";
 			
 			//从Sd中找头像，转换成Bitmap
-//			Bitmap bt = BitmapFactory.DecodeFile(path + "myHead.jpg");
-//			if(bt!=null){
-//
-//				img_head.SetImageBitmap (bt);
-//			}
-//			else
-//			{
-//				//本地无照片,调用web服务获取
-//				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
-//			}
-			//本地无照片,调用web服务获取
-			Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
+			Bitmap bt = BitmapFactory.DecodeFile(path + "myHead.jpg");
+			if(bt!=null){
+
+				img_head.SetImageBitmap (bt);
+			}
+			else
+			{
+				//本地无照片,调用web服务获取
+				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
+			}
+//			//本地无照片,调用web服务获取
+//			Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
 		}
 
 		public void OnClick (View v)
@@ -258,26 +258,23 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				SetRestRequestParams (headImgPostParam);
 				var restSharpRequestHelp = new RestSharpRequestHelp(headImgPostParam.Url,requestParams);
 				restSharpRequestHelp.ExcuteAsync ((RestSharp.IRestResponse response) => {
-					if(response.ResponseStatus == RestSharp.ResponseStatus.Completed)
+					if(response.ResponseStatus == RestSharp.ResponseStatus.Completed && response.StatusCode == System.Net.HttpStatusCode.OK)
 					{
-						if(response.StatusCode == System.Net.HttpStatusCode.OK)
+						//获取并解析返回resultJson获取安全码结果值
+						var result = response.Content;
+						var headimgJson = JsonConvert.DeserializeObject<HeadImgJson>(result);
+						if(headimgJson.statuscode == "1")
+							Global.MyInfo.HeadImgUrl = headimgJson.data.HeadImgUrl;
+						else
 						{
-							//获取并解析返回resultJson获取安全码结果值
-							var result = response.Content;
-							var headimgJson = JsonConvert.DeserializeObject<HeadImgJson>(result);
-							if(headimgJson.statuscode == "1")
-								Global.MyInfo.HeadImgUrl = headimgJson.data.HeadImgUrl;
-							else
-							{
-								Activity.RunOnUiThread(()=>
-									{
-										Toast.MakeText(Activity,"头像上传失败",ToastLength.Short).Show();
-									});
-							}
+							Activity.RunOnUiThread(()=>
+								{
+									Toast.MakeText(Activity,"头像上传失败",ToastLength.Short).Show();
+								});
 						}
-					}
 
-						
+					}
+	
 				});
 			}
 			catch(Java.IO.FileNotFoundException e) {
@@ -317,11 +314,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				requestParams ["md5"] = headImgPostParam.Md5;
 
 		}
-		public override void OnResume ()
-		{
-			SetShowInfo ();
-			base.OnResume ();
-		}
+
 	}
 }
 
