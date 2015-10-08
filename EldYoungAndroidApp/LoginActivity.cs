@@ -228,6 +228,7 @@ namespace EldYoungAndroidApp
 				RunOnUiThread(()=>
 					{
 						ProgressDialogUtil.StopProgressDialog();
+					
 						return;
 					});
 

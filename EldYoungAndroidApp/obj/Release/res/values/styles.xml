@@ -71,7 +71,7 @@
 
     <!-- 中间tab栏样式-->
     <style name="tab_linerlayout">
-       <item name="android:layout_height">30dp</item>
+       <item name="android:layout_height">40dp</item>
     </style>
     <style name ="tab_btn_style">
        <item name="android:textSize">14sp</item>
@@ -83,7 +83,11 @@
     <style name="pulltorefresh_lv">
       <item name ="android:dividerHeight">7dp</item>
       <item name="android:divider">@color/bg_gray</item>
-
+<!--      <item name ="android:fadingEdge">none</item>
+      <item name ="android:fastScrollEnabled">false</item>
+      <item name="android:footerDividersEnabled">false</item>
+      <item name="android:headerDividersEnabled">false</item>
+      <item name="android:smoothScrollbar">false</item>-->
     </style>
 
 
@@ -132,6 +136,8 @@
      <item name="android:textColor">@color/lightgray</item>
      <item name="android:layout_marginLeft">5dp</item>
      <item name="android:layout_marginRight">5dp</item>
+     <item name="android:layout_marginTop">5dp</item>
+     <item name="android:layout_marginBottom">5dp</item>
      <item name="android:layout_width">0dp</item>
      <item name="android:layout_weight">1</item>
      <item name="android:gravity">center_vertical</item>

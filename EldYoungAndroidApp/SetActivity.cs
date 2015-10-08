@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using EldYoungAndroidApp.Common;
+using Java.IO;
 
 namespace EldYoungAndroidApp
 {
@@ -18,6 +19,8 @@ namespace EldYoungAndroidApp
 	public class SetActivity : Activity
 	{
 		private Dialog noticeDialog;
+		private string filePath = Android.OS.Environment.ExternalStorageDirectory.ToString () + "/eldyoung/";
+		private TextView tv_CacheSize;
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -38,7 +41,9 @@ namespace EldYoungAndroidApp
 			};
 
 			FindViewById<TextView> (Resource.Id.tv_header_title).Text = "设置";
-
+			//获取缓存大小值
+			tv_CacheSize = FindViewById<TextView> (Resource.Id.tv_CacheSize);
+			tv_CacheSize.Text = DeleteCleanCacheManager.GetCacheSize(new File(filePath));
 			//关于我们
 			var rl_aboutUs = FindViewById<RelativeLayout> (Resource.Id.rl_aboutUs);
 			rl_aboutUs.Click += (sender, e) => 
@@ -85,8 +90,17 @@ namespace EldYoungAndroidApp
 			var rl_cacheRemover = FindViewById<RelativeLayout>(Resource.Id.rl_cacheRemover);
 			rl_cacheRemover.Click += (sender, e) => 
 			{
-				//todo:清楚缓存
-				Toast.MakeText(this,"清除缓存成功",ToastLength.Short).Show();
+				//清除缓存
+				if(DeleteCleanCacheManager.CleanCustomCache(filePath))
+				{
+					Toast.MakeText(this,"清除缓存成功",ToastLength.Short).Show();
+					tv_CacheSize.Text = "0B";
+				}
+				else
+				{
+					Toast.MakeText(this,"清除缓存失败",ToastLength.Short).Show();
+				}
+				
 			};
 
 			//退出进入登录界面

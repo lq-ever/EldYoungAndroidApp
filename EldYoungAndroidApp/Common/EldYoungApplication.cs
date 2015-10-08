@@ -40,8 +40,11 @@ namespace EldYoungAndroidApp.Common
 			//var configuration = ImageLoaderConfiguration.CreateDefault(ApplicationContext);//创建默认的ImageLoader配置参数 
 			//使用自定义参数/sdcard/eldYoung
 			//File  cacheDir = StorageUtils.GetOwnCacheDirectory(ApplicationContext, "/sdcard/eldYoung/Cache/HeadImage");  //自定义缓存路径
-			File  cacheDir = StorageUtils.GetOwnCacheDirectory(ApplicationContext, Android.OS.Environment.ExternalStorageDirectory.ToString()+"/"+"eldyoung/Cache/HeadImage");  //自定义缓存路径
-
+			var cachePath =  Android.OS.Environment.ExternalStorageDirectory.ToString()+"/"+"eldyoung/Cache/HeadImage/";
+			Java.IO.File file = new Java.IO.File(cachePath);
+			if(!file.Exists())
+				file.Mkdirs();// 创建文件夹
+			File  cacheDir = StorageUtils.GetOwnCacheDirectory(ApplicationContext, cachePath);  //自定义缓存路径
 			var configuration = new ImageLoaderConfiguration.Builder(ApplicationContext).MemoryCacheExtraOptions(480,800)
 				.ThreadPoolSize(3).ThreadPriority(Thread.NormPriority -2).DenyCacheImageMultipleSizesInMemory()
 				.MemoryCache(new UsingFreqLimitedMemoryCache(2*1024*1024)).MemoryCacheSize(2 * 1024 * 1024).DiskCacheSize(50 * 1024 * 1024)

@@ -130,18 +130,19 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 				tv_phonenumber.Text = "未绑定手机号";
 			
 			//从Sd中找头像，转换成Bitmap
-			Bitmap bt = BitmapFactory.DecodeFile(path + "myHead.jpg");
-			if(bt!=null){
-
-				img_head.SetImageBitmap (bt);
-			}
-			else
-			{
-				//本地无照片,调用web服务获取
-				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
-			}
-//			//本地无照片,调用web服务获取
-//			Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
+//
+//			Bitmap bt = BitmapFactory.DecodeFile(path + "myHead.jpg");
+//			if(bt!=null){
+//
+//				img_head.SetImageBitmap (bt);
+//			}
+//			else
+//			{
+//				//调用web服务获取
+//				Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
+//			}
+//			//调用web服务获取
+			Global.imageLoader.DisplayImage(Global.MyInfo.HeadImgReleaseUrl,img_head,Global.Options);
 		}
 
 		public void OnClick (View v)

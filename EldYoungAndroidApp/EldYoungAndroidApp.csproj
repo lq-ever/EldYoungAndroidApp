@@ -197,6 +197,7 @@
     <Compile Include="Param\AdviceWriteParam.cs" />
     <Compile Include="Json\AdviceRecordInfoJson.cs" />
     <Compile Include="Json\AdviceWriteJson.cs" />
+    <Compile Include="Common\DeleteCleanCacheManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

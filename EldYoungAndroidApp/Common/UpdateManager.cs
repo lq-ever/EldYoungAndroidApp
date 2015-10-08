@@ -25,6 +25,8 @@ namespace EldYoungAndroidApp.Common
 	public class UpdateManager
 	{
 		private Context context;
+		IDialogInterfaceOnKeyListener listener;
+		private SplashActivity splashAcivity;
 		private const int DownLoading =1;
 		private const int DownLoadFinish =2;
 
@@ -53,6 +55,8 @@ namespace EldYoungAndroidApp.Common
 		public UpdateManager (Context _context )
 		{
 			context = _context;
+			listener = (IDialogInterfaceOnKeyListener)context;
+			splashAcivity = (SplashActivity)context;
 		}
 		/// <summary>
 		/// 检测软件更新
@@ -178,7 +182,7 @@ namespace EldYoungAndroidApp.Common
 		public void ShowDownloadDialog()
 		{
 			
-			var builder = new AlertDialog.Builder (context).SetTitle ("正在更新");
+			var builder = new AlertDialog.Builder (context).SetTitle ("正在更新").SetCancelable(false).SetOnKeyListener(listener);
 			var inflater = LayoutInflater.From (context);
 			var view = inflater.Inflate (Resource.Layout.progressbar, null);
 			mProgressbar = view.FindViewById<ProgressBar> (Resource.Id.progressbar);
@@ -188,13 +192,17 @@ namespace EldYoungAndroidApp.Common
 				dowloadDialog.Dismiss();
 				//设置取消状态
 				cancelUpdate = true;
+				splashAcivity.LoadActivity();
 			});
 			dowloadDialog = builder.Create ();
 			dowloadDialog.Show ();
+			dowloadDialog.SetCanceledOnTouchOutside (false);
 			//异步下载文件
 			Task.Factory.StartNew(()=>DownloadApk());
 
 		}
+
+
 		/// <summary>
 		/// 下载apk文件
 		/// </summary>

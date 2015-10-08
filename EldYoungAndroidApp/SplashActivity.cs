@@ -18,12 +18,11 @@ using EldYoungAndroidApp.Common;
 namespace EldYoungAndroidApp
 {
 	[Activity (MainLauncher =true,ScreenOrientation= ScreenOrientation.Portrait, NoHistory = true,Theme= "@style/AppTheme")]			
-	public class SplashActivity : InstrumentedActivity
+	public class SplashActivity : InstrumentedActivity,IDialogInterfaceOnKeyListener
 	{
 		private Dialog noticeDialog;
 		protected override void OnCreate (Bundle bundle)
 		{
-			
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.SplashLayout);
 			// Create your application here
@@ -31,7 +30,7 @@ namespace EldYoungAndroidApp
 				var updateManager = new UpdateManager(this);
 				if (updateManager.CheckUpdate())
 				{
-					var builder = new AlertDialog.Builder (this).SetTitle ("软件升级").SetMessage ("发现新版本,建议更新使用新版本");
+					var builder = new AlertDialog.Builder (this).SetTitle ("软件升级").SetMessage ("发现新版本,建议更新使用新版本").SetOnKeyListener(this).SetCancelable(false);
 
 					builder.SetPositiveButton ("下载", (sender, e) => {
 						noticeDialog.Dismiss();	
@@ -45,6 +44,7 @@ namespace EldYoungAndroidApp
 					});
 					noticeDialog= builder.Create ();
 					noticeDialog.Show();
+					//noticeDialog.SetCanceledOnTouchOutside(false);
 
 				}
 				else
@@ -54,11 +54,17 @@ namespace EldYoungAndroidApp
 			}, 2000);
 		}
 
+		public bool OnKey (IDialogInterface dialog, [GeneratedEnum] Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back && e.RepeatCount == 0)
+				return true;
+			return false;
+		}
 
 		/// <summary>
 		/// Loads the activity.
 		/// </summary>
-		private void LoadActivity()
+		public void LoadActivity()
 		{
 			var sharedPreferencelaunch =  this.GetSharedPreferences(Global.SHAREDPREFERENCES_LAUNCHNAME,FileCreationMode.Private);
 			var isFirstLaunch = sharedPreferencelaunch.GetBoolean (Global.IsFirstIn, true);
@@ -103,6 +109,8 @@ namespace EldYoungAndroidApp
 			base.OnPause ();
 			JPushInterface.OnPause (ApplicationContext);
 		}
+
+
 	}
 }
 
