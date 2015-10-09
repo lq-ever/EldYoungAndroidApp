@@ -51,9 +51,15 @@ namespace EldYoungAndroidApp
 				edit_fixedphonePre.Text = string.Empty;
 				edit_fixedPhoneLast.Text = string.Empty;
 			} else {
+				
 				var splitPhones = Global.MyInfo.TelePhoneNumber.Split ('-');
-				edit_fixedphonePre.Text = splitPhones [0];
-				edit_fixedPhoneLast.Text = splitPhones [1];
+				if (splitPhones.Length == 1) {
+					edit_fixedphonePre.Text = string.Empty;
+					edit_fixedPhoneLast.Text = splitPhones [0];
+				} else {
+					edit_fixedphonePre.Text = splitPhones [0];
+					edit_fixedPhoneLast.Text = splitPhones [1];
+				}
 			}
 
 			btn_Save = FindViewById<Button> (Resource.Id.btn_Save);

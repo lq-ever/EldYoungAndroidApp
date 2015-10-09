@@ -16,7 +16,7 @@ using Java.IO;
 namespace EldYoungAndroidApp
 {
 	[Activity (Theme="@style/MyCustomTheme")]			
-	public class SetActivity : Activity
+	public class SetActivity : Activity,IDialogInterfaceOnKeyListener
 	{
 		private Dialog noticeDialog;
 		private string filePath = Android.OS.Environment.ExternalStorageDirectory.ToString () + "/eldyoung/";
@@ -57,21 +57,22 @@ namespace EldYoungAndroidApp
 			{
 				new Handler().PostDelayed(()=>
 					{
-						var updateManager = new UpdateManager(this);
+						var updateManager = new UpdateManager(this,false);
 						if (updateManager.CheckUpdate())
 						{
-							var builder = new AlertDialog.Builder (this).SetTitle ("软件升级").SetMessage ("发现新版本,建议更新使用新版本");
-
-							builder.SetPositiveButton ("下载", (sender1, e1) => {
-								noticeDialog.Dismiss();	
-								//显示下载对话框,下载
-								updateManager.ShowDownloadDialog();
-							});
-							builder.SetNegativeButton ("以后再说", (sender2, e2) => {
-								noticeDialog.Dismiss();	
-							});
-							noticeDialog= builder.Create ();
-							noticeDialog.Show();
+//							var builder = new AlertDialog.Builder (this).SetTitle ("软件升级").SetMessage ("发现新版本,建议更新使用新版本").SetCancelable(false).SetOnKeyListener(this);
+//
+//							builder.SetPositiveButton ("下载", (sender1, e1) => {
+//								noticeDialog.Dismiss();	
+//								//显示下载对话框,下载
+//								updateManager.ShowDownloadDialog();
+//							});
+//							builder.SetNegativeButton ("以后再说", (sender2, e2) => {
+//								noticeDialog.Dismiss();	
+//							});
+//							noticeDialog= builder.Create ();
+//							noticeDialog.Show();
+							updateManager.ShowNoticeDialog();
 
 						}
 						else
@@ -113,6 +114,12 @@ namespace EldYoungAndroidApp
 				this.Finish();
 				OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
 			};
+		}
+		public bool OnKey (IDialogInterface dialog, [GeneratedEnum] Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back && e.RepeatCount == 0)
+				return true;
+			return false;
 		}
 	}
 }

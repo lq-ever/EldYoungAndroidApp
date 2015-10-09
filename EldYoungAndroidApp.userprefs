@@ -1,43 +1,15 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\SplashActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\Adapter\GuardianInfoAdapter.cs" Line="223" Column="3" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Alarm\OtherAlarmFrag.cs" Line="138" Column="44" />
-      <File FileName="EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" Line="284" Column="24" />
+      <File FileName="EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Common\DeleteCleanCacheManager.cs" Line="91" Column="1" />
+      <File FileName="EldYoungAndroidApp\SetActivity.cs" Line="48" Column="12" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" Line="171" Column="43" />
+      <File FileName="EldYoungAndroidApp\Common\EldYoungApplication.cs" Line="47" Column="15" />
+      <File FileName="EldYoungAndroidApp\Common\UpdateManager.cs" Line="165" Column="1" />
+      <File FileName="EldYoungAndroidApp\SplashActivity.cs" Line="102" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="EldYoungAndroidApp" expanded="True">
-            <Node name="EldYoungAndroidApp" expanded="True" selected="True">
-              <Node name="References" expanded="True" />
-              <Node name="Packages" expanded="True" />
-              <Node name="Activitys" expanded="True">
-                <Node name="Guardian" expanded="True" />
-                <Node name="Health" expanded="True" />
-                <Node name="My" expanded="True" />
-              </Node>
-              <Node name="Adapter" expanded="True" />
-              <Node name="Common" expanded="True" />
-              <Node name="Fragments" expanded="True">
-                <Node name="Advice" expanded="True" />
-                <Node name="MainTab" expanded="True">
-                  <Node name="Alarm" expanded="True" />
-                  <Node name="Guardian" expanded="True" />
-                  <Node name="Health" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Param" expanded="True" />
-              <Node name="Resources" expanded="True">
-                <Node name="layout" expanded="True" />
-                <Node name="values" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -45,6 +17,7 @@
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" line="157" column="3" />
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" line="162" column="5" />
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" line="174" column="8" />
+      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\DeleteCleanCacheManager.cs" line="99" column="4" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

@@ -27,11 +27,10 @@ namespace EldYoungAndroidApp
 			SetContentView (Resource.Layout.SplashLayout);
 			// Create your application here
 			new Handler ().PostDelayed (() => {
-				var updateManager = new UpdateManager(this);
+				var updateManager = new UpdateManager(this,true);
 				if (updateManager.CheckUpdate())
 				{
 					var builder = new AlertDialog.Builder (this).SetTitle ("软件升级").SetMessage ("发现新版本,建议更新使用新版本").SetOnKeyListener(this).SetCancelable(false);
-
 					builder.SetPositiveButton ("下载", (sender, e) => {
 						noticeDialog.Dismiss();	
 						//显示下载对话框,下载
@@ -40,12 +39,9 @@ namespace EldYoungAndroidApp
 					builder.SetNegativeButton ("以后再说", (sender, e) => {
 						noticeDialog.Dismiss();	
 						LoadActivity();
-
 					});
 					noticeDialog= builder.Create ();
 					noticeDialog.Show();
-					//noticeDialog.SetCanceledOnTouchOutside(false);
-
 				}
 				else
 				{
@@ -102,8 +98,6 @@ namespace EldYoungAndroidApp
 			base.OnResume ();
 			JPushInterface.OnResume (ApplicationContext);
 		}
-
-
 		protected override void OnPause ()
 		{
 			base.OnPause ();

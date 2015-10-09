@@ -22,11 +22,11 @@ using EldYoungAndroidApp.Json;
 
 namespace EldYoungAndroidApp.Common
 {
-	public class UpdateManager
+	public class UpdateManager:Activity,IDialogInterfaceOnKeyListener
 	{
 		private Context context;
-		IDialogInterfaceOnKeyListener listener;
 		private SplashActivity splashAcivity;
+		private bool loadNext =false;
 		private const int DownLoading =1;
 		private const int DownLoadFinish =2;
 
@@ -52,15 +52,17 @@ namespace EldYoungAndroidApp.Common
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
 		private string localversionCode;
 
-		public UpdateManager (Context _context )
+		public UpdateManager (Context _context,bool _loadNext)
 		{
 			context = _context;
-			listener = (IDialogInterfaceOnKeyListener)context;
-			splashAcivity = (SplashActivity)context;
+			loadNext = _loadNext;
+			if(loadNext)
+				splashAcivity = (SplashActivity)context;
+
 		}
-		/// <summary>
-		/// 检测软件更新
-		/// </summary>
+//		/// <summary>
+//		/// 检测软件更新
+//		/// </summary>
 		public bool CheckUpdate()
 		{
 //			if (IsUpdate ()) {
@@ -71,6 +73,7 @@ namespace EldYoungAndroidApp.Common
 			return IsUpdate(); 
 			//return false;
 		}
+			
 
 		/// <summary>
 		/// 检测是否需要更新,调用web服务
@@ -161,7 +164,7 @@ namespace EldYoungAndroidApp.Common
 		public void ShowNoticeDialog()
 		{
 			
-			var builder = new AlertDialog.Builder (context).SetTitle ("软件升级").SetMessage ("发现新版本,建议更新使用");
+			var builder = new AlertDialog.Builder (context).SetTitle ("软件升级").SetMessage ("发现新版本,建议更新使用").SetOnKeyListener(this).SetCancelable(false);
 
 			builder.SetPositiveButton ("下载", (sender, e) => {
 				noticeDialog.Dismiss();	
@@ -182,7 +185,7 @@ namespace EldYoungAndroidApp.Common
 		public void ShowDownloadDialog()
 		{
 			
-			var builder = new AlertDialog.Builder (context).SetTitle ("正在更新").SetCancelable(false).SetOnKeyListener(listener);
+			var builder = new AlertDialog.Builder (context).SetTitle ("正在更新").SetCancelable(false).SetOnKeyListener(this).SetCancelable(false);
 			var inflater = LayoutInflater.From (context);
 			var view = inflater.Inflate (Resource.Layout.progressbar, null);
 			mProgressbar = view.FindViewById<ProgressBar> (Resource.Id.progressbar);
@@ -192,16 +195,23 @@ namespace EldYoungAndroidApp.Common
 				dowloadDialog.Dismiss();
 				//设置取消状态
 				cancelUpdate = true;
-				splashAcivity.LoadActivity();
+				//从初始页加载
+				if(loadNext)
+					splashAcivity.LoadActivity();
 			});
 			dowloadDialog = builder.Create ();
 			dowloadDialog.Show ();
-			dowloadDialog.SetCanceledOnTouchOutside (false);
 			//异步下载文件
 			Task.Factory.StartNew(()=>DownloadApk());
 
 		}
 
+		public bool OnKey (IDialogInterface dialog, Keycode keyCode, KeyEvent e)
+		{
+			if (keyCode == Keycode.Back && e.RepeatCount == 0)
+				return true;
+			return false;
+		}
 
 		/// <summary>
 		/// 下载apk文件
