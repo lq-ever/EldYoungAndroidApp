@@ -1,20 +1,16 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Common\UpdateManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\LoginActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\SetActivity.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Common\EldYoungApplication.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Common\UpdateManager.cs" Line="133" Column="9" />
-      <File FileName="EldYoungAndroidApp\Activitys\My\AdviceActivity.cs" Line="83" Column="4" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\GuardianInfoFragment.cs" Line="110" Column="36" />
+      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="183" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" line="123" column="4" />
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\DeleteCleanCacheManager.cs" line="99" column="4" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\UpdateManager.cs" line="118" column="5" />
+      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="262" column="6" />
+      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="265" column="7" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

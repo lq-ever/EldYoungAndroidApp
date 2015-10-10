@@ -139,7 +139,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 								guardianInfoAdapter.Clear();
 								guardianInfoAdapter.AddAll(guardianInfoList);
 								guardianInfoAdapter.NotifyDataSetChanged();
-								otherGuardianRefreshListView.OnRefreshComplete ();
 								HasLoadedOnce = true;//加载第一次成功
 							});
 					}
@@ -148,8 +147,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 						Activity.RunOnUiThread(()=>
 							{
 								Toast.MakeText(Activity,"获取监护人列表信息失败...",ToastLength.Short).Show();
-								otherGuardianRefreshListView.OnRefreshComplete ();
-								return;
 							});
 					}
 				}
@@ -158,8 +155,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,"网络连接超时,稍后在试...",ToastLength.Short).Show();
-							otherGuardianRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
 				else
@@ -167,10 +162,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Guardian
 					Activity.RunOnUiThread(()=>
 						{
 							Toast.MakeText(Activity,response.StatusDescription,ToastLength.Short).Show();
-							otherGuardianRefreshListView.OnRefreshComplete ();
-							return;
 						});
 				}
+				Activity.RunOnUiThread(()=>
+					{
+						otherGuardianRefreshListView.OnRefreshComplete ();
+						IsRefreshing = false;
+					});
 			});
 		}
 		private void UpdateGuardianInfoListParam()
