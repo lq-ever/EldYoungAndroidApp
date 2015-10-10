@@ -265,7 +265,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab
 						var result = response.Content;
 						var headimgJson = JsonConvert.DeserializeObject<HeadImgJson>(result);
 						if(headimgJson.statuscode == "1")
-							Global.MyInfo.HeadImgUrl = headimgJson.data.HeadImgUrl;
+							Global.MyInfo.HeadImgUrl = headimgJson.data[0].HeadImgUrl;
 						else
 						{
 							Activity.RunOnUiThread(()=>

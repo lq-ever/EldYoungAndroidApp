@@ -57,13 +57,20 @@ namespace EldYoungAndroidApp.Adapter
 			} else
 				_searchGuardianItemView = (SearchGuardianItemView)convertView.GetTag (Resource.Id.searchGuardianListItemView);
 
-			_searchGuardianItemView.tv_Name.Text = item.TrueName;
-			_searchGuardianItemView.tv_PhoneNum.Text = item.PhoneNumberOne;
+			_searchGuardianItemView.tv_Name.Text = string.IsNullOrEmpty(item.TrueName)?string.Empty:item.TrueName;
+			_searchGuardianItemView.tv_PhoneNum.Text = string.IsNullOrEmpty(item.PhoneNumberOne)?string.Empty:item.PhoneNumberOne;
 
 			_searchGuardianItemView.tv_GuardianStatus.Text = GetGuardianStatus(item.IsPass);
 			//解析获取位置
-			_searchGuardianItemView.tv_Location.Text = string.IsNullOrEmpty(item.ContactAddress)?string.Empty:item.ContactAddress.Split(new char[]{'|'})[1];;
-
+			if (string.IsNullOrEmpty (item.ContactAddress))
+				_searchGuardianItemView.tv_Location.Text = string.Empty;
+			else {
+				if (item.ContactAddress.Contains ("|"))
+					_searchGuardianItemView.tv_Location.Text = item.ContactAddress.Split (new char[]{ '|' }) [1];
+				else
+					_searchGuardianItemView.tv_Location.Text = item.ContactAddress;
+					
+			}
 			SetbtnAction(_searchGuardianItemView.btn_Action,item.IsPass);//设置操作按钮文字和可用状态
 
 			var imgSexId = (item.Sex == Sex.Male) ? Resource.Drawable.ic_sex_man : Resource.Drawable.ic_sex_woman;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EldYoungAndroidApp.Json
 {
@@ -6,9 +7,9 @@ namespace EldYoungAndroidApp.Json
 	{
 		public HeadImgJson ()
 		{
-			data = new ImgJsonData ();
+			data = new List<ImgJsonData>();
 		}
-		public ImgJsonData data {
+		public List<ImgJsonData> data {
 			get;
 			set;
 		}

@@ -65,7 +65,15 @@ namespace EldYoungAndroidApp.Adapter
 			_guardianItemView.tv_Name.Text = item.TrueName;
 			_guardianItemView.tv_PhoneNum.Text = item.PhoneNumberOne;
 			//设置地址
-			_guardianItemView.tv_Location.Text = string.IsNullOrEmpty(item.ContactAddress)?string.Empty:item.ContactAddress.Split(new char[]{'|'})[1];
+			if (string.IsNullOrEmpty (item.ContactAddress))
+				_guardianItemView.tv_Location.Text = string.Empty;
+			else {
+				if (item.ContactAddress.Contains ("|"))
+					_guardianItemView.tv_Location.Text = item.ContactAddress.Split (new char[]{ '|' }) [1];
+				else
+					_guardianItemView.tv_Location.Text = item.ContactAddress;
+
+			}
 		    _guardianItemView.btn_Action.Text = "解绑";
 
 			//设置男女

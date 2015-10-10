@@ -9,7 +9,6 @@ namespace EldYoungAndroidApp.Common
 	public class ProgressDialogUtil
 	{
 		private static CustomProgressDialog progressDialog;
-		private static Activity activity;
 		public ProgressDialogUtil ()
 		{
 			  
@@ -21,13 +20,13 @@ namespace EldYoungAndroidApp.Common
 		/// <param name="msg">Message.</param>
 		public static void StartProgressDialog(Activity _activity,string msg)
 		{
-			activity = _activity;
+
 //			if(progressDialog == null)
 				progressDialog = CustomProgressDialog.createDialog (_activity);
-
+			progressDialog.Window.SetGravity (GravityFlags.Center); 
 			progressDialog.SetMessage (msg);
 			progressDialog.Show ();
-
+			progressDialog.SetCancelable (false);
 
 		}
 		/// <summary>
