@@ -7,6 +7,7 @@ using Java.Util.Logging;
 using CN.Jpush.Android.Api;
 using System.Text;
 using EldYoungAndroidApp.Activitys.Alarm;
+using EldYoungAndroidApp.Common;
 
 
 
@@ -85,42 +86,86 @@ namespace EldYoungAndroidApp.Receiver
 			return sb.ToString();
 		}
 
+//		private void OpenNotification(Context context,Bundle bundle)
+//		{
+//			//清除通知
+//			//JPushInterface.ClearNotificationById(context,bundle.GetInt(JPushInterface.ExtraNotificationId));//根据通知id
+//			String extras = bundle.GetString(JPushInterface.ExtraExtra);
+//			JPushInterface.ClearAllNotifications(context);//清除所有通知
+//			Intent intent = new Intent(context,typeof(AlarmDetailInfoActivity));
+//			bundle.PutString("alarmOrigin","Jpush");
+//			intent.PutExtras (bundle);
+//			intent.SetFlags (ActivityFlags.NewTask);
+//			context.StartActivity (intent);
+//		}
+
+
 		private void OpenNotification(Context context,Bundle bundle)
 		{
-			//			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-			//			String myValue = ""; 
-			//			try {
-			//				JSONObject extrasJson = new JSONObject(extras);
-			//				myValue = extrasJson.optString("myKey");
-			//			} catch (Exception e) {
-			//				Logger.w(TAG, "Unexpected: extras is not a valid json", e);
-			//				return;
-			//			}
-			//			if (TYPE_THIS.equals(myValue)) {
-			//				Intent mIntent = new Intent(context, ThisActivity.class);
-			//				mIntent.putExtras(bundle);
-			//				mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			//				context.startActivity(mIntent);
-			//			} else if (TYPE_ANOTHER.equals(myValue)){
-			//				Intent mIntent = new Intent(context, AnotherActivity.class);
-			//				mIntent.putExtras(bundle);
-			//				mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			//				context.startActivity(mIntent);
-			//			}
+			//清除所有通知
+			JPushInterface.ClearAllNotifications(context);
+			//判断app进程是否存活
+			if (EldYoungUtil.IsApplive (context, Global.package_name)) {
+				//如果存活的话，就直接启动报警DetailActivity，但要考虑一种情况，就是app的进程虽然仍然在
+				//但Task栈已经空了，比如用户点击Back键退出应用，但进程还没有被系统回收，如果直接启动
+				//DetailActivity,再按Back键就不会返回MainActivity了。所以在启动
+				//DetailActivity前，要先启动MainActivity。
+				Log.Info(TAG, "the app process is alive");
 
-			//清除通知
-			//JPushInterface.ClearNotificationById(context,bundle.GetInt(JPushInterface.ExtraNotificationId));//根据通知id
-			String extras = bundle.GetString(JPushInterface.ExtraExtra);
+				bool taskhaveActivity = true;
+//				Intent mainIntent = new Intent(context, typeof(MainFragActivity));
+//				var cmpName = mainIntent.ResolveActivity (context.PackageManager);
+//				if (cmpName != null) {
+//					//系统存在此activity
+//					ActivityManager _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
+//				//	var taskInfoLists = _activityManager.GetRunningTasks (15);
+//					var taskInfoLists = _activityManager.AppTasks;
+//
+//					if (taskInfoLists.Count <= 0)
+//						taskhaveActivity = false;
+////					foreach (ActivityManager.RunningTaskInfo taskInfo in taskInfoLists) {
+////						if (taskInfo.BaseActivity.Equals (cmpName)) {
+////							mainActivityexistflag = true;
+////							break;
+////						}
+////
+////					}
+//				}
+				var _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
+				if (_activityManager.GetRunningTasks (15).Count <= 0)
+					taskhaveActivity = false;
+				//堆栈中不存在活动
+				if (!taskhaveActivity) {
+					Intent launchIntent = context.PackageManager.GetLaunchIntentForPackage (Global.package_name);
+					launchIntent.SetFlags (
+						ActivityFlags.NewTask | ActivityFlags.ResetTaskIfNeeded);
+					bundle.PutString ("alarmOrigin", "Jpush");
+					launchIntent.PutExtras (bundle);
+					context.StartActivity (launchIntent);
+					return;
+				} else {
+					//堆栈中存在活动
+					Intent alarmDetailInfoIntent = new Intent(context, typeof(AlarmDetailInfoActivity));
+					alarmDetailInfoIntent.SetFlags (ActivityFlags.NewTask);
+					bundle.PutString("alarmOrigin","Jpush");
+					alarmDetailInfoIntent.PutExtras (bundle);
+					context.StartActivity (alarmDetailInfoIntent);
+				}
+				   
+			} else {
+				//如果app进程已经被杀死，先重新启动app，将alarmDetailActivity的启动参数传入Intent中，参数经过
+				//SplashActivity传入MainActivity，此时app的初始化已经完成，在MainActivity中就可以根据传入,参数跳转到DetailActivity中去了
+				Log.Info(TAG, "the app process is dead");
+				Intent launchIntent = context.PackageManager.GetLaunchIntentForPackage (Global.package_name);
+				launchIntent.SetFlags(
+					ActivityFlags.NewTask|ActivityFlags.ResetTaskIfNeeded);
+				bundle.PutString("alarmOrigin","Jpush");
+				launchIntent.PutExtras (bundle);
+				context.StartActivity(launchIntent);
 
-			JPushInterface.ClearAllNotifications(context);//清除所有通知
-			Intent intent = new Intent(context,typeof(AlarmDetailInfoActivity));
-			bundle.PutString("alarmOrigin","Jpush");
-			intent.PutExtras (bundle);
-
-			intent.SetFlags (ActivityFlags.NewTask);
-			context.StartActivity (intent);
-
-
+					
+			}
+				
 		}
 
 		/// <summary>

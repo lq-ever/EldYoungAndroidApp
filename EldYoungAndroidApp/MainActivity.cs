@@ -13,6 +13,7 @@ using Android.Widget;
 using EldYoungAndroidApp.Fragments.MainTab;
 using Android.Support.V4.App;
 using Android.App;
+using EldYoungAndroidApp.Activitys.Alarm;
 
 namespace EldYoungAndroidApp
 {
@@ -45,6 +46,16 @@ namespace EldYoungAndroidApp
 			InitViews ();
 			//设置第一个选中
 			SetTabSections (0);
+
+			//如果是通过点击报警通知过来，直接跳转到报警详细界面
+			var alarmbundle1= Intent.Extras;
+			if (alarmbundle1 != null) {
+				var alarmInfoIntent = new Intent(this,typeof(AlarmDetailInfoActivity));
+				alarmInfoIntent.PutExtras (alarmbundle1);
+				StartActivity (alarmInfoIntent);
+				OverridePendingTransition(Android.Resource.Animation.FadeIn,Android.Resource.Animation.FadeOut);
+			}
+				
 
 		}
 		/// <summary>
@@ -196,16 +207,15 @@ namespace EldYoungAndroidApp
 			return base.OnKeyDown (keyCode, e);
 		}
 
-//		/// <summary>
-//		/// 退出应用
-//		/// </summary>
+		/// <summary>
+		/// 退出应用
+		/// </summary>
 //		protected override void OnDestroy ()
 //		{
-//			Intent intent = new Intent ();
-//
 //			Android.OS.Process.KillProcess (Android.OS.Process.MyPid());
 //			base.OnDestroy ();
 //		}
+
 	}
 }
 

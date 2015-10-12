@@ -23,6 +23,7 @@ namespace EldYoungAndroidApp
 		private Dialog noticeDialog;
 		protected override void OnCreate (Bundle bundle)
 		{
+			
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.SplashLayout);
 			// Create your application here
@@ -62,6 +63,8 @@ namespace EldYoungAndroidApp
 		/// </summary>
 		public void LoadActivity()
 		{
+			//如果启动app的Intent中带有额外的参数，表明app是从点击通知栏的动作中启动的
+			//将参数取出，传递到login activity 或MainActivity中
 			var sharedPreferencelaunch =  this.GetSharedPreferences(Global.SHAREDPREFERENCES_LAUNCHNAME,FileCreationMode.Private);
 			var isFirstLaunch = sharedPreferencelaunch.GetBoolean (Global.IsFirstIn, true);
 			var sharedPreferenceuserinfo = this.GetSharedPreferences(Global.SHAREDPREFERENCES_USERINFO,FileCreationMode.Private);
@@ -73,17 +76,30 @@ namespace EldYoungAndroidApp
 				if(sharedPreferenceuserinfo.GetBoolean(Global.login_AutoLogin_Check,false))
 				{
 					//勾选自动登录，且本地用户名存在，进入主界面，否则进入登录界面
-					if(!string.IsNullOrEmpty(sharedPreferenceuserinfo.GetString(Global.login_UserName,string.Empty)))
-					{
-						StartActivity(typeof(MainFragActivity));
+					if (!string.IsNullOrEmpty (sharedPreferenceuserinfo.GetString (Global.login_UserName, string.Empty))) {
+						Intent mainIntent = new Intent (this, typeof(MainFragActivity));
+						var bundle = Intent.Extras;
+						if (bundle != null)
+							mainIntent.PutExtras (bundle);
+						StartActivity (mainIntent);
+						//StartActivity(typeof(MainFragActivity));
+					} else {
+						Intent loginIntent = new Intent(this,typeof(LoginActivity));
+						var bundle = Intent.Extras;
+						if (bundle != null)
+							loginIntent.PutExtras (bundle);
+						StartActivity(loginIntent);
+						//StartActivity (typeof(LoginActivity));
 					}
-					else
-						StartActivity(typeof(LoginActivity));
 				}
 				else
 				{
 					//未勾选自动登录
-					StartActivity(typeof(LoginActivity));
+					Intent loginIntent = new Intent(this,typeof(LoginActivity));
+					var bundle = Intent.Extras;
+					if (bundle != null)
+						loginIntent.PutExtras (bundle);
+					StartActivity(loginIntent);
 				}
 
 

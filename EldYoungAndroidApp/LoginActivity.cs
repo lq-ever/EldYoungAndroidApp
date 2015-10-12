@@ -195,6 +195,9 @@ namespace EldYoungAndroidApp
 								//跳转到功能主界面
 								var intent = new Intent(this,typeof(MainFragActivity));
 								intent.SetFlags(ActivityFlags.ClearTask|ActivityFlags.NewTask);
+								var bundle = Intent.Extras;
+								if (bundle != null)
+									intent.PutExtras (bundle);
 								StartActivity(intent);						
 								this.Finish();
 								Toast.MakeText(this,"登录成功",ToastLength.Short).Show();

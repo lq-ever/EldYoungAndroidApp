@@ -1,8 +1,13 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\LoginActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\MainActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="183" Column="7" />
+      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="200" Column="28" />
+      <File FileName="EldYoungAndroidApp\Receiver\CustomJPushReceiver.cs" Line="117" Column="87" />
+      <File FileName="EldYoungAndroidApp\Properties\AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Activitys\Alarm\AlarmDetailInfoActivity.cs" Line="76" Column="44" />
+      <File FileName="EldYoungAndroidApp\SplashActivity.cs" Line="109" Column="100" />
+      <File FileName="EldYoungAndroidApp\MainActivity.cs" Line="73" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

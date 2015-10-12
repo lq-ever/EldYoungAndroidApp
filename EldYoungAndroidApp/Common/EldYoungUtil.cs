@@ -7,6 +7,9 @@ using Android.Content.PM;
 using System.Text.RegularExpressions;
 using CN.Jpush.Android.Api;
 using Android.Content.Res;
+using Android.App;
+using System.Collections.Generic;
+using Android.Util;
 
 
 namespace EldYoungAndroidApp.Common
@@ -17,6 +20,27 @@ namespace EldYoungAndroidApp.Common
 
 		public EldYoungUtil ()
 		{
+		}
+
+		/// <summary>
+		/// 判断应用程序是否已经启动
+		/// </summary>
+		/// <returns><c>true</c> if is applive the specified context packageName; otherwise, <c>false</c>.</returns>
+		/// <param name="context">Context.</param>
+		/// <param name="packageName">Package name.</param>
+		public static bool IsApplive(Context context,string packageName)
+		{
+			ActivityManager _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
+
+			IList<ActivityManager.RunningAppProcessInfo> processInfos = _activityManager.RunningAppProcesses;
+			for (int i = 0; i < processInfos.Count; i++) {
+				if (processInfos [i].ProcessName.Equals (packageName)) {
+					Log.Debug("NotificationLaunch","app is alive,return true");
+					return true;
+				}
+			}
+			Log.Debug("NotificationLaunch","app is not alive,return false");
+			return false;
 		}
 
 		/// <summary>
