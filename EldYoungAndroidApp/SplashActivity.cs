@@ -85,6 +85,7 @@ namespace EldYoungAndroidApp
 						//StartActivity(typeof(MainFragActivity));
 					} else {
 						Intent loginIntent = new Intent(this,typeof(LoginActivity));
+						loginIntent.SetFlags (ActivityFlags.ClearTop);
 						var bundle = Intent.Extras;
 						if (bundle != null)
 							loginIntent.PutExtras (bundle);
@@ -96,6 +97,7 @@ namespace EldYoungAndroidApp
 				{
 					//未勾选自动登录
 					Intent loginIntent = new Intent(this,typeof(LoginActivity));
+					loginIntent.SetFlags (ActivityFlags.ClearTop);
 					var bundle = Intent.Extras;
 					if (bundle != null)
 						loginIntent.PutExtras (bundle);

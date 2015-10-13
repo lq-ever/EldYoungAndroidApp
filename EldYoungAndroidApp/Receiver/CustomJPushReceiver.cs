@@ -108,45 +108,37 @@ namespace EldYoungAndroidApp.Receiver
 			if (EldYoungUtil.IsApplive (context, Global.package_name)) {
 				//如果存活的话，就直接启动报警DetailActivity，但要考虑一种情况，就是app的进程虽然仍然在
 				//但Task栈已经空了，比如用户点击Back键退出应用，但进程还没有被系统回收，如果直接启动
-				//DetailActivity,再按Back键就不会返回MainActivity了。所以在启动
-				//DetailActivity前，要先启动MainActivity。
-				Log.Info(TAG, "the app process is alive");
+				//DetailActivity,再按Back键就不会返回任何界面了。所以在启动DetailActivity前，要先启动splash界面。
+				Log.Info("NotificationReceiver", "the app process is alive");
+				bool mainActivityexistflag = false;
+				Intent mainIntent = new Intent(context, typeof(MainFragActivity));
+				var cmpName = mainIntent.ResolveActivity (context.PackageManager);
+				if (cmpName != null) {
+					//系统存在此activity
+					ActivityManager _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
+					var taskInfoLists = _activityManager.GetRunningTasks (15);
+					foreach (ActivityManager.RunningTaskInfo taskInfo in taskInfoLists) {
+						if (taskInfo.BaseActivity.Equals (cmpName)) {
+							mainActivityexistflag = true;
+							break;
+						}
 
-				bool taskhaveActivity = true;
-//				Intent mainIntent = new Intent(context, typeof(MainFragActivity));
-//				var cmpName = mainIntent.ResolveActivity (context.PackageManager);
-//				if (cmpName != null) {
-//					//系统存在此activity
-//					ActivityManager _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
-//				//	var taskInfoLists = _activityManager.GetRunningTasks (15);
-//					var taskInfoLists = _activityManager.AppTasks;
-//
-//					if (taskInfoLists.Count <= 0)
-//						taskhaveActivity = false;
-////					foreach (ActivityManager.RunningTaskInfo taskInfo in taskInfoLists) {
-////						if (taskInfo.BaseActivity.Equals (cmpName)) {
-////							mainActivityexistflag = true;
-////							break;
-////						}
-////
-////					}
-//				}
-				var _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
-				if (_activityManager.GetRunningTasks (15).Count <= 0)
-					taskhaveActivity = false;
-				//堆栈中不存在活动
-				if (!taskhaveActivity) {
-					Intent launchIntent = context.PackageManager.GetLaunchIntentForPackage (Global.package_name);
+					}
+				}
+
+				//堆栈中不存在主界面活动,进入splash界面
+				if (!mainActivityexistflag) {
+					Intent launchIntent = context.PackageManager.GetLaunchIntentForPackage ("com.eldyoung.lelaozuandroidapp");
 					launchIntent.SetFlags (
 						ActivityFlags.NewTask | ActivityFlags.ResetTaskIfNeeded);
 					bundle.PutString ("alarmOrigin", "Jpush");
 					launchIntent.PutExtras (bundle);
 					context.StartActivity (launchIntent);
-					return;
+
 				} else {
-					//堆栈中存在活动
+					//堆栈中存在主界面活动
 					Intent alarmDetailInfoIntent = new Intent(context, typeof(AlarmDetailInfoActivity));
-					alarmDetailInfoIntent.SetFlags (ActivityFlags.NewTask);
+					alarmDetailInfoIntent.SetFlags (ActivityFlags.NewTask|ActivityFlags.SingleTop);
 					bundle.PutString("alarmOrigin","Jpush");
 					alarmDetailInfoIntent.PutExtras (bundle);
 					context.StartActivity (alarmDetailInfoIntent);
@@ -155,8 +147,8 @@ namespace EldYoungAndroidApp.Receiver
 			} else {
 				//如果app进程已经被杀死，先重新启动app，将alarmDetailActivity的启动参数传入Intent中，参数经过
 				//SplashActivity传入MainActivity，此时app的初始化已经完成，在MainActivity中就可以根据传入,参数跳转到DetailActivity中去了
-				Log.Info(TAG, "the app process is dead");
-				Intent launchIntent = context.PackageManager.GetLaunchIntentForPackage (Global.package_name);
+				Log.Info("NotificationReceiver", "the app process is dead");
+				Intent launchIntent = context.PackageManager.GetLaunchIntentForPackage ("com.eldyoung.lelaozuandroidapp");
 				launchIntent.SetFlags(
 					ActivityFlags.NewTask|ActivityFlags.ResetTaskIfNeeded);
 				bundle.PutString("alarmOrigin","Jpush");
