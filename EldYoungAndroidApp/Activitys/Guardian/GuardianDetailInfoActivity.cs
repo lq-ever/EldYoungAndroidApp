@@ -110,17 +110,17 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 							var detailItem = guardianDetailInfoJson.data[0];
 							RunOnUiThread(()=>
 								{
-									tv_TrueName.Text = detailItem.TrueName;
-									tv_Gender.Text = detailItem.Gender;
-									tv_Brnl.Text = detailItem.BRNL;
-									tv_PhoneNumberOne.Text = detailItem.PhoneNumberOne;
-									tv_IDNumber.Text = detailItem.IDNumber;
-									tv_ContactAddress.Text = detailItem.ContactAddress;
-									tv_TelePhoneNumber.Text = detailItem.TelePhoneNumber;
-									tv_Email.Text = detailItem.Email;
-									tv_Height.Text = detailItem.Height;
-									tv_Weight.Text = detailItem.Weight;
-									tv_HereditaryDisease.Text = detailItem.HereditaryDisease;
+									tv_TrueName.Text = FormartDetailResult(detailItem.TrueName);
+									tv_Gender.Text = FormartDetailResult(detailItem.Gender);
+									tv_Brnl.Text = FormartDetailResult(detailItem.BRNL);
+									tv_PhoneNumberOne.Text = FormartDetailResult(detailItem.PhoneNumberOne);
+									tv_IDNumber.Text =  FormartDetailResult(detailItem.IDNumber);
+									tv_ContactAddress.Text = FormartDetailResult(detailItem.ContactAddress);
+									tv_TelePhoneNumber.Text =FormartDetailResult(detailItem.TelePhoneNumber);
+									tv_Email.Text = FormartDetailResult(detailItem.Email);
+									tv_Height.Text = FormartDetailResult(detailItem.Height);
+									tv_Weight.Text = FormartDetailResult(detailItem.Weight);
+									tv_HereditaryDisease.Text = FormartDetailResult(detailItem.HereditaryDisease);
 
 								});
 							
@@ -162,6 +162,11 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 				}
 			});
 
+		}
+
+		private void FormartDetailResult(string strValue)
+		{
+			return string.IsNullOrEmpty (strValue) ? string.Empty : strValue;
 		}
 	}
 }
