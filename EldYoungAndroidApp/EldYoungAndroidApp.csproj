@@ -198,6 +198,7 @@
     <Compile Include="Json\AdviceRecordInfoJson.cs" />
     <Compile Include="Json\AdviceWriteJson.cs" />
     <Compile Include="Common\DeleteCleanCacheManager.cs" />
+    <Compile Include="Activitys\Health\PhysicalDetailInfoActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -391,6 +392,7 @@
     <AndroidResource Include="Resources\drawable\edit_advice_nomal.xml" />
     <AndroidResource Include="Resources\drawable\edit_advice_focused.xml" />
     <AndroidResource Include="Resources\drawable\edit_advice_selector.xml" />
+    <AndroidResource Include="Resources\layout\PhysicalDetailInfoLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

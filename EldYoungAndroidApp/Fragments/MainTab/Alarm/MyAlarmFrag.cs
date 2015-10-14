@@ -169,7 +169,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 		private void loadData()
 		{
 			if(btnSearchFlag)
-				ProgressDialogUtil.StartProgressDialog(Activity,"正在查询报警信息...");
+				ProgressDialogUtil.StartProgressDialog(Activity,"正在查询报警信息...",true);
 			pageIndex =1;
 			UpdateAlarmInfoListParam ();
 

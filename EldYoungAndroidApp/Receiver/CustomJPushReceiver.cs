@@ -116,7 +116,7 @@ namespace EldYoungAndroidApp.Receiver
 				if (cmpName != null) {
 					//系统存在此activity
 					ActivityManager _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
-					var taskInfoLists = _activityManager.GetRunningTasks (15);
+					var taskInfoLists = _activityManager.GetRunningTasks (1);
 					foreach (ActivityManager.RunningTaskInfo taskInfo in taskInfoLists) {
 						if (taskInfo.BaseActivity.Equals (cmpName)) {
 							mainActivityexistflag = true;

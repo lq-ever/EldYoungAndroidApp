@@ -18,7 +18,7 @@ namespace EldYoungAndroidApp.Common
 		/// </summary>
 		/// <param name="context">Context.</param>
 		/// <param name="msg">Message.</param>
-		public static void StartProgressDialog(Activity _activity,string msg)
+		public static void StartProgressDialog(Activity _activity,string msg,bool canceleable =false)
 		{
 
 //			if(progressDialog == null)
@@ -26,7 +26,7 @@ namespace EldYoungAndroidApp.Common
 			progressDialog.Window.SetGravity (GravityFlags.Center); 
 			progressDialog.SetMessage (msg);
 			progressDialog.Show ();
-			progressDialog.SetCancelable (false);
+			progressDialog.SetCancelable (canceleable);
 
 		}
 		/// <summary>

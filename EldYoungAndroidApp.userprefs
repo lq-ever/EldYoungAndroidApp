@@ -1,13 +1,10 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\MainActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="266" Column="35" />
-      <File FileName="EldYoungAndroidApp\Receiver\CustomJPushReceiver.cs" Line="137" Column="4" />
-      <File FileName="EldYoungAndroidApp\Activitys\Alarm\AlarmDetailInfoActivity.cs" Line="76" Column="44" />
-      <File FileName="EldYoungAndroidApp\SplashActivity.cs" Line="109" Column="100" />
-      <File FileName="EldYoungAndroidApp\MainActivity.cs" Line="110" Column="25" />
-      <File FileName="EldYoungAndroidApp\Common\EldYoungUtil.cs" Line="33" Column="107" />
+      <File FileName="EldYoungAndroidApp\Activitys\Health\PhysicalDetailInfoActivity.cs" Line="27" Column="13" />
+      <File FileName="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" Line="163" Column="6" />
+      <File FileName="EldYoungAndroidApp\Activitys\Guardian\GuardianDetailInfoActivity.cs" Line="58" Column="46" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

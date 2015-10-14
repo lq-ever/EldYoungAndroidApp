@@ -122,6 +122,7 @@
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PersonInfoEmailActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PersonInfoIdCardNoLocationActivity" />
     <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PersonInfoTrueLocationActivity" />
+    <activity android:theme="@style/MyCustomTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.PhysicalDetailInfoActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.eldyoung.lelaozuandroidapp.mono.MonoRuntimeProvider.__mono_init__" />
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>

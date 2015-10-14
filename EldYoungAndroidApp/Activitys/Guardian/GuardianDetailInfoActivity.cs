@@ -164,7 +164,7 @@ namespace EldYoungAndroidApp.Activitys.Guardian
 
 		}
 
-		private void FormartDetailResult(string strValue)
+		private string FormartDetailResult(string strValue)
 		{
 			return string.IsNullOrEmpty (strValue) ? string.Empty : strValue;
 		}

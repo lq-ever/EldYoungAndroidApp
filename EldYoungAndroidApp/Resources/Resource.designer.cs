@@ -699,6 +699,9 @@ namespace EldYoungAndroidApp
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f08012a
+			public const int Physical_Scroll = 2131231018;
+			
 			// aapt resource value: 0x7f08001f
 			public const int adviceViewPager = 2131230751;
 			
@@ -723,20 +726,20 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800d7
 			public const int btn_BindGuardian = 2131230935;
 			
-			// aapt resource value: 0x7f080157
-			public const int btn_Exit = 2131231063;
+			// aapt resource value: 0x7f08015c
+			public const int btn_Exit = 2131231068;
 			
 			// aapt resource value: 0x7f0800cf
 			public const int btn_Login = 2131230927;
 			
-			// aapt resource value: 0x7f08014c
-			public const int btn_Next = 2131231052;
+			// aapt resource value: 0x7f080151
+			public const int btn_Next = 2131231057;
 			
-			// aapt resource value: 0x7f080161
-			public const int btn_Publish = 2131231073;
+			// aapt resource value: 0x7f080166
+			public const int btn_Publish = 2131231078;
 			
-			// aapt resource value: 0x7f080144
-			public const int btn_RegistNext = 2131231044;
+			// aapt resource value: 0x7f080149
+			public const int btn_RegistNext = 2131231049;
 			
 			// aapt resource value: 0x7f080104
 			public const int btn_Save = 2131230980;
@@ -744,8 +747,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080052
 			public const int btn_Send = 2131230802;
 			
-			// aapt resource value: 0x7f08014a
-			public const int btn_Submit = 2131231050;
+			// aapt resource value: 0x7f08014f
+			public const int btn_Submit = 2131231055;
 			
 			// aapt resource value: 0x7f080068
 			public const int btn_action_agree = 2131230824;
@@ -804,8 +807,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080059
 			public const int btn_take_photo = 2131230809;
 			
-			// aapt resource value: 0x7f080145
-			public const int cb_Agree = 2131231045;
+			// aapt resource value: 0x7f08014a
+			public const int cb_Agree = 2131231050;
 			
 			// aapt resource value: 0x7f0800ce
 			public const int cb_Password = 2131230926;
@@ -819,8 +822,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f08007f
 			public const int dotImageLayout = 2131230847;
 			
-			// aapt resource value: 0x7f08015a
-			public const int edit_ConfirmPwd = 2131231066;
+			// aapt resource value: 0x7f08015f
+			public const int edit_ConfirmPwd = 2131231071;
 			
 			// aapt resource value: 0x7f08010b
 			public const int edit_IdCardNo = 2131230987;
@@ -828,32 +831,32 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800cc
 			public const int edit_PassWord = 2131230924;
 			
-			// aapt resource value: 0x7f080143
-			public const int edit_Phone = 2131231043;
-			
-			// aapt resource value: 0x7f080158
-			public const int edit_Pwd = 2131231064;
-			
-			// aapt resource value: 0x7f080141
-			public const int edit_ReisterConfirmPwd = 2131231041;
-			
-			// aapt resource value: 0x7f08013e
-			public const int edit_ReisterNickName = 2131231038;
-			
-			// aapt resource value: 0x7f08013f
-			public const int edit_ReisterPwd = 2131231039;
-			
 			// aapt resource value: 0x7f080148
-			public const int edit_SecurityCode = 2131231048;
+			public const int edit_Phone = 2131231048;
+			
+			// aapt resource value: 0x7f08015d
+			public const int edit_Pwd = 2131231069;
+			
+			// aapt resource value: 0x7f080146
+			public const int edit_ReisterConfirmPwd = 2131231046;
+			
+			// aapt resource value: 0x7f080143
+			public const int edit_ReisterNickName = 2131231043;
+			
+			// aapt resource value: 0x7f080144
+			public const int edit_ReisterPwd = 2131231044;
+			
+			// aapt resource value: 0x7f08014d
+			public const int edit_SecurityCode = 2131231053;
 			
 			// aapt resource value: 0x7f0800ca
 			public const int edit_UserName = 2131230922;
 			
-			// aapt resource value: 0x7f080160
-			public const int edit_advice_content = 2131231072;
+			// aapt resource value: 0x7f080165
+			public const int edit_advice_content = 2131231077;
 			
-			// aapt resource value: 0x7f08015f
-			public const int edit_advice_title = 2131231071;
+			// aapt resource value: 0x7f080164
+			public const int edit_advice_title = 2131231076;
 			
 			// aapt resource value: 0x7f080103
 			public const int edit_birth = 2131230979;
@@ -885,14 +888,14 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800ee
 			public const int edit_my_startTime = 2131230958;
 			
-			// aapt resource value: 0x7f08015d
-			public const int edit_newpassword = 2131231069;
+			// aapt resource value: 0x7f080162
+			public const int edit_newpassword = 2131231074;
 			
-			// aapt resource value: 0x7f08015e
-			public const int edit_newpasswordconfirm = 2131231070;
+			// aapt resource value: 0x7f080163
+			public const int edit_newpasswordconfirm = 2131231075;
 			
-			// aapt resource value: 0x7f08015c
-			public const int edit_oldpassword = 2131231068;
+			// aapt resource value: 0x7f080161
+			public const int edit_oldpassword = 2131231073;
 			
 			// aapt resource value: 0x7f0800f9
 			public const int edit_other_endTime = 2131230969;
@@ -906,11 +909,11 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080129
 			public const int edit_trueName = 2131231017;
 			
-			// aapt resource value: 0x7f08012e
-			public const int fl_inner = 2131231022;
+			// aapt resource value: 0x7f080133
+			public const int fl_inner = 2131231027;
 			
-			// aapt resource value: 0x7f08012b
-			public const int fl_inner_for_google_style = 2131231019;
+			// aapt resource value: 0x7f080130
+			public const int fl_inner_for_google_style = 2131231024;
 			
 			// aapt resource value: 0x7f080060
 			public const int getApplyInfoListItemView = 2131230816;
@@ -966,6 +969,9 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f08008a
 			public const int img_BloodGlucose_Arraw = 2131230858;
 			
+			// aapt resource value: 0x7f08012b
+			public const int img_BloodLipidParaFour = 2131231019;
+			
 			// aapt resource value: 0x7f0800aa
 			public const int img_BloodLipidParaFour_Arraw = 2131230890;
 			
@@ -999,17 +1005,26 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080125
 			public const int img_TrueLocation_arraw = 2131231013;
 			
+			// aapt resource value: 0x7f08012c
+			public const int img_UrineRoutinePH = 2131231020;
+			
 			// aapt resource value: 0x7f0800b7
 			public const int img_UrineRoutinePH_Arraw = 2131230903;
+			
+			// aapt resource value: 0x7f08012d
+			public const int img_UrineRoutineSG = 2131231021;
 			
 			// aapt resource value: 0x7f0800bb
 			public const int img_UrineRoutineSG_Arraw = 2131230907;
 			
+			// aapt resource value: 0x7f08012e
+			public const int img_UrineRoutineURO = 2131231022;
+			
 			// aapt resource value: 0x7f0800bf
 			public const int img_UrineRoutineURO_Arraw = 2131230911;
 			
-			// aapt resource value: 0x7f08014f
-			public const int img_aboutUs = 2131231055;
+			// aapt resource value: 0x7f080154
+			public const int img_aboutUs = 2131231060;
 			
 			// aapt resource value: 0x7f0800e8
 			public const int img_accountSecurity_arraw = 2131230952;
@@ -1026,11 +1041,11 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080117
 			public const int img_birth_arraw = 2131230999;
 			
-			// aapt resource value: 0x7f080154
-			public const int img_cacheRemover = 2131231060;
+			// aapt resource value: 0x7f080159
+			public const int img_cacheRemover = 2131231065;
 			
-			// aapt resource value: 0x7f080155
-			public const int img_cacheRemover_arraw = 2131231061;
+			// aapt resource value: 0x7f08015a
+			public const int img_cacheRemover_arraw = 2131231066;
 			
 			// aapt resource value: 0x7f0800ed
 			public const int img_callCustom = 2131230957;
@@ -1041,17 +1056,17 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800cd
 			public const int img_eye = 2131230925;
 			
-			// aapt resource value: 0x7f08015b
-			public const int img_eye_ConfirmPwd = 2131231067;
+			// aapt resource value: 0x7f080160
+			public const int img_eye_ConfirmPwd = 2131231072;
 			
-			// aapt resource value: 0x7f080159
-			public const int img_eye_Pwd = 2131231065;
+			// aapt resource value: 0x7f08015e
+			public const int img_eye_Pwd = 2131231070;
 			
-			// aapt resource value: 0x7f080142
-			public const int img_eye_ReisterConfirmPwd = 2131231042;
+			// aapt resource value: 0x7f080147
+			public const int img_eye_ReisterConfirmPwd = 2131231047;
 			
-			// aapt resource value: 0x7f080140
-			public const int img_eye_ReisterPwd = 2131231040;
+			// aapt resource value: 0x7f080145
+			public const int img_eye_ReisterPwd = 2131231045;
 			
 			// aapt resource value: 0x7f08011c
 			public const int img_fixedPhone_arraw = 2131231004;
@@ -1095,11 +1110,11 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080110
 			public const int img_trueName_arraw = 2131230992;
 			
-			// aapt resource value: 0x7f080151
-			public const int img_versionCheck = 2131231057;
+			// aapt resource value: 0x7f080156
+			public const int img_versionCheck = 2131231062;
 			
-			// aapt resource value: 0x7f080152
-			public const int img_versionCheck_arraw = 2131231058;
+			// aapt resource value: 0x7f080157
+			public const int img_versionCheck_arraw = 2131231063;
 			
 			// aapt resource value: 0x7f08001e
 			public const int iv_bottom_line = 2131230750;
@@ -1128,8 +1143,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800de
 			public const int ll_person = 2131230942;
 			
-			// aapt resource value: 0x7f08013d
-			public const int ll_register = 2131231037;
+			// aapt resource value: 0x7f080142
+			public const int ll_register = 2131231042;
 			
 			// aapt resource value: 0x7f08005c
 			public const int loadingImageView = 2131230812;
@@ -1158,8 +1173,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080102
 			public const int lv_otherHealth = 2131230978;
 			
-			// aapt resource value: 0x7f08013c
-			public const int lv_recordAdvice = 2131231036;
+			// aapt resource value: 0x7f080141
+			public const int lv_recordAdvice = 2131231041;
 			
 			// aapt resource value: 0x7f08003f
 			public const int lv_searchGuardian = 2131230783;
@@ -1179,8 +1194,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080057
 			public const int msgTitle = 2131230807;
 			
-			// aapt resource value: 0x7f08012a
-			public const int progressbar = 2131231018;
+			// aapt resource value: 0x7f08012f
+			public const int progressbar = 2131231023;
 			
 			// aapt resource value: 0x7f080007
 			public const int pullDownFromTop = 2131230727;
@@ -1194,47 +1209,47 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f08000a
 			public const int pullUpFromBottom = 2131230730;
 			
-			// aapt resource value: 0x7f08012f
-			public const int pull_to_refresh_image = 2131231023;
+			// aapt resource value: 0x7f080134
+			public const int pull_to_refresh_image = 2131231028;
 			
-			// aapt resource value: 0x7f080130
-			public const int pull_to_refresh_progress = 2131231024;
+			// aapt resource value: 0x7f080135
+			public const int pull_to_refresh_progress = 2131231029;
 			
-			// aapt resource value: 0x7f08012d
-			public const int pull_to_refresh_sub_text = 2131231021;
-			
-			// aapt resource value: 0x7f08012c
-			public const int pull_to_refresh_text = 2131231020;
-			
-			// aapt resource value: 0x7f080133
-			public const int pulling_left_progressbar = 2131231027;
+			// aapt resource value: 0x7f080132
+			public const int pull_to_refresh_sub_text = 2131231026;
 			
 			// aapt resource value: 0x7f080131
-			public const int pulling_progress = 2131231025;
+			public const int pull_to_refresh_text = 2131231025;
 			
-			// aapt resource value: 0x7f080134
-			public const int pulling_right_progressbar = 2131231028;
+			// aapt resource value: 0x7f080138
+			public const int pulling_left_progressbar = 2131231032;
+			
+			// aapt resource value: 0x7f080136
+			public const int pulling_progress = 2131231030;
+			
+			// aapt resource value: 0x7f080139
+			public const int pulling_right_progressbar = 2131231033;
 			
 			// aapt resource value: 0x7f080108
 			public const int radioGroup = 2131230984;
 			
-			// aapt resource value: 0x7f080135
-			public const int radio_advice_Group = 2131231029;
+			// aapt resource value: 0x7f08013a
+			public const int radio_advice_Group = 2131231034;
 			
-			// aapt resource value: 0x7f080136
-			public const int rbtn_all = 2131231030;
+			// aapt resource value: 0x7f08013b
+			public const int rbtn_all = 2131231035;
 			
 			// aapt resource value: 0x7f08010a
 			public const int rbtn_female = 2131230986;
 			
-			// aapt resource value: 0x7f080138
-			public const int rbtn_jianyi = 2131231032;
+			// aapt resource value: 0x7f08013d
+			public const int rbtn_jianyi = 2131231037;
 			
 			// aapt resource value: 0x7f080109
 			public const int rbtn_male = 2131230985;
 			
-			// aapt resource value: 0x7f08013a
-			public const int rbtn_other = 2131231034;
+			// aapt resource value: 0x7f08013f
+			public const int rbtn_other = 2131231039;
 			
 			// aapt resource value: 0x7f0800fb
 			public const int rbtn_other_paul = 2131230971;
@@ -1245,17 +1260,17 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800f1
 			public const int rbtn_paul = 2131230961;
 			
-			// aapt resource value: 0x7f080139
-			public const int rbtn_tousu = 2131231033;
+			// aapt resource value: 0x7f08013e
+			public const int rbtn_tousu = 2131231038;
 			
 			// aapt resource value: 0x7f0800f2
 			public const int rbtn_trip = 2131230962;
 			
-			// aapt resource value: 0x7f080137
-			public const int rbtn_zixun = 2131231031;
+			// aapt resource value: 0x7f08013c
+			public const int rbtn_zixun = 2131231036;
 			
-			// aapt resource value: 0x7f080132
-			public const int refreshing_progress = 2131231026;
+			// aapt resource value: 0x7f080137
+			public const int refreshing_progress = 2131231031;
 			
 			// aapt resource value: 0x7f0800f0
 			public const int rgp_alarmWay = 2131230960;
@@ -1269,11 +1284,11 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800c9
 			public const int rl_UserName = 2131230921;
 			
-			// aapt resource value: 0x7f08014e
-			public const int rl_aboutUs = 2131231054;
-			
 			// aapt resource value: 0x7f080153
-			public const int rl_cacheRemover = 2131231059;
+			public const int rl_aboutUs = 2131231059;
+			
+			// aapt resource value: 0x7f080158
+			public const int rl_cacheRemover = 2131231064;
 			
 			// aapt resource value: 0x7f080116
 			public const int rl_person_Birth = 2131230998;
@@ -1326,8 +1341,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080124
 			public const int rl_person_trueLocation = 2131231012;
 			
-			// aapt resource value: 0x7f080150
-			public const int rl_versionCheck = 2131231056;
+			// aapt resource value: 0x7f080155
+			public const int rl_versionCheck = 2131231061;
 			
 			// aapt resource value: 0x7f080025
 			public const int scrollView1 = 2131230757;
@@ -1335,8 +1350,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f080002
 			public const int scrollview = 2131230722;
 			
-			// aapt resource value: 0x7f08014b
-			public const int searchGuardianListItemView = 2131231051;
+			// aapt resource value: 0x7f080150
+			public const int searchGuardianListItemView = 2131231056;
 			
 			// aapt resource value: 0x7f08003d
 			public const int searchView = 2131230781;
@@ -1464,8 +1479,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f08006d
 			public const int tv_Brnl = 2131230829;
 			
-			// aapt resource value: 0x7f080156
-			public const int tv_CacheSize = 2131231062;
+			// aapt resource value: 0x7f08015b
+			public const int tv_CacheSize = 2131231067;
 			
 			// aapt resource value: 0x7f080070
 			public const int tv_ContactAddress = 2131230832;
@@ -1512,14 +1527,14 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f08006e
 			public const int tv_PhoneNumberOne = 2131230830;
 			
-			// aapt resource value: 0x7f080147
-			public const int tv_PhoneShow = 2131231047;
+			// aapt resource value: 0x7f08014c
+			public const int tv_PhoneShow = 2131231052;
 			
 			// aapt resource value: 0x7f0800d1
 			public const int tv_Register = 2131230929;
 			
-			// aapt resource value: 0x7f080149
-			public const int tv_SendCodeStatusShow = 2131231049;
+			// aapt resource value: 0x7f08014e
+			public const int tv_SendCodeStatusShow = 2131231054;
 			
 			// aapt resource value: 0x7f080071
 			public const int tv_TelePhoneNumber = 2131230833;
@@ -1686,8 +1701,8 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f08001b
 			public const int tv_identity = 2131230747;
 			
-			// aapt resource value: 0x7f080146
-			public const int tv_linkServiceAgree = 2131231046;
+			// aapt resource value: 0x7f08014b
+			public const int tv_linkServiceAgree = 2131231051;
 			
 			// aapt resource value: 0x7f080077
 			public const int tv_location = 2131230839;
@@ -1737,11 +1752,11 @@ namespace EldYoungAndroidApp
 			// aapt resource value: 0x7f0800e2
 			public const int tv_phonenumber = 2131230946;
 			
-			// aapt resource value: 0x7f08013b
-			public const int tv_recordNum = 2131231035;
+			// aapt resource value: 0x7f080140
+			public const int tv_recordNum = 2131231040;
 			
-			// aapt resource value: 0x7f08014d
-			public const int tv_service_agree = 2131231053;
+			// aapt resource value: 0x7f080152
+			public const int tv_service_agree = 2131231058;
 			
 			// aapt resource value: 0x7f0800d3
 			public const int tv_tab_myAlarm = 2131230931;
@@ -1928,55 +1943,58 @@ namespace EldYoungAndroidApp
 			public const int PersonInfoTrueNameLayout = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int progressbar = 2130903091;
+			public const int PhysicalDetailInfoLayout = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int pull_to_refresh_header_google_style = 2130903092;
+			public const int progressbar = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int pull_to_refresh_header_horizontal = 2130903093;
+			public const int pull_to_refresh_header_google_style = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int pull_to_refresh_header_vertical = 2130903094;
+			public const int pull_to_refresh_header_horizontal = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int pull_to_refresh_progress_google_style = 2130903095;
+			public const int pull_to_refresh_header_vertical = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int pulling_progress_layout = 2130903096;
+			public const int pull_to_refresh_progress_google_style = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int RecordAdviceLayout = 2130903097;
+			public const int pulling_progress_layout = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int RegisterLayout = 2130903098;
+			public const int RecordAdviceLayout = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int RegisterResultLayout = 2130903099;
+			public const int RegisterLayout = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int searchguardianListItemView = 2130903100;
+			public const int RegisterResultLayout = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int SendSecurityCodeLayout = 2130903101;
+			public const int searchguardianListItemView = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int ServiceAgreeLayout = 2130903102;
+			public const int SendSecurityCodeLayout = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int SetLayout = 2130903103;
+			public const int ServiceAgreeLayout = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int SetPasswordLayout = 2130903104;
+			public const int SetLayout = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int SplashLayout = 2130903105;
+			public const int SetPasswordLayout = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int UpdatePasswordLayout = 2130903106;
+			public const int SplashLayout = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int WriteAdviceLayout = 2130903107;
+			public const int UpdatePasswordLayout = 2130903107;
+			
+			// aapt resource value: 0x7f030044
+			public const int WriteAdviceLayout = 2130903108;
 			
 			static Layout()
 			{

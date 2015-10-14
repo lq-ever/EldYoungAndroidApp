@@ -117,6 +117,8 @@ namespace EldYoungAndroidApp.Common
 			return appKey;
 		}
 
+
+
 		/// <summary>
 		/// 检测tag或别名有效性,只能是数字、英文字母、中文
 		/// </summary>

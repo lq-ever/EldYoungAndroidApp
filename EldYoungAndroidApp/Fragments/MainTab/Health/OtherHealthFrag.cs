@@ -117,7 +117,8 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 
 			actualListView.ItemClick += (sender, e) => 
 			{
-				var intent  = new Intent(Activity,typeof(HealthDetailInfoActivity));
+				//var intent  = new Intent(Activity,typeof(HealthDetailInfoActivity));
+				var intent  = new Intent(Activity,typeof(PhysicalDetailInfoActivity));
 				var _healthInfoItem = healthInfoAdapter.GetItem(e.Position -1);
 				var _healthInfoJson = JsonConvert.SerializeObject(_healthInfoItem);
 				intent.PutExtra("healthInfo",_healthInfoJson);
@@ -229,7 +230,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 		private void loadData()
 		{
 			if(btnSearchFlag)
-				ProgressDialogUtil.StartProgressDialog(Activity,"正在查询健康体检信息...");
+				ProgressDialogUtil.StartProgressDialog(Activity,"正在查询健康体检信息...",true);
 			if (string.IsNullOrEmpty (myUserId)) {
 				//未选择任何监护人
 				Activity.RunOnUiThread (() => {
