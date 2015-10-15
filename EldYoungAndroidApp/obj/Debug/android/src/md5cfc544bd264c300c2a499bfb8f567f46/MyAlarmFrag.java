@@ -5,7 +5,8 @@ public class MyAlarmFrag
 	extends md54097cffc0ffa08632f0d89c6940011de.BaseFragment
 	implements
 		mono.android.IGCUserPeer,
-		com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2
+		com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2,
+		android.view.View.OnFocusChangeListener
 {
 	static final String __md_methods;
 	static {
@@ -15,6 +16,7 @@ public class MyAlarmFrag
 			"n_onActivityCreated:(Landroid/os/Bundle;)V:GetOnActivityCreated_Landroid_os_Bundle_Handler\n" +
 			"n_onPullDownToRefresh:(Lcom/handmark/pulltorefresh/library/PullToRefreshBase;)V:GetOnPullDownToRefresh_Lcom_handmark_pulltorefresh_library_PullToRefreshBase_Handler:Com.Handmark.Pulltorefresh.Library.PullToRefreshBase/IOnRefreshListener2Invoker, PullToRefresh\n" +
 			"n_onPullUpToRefresh:(Lcom/handmark/pulltorefresh/library/PullToRefreshBase;)V:GetOnPullUpToRefresh_Lcom_handmark_pulltorefresh_library_PullToRefreshBase_Handler:Com.Handmark.Pulltorefresh.Library.PullToRefreshBase/IOnRefreshListener2Invoker, PullToRefresh\n" +
+			"n_onFocusChange:(Landroid/view/View;Z)V:GetOnFocusChange_Landroid_view_View_ZHandler:Android.Views.View/IOnFocusChangeListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"";
 		mono.android.Runtime.register ("EldYoungAndroidApp.Fragments.MainTab.Alarm.MyAlarmFrag, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", MyAlarmFrag.class, __md_methods);
 	}
@@ -66,6 +68,14 @@ public class MyAlarmFrag
 	}
 
 	private native void n_onPullUpToRefresh (com.handmark.pulltorefresh.library.PullToRefreshBase p0);
+
+
+	public void onFocusChange (android.view.View p0, boolean p1)
+	{
+		n_onFocusChange (p0, p1);
+	}
+
+	private native void n_onFocusChange (android.view.View p0, boolean p1);
 
 	java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

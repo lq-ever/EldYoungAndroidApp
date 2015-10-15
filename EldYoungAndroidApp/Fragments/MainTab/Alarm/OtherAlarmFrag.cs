@@ -25,7 +25,7 @@ using EldYoungAndroidApp.Json;
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 {
-	public class OtherAlarmFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2,Spinner.IOnItemSelectedListener
+	public class OtherAlarmFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2,Spinner.IOnItemSelectedListener,Android.Views.View.IOnFocusChangeListener
 	{
 		private AlarmInfoListAdapter alarmInfoAdapter;
 		private string other_startTime_default, other_endTime_default;
@@ -105,17 +105,21 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 			//加载view
 			edit_other_startTime = View.FindViewById<EditText>(Resource.Id.edit_other_startTime);
-			edit_other_startTime.Click += (sender, e) => 
-			{
-				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_startTime.Text);
-				datepickdialog.DatePickDialogShow(edit_other_startTime);
-			};
+//			edit_other_startTime.Click += (sender, e) => 
+//			{
+//				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_startTime.Text);
+//				datepickdialog.DatePickDialogShow(edit_other_startTime);
+//			};
+			edit_other_startTime.OnFocusChangeListener = this;
+			edit_other_startTime.InputType = Android.Text.InputTypes.Null;
 			edit_other_endTime = View.FindViewById<EditText> (Resource.Id.edit_other_endTime);
-			edit_other_endTime.Click += (sender, e) => 
-			{
-				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_endTime.Text);
-				datepickdialog.DatePickDialogShow(edit_other_endTime);
-			};
+//			edit_other_endTime.Click += (sender, e) => 
+//			{
+//				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_endTime.Text);
+//				datepickdialog.DatePickDialogShow(edit_other_endTime);
+//			};
+			edit_other_endTime.OnFocusChangeListener = this;
+			edit_other_endTime.InputType = Android.Text.InputTypes.Null;
 			other_endTime_default = DateTime.Now.ToString ("yyyy-MM-dd");
 			other_startTime_default = DateTime.Now.AddDays (-7).ToString ("yyyy-MM-dd");
 			edit_other_startTime.Text = other_startTime_default;
@@ -159,6 +163,14 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			IsPrepared = true;
 			LasyloadData ();
 
+		}
+		public void OnFocusChange (View v, bool hasFocus)
+		{
+			if (hasFocus) {
+				((EditText)v).ClearFocus ();
+				var datepickdialog = new DatePickDialogUtil (Activity, ((EditText)v).Text);
+				datepickdialog.DatePickDialogShow ((EditText)v);
+			}
 		}
 		/// <summary>
 		/// 设置我的监护人下拉框

@@ -80,6 +80,7 @@ public class MonoPackageManager {
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"EldYoungAndroidApp.dll",
+		"BaiduMapApiBindingLibrary.dll",
 		"JPushBindingLibrary.dll",
 		"Newtonsoft.Json.dll",
 		"PullToRefresh.dll",

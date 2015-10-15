@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Health
 {
-	public class OtherHealthFrag :BaseFragment,PullToRefreshBase.IOnRefreshListener2,Spinner.IOnItemSelectedListener
+	public class OtherHealthFrag :BaseFragment,PullToRefreshBase.IOnRefreshListener2,Spinner.IOnItemSelectedListener,Android.Views.View.IOnFocusChangeListener
 	{
 		private HealthInfoListAdapter healthInfoAdapter;
 		private PullToRefreshListView otherhealthRefreshListView;
@@ -91,11 +91,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 
 			//加载view
 			edit_other_searchTime = View.FindViewById<EditText>(Resource.Id.edit_other_searchTime);
-			edit_other_searchTime.Click += (sender, e) => 
-			{
-				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_searchTime.Text);
-				datepickdialog.DatePickDialogShow(edit_other_searchTime);
-			};
+//			edit_other_searchTime.Click += (sender, e) => 
+//			{
+//				var datepickdialog = new DatePickDialogUtil(Activity,edit_other_searchTime.Text);
+//				datepickdialog.DatePickDialogShow(edit_other_searchTime);
+//			};
+			edit_other_searchTime.OnFocusChangeListener = this;
+			edit_other_searchTime.InputType = Android.Text.InputTypes.Null;
 			other_searchTime_default = DateTime.Now.ToString ("yyyy-MM-dd");
 			edit_other_searchTime.Text = other_searchTime_default;
 			btn_other_search = View.FindViewById<Button> (Resource.Id.btn_other_search);
@@ -132,6 +134,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 			IsPrepared = true;
 			LasyloadData ();
 		}
+		public void OnFocusChange (View v, bool hasFocus)
+		{
+			if (hasFocus) {
+				((EditText)v).ClearFocus ();
+				var datepickdialog = new DatePickDialogUtil (Activity, ((EditText)v).Text);
+				datepickdialog.DatePickDialogShow ((EditText)v);
+			}
+		}
+
 		/// <summary>
 		/// 设置我的监护人下拉框
 		/// </summary>

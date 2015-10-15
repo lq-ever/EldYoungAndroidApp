@@ -152,7 +152,7 @@ namespace EldYoungAndroidApp
 				return;
 			}
 
-			ProgressDialogUtil.StartProgressDialog(this,GetString(Resource.String.loginMsg));
+			ProgressDialogUtil.StartProgressDialog(this,GetString(Resource.String.loginMsg),true);
 			//检测网络连接
 			if(!EldYoungUtil.IsConnected(this))
 			{

@@ -199,6 +199,7 @@
     <Compile Include="Json\AdviceWriteJson.cs" />
     <Compile Include="Common\DeleteCleanCacheManager.cs" />
     <Compile Include="Activitys\Health\PhysicalDetailInfoActivity.cs" />
+    <Compile Include="Activitys\Alarm\AlarmLocationActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -393,12 +394,18 @@
     <AndroidResource Include="Resources\drawable\edit_advice_focused.xml" />
     <AndroidResource Include="Resources\drawable\edit_advice_selector.xml" />
     <AndroidResource Include="Resources\layout\PhysicalDetailInfoLayout.axml" />
+    <AndroidResource Include="Resources\layout\AlarmLocationLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_map.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\JPushBindingLibrary\JPushBindingLibrary.csproj">
       <Project>{913E5ECB-C6A0-4617-9F96-930F35E566F5}</Project>
       <Name>JPushBindingLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaiduMapApiBindingLibrary\BaiduMapApiBindingLibrary.csproj">
+      <Project>{4D4A5C7E-58AB-43B8-BA28-9A77D7901D2F}</Project>
+      <Name>BaiduMapApiBindingLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

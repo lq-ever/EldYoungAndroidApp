@@ -1,0 +1,4 @@
+E:\GitHub\EldYoungAndroidApp\BaiduMapApiBindingLibrary\bin\Release\BaiduMapApiBindingLibrary.dll
+E:\GitHub\EldYoungAndroidApp\BaiduMapApiBindingLibrary\bin\Release\BaiduMapApiBindingLibrary.pdb
+E:\GitHub\EldYoungAndroidApp\BaiduMapApiBindingLibrary\obj\Release\BaiduMapApiBindingLibrary.dll
+E:\GitHub\EldYoungAndroidApp\BaiduMapApiBindingLibrary\obj\Release\BaiduMapApiBindingLibrary.pdb

@@ -63,7 +63,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/ll_maplocation">
                     <TextView
                         style="@style/tv_key"
                         android:layout_width="65dp"
@@ -71,10 +72,17 @@
                         android:text="报警位置" />
                     <TextView
                         style="@style/tv_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text=""
                         android:id="@+id/tv_detail_alarmPosition" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/myInfomation_next_arrow"
+                        android:layout_marginRight="15dp"
+                        android:layout_centerVertical="true" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"

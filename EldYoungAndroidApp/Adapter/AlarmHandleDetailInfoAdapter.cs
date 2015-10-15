@@ -41,9 +41,9 @@ namespace EldYoungAndroidApp
 				convertView.SetTag (Resource.Id.alarmHandleDetailInfoListitemView, _alarmhandleDetailItemView);
 			} else
 				_alarmhandleDetailItemView = (AlarmHandleDetailView)convertView.GetTag (Resource.Id.alarmHandleDetailInfoListitemView);
-			_alarmhandleDetailItemView.tv_handledetail_handleTime.Text= item.HandleTime;
-			_alarmhandleDetailItemView.tv_handledetail_handleContent.Text = item.HandleContent;
-			_alarmhandleDetailItemView.tv_handledetail_remark.Text = item.Remark;
+			_alarmhandleDetailItemView.tv_handledetail_handleTime.Text= string.IsNullOrEmpty(item.HandleTime)?string.Empty:Convert.ToDateTime(item.HandleTime).ToString("yyyy-MM-dd HH:mm:ss");
+			_alarmhandleDetailItemView.tv_handledetail_handleContent.Text = string.IsNullOrEmpty(item.HandleContent)?string.Empty:item.HandleContent;
+			_alarmhandleDetailItemView.tv_handledetail_remark.Text = string.IsNullOrEmpty(item.Remark)?string.Empty:item.Remark;
 
 			return convertView;
 		}

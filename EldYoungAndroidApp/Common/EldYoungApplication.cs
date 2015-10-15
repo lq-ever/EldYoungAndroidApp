@@ -11,6 +11,7 @@ using Com.Nostra13.Universalimageloader.Core.Assist;
 using Com.Nostra13.Universalimageloader.Utils;
 using Com.Nostra13.Universalimageloader.Core.Download;
 using Java.IO;
+using Com.Baidu.Mapapi;
 
 namespace EldYoungAndroidApp.Common
 {
@@ -53,6 +54,10 @@ namespace EldYoungAndroidApp.Common
 				.Build();
 			ImageLoader.Instance.Init(configuration);
 
+			#endregion
+
+			#region 百度地图使用
+			SDKInitializer.Initialize(ApplicationContext);
 			#endregion
 
 		}

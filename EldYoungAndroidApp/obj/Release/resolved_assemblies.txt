@@ -1,4 +1,5 @@
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\android\assets\EldYoungAndroidApp.dll
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\android\assets\BaiduMapApiBindingLibrary.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\android\assets\JPushBindingLibrary.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\android\assets\Mono.Android.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\android\assets\mscorlib.dll

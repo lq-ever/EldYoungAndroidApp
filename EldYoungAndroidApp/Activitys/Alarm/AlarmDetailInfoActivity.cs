@@ -35,7 +35,11 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 		tv_detail_deviceElectricity, tv_detail_alarmDeviceId,tv_detail_remark,tv_detail_status,tv_detail_alarmWay,
 		tv_detail_handleUserType,tv_detail_cTrueName,tv_detail_cphoneNumberOne;
 
+		private LinearLayout ll_maplocation;
+
 		private ListView lv_handleDetail;
+
+		private string alarmPosition = string.Empty;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -88,6 +92,17 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 			tv_detail_cTrueName = FindViewById<TextView> (Resource.Id.tv_detail_cTrueName);
 			tv_detail_cphoneNumberOne = FindViewById<TextView> (Resource.Id.tv_detail_cphoneNumberOne);
 			lv_handleDetail = FindViewById<ListView> (Resource.Id.lv_handleDetail);
+			ll_maplocation = FindViewById<LinearLayout> (Resource.Id.ll_maplocation);
+			//查看地图
+			ll_maplocation.Click += (object sender, EventArgs e) => {
+				var intent = new Intent(this,typeof(AlarmLocationActivity));
+				var alarmbundle = new Bundle();
+				alarmbundle.PutString("alarmPosition",alarmPosition);
+				intent.PutExtras(alarmbundle);
+				StartActivity(intent);
+				//StartActivity(typeof(AlarmLocationActivity));
+				OverridePendingTransition(Android.Resource.Animation.SlideInLeft,Android.Resource.Animation.SlideOutRight);
+			};
 			//LoadDetailData ();
 			new Handler ().PostDelayed (LoadDetailData, 1000);
 		}
@@ -148,6 +163,7 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 									tv_detail_alarmContent.Text = detail.AlarmContent;
 									tv_detail_alarmDeviceId.Text = detail.AlarmDeviceId;
 									tv_detail_alarmPosition.Text = detail.AlarmPosition;
+									alarmPosition = detail.AlarmPosition;
 									tv_detail_alarmWay.Text = detail.AlarmWay;
 									tv_detail_cphoneNumberOne.Text = detail.CPhoneNumberOne;
 									tv_detail_cTrueName.Text = detail.CTrueName;

@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Health
 {
-	public class MyHealthFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2
+	public class MyHealthFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2,Android.Views.View.IOnFocusChangeListener
 	{
 		
 
@@ -89,11 +89,13 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 
 			//加载view
 			edit_my_searchTime = View.FindViewById<EditText>(Resource.Id.edit_my_searchTime);
-			edit_my_searchTime.Click += (sender, e) => 
-			{
-				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_searchTime.Text);
-				datepickdialog.DatePickDialogShow(edit_my_searchTime);
-			};
+//			edit_my_searchTime.Click += (sender, e) => 
+//			{
+//				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_searchTime.Text);
+//				datepickdialog.DatePickDialogShow(edit_my_searchTime);
+//			};
+			edit_my_searchTime.OnFocusChangeListener = this;
+			edit_my_searchTime.InputType = Android.Text.InputTypes.Null;
 			my_searchTime_default = DateTime.Now.ToString ("yyyy-MM-dd");
 			edit_my_searchTime.Text = my_searchTime_default;
 
@@ -128,6 +130,15 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Health
 			IsPrepared = true;
 			LasyloadData ();
 
+		}
+
+		public void OnFocusChange (View v, bool hasFocus)
+		{
+			if (hasFocus) {
+				((EditText)v).ClearFocus ();
+				var datepickdialog = new DatePickDialogUtil (Activity, ((EditText)v).Text);
+				datepickdialog.DatePickDialogShow ((EditText)v);
+			}
 		}
 
 		public override void LasyloadData ()

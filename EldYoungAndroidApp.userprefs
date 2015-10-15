@@ -1,10 +1,9 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Activitys\Alarm\AlarmDetailInfoActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\Activitys\Health\PhysicalDetailInfoActivity.cs" Line="27" Column="13" />
-      <File FileName="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" Line="163" Column="6" />
-      <File FileName="EldYoungAndroidApp\Activitys\Guardian\GuardianDetailInfoActivity.cs" Line="58" Column="46" />
+      <File FileName="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" Line="26" Column="24" />
+      <File FileName="EldYoungAndroidApp\Activitys\Alarm\AlarmDetailInfoActivity.cs" Line="37" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

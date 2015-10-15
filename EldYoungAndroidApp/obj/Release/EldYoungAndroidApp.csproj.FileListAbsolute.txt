@@ -168,6 +168,7 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\EldYoungAndroidApp.d
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\EldYoungAndroidApp.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\com.eldyoung.lelaozuandroidapp.apk
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\com.eldyoung.lelaozuandroidapp-Signed.apk
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\BaiduMapApiBindingLibrary.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\JPushBindingLibrary.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\Newtonsoft.Json.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\PullToRefresh.dll
@@ -175,7 +176,9 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\RestSharp.MonoDroid.
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\UniversalImageLoader.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\Xamarin.Android.Support.v4.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\JPushBindingLibrary.pdb
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\BaiduMapApiBindingLibrary.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\bin\Release\Newtonsoft.Json.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.csprojResolveAssemblyReference.cache
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.dll
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.pdb
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\android\bin\com.eldyoung.lelaozuandroidapp.apk
@@ -228,7 +231,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\custom_ti
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\serviceagreelayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\textselector.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\guider1.png
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\splash.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\ic_launch.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\home_tab_personal.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\home_tab_personal_selected.png
@@ -248,7 +250,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\relativ
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\custom_titlebar_action.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\alarmdetailinfolayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\setting.png
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\guider2.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\ic_menu_alarm_normal.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\ic_menu_alarm_selected.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\ic_menu_guardian_normal.png
@@ -299,9 +300,6 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\getapplyi
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\healthdetailinfolayout.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\healthlistitemview.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\uparrow.png
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\R.cs.flag
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\uploadflags.txt
-E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\EldYoungAndroidApp.csprojResolveAssemblyReference.cache
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\btn_blue_selector.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\registeragreetextselector.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\customconfirmphonedialog.xml
@@ -318,6 +316,8 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\ic_login_eye_selected.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\guider3.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\guider4.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\guider2.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\splash.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\circle_normal.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\circle_selected.png
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\shape.xml
@@ -367,3 +367,8 @@ E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\advicerec
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\edit_advice_nomal.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\edit_advice_focused.xml
 E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable\edit_advice_selector.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\physicaldetailinfolayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\layout\alarmlocationlayout.xml
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\res\drawable-xxhdpi\ic_map.png
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\R.cs.flag
+E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\obj\Release\uploadflags.txt

@@ -5,12 +5,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EldYoungAndroidApp", "EldYo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JPushBindingLibrary", "JPushBindingLibrary\JPushBindingLibrary.csproj", "{913E5ECB-C6A0-4617-9F96-930F35E566F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaiduMapApiBindingLibrary", "BaiduMapApiBindingLibrary\BaiduMapApiBindingLibrary.csproj", "{4D4A5C7E-58AB-43B8-BA28-9A77D7901D2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D4A5C7E-58AB-43B8-BA28-9A77D7901D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4A5C7E-58AB-43B8-BA28-9A77D7901D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4A5C7E-58AB-43B8-BA28-9A77D7901D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4A5C7E-58AB-43B8-BA28-9A77D7901D2F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{913E5ECB-C6A0-4617-9F96-930F35E566F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{913E5ECB-C6A0-4617-9F96-930F35E566F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{913E5ECB-C6A0-4617-9F96-930F35E566F5}.Release|Any CPU.ActiveCfg = Release|Any CPU

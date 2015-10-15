@@ -27,7 +27,7 @@ using System.Threading;
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 {
-	public class MyAlarmFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2
+	public class MyAlarmFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2,Android.Views.View.IOnFocusChangeListener
 	{
 		
 		private AlarmInfoListAdapter alarmInfoAdapter;
@@ -97,18 +97,22 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 			//加载view
 			edit_my_startTime = View.FindViewById<EditText>(Resource.Id.edit_my_startTime);
-			edit_my_startTime.Click += (sender, e) => 
-			{
-				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_startTime.Text);
-				datepickdialog.DatePickDialogShow(edit_my_startTime);
-			};
+//			edit_my_startTime.Click += (sender, e) => 
+//			{
+//				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_startTime.Text);
+//				datepickdialog.DatePickDialogShow(edit_my_startTime);
+//			};
 
+			edit_my_startTime.OnFocusChangeListener = this;
+			edit_my_startTime.InputType = Android.Text.InputTypes.Null;
 			edit_my_endTime = View.FindViewById<EditText> (Resource.Id.edit_my_endTime);
-			edit_my_endTime.Click += (sender, e) => 
-			{
-				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_endTime.Text);
-				datepickdialog.DatePickDialogShow(edit_my_endTime);
-			};
+//			edit_my_endTime.Click += (sender, e) => 
+//			{
+//				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_endTime.Text);
+//				datepickdialog.DatePickDialogShow(edit_my_endTime);
+//			};
+			edit_my_endTime.OnFocusChangeListener = this;
+			edit_my_endTime.InputType = Android.Text.InputTypes.Null;
 			my_endTime_default = DateTime.Now.ToString ("yyyy-MM-dd");
 			my_startTime_default = DateTime.Now.AddDays (-7).ToString ("yyyy-MM-dd");
 			edit_my_startTime.Text = my_startTime_default;
@@ -151,6 +155,14 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 		}
 
+	    public void OnFocusChange (View v, bool hasFocus)
+		{
+			if (hasFocus) {
+				((EditText)v).ClearFocus ();
+				var datepickdialog = new DatePickDialogUtil (Activity, ((EditText)v).Text);
+				datepickdialog.DatePickDialogShow ((EditText)v);
+			}
+		}
 
 
 		public override void LasyloadData ()

@@ -310,6 +310,86 @@ EldYoungAndroidApp.PhysicalDetailInfoActivity, EldYoungAndroidApp;md54097cffc0ff
 EldYoungAndroidApp.PhysicalDetailInfoActivity, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md54097cffc0ffa08632f0d89c6940011de.PhysicalDetailInfoActivity
 EldYoungAndroidApp.PhysicalDetailInfoActivity;md54097cffc0ffa08632f0d89c6940011de.PhysicalDetailInfoActivity
 eldyoungandroidapp.PhysicalDetailInfoActivity;md54097cffc0ffa08632f0d89c6940011de.PhysicalDetailInfoActivity
+EldYoungAndroidApp.AlarmLocationActivity, EldYoungAndroidApp;md54097cffc0ffa08632f0d89c6940011de.AlarmLocationActivity
+EldYoungAndroidApp.AlarmLocationActivity, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md54097cffc0ffa08632f0d89c6940011de.AlarmLocationActivity
+EldYoungAndroidApp.AlarmLocationActivity;md54097cffc0ffa08632f0d89c6940011de.AlarmLocationActivity
+eldyoungandroidapp.AlarmLocationActivity;md54097cffc0ffa08632f0d89c6940011de.AlarmLocationActivity
+Com.Baidu.Mapapi.Cloud.ICloudListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.cloud.CloudListenerImplementor
+Com.Baidu.Mapapi.Cloud.ICloudListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.cloud.CloudListenerImplementor
+Com.Baidu.Mapapi.Cloud.ICloudListenerImplementor;mono.com.baidu.mapapi.cloud.CloudListenerImplementor
+com.baidu.mapapi.cloud.ICloudListenerImplementor;mono.com.baidu.mapapi.cloud.CloudListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapClickListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMapClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapClickListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMapClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMapClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapClickListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMapClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapDoubleClickListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMapDoubleClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapDoubleClickListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMapDoubleClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMapDoubleClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapDoubleClickListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMapDoubleClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapDoubleClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapLongClickListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMapLongClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapLongClickListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMapLongClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMapLongClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapLongClickListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMapLongClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapLongClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapStatusChangeListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMapStatusChangeListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapStatusChangeListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMapStatusChangeListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMapStatusChangeListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapStatusChangeListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMapStatusChangeListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapStatusChangeListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapTouchListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMapTouchListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMapTouchListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMapTouchListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMapTouchListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapTouchListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMapTouchListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMapTouchListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMarkerClickListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMarkerClickListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMarkerClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerClickListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMarkerClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMarkerDragListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerDragListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMarkerDragListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerDragListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMarkerDragListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerDragListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMarkerDragListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMarkerDragListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMyLocationClickListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnMyLocationClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnMyLocationClickListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnMyLocationClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnMyLocationClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMyLocationClickListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnMyLocationClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnMyLocationClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnPolylineClickListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.BaiduMap_OnPolylineClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap/IOnPolylineClickListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.BaiduMap_OnPolylineClickListenerImplementor
+Com.Baidu.Mapapi.Map.BaiduMap.IOnPolylineClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnPolylineClickListenerImplementor
+com.baidu.mapapi.map.BaiduMap_IOnPolylineClickListenerImplementor;mono.com.baidu.mapapi.map.BaiduMap_OnPolylineClickListenerImplementor
+Com.Baidu.Mapapi.Map.InfoWindow/IOnInfoWindowClickListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.InfoWindow_OnInfoWindowClickListenerImplementor
+Com.Baidu.Mapapi.Map.InfoWindow/IOnInfoWindowClickListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.InfoWindow_OnInfoWindowClickListenerImplementor
+Com.Baidu.Mapapi.Map.InfoWindow.IOnInfoWindowClickListenerImplementor;mono.com.baidu.mapapi.map.InfoWindow_OnInfoWindowClickListenerImplementor
+com.baidu.mapapi.map.InfoWindow_IOnInfoWindowClickListenerImplementor;mono.com.baidu.mapapi.map.InfoWindow_OnInfoWindowClickListenerImplementor
+Com.Baidu.Mapapi.Map.Offline.IMKOfflineMapListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.map.offline.MKOfflineMapListenerImplementor
+Com.Baidu.Mapapi.Map.Offline.IMKOfflineMapListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.map.offline.MKOfflineMapListenerImplementor
+Com.Baidu.Mapapi.Map.Offline.IMKOfflineMapListenerImplementor;mono.com.baidu.mapapi.map.offline.MKOfflineMapListenerImplementor
+com.baidu.mapapi.map.offline.IMKOfflineMapListenerImplementor;mono.com.baidu.mapapi.map.offline.MKOfflineMapListenerImplementor
+Com.Baidu.Mapapi.Radar.IRadarSearchListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.radar.RadarSearchListenerImplementor
+Com.Baidu.Mapapi.Radar.IRadarSearchListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.radar.RadarSearchListenerImplementor
+Com.Baidu.Mapapi.Radar.IRadarSearchListenerImplementor;mono.com.baidu.mapapi.radar.RadarSearchListenerImplementor
+com.baidu.mapapi.radar.IRadarSearchListenerImplementor;mono.com.baidu.mapapi.radar.RadarSearchListenerImplementor
+Com.Baidu.Mapapi.Search.Busline.IOnGetBusLineSearchResultListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.search.busline.OnGetBusLineSearchResultListenerImplementor
+Com.Baidu.Mapapi.Search.Busline.IOnGetBusLineSearchResultListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.search.busline.OnGetBusLineSearchResultListenerImplementor
+Com.Baidu.Mapapi.Search.Busline.IOnGetBusLineSearchResultListenerImplementor;mono.com.baidu.mapapi.search.busline.OnGetBusLineSearchResultListenerImplementor
+com.baidu.mapapi.search.busline.IOnGetBusLineSearchResultListenerImplementor;mono.com.baidu.mapapi.search.busline.OnGetBusLineSearchResultListenerImplementor
+Com.Baidu.Mapapi.Search.Geocode.IOnGetGeoCoderResultListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListenerImplementor
+Com.Baidu.Mapapi.Search.Geocode.IOnGetGeoCoderResultListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListenerImplementor
+Com.Baidu.Mapapi.Search.Geocode.IOnGetGeoCoderResultListenerImplementor;mono.com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListenerImplementor
+com.baidu.mapapi.search.geocode.IOnGetGeoCoderResultListenerImplementor;mono.com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListenerImplementor
+Com.Baidu.Mapapi.Search.Poi.IOnGetPoiSearchResultListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.search.poi.OnGetPoiSearchResultListenerImplementor
+Com.Baidu.Mapapi.Search.Poi.IOnGetPoiSearchResultListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.search.poi.OnGetPoiSearchResultListenerImplementor
+Com.Baidu.Mapapi.Search.Poi.IOnGetPoiSearchResultListenerImplementor;mono.com.baidu.mapapi.search.poi.OnGetPoiSearchResultListenerImplementor
+com.baidu.mapapi.search.poi.IOnGetPoiSearchResultListenerImplementor;mono.com.baidu.mapapi.search.poi.OnGetPoiSearchResultListenerImplementor
+Com.Baidu.Mapapi.Search.Route.IOnGetRoutePlanResultListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.search.route.OnGetRoutePlanResultListenerImplementor
+Com.Baidu.Mapapi.Search.Route.IOnGetRoutePlanResultListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.search.route.OnGetRoutePlanResultListenerImplementor
+Com.Baidu.Mapapi.Search.Route.IOnGetRoutePlanResultListenerImplementor;mono.com.baidu.mapapi.search.route.OnGetRoutePlanResultListenerImplementor
+com.baidu.mapapi.search.route.IOnGetRoutePlanResultListenerImplementor;mono.com.baidu.mapapi.search.route.OnGetRoutePlanResultListenerImplementor
+Com.Baidu.Mapapi.Search.Share.IOnGetShareUrlResultListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.search.share.OnGetShareUrlResultListenerImplementor
+Com.Baidu.Mapapi.Search.Share.IOnGetShareUrlResultListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.search.share.OnGetShareUrlResultListenerImplementor
+Com.Baidu.Mapapi.Search.Share.IOnGetShareUrlResultListenerImplementor;mono.com.baidu.mapapi.search.share.OnGetShareUrlResultListenerImplementor
+com.baidu.mapapi.search.share.IOnGetShareUrlResultListenerImplementor;mono.com.baidu.mapapi.search.share.OnGetShareUrlResultListenerImplementor
+Com.Baidu.Mapapi.Search.Sug.IOnGetSuggestionResultListenerImplementor, BaiduMapApiBindingLibrary;mono.com.baidu.mapapi.search.sug.OnGetSuggestionResultListenerImplementor
+Com.Baidu.Mapapi.Search.Sug.IOnGetSuggestionResultListenerImplementor, BaiduMapApiBindingLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.baidu.mapapi.search.sug.OnGetSuggestionResultListenerImplementor
+Com.Baidu.Mapapi.Search.Sug.IOnGetSuggestionResultListenerImplementor;mono.com.baidu.mapapi.search.sug.OnGetSuggestionResultListenerImplementor
+com.baidu.mapapi.search.sug.IOnGetSuggestionResultListenerImplementor;mono.com.baidu.mapapi.search.sug.OnGetSuggestionResultListenerImplementor
 Com.Handmark.Pulltorefresh.Library.PullToRefreshBase/IOnLastItemVisibleListenerImplementor, PullToRefresh;mono.com.handmark.pulltorefresh.library.PullToRefreshBase_OnLastItemVisibleListenerImplementor
 Com.Handmark.Pulltorefresh.Library.PullToRefreshBase/IOnLastItemVisibleListenerImplementor, PullToRefresh, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.handmark.pulltorefresh.library.PullToRefreshBase_OnLastItemVisibleListenerImplementor
 Com.Handmark.Pulltorefresh.Library.PullToRefreshBase.IOnLastItemVisibleListenerImplementor;mono.com.handmark.pulltorefresh.library.PullToRefreshBase_OnLastItemVisibleListenerImplementor

@@ -32,9 +32,9 @@ namespace EldYoungAndroidApp
 				_adviceRecordItemView = (AdviceRecordItemView)convertView.GetTag (Resource.Id.advicelistitemview);
 
 			_adviceRecordItemView.img_adviceType.SetImageResource(GetAdviceTypeId(item.MessageType));
-			_adviceRecordItemView.tv_adviceTime.Text =  Convert.ToDateTime( item.MessageTime).ToString("yyyy-MM-dd HH:mm:ss");
-			_adviceRecordItemView.tv_adviceTitle.Text = item.MessageTitle;
-			_adviceRecordItemView.tv_adviceContent.Text = item.MessageContent;
+			_adviceRecordItemView.tv_adviceTime.Text =  string.IsNullOrEmpty(item.MessageTime)?string.Empty: Convert.ToDateTime( item.MessageTime).ToString("yyyy-MM-dd HH:mm:ss");
+			_adviceRecordItemView.tv_adviceTitle.Text = string.IsNullOrEmpty(item.MessageTitle)?string.Empty:item.MessageTitle;
+			_adviceRecordItemView.tv_adviceContent.Text = string.IsNullOrEmpty(item.MessageContent)?string.Empty:item.MessageContent;
 			return convertView;
 		}
 		/// <summary>
