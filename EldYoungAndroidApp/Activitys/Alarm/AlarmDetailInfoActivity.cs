@@ -95,6 +95,8 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 			ll_maplocation = FindViewById<LinearLayout> (Resource.Id.ll_maplocation);
 			//查看地图
 			ll_maplocation.Click += (object sender, EventArgs e) => {
+				if(string.IsNullOrEmpty(alarmPosition) || !alarmPosition.Contains(","))
+					return;
 				var intent = new Intent(this,typeof(AlarmLocationActivity));
 				var alarmbundle = new Bundle();
 				alarmbundle.PutString("alarmPosition",alarmPosition);

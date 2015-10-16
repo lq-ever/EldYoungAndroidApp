@@ -1,9 +1,13 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Activitys\Alarm\AlarmDetailInfoActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.107b452b" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Common\CircleImageView.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" Line="26" Column="24" />
-      <File FileName="EldYoungAndroidApp\Activitys\Alarm\AlarmDetailInfoActivity.cs" Line="37" Column="3" />
+      <File FileName="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" Line="36" Column="54" />
+      <File FileName="EldYoungAndroidApp\Activitys\Alarm\AlarmLocationActivity.cs" Line="72" Column="62" />
+      <File FileName="EldYoungAndroidApp\Common\EldYoungApplication.cs" Line="61" Column="14" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Alarm\MyAlarmFrag.cs" Line="158" Column="1" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Health\MyHealthFrag.cs" Line="152" Column="4" />
+      <File FileName="EldYoungAndroidApp\Common\CircleImageView.cs" Line="85" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

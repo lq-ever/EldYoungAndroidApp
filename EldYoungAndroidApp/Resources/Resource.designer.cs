@@ -193,7 +193,7 @@ namespace EldYoungAndroidApp
 			
 			// aapt resource value: 0x7f01000b
 			public const int ptrSubHeaderTextAppearance = 2130771979;
-			
+			    
 			// aapt resource value: 0x7f01001f
 			public const int ptrViewRefeshableViewProgressBarOnCenterWhileRefreshingDuration = 2130771999;
 			

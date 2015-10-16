@@ -58,6 +58,8 @@ namespace EldYoungAndroidApp.Common
 			{
 				BackgroundAlpha(1f);
 			};
+			 
+
 		}
 
 		/// <summary>
