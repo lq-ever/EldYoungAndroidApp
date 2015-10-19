@@ -252,7 +252,7 @@ namespace EldYoungAndroidApp
 				} else
 					img_UrineRoutinePH_Arraw.Visibility = ViewStates.Gone;
 			} else
-				img_UrineRoutineURO_Arraw.Visibility = ViewStates.Gone;
+				img_UrineRoutinePH_Arraw.Visibility = ViewStates.Gone;
 			//尿比重
 			tv_UrineRoutineSG.Text = string.IsNullOrEmpty(healthInfoItem.UrineRoutineSG)?"-":healthInfoItem.UrineRoutineSG;
 	

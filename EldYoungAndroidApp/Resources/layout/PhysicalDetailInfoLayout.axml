@@ -485,7 +485,7 @@
                             android:text="36.3"
                             android:textColor="@color/lightgray" />
                         <ImageView
-                            android:id="@+id/img_BloodLipidParaFour"
+                            android:id="@+id/img_BloodLipidParaFour_Arraw"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -535,7 +535,7 @@
                             android:text="36.3"
                             android:textColor="@color/lightgray" />
                         <ImageView
-                            android:id="@+id/img_UrineRoutinePH"
+                            android:id="@+id/img_UrineRoutinePH_Arraw"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -569,7 +569,7 @@
                             android:text="36.3"
                             android:textColor="@color/lightgray" />
                         <ImageView
-                            android:id="@+id/img_UrineRoutineSG"
+                            android:id="@+id/img_UrineRoutineSG_Arraw"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -603,7 +603,7 @@
                             android:text="36.3"
                             android:textColor="@color/lightgray" />
                         <ImageView
-                            android:id="@+id/img_UrineRoutineURO"
+                            android:id="@+id/img_UrineRoutineURO_Arraw"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
