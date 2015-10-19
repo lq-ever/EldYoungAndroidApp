@@ -107,7 +107,7 @@ namespace EldYoungAndroidApp
 			tv_Weight.Text = string.IsNullOrEmpty (healthInfoItem.Weight) ? "-" : healthInfoItem.Weight+"kg";
 			if (!string.IsNullOrEmpty (healthInfoItem.Height) && !string.IsNullOrEmpty (healthInfoItem.Weight)) {
 				var bmi = Convert.ToDouble (healthInfoItem.Weight) / ((Convert.ToDouble (healthInfoItem.Height) / 100) * (Convert.ToDouble (healthInfoItem.Height) / 100));
-				tv_BMI.Text = string.Format ("{0:F}",bmi); // bmi.ToString ();
+				tv_BMI.Text = string.Format ("{0:F}", bmi); // bmi.ToString ();
 				if (bmi > HealthStand.BMI_High || bmi < HealthStand.BMI_Low) {
 					//异常
 					tv_BMI.SetTextColor (Resources.GetColor (Resource.Color.pink));
@@ -115,7 +115,8 @@ namespace EldYoungAndroidApp
 				} else
 					img_BMI_Arraw.Visibility = ViewStates.Gone;
 
-			}
+			} else
+				img_BMI_Arraw.Visibility = ViewStates.Gone;
 
 			//血糖
 			tv_BloodGlucose.Text = string.IsNullOrEmpty(healthInfoItem.BloodGlucose)?"-":healthInfoItem.BloodGlucose;
@@ -128,7 +129,8 @@ namespace EldYoungAndroidApp
 					img_BloodGlucose_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_BloodGlucose_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_BloodGlucose_Arraw.Visibility = ViewStates.Gone;
 
 			//血氧
 			tv_BloodOxygenParaOne.Text = string.IsNullOrEmpty(healthInfoItem.BloodOxygenParaOne)?"-":healthInfoItem.BloodOxygenParaOne;
@@ -140,7 +142,8 @@ namespace EldYoungAndroidApp
 					img_BloodOxygenParaOne_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_BloodOxygenParaOne_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_BloodOxygenParaOne_Arraw.Visibility = ViewStates.Gone;
 
 			//血压
 			tv_BloodPressureParaOne.Text = string.IsNullOrEmpty(healthInfoItem.BloodPressureParaOne)?"-":healthInfoItem.BloodPressureParaOne;
@@ -155,7 +158,8 @@ namespace EldYoungAndroidApp
 					img_HeartRate_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_HeartRate_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_HeartRate_Arraw.Visibility = ViewStates.Gone;
 
 			//肺活量
 			tv_BreathCapacity.Text = string.IsNullOrEmpty(healthInfoItem.BreathCapacity)?"-":healthInfoItem.BreathCapacity;
@@ -167,18 +171,20 @@ namespace EldYoungAndroidApp
 					img_BreathCapacity_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_BreathCapacity_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_BreathCapacity_Arraw.Visibility = ViewStates.Gone;
 			//体温
 			tv_BodyTemperature.Text = string.IsNullOrEmpty(healthInfoItem.BodyTemperature)?"-":healthInfoItem.BodyTemperature;
 
 			if (!string.IsNullOrEmpty (healthInfoItem.BodyTemperature)) {
-				var bodyTemperature = Convert.ToDouble(healthInfoItem.BodyTemperature);
+				var bodyTemperature = Convert.ToDouble (healthInfoItem.BodyTemperature);
 				if (bodyTemperature > HealthStand.BodyTemperature_High || bodyTemperature < HealthStand.BodyTemperature_Low) {
 					tv_BodyTemperature.SetTextColor (Resources.GetColor (Resource.Color.pink));
 					img_BodyTemperature_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_BodyTemperature_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_BodyTemperature_Arraw.Visibility = ViewStates.Gone;
 			//总胆固醇
 			tv_BloodLipidParaOne.Text = string.IsNullOrEmpty(healthInfoItem.BloodLipidParaOne)?"-":healthInfoItem.BloodLipidParaOne;
 
@@ -186,8 +192,13 @@ namespace EldYoungAndroidApp
 				var bloodLipidParaOne = Convert.ToDouble (healthInfoItem.BloodLipidParaOne);
 				if (bloodLipidParaOne > HealthStand.BloodLipidParaOne_High || bloodLipidParaOne < HealthStand.BloodLipidParaOne_Low) {
 					tv_BloodLipidParaOne.SetTextColor (Resources.GetColor (Resource.Color.pink));
-				}
-			}
+					img_BloodLipidParaOne_Arraw.Visibility = ViewStates.Visible;
+				} else
+					img_BloodOxygenParaOne_Arraw.Visibility = ViewStates.Gone;
+					
+			} else
+				img_BloodLipidParaOne_Arraw.Visibility = ViewStates.Gone;
+
 			//低密度脂蛋白胆固醇
 
 			tv_BloodLipidParaTwo.Text = string.IsNullOrEmpty(healthInfoItem.BloodLipidParaTwo)?"-":healthInfoItem.BloodLipidParaTwo;
@@ -201,7 +212,8 @@ namespace EldYoungAndroidApp
 
 				} else
 					img_BloodLipidParaTwo_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_BloodLipidParaTwo_Arraw.Visibility = ViewStates.Gone;
 
 			//高密度脂蛋白胆固醇
 
@@ -214,7 +226,8 @@ namespace EldYoungAndroidApp
 					img_BloodLipidParaThree_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_BloodLipidParaThree_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_BloodLipidParaThree_Arraw.Visibility = ViewStates.Gone;
 
 			//甘油三酯
 			tv_BloodLipidParaFour.Text = string.IsNullOrEmpty(healthInfoItem.BloodLipidParaFour)?"-":healthInfoItem.BloodLipidParaFour;
@@ -226,7 +239,8 @@ namespace EldYoungAndroidApp
 					img_BloodLipidParaFour_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_BloodLipidParaFour_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_BloodLipidParaFour_Arraw.Visibility = ViewStates.Gone;
 			//酸碱度
 			tv_UrineRoutinePH.Text = string.IsNullOrEmpty(healthInfoItem.UrineRoutinePH)?"-":healthInfoItem.UrineRoutinePH;
 	
@@ -237,7 +251,8 @@ namespace EldYoungAndroidApp
 					img_UrineRoutinePH_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_UrineRoutinePH_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_UrineRoutineURO_Arraw.Visibility = ViewStates.Gone;
 			//尿比重
 			tv_UrineRoutineSG.Text = string.IsNullOrEmpty(healthInfoItem.UrineRoutineSG)?"-":healthInfoItem.UrineRoutineSG;
 	
@@ -248,7 +263,8 @@ namespace EldYoungAndroidApp
 					img_UrineRoutineSG_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_UrineRoutineSG_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_UrineRoutineSG_Arraw.Visibility = ViewStates.Gone;
 
 			//尿胆元
 			tv_UrineRoutineURO.Text = string.IsNullOrEmpty(healthInfoItem.UrineRoutineURO)?"-":healthInfoItem.UrineRoutineURO;
@@ -260,7 +276,8 @@ namespace EldYoungAndroidApp
 					img_UrineRoutineURO_Arraw.Visibility = ViewStates.Visible;
 				} else
 					img_UrineRoutineURO_Arraw.Visibility = ViewStates.Gone;
-			}
+			} else
+				img_UrineRoutineURO_Arraw.Visibility = ViewStates.Gone;
 			//隐血
 			tv_UrineRoutineBLO.Text = string.IsNullOrEmpty(healthInfoItem.UrineRoutineBLO)?"-":healthInfoItem.UrineRoutineBLO;
 			//白细胞(WBC):(WBC/uL)

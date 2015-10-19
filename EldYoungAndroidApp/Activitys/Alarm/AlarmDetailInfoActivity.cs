@@ -161,19 +161,19 @@ namespace EldYoungAndroidApp.Activitys.Alarm
 							var detail = alarmdetailInfoJson.data.detail[0];
 							RunOnUiThread(()=>
 								{
-									tv_detail_alamTime.Text = detail.AlarmTime;
-									tv_detail_alarmContent.Text = detail.AlarmContent;
-									tv_detail_alarmDeviceId.Text = detail.AlarmDeviceId;
-									tv_detail_alarmPosition.Text = detail.AlarmPosition;
-									alarmPosition = detail.AlarmPosition;
-									tv_detail_alarmWay.Text = detail.AlarmWay;
-									tv_detail_cphoneNumberOne.Text = detail.CPhoneNumberOne;
-									tv_detail_cTrueName.Text = detail.CTrueName;
-									tv_detail_deviceElectricity.Text = detail.DeviceElectricity;
-									tv_detail_handleUserType.Text = detail.HandleUserType;
-									tv_detail_remark.Text = detail.Remark;
-									tv_detail_status.Text = detail.Status;
-									tv_detail_trueName.Text = detail.TrueName;
+									tv_detail_alamTime.Text = string.IsNullOrEmpty(detail.AlarmTime)?string.Empty:Convert.ToDateTime(detail.AlarmTime).ToString("yyyy-MM-dd HH:mm:ss");
+									tv_detail_alarmContent.Text = EldYoungUtil.FormatStrVaue(detail.AlarmContent);
+									tv_detail_alarmDeviceId.Text = EldYoungUtil.FormatStrVaue(detail.AlarmDeviceId);
+									tv_detail_alarmPosition.Text = EldYoungUtil.FormatStrVaue(detail.AlarmPosition);
+									alarmPosition = EldYoungUtil.FormatStrVaue(detail.AlarmPosition);
+									tv_detail_alarmWay.Text = EldYoungUtil.FormatStrVaue(detail.AlarmWay);
+									tv_detail_cphoneNumberOne.Text = EldYoungUtil.FormatStrVaue(detail.CPhoneNumberOne);
+									tv_detail_cTrueName.Text = EldYoungUtil.FormatStrVaue(detail.CTrueName);
+									tv_detail_deviceElectricity.Text = EldYoungUtil.FormatStrVaue(detail.DeviceElectricity);
+									tv_detail_handleUserType.Text = EldYoungUtil.FormatStrVaue(detail.HandleUserType);
+									tv_detail_remark.Text = EldYoungUtil.FormatStrVaue(detail.Remark);
+									tv_detail_status.Text = EldYoungUtil.FormatStrVaue(detail.Status);
+									tv_detail_trueName.Text = EldYoungUtil.FormatStrVaue(detail.TrueName);
 								});
 							
 						} 

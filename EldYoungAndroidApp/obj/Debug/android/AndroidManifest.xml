@@ -97,10 +97,10 @@
     <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default" />
     <meta-data android:name="JPUSH_APPKEY" android:value="047be80a690556c4aded154e" />
     <!--  使用百度地图API-->
-    <!-- 测试版 -->
-    <!--		<meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="uux82Hcm1GbEVnd98WBRiABg" />-->
-    <!--- release版 -->
-    <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="krKFPTG9UDtpGEKWT56oLcwe" />
+    <!-- release版 AK -->
+    <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="uux82Hcm1GbEVnd98WBRiABg" />
+    <!--- debug版 AK -->
+    <!--		<meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="krKFPTG9UDtpGEKWT56oLcwe" />-->
     <activity android:noHistory="true" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="md54097cffc0ffa08632f0d89c6940011de.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

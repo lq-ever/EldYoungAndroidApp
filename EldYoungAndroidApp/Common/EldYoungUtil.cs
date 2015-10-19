@@ -22,6 +22,11 @@ namespace EldYoungAndroidApp.Common
 		{
 		}
 
+		public static string FormatStrVaue(string strValue)
+		{
+			return string.IsNullOrEmpty (strValue) ? string.Empty : strValue;
+		}
+
 		/// <summary>
 		/// 判断应用程序是否已经启动
 		/// </summary>

@@ -93,7 +93,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			//myAlarmRefreshListView.SetOnLastItemVisibleListener (this);
 
 
-
+		
 
 			//加载view
 			edit_my_startTime = View.FindViewById<EditText>(Resource.Id.edit_my_startTime);

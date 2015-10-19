@@ -3,6 +3,7 @@ using Android.Widget;
 using EldYoungAndroidApp.Model.Alarm;
 using Android.App;
 using Android.Views;
+using EldYoungAndroidApp.Common;
 
 namespace EldYoungAndroidApp.Adapter
 {
@@ -32,10 +33,10 @@ namespace EldYoungAndroidApp.Adapter
 			} else
 				_alarmItemView = (AlarmItemView)convertView.GetTag (Resource.Id.alarmlistitemview);
 
-			_alarmItemView.tv_alarmTrueName.Text = item.TrueName;
-			_alarmItemView.tv_alarmTime.Text =  Convert.ToDateTime( item.AlarmTime).ToString("yyyy-MM-dd HH:mm:ss");
-			_alarmItemView.tv_alarmStatus.Text = item.Status;
-			_alarmItemView.tv_alarmContent.Text = item.AlarmContent;
+			_alarmItemView.tv_alarmTrueName.Text = EldYoungUtil.FormatStrVaue(item.TrueName);
+			_alarmItemView.tv_alarmTime.Text = string.IsNullOrEmpty(item.AlarmTime)?string.Empty: Convert.ToDateTime( item.AlarmTime).ToString("yyyy-MM-dd HH:mm:ss");
+			_alarmItemView.tv_alarmStatus.Text = EldYoungUtil.FormatStrVaue(item.Status);
+			_alarmItemView.tv_alarmContent.Text = EldYoungUtil.FormatStrVaue(item.AlarmContent);
 			return convertView;
 		}
 	}
