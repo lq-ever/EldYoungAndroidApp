@@ -1,17 +1,11 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Fragments\MainTab\Alarm\MyAlarmFrag.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" Line="84" Column="28" />
-      <File FileName="EldYoungAndroidApp\Activitys\Alarm\AlarmLocationActivity.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Common\EldYoungApplication.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Health\MyHealthFrag.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Alarm\OtherAlarmFrag.cs" Line="219" Column="11" />
-      <File FileName="EldYoungAndroidApp\Common\ApplybindPopWindow.cs" Line="31" Column="1" />
-      <File FileName="EldYoungAndroidApp\Activitys\Alarm\AlarmDetailInfoActivity.cs" Line="219" Column="24" />
-      <File FileName="EldYoungAndroidApp\Activitys\Health\PhysicalDetailInfoActivity.cs" Line="276" Column="3" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Alarm\MyAlarmFrag.cs" Line="110" Column="7" />
-      <File FileName="EldYoungAndroidApp\Common\EldYoungUtil.cs" Line="45" Column="6" />
+      <File FileName="EldYoungAndroidApp\Adapter\AlarmHandleDetailInfoAdapter.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Adapter\AlarmInfoListAdapter.cs" Line="36" Column="4" />
+      <File FileName="EldYoungAndroidApp\Adapter\ApplyGuardianListAdapter.cs" Line="94" Column="23" />
+      <File FileName="EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" Line="43" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -20,6 +14,8 @@
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Common\DeleteCleanCacheManager.cs" line="99" column="4" />
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="262" column="6" />
       <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="265" column="7" />
+      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Health\PhysicalDetailInfoActivity.cs" line="247" column="4" />
+      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Health\HealthDetailInfoActivity.cs" line="46" column="4" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

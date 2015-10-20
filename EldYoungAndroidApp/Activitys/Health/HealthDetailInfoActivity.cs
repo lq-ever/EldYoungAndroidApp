@@ -38,6 +38,7 @@ namespace EldYoungAndroidApp
 			Window.SetFeatureInt (WindowFeatures.CustomTitle, Resource.Layout.custom_title_bar);
 			// Create your application here
 			InitView();
+
 		}
 		private void InitView()
 		{
