@@ -105,7 +105,7 @@ namespace EldYoungAndroidApp.Receiver
 			//清除所有通知
 			JPushInterface.ClearAllNotifications(context);
 			//判断app进程是否存活
-			if (EldYoungUtil.IsApplive (context, Global.package_name)) {
+			if (EldYoungUtil.IsApplive (context, "com.eldyoung.lelaozuandroidapp")) {
 				//如果存活的话，就直接启动报警DetailActivity，但要考虑一种情况，就是app的进程虽然仍然在
 				//但Task栈已经空了，比如用户点击Back键退出应用，但进程还没有被系统回收，如果直接启动
 				//DetailActivity,再按Back键就不会返回任何界面了。所以在启动DetailActivity前，要先启动splash界面。

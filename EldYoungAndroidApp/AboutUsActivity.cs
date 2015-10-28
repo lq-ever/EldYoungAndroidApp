@@ -39,7 +39,7 @@ namespace EldYoungAndroidApp
 			var tv_header_title = FindViewById<TextView> (Resource.Id.tv_header_title);
 			tv_header_title.Text = "关于我们";
 			var tv_appversion = FindViewById<TextView> (Resource.Id.tv_appversion);
-			tv_appversion.Text = "乐老族Android版 V"+Global.version_code;
+			tv_appversion.Text = "乐老族Android版 V"+EldYoungUtil.GetAppVersionCode(this);
 		}
 	}
 }
