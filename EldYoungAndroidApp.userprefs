@@ -1,13 +1,18 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\Adapter\GetApplyInfoListAadapter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\LoginActivity.cs">
     <Files>
-      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="192" Column="8" />
-      <File FileName="EldYoungAndroidApp\Receiver\CustomJPushReceiver.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\MainActivity.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Common\DeleteCleanCacheManager.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Activitys\Guardian\GuardianApplyActivity.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Adapter\GetApplyInfoListAadapter.cs" Line="26" Column="74" />
+      <File FileName="EldYoungAndroidApp\Param\GetMyInfoParam.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="91" Column="31" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Health\OtherHealthFrag.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Json\GetMyInfoJson.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\BaseFragment.cs" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Resources\anim\bottomin.xml" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Resources\anim\bottomout.xml" Line="1" Column="1" />
+      <File FileName="EldYoungAndroidApp\Adapter\ViewPagerAdapter.cs" Line="71" Column="36" />
+      <File FileName="EldYoungAndroidApp\Common\JPushUtil.cs" Line="28" Column="4" />
+      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Alarm\MyAlarmFrag.cs" Line="239" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

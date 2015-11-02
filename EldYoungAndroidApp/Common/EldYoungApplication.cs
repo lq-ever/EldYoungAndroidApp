@@ -68,8 +68,10 @@ namespace EldYoungAndroidApp.Common
 		{
 			BasicPushNotificationBuilder builder1 = new BasicPushNotificationBuilder(this);
 			builder1.StatusBarDrawable =Resource.Drawable.ic_launch;
-			builder1.NotificationFlags = (int) NotificationFlags.AutoCancel;  //设置为自动消失
+			//builder1.NotificationFlags = (int) NotificationFlags.AutoCancel;  //设置为自动消失
+			builder1.NotificationFlags = (int) NotificationFlags.Insistent;//设置为一直提示声音和震动，直到用户点击了
 			builder1.NotificationDefaults =(int) NotificationDefaults.All; // 设置为铃声与震动都要
+
 			JPushInterface.SetPushNotificationBuilder((Integer)1,builder1);
 		}
 
