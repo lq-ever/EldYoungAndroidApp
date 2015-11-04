@@ -27,7 +27,7 @@ using System.Threading;
 
 namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 {
-	public class MyAlarmFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2,Android.Views.View.IOnFocusChangeListener
+	public class MyAlarmFrag : BaseFragment,PullToRefreshBase.IOnRefreshListener2,Android.Views.View.IOnFocusChangeListener,Spinner.IOnItemSelectedListener
 	{
 		
 		private AlarmInfoListAdapter alarmInfoAdapter;
@@ -38,8 +38,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 		private EditText edit_my_startTime, edit_my_endTime;
 		private string my_startTime_default, my_endTime_default;
-		private RadioGroup rgp_alarmWay;
-		private RadioButton rbtn_paul, rbtn_trip;
 		private Button btn_my_search;
 
 		private Dictionary<string,string> requestParams = new Dictionary<string,string> ();
@@ -53,6 +51,11 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 		private bool btnSearchFlag = false;//监听是否点击查询
 
 		private bool IsRefreshing = false;//是否正在获取数据
+
+		private Spinner sp_alarmType;//报警类型
+		private List<AlarmTypeItem> alarmTypeList;
+		private ArrayAdapter<AlarmTypeItem> alarmTypeAdapter;//报警类型适配器
+		private string alarmTypeId;//选择的报警类型
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -90,27 +93,21 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 			//绑定监听事件
 			myAlarmRefreshListView.SetOnRefreshListener (this);
-			//myAlarmRefreshListView.SetOnLastItemVisibleListener (this);
 
 
-		
+			//下拉框
+			sp_alarmType = View.FindViewById<Spinner>(Resource.Id.sp_alarmType);
+			sp_alarmType.OnItemSelectedListener = this;   
+			sp_alarmType.Visibility = ViewStates.Visible;//设置默认值
+
+		    
 
 			//加载view
 			edit_my_startTime = View.FindViewById<EditText>(Resource.Id.edit_my_startTime);
-//			edit_my_startTime.Click += (sender, e) => 
-//			{
-//				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_startTime.Text);
-//				datepickdialog.DatePickDialogShow(edit_my_startTime);
-//			};
-
 			edit_my_startTime.OnFocusChangeListener = this;
 			edit_my_startTime.InputType = Android.Text.InputTypes.Null;
+
 			edit_my_endTime = View.FindViewById<EditText> (Resource.Id.edit_my_endTime);
-//			edit_my_endTime.Click += (sender, e) => 
-//			{
-//				var datepickdialog = new DatePickDialogUtil(Activity,edit_my_endTime.Text);
-//				datepickdialog.DatePickDialogShow(edit_my_endTime);
-//			};
 			edit_my_endTime.OnFocusChangeListener = this;
 			edit_my_endTime.InputType = Android.Text.InputTypes.Null;
 			my_endTime_default = DateTime.Now.ToString ("yyyy-MM-dd");
@@ -118,10 +115,6 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			edit_my_startTime.Text = my_startTime_default;
 			edit_my_endTime.Text = my_endTime_default;
 
-			rgp_alarmWay = View.FindViewById<RadioGroup> (Resource.Id.rgp_alarmWay);
-
-			rbtn_paul = View.FindViewById<RadioButton> (Resource.Id.rbtn_paul);
-			rbtn_trip = View.FindViewById<RadioButton> (Resource.Id.rbtn_trip);
 			btn_my_search = View.FindViewById<Button> (Resource.Id.btn_my_search);
 			//查询按钮
 			btn_my_search.Click += (sender, e) => 
@@ -167,17 +160,45 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 
 		public override void LasyloadData ()
 		{
-//			if (!IsPrepared || !IsVisible || HasLoadedOnce)
-//				return;
 			if (!IsPrepared || !IsVisible)
 				return;
+			InitAlarmTypeSpinner();
 			//第一次进入设置自动刷新view
-			myAlarmRefreshListView.Refreshing = true;
+			//myAlarmRefreshListView.Refreshing = true;
+		}
+
+		/// <summary>
+		/// 初始化报警类型
+		/// </summary>
+		private void InitAlarmTypeSpinner()
+		{
+			alarmTypeList = new List<AlarmTypeItem> ()
+			{
+				new AlarmTypeItem(){AlarmTypeId="0",AlarmTypeDesc="PAUL报警"},new AlarmTypeItem(){AlarmTypeId="1",AlarmTypeDesc="摔倒报警"},
+				new AlarmTypeItem(){AlarmTypeId="1002",AlarmTypeDesc="紧急求助报警"},new AlarmTypeItem(){AlarmTypeId="1003",AlarmTypeDesc="无活动报警"},
+				new AlarmTypeItem(){AlarmTypeId="1011",AlarmTypeDesc="防盗报警"},new AlarmTypeItem(){AlarmTypeId="1012",AlarmTypeDesc="火灾报警"},
+				new AlarmTypeItem(){AlarmTypeId="1013",AlarmTypeDesc="燃气泄漏报警"}
+			};
+			alarmTypeAdapter = new ArrayAdapter<AlarmTypeItem>(Activity,Android.Resource.Layout.SimpleSpinnerItem,alarmTypeList);
+			alarmTypeAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+			sp_alarmType.Adapter = alarmTypeAdapter;
+			sp_alarmType.SetSelection(0,true);
 		}
 
 
-
-
+		#region spinner 事件
+		public  void OnItemSelected (AdapterView parent, View view, int position, long id)
+		{
+			var alarmTypeSelected = alarmTypeAdapter.GetItem (position);
+			alarmTypeId = alarmTypeSelected.AlarmTypeId;
+			parent.Visibility = ViewStates.Visible;
+			//第一次进入设置自动刷新view
+			myAlarmRefreshListView.Refreshing = true;
+		}
+		public void OnNothingSelected (AdapterView parent)
+		{
+		}
+		#endregion
 		private void loadData()
 		{
 			if(btnSearchFlag)
@@ -252,7 +273,7 @@ namespace EldYoungAndroidApp.Fragments.MainTab.Alarm
 			alarmInfoListParam.PageIndex = pageIndex.ToString();
 			alarmInfoListParam.StartTime = string.IsNullOrEmpty( edit_my_startTime.Text)?my_startTime_default:edit_my_startTime.Text;
 			alarmInfoListParam.EndTime = string.IsNullOrEmpty( edit_my_endTime.Text)?my_endTime_default:edit_my_endTime.Text;
-			alarmInfoListParam.AlarmType = rbtn_paul.Checked?"0":"1";
+			alarmInfoListParam.AlarmType = alarmTypeId;
 			SetRestRequestParams ();
 		}
 		/// <summary>

@@ -200,6 +200,7 @@
     <Compile Include="Common\DeleteCleanCacheManager.cs" />
     <Compile Include="Activitys\Health\PhysicalDetailInfoActivity.cs" />
     <Compile Include="Activitys\Alarm\AlarmLocationActivity.cs" />
+    <Compile Include="Model\Alarm\AlarmTypeItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

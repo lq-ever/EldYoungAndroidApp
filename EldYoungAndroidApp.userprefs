@@ -1,27 +1,12 @@
 ﻿<Properties StartupItem="EldYoungAndroidApp\EldYoungAndroidApp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EldYoungAndroidApp\LoginActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="EldYoungAndroidApp\Param\GetMyInfoParam.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\LoginActivity.cs" Line="91" Column="31" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Health\OtherHealthFrag.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Json\GetMyInfoJson.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\BaseFragment.cs" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Resources\anim\bottomin.xml" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Resources\anim\bottomout.xml" Line="1" Column="1" />
-      <File FileName="EldYoungAndroidApp\Adapter\ViewPagerAdapter.cs" Line="71" Column="36" />
-      <File FileName="EldYoungAndroidApp\Common\JPushUtil.cs" Line="28" Column="4" />
-      <File FileName="EldYoungAndroidApp\Fragments\MainTab\Alarm\MyAlarmFrag.cs" Line="239" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\Advice\RecordAdviceFragment.cs" line="123" column="4" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="262" column="6" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Fragments\MainTab\MyInfoFragment.cs" line="265" column="7" />
-      <Breakpoint file="E:\GitHub\EldYoungAndroidApp\EldYoungAndroidApp\Activitys\Health\PhysicalDetailInfoActivity.cs" line="247" column="4" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="EldYoungAndroidApp\Common\HttpWebRequestHelper.cs" line="23" offsetX="837" offsetY="352" expression="postUrl" liveUpdate="False" />
