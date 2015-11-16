@@ -116,7 +116,7 @@ namespace EldYoungAndroidApp.Receiver
 				if (cmpName != null) {
 					//系统存在此activity
 					ActivityManager _activityManager = (ActivityManager)context.GetSystemService (Context.ActivityService);
-					var taskInfoLists = _activityManager.GetRunningTasks (1);
+					var taskInfoLists = _activityManager.GetRunningTasks (20);
 					foreach (ActivityManager.RunningTaskInfo taskInfo in taskInfoLists) {
 						if (taskInfo.BaseActivity.Equals (cmpName)) {
 							mainActivityexistflag = true;
@@ -138,7 +138,7 @@ namespace EldYoungAndroidApp.Receiver
 				} else {
 					//堆栈中存在主界面活动
 					Intent alarmDetailInfoIntent = new Intent(context, typeof(AlarmDetailInfoActivity));
-					alarmDetailInfoIntent.SetFlags (ActivityFlags.NewTask|ActivityFlags.SingleTop);
+					alarmDetailInfoIntent.SetFlags (ActivityFlags.NewTask | ActivityFlags.SingleTop);
 					bundle.PutString("alarmOrigin","Jpush");
 					alarmDetailInfoIntent.PutExtras (bundle);
 					context.StartActivity (alarmDetailInfoIntent);

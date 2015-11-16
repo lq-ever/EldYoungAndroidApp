@@ -10,6 +10,7 @@ public class AlarmDetailInfoActivity
 	static {
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
+			"n_onNewIntent:(Landroid/content/Intent;)V:GetOnNewIntent_Landroid_content_Intent_Handler\n" +
 			"";
 		mono.android.Runtime.register ("EldYoungAndroidApp.Activitys.Alarm.AlarmDetailInfoActivity, EldYoungAndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", AlarmDetailInfoActivity.class, __md_methods);
 	}
@@ -29,6 +30,14 @@ public class AlarmDetailInfoActivity
 	}
 
 	private native void n_onCreate (android.os.Bundle p0);
+
+
+	public void onNewIntent (android.content.Intent p0)
+	{
+		n_onNewIntent (p0);
+	}
+
+	private native void n_onNewIntent (android.content.Intent p0);
 
 	java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)
